@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile_Unix.mk                                   :+:    :+:             #
-#                                                      +:+                     #
-#    By: W2Wizard <w2.wizzard@gmail.com>              +#+                      #
-#                                                    +#+                       #
-#    Created: 2022/02/26 21:36:38 by W2Wizard      #+#    #+#                  #
-#    Updated: 2022/07/05 14:53:23 by jobvan-d      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile_Unix.mk                                   :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anttorre <anttorre@student.42malaga.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/26 21:36:38 by W2Wizard          #+#    #+#              #
+#    Updated: 2023/07/06 13:22:06 by anttorre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,23 +22,29 @@ CYAN	:= \033[36;1m
 WHITE	:= \033[37;1m
 RESET	:= \033[0m
 
+MLX42_MESSAGE_SHOWN := false
+
 #//= Make Rules =//#
 $(NAME): $(OBJS)
 	@ar rc $@ $^
-	@echo "$(GREEN)$(BOLD)Done$(RESET)"
+	@echo "$(CYAN)$(BOLD)Done.$(RESET)"
+	
+$(MLX42_MESSAGE_SHOWN):
+	@echo "$(MAGENTA)$(BOLD)Compiling MLX42...$(RESET)"
 
 %.o: %.c $(HDRS)
-	@echo "$(GREEN)$(BOLD)Compiling:$(RESET) $(notdir $<)"
+	@echo "$(MAGENTA)$(BOLD)Compiling:$(RESET) $(notdir $<)"
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 # Convert shaders to .c files
-$(SRC_DIR)/mlx_%_shader.c: $(SHADER_DIR)/default.%
-	@echo "$(GREEN)$(BOLD)Shader to C: $< -> $@$(RESET)"
+$(SRC_DIR)/mlx_%_shader.c: $(SHADER_DIR)/default.% $(MLX42_MESSAGE_SHOWN)
+	@echo "$(BLUE)$(BOLD)Shader to C: $< -> $@$(RESET)"
 	@bash tools/compile_shader.sh $< > $@
 
 clean:
-	@echo "$(RED)Cleaning$(RESET)"
+	@echo "$(RED)Cleaning objects from MLX42...$(RESET)"
 	@rm -f $(OBJS) $(SHDR)
+	@echo "$(GREEN)Done.$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
