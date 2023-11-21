@@ -1,0 +1,7 @@
+total 8
+drwxr-xr-x   6 marirodr  2022_malaga  204 Nov 21 15:44 .
+drwxr-xr-x   7 marirodr  2022_malaga  238 Nov 21 12:50 ..
+drwxr-xr-x  13 marirodr  2022_malaga  442 Nov 21 13:07 .git
+-rw-r--r--   1 marirodr  2022_malaga  430 Nov 21 12:50 .gitignore
+drwxrwxr-x@ 19 marirodr  2022_malaga  646 Nov 17 11:07 MLX42
+-rw-r--r--   1 marirodr  2022_malaga    0 Nov 21 15:44 test.txt
