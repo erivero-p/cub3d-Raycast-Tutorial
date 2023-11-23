@@ -1,7 +1,13 @@
 #include "../inc/cub3D.h"
 
-int	main(int ac, char *av)
+void	ft_leaks(void)
 {
+	system("leaks -q cub3D");
+}
+
+int	main(int ac, char **av)
+{
+	atexit(ft_leaks);
 	int	fd;
 //	t_game	info;
 

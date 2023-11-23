@@ -41,7 +41,7 @@ int	ft_wall_checker(char **map)
 		{
 			while (map[y][x] > 0 && map[y][x] <= 32)
 				x++;
-			if (map[y][x] > 0 && is_wall(map, x, y, len) && map[y][x] != '1')
+			if (map[y][x] > 0 && ft_is_wall(map, x, y, len) && map[y][x] != '1')
 				return (0);
 			x++;
 		}

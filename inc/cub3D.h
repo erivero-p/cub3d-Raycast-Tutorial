@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/23 15:27:41 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:57:40 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include <unistd.h>
+# include <fcntl.h>
 
 typedef struct s_coord
 {
@@ -54,5 +55,9 @@ typedef struct s_game
 	t_map	*map;
 	t_img	*imgs;
 }	t_game;
+
+//wall_checker.c
+int ft_is_wall(char **map, int x, int y, int len);
+int	ft_wall_checker(char **map);
 
 #endif
