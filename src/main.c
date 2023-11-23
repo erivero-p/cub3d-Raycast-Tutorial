@@ -16,7 +16,7 @@ int	main(int ac, char *av)
 		ft_printf("\033[0;31mError\n Problem while opening file\033");
 		return (-1);
 	}
-//	ft_map_handling();
+//	ft_map_handling(); -> carga del mapa en memoria y checkeo de que esté correcto
 //	ft_game_handling();
 	close(fd);
 }
