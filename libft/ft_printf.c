@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:57:56 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/11/21 12:43:11 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:15:46 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ int	ft_printf(char const *content, ...)
 		i++;
 	}
 	va_end(args);
-	return (c);
+	return (count);
 }
