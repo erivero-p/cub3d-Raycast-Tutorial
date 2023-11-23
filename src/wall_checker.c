@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int is_wall(char **map, int x, int y, int len)
+int ft_is_wall(char **map, int x, int y, int len)
 {
 	if (y == 0 && map[y][x] > 32) //si estoy arriba y hay algo
 		return (1);
@@ -28,7 +28,7 @@ int is_wall(char **map, int x, int y, int len)
 	return (j);
 } */
 
-int	wall_checker(char **map)
+int	ft_wall_checker(char **map)
 {
 	int x = 0;
 	int y = 0;
@@ -51,7 +51,7 @@ int	wall_checker(char **map)
 	return (1);
 }
 
-int main(void)
+/* int main(void)
 {
 	char *map[] = {
 		"1111111",
@@ -74,4 +74,4 @@ int main(void)
 	else
 		printf("maal\n");
 	return 0;
-}
+} */

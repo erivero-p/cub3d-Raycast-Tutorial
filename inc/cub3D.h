@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/23 11:43:58 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:27:41 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
+# include <unistd.h>
 
 typedef struct s_coord
 {
@@ -42,6 +43,9 @@ typedef struct s_map
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	char	*f_color;
+	char	*c_color;
+	int		counter;
 }	t_map;
 
 typedef struct s_game
