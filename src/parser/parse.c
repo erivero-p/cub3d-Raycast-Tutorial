@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 13:12:02 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:27:29 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_init(t_game *info)
 {
+	info->map = malloc(sizeof(t_map *));
+	if (!info->map) //con los malloc y toa la pesca
+		return ;
 	info->map->no_path = NULL;
 	info->map->so_path = NULL;
 	info->map->we_path = NULL;
@@ -26,12 +29,6 @@ void	ft_init(t_game *info)
 
 void	ft_parse(t_game *info, int fd)
 {
-	t_map	*init_map;
-
-	init_map = malloc(sizeof(t_map *));
-	if (!info->map) //con los malloc y toa la pesca
-		return ;
-	info->map = init_map;
 	ft_init(info);
 	if (ft_read_file(info, fd))
 		printf("1-> lectura del file correcta\n");
