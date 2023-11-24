@@ -57,7 +57,9 @@ SOURCE = ft_isalpha.c\
 		ft_putchar.c\
 		get_next_line.c\
 		get_next_line_utils.c\
-		ft_insertstr.c
+		ft_insertstr.c\
+		ft_arrlen.c\
+		ft_arrjoin.c
 
 
 OBJ = $(SOURCE:%.c=%.o)
