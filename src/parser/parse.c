@@ -6,34 +6,73 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 13:27:29 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:15:26 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-void	ft_init(t_game *info)
+		// while (line[0] == '\n')
+		// {
+		// 	free(line);
+		// 	line = get_next_line(fd);
+		// }
+
+int	ft_len_file(int fd)
 {
-	info->map = malloc(sizeof(t_map *));
-	if (!info->map) //con los malloc y toa la pesca
-		return ;
-	info->map->no_path = NULL;
-	info->map->so_path = NULL;
-	info->map->we_path = NULL;
-	info->map->ea_path = NULL;
-	info->map->f_color = NULL;
-	info->map->c_color = NULL;
-	// info->map->map = NULL;
-	// info->map->aux_map = NULL;
+	char	*line;
+	int	len;
+
+	line = get_next_line(fd);
+	if (!line)
+		ft_error(EMPTY, NULL);
+	while (line)
+	{
+		len++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	printf("lineas del archivo: %i\n", len);
+	close(fd);
+	return (len);
 }
 
-void	ft_parse(t_game *info, int fd)
+t_map *ft_read_file(t_game *info, int fd, int len, char *file)
 {
-	ft_init(info);
-	if (ft_read_file(info, fd))
-		printf("1-> lectura del file correcta\n");
+	char *line;
+	int	i;
+
+	i = 0;
+	info->map->file = malloc(sizeof(char *) * len + 1);
+	fd = open(file, O_RDONLY);
+		line = get_next_line(fd);
+	while (line)
+	{
+		// while (line[0] == '\n')
+		// {
+		// 	free(line);
+		// 	line = get_next_line(fd);
+		// }
+		info->map->file[i] = ft_strdup(line);
+		free(line);
+		line = get_next_line(fd);
+		i++;
+	}
 	close(fd);
-	ft_print_map(info->map);
+	free(line);
+	return (info->map);
+}
+
+void	ft_parse(t_game *info, int fd, char *file)
+{
+	int len;
+
+	info->map = ft_init_map_struct(info);
+	len = ft_len_file(fd);
+	info->map = ft_read_file(info, fd, len, file);
+	ft_print_matrix(info->map->file);
+	//ft_print_map(info->map);
+	ft_free_double_pointer(info->map->file);
 }
 
 int	ft_arg_check(int ac, char **av)
@@ -43,26 +82,9 @@ int	ft_arg_check(int ac, char **av)
 	if (ac != 2)
 		return (ft_error(ARG, NULL));
 	if (ft_check_ext(av[1], ".cub") == -1)
-		return (ft_error(EXT, NULL));
+		return (ft_error(EXT_CUB, NULL));
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (ft_error(FD, NULL));
 	return (fd);
-}
-
-int	ft_check_ext(char *str, char *ext)
-{
-	int		i;
-	char	*tmp;
-
-	if (ft_strchr(str, '.') != 0)
-	{
-		i = ft_strlen(str);
-		while (str[i] != '.')
-			i--;
-		tmp = &str[i];
-		if (!ft_strcmp(tmp, ext))
-			return (0);
-	}
-	return (-1);
 }
