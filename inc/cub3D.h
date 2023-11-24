@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
 /*   Updated: 2023/11/24 12:59:04 by marirodr         ###   ########.fr       */
@@ -44,6 +44,11 @@ int		ft_read_file(t_game *info, int fd);
 
 //char_checker.c
 int	ft_char_mapcheck(char **map);
+
+/*							UTILS							*/
+int		ft_error(int err, char *str);
+void	ft_clean(t_game	*game);
+
 
 
 #endif

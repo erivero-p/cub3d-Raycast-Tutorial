@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:18:03 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/06/01 18:27:43 by ealgar-c         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:13:55 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_cntwords(char const *s, char c)
 	return (count);
 }
 
-static void	ft_free(char **str)
+/* static void	ft_free(char **str)
 {
 	char	**ptr;
 
@@ -44,7 +44,7 @@ static void	ft_free(char **str)
 		ptr++;
 	}
 	free(str);
-}
+} */
 
 static int	ft_wordlen(char const *s, char c, int i)
 {
@@ -77,7 +77,7 @@ char	**ft_split(char const *s, char c)
 		str[str_ind] = ft_substr(s, i, ft_wordlen(s, c, i));
 		if (!(str[str_ind]))
 		{
-			ft_free(str);
+			ft_arr_free(str);
 			return (NULL);
 		}
 		i += ft_wordlen(s, c, i);

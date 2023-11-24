@@ -27,6 +27,7 @@ SOURCE = ft_isalpha.c\
 		ft_substr.c\
 		ft_strjoin.c\
 		ft_strjoin_free.c\
+		ft_arr_free.c\
 		ft_strtrim.c\
 		ft_strtrim_free.c\
 		ft_split.c\

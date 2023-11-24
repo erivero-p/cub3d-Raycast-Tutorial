@@ -15,6 +15,6 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		return (-1);
 	ft_parse(&info, fd); //-> carga del mapa en memoria y checkeo de que esté correcto
-//	ft_game_handling();
-	close(fd);
+	//	ft_game_handling();
+	ft_clean(&info);
 }

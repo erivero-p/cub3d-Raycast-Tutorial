@@ -73,6 +73,7 @@ void	ft_print_map(t_map *map)
 	ft_printf("EA PATH: %s\n", map->ea_path);
 	ft_printf("COLOR: F: %s\n", map->f_color);
 	ft_printf("COLOR: C: %s\n", map->c_color);
+	ft_printf("---------------MAP-------------\n");
 	while (map->map[++i])
 		ft_printf("%s\n", map->map[i]);
 	ft_printf("-------------------------------\n");
@@ -90,11 +91,11 @@ int	ft_read_file(t_game *info, int fd)
 			break;
 		printf("LLEGO--\n");
 		if (!ft_read_info(info->map, line)) //si hay alguno repe debería salir
-			return (0);
+			return ((ft_error(FORMAT, NULL)));
 		if (info->map->counter == 6) //si ya tengo cargados los 6 datos
 		{
 			if(!ft_get_map(fd, info->map))
-				return (0);
+				return ((ft_error(FORMAT, NULL)));
 		}
 	}
 //	ft_print_map(info->map);

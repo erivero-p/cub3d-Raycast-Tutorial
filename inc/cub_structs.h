@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 11:13:04 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:39:39 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ typedef struct s_game
 	t_map	*map;
 	t_img	*imgs;
 }	t_game;
+
+typedef enum e_errors
+{
+	ARG = 1,
+	EXT, //extensión .cub
+	FD, // al abrir archivo
+	FORMAT, //formato del archivo
+	WALL,
+	CHAR,
+	PLAYER, //más de uno
+	
+}		t_errors;
 
 # define BLUE "\033[0;96m"
 # define GREEN "\033[0;32m"
