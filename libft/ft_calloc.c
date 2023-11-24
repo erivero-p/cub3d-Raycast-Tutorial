@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 14:47:12 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/04/19 15:01:51 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/27 17:36:34 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:35:18 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_calloc(size_t num, size_t size)
+/*like malloc, calloc allocated memory. Th e allocated memory is aligned such
+that it can be used for any data type. The free function frees allocations that
+were created via the preceding allocation functions.
+calloc function contiguosly allocates enough space for count objects that are
+size bytes of memory each and returns a pointer to the allocated memory is
+aligned on a page boundary.*/
+
+void	*ft_calloc(size_t count, size_t size)
 {
-	char		*ptr;
-	size_t		i;
+	void	*ptr;
 
-	ptr = (char *)malloc(size * num);
+	ptr = malloc(size * count);
 	if (!ptr)
 		return (0);
-	i = 0;
-	while (i < (num * size))
-	{
-		ptr[i] = '\0';
-		i++;
-	}
+	ft_memset(ptr, 0, size * count);
 	return (ptr);
 }

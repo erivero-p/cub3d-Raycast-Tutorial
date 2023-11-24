@@ -3,29 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 15:38:23 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/11 21:51:40 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/27 18:11:53 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:37:54 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*Allocates (with malloc(3)) and returns a substring from the string ’s’.
+The substring begins at index ’start’ and is of maximum size ’len’*/
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*s_copy;
+	size_t	i;
+	char	*sub;
 
-	if (!s)
-		return (0);
-	if ((size_t)ft_strlen(s) < start)
-		return (ft_strdup(""));
-	if ((size_t)ft_strlen(s) < start + len)
+	if (start > ft_strlen(s))
+		return (ft_calloc(1, 1));
+	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
-	s_copy = malloc((len + 1) * sizeof(char));
-	if (s_copy == NULL)
+	sub = ft_calloc(len + 1, sizeof(char));
+	if (!sub)
 		return (0);
-	ft_memcpy(s_copy, s + start, len);
-	s_copy[len] = '\0';
-	return (s_copy);
+	i = 0;
+	while (s[start] != '\0' && start < ft_strlen(s) && i < len)
+	{
+		sub[i] = s[start];
+		start++;
+		i++;
+	}
+	return (sub);
 }

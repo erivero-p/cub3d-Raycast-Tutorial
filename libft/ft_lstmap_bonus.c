@@ -3,37 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 15:31:54 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:49 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/10/05 13:41:32 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:29 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	t_list	*newlist;
-	t_list	*actual;
+/*Iterates the list 'lst' and applies the funtion 'f' to the content of each
+element. Creates a new list resulting of the successive applications of the 
+funtion 'f'. The 'del' funtion is used to delete the content of element if
+needed.*/
 
-	if (!lst)
-		return (NULL);
-	newlist = 0;
-	while (lst)
+t_list	*ft_lmap(t_list *l, void *(*f)(void *), void (*d)(void *))
+{
+	t_list	*new;
+	t_list	*tmp;
+
+	new = NULL;
+	while (l)
 	{
-		actual = ft_lstnew(f(lst->content));
-		if (actual)
+		tmp = ft_lstnew(f(l->data));
+		if (!tmp)
 		{
-			ft_lstadd_back(&newlist, actual);
-			lst = lst->next;
+			ft_lstclear(&new, d);
+			return (NULL);
 		}
-		else
-		{
-			ft_lstclear(&newlist, del);
-			return (0);
-		}
+		ft_lstadd_back(&new, tmp);
+		l = l->next;
 	}
-	return (newlist);
+	return (new);
 }

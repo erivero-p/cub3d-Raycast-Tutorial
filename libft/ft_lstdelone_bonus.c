@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 14:47:37 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:42 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/10/04 18:13:38 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:23 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+
+/*takes as a parameter an element and frees the memory of the element's content
+using the funtion 'del' given as a parameter and free the element. The memory of
+'next' must not be freed.*/
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_list	*actual;
-
-	if (!lst || !del)
+	if (!lst)
 		return ;
-	del(lst->content);
-	actual = lst;
-	lst = actual->next;
-	free(actual);
-	lst = 0;
+	del(lst->data);
+	free(lst);
 }

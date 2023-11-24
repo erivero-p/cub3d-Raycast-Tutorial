@@ -5,60 +5,60 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 14:57:56 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/11/23 11:15:46 by marirodr         ###   ########.fr       */
+/*   Created: 2022/11/07 13:51:01 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:57 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
+/*printf function prints a string on the screen using a "format string" that 
+includes the instructions to mix several strings and produce the final string
+to be printed on the srceen.
+*count is a pointer that save the lenght of the final string.*/
+
 #include "libft.h"
 
-static int	ft_filter(char const *content, int i, va_list *args)
+static void	ft_control(const char c, va_list args, int *count)
 {
-	int	filtrated_c;
-
-	filtrated_c = 0;
-	if (content[i] == 'c')
-		filtrated_c += ft_printchar(va_arg(*args, int));
-	if (content[i] == 's')
-		filtrated_c += ft_printstring(va_arg(*args, char *));
-	if (content[i] == 'p')
-		filtrated_c += ft_printptr(va_arg(*args, unsigned long long));
-	if (content[i] == 'd')
-		filtrated_c += ft_printdec(va_arg(*args, int));
-	if (content[i] == 'i')
-		filtrated_c += ft_printdec(va_arg(*args, int));
-	if (content[i] == 'u')
-		filtrated_c += ft_printunsigned(va_arg(*args, unsigned int));
-	if (content[i] == 'x')
-		filtrated_c += ft_printhexa(va_arg(*args, unsigned int), 'x');
-	if (content[i] == 'X')
-		filtrated_c += ft_printhexa(va_arg(*args, unsigned int), 'X');
-	if (content[i] == '%')
-		filtrated_c += ft_putchar('%');
-	return (filtrated_c);
+	if (c == 'c')
+		ft_printchar(va_arg(args, int), count);
+	else if (c == 's')
+		ft_printstr(va_arg(args, char *), count);
+	else if (c == 'd' || c == 'i')
+		ft_printnbr(va_arg(args, int), count);
+	else if (c == 'u')
+		ft_printunsigned(va_arg(args, unsigned int), count);
+	else if (c == 'x')
+		ft_printhex(va_arg(args, unsigned int), count, 'x');
+	else if (c == 'X')
+		ft_printhex(va_arg(args, unsigned int), count, 'X');
+	else if (c == 'p')
+		ft_printpointer(va_arg(args, void *), count);
+	else if (c == '%')
+		ft_printchar('%', count);
 }
 
-int	ft_printf(char const *content, ...)
+int	ft_printf(const char *s, ...)
 {
-	va_list	args;
-	int		i;
-	int		count;
+	int			i;
+	int			count;
+	va_list		args;
 
 	i = 0;
 	count = 0;
-	va_start(args, content);
-	while (content[i])
+	va_start(args, s);
+	while (s[i] != '\0')
 	{
-		if (content[i] != '%')
-			count += ft_putchar(content[i]);
-		else
+		if (s[i] != '%')
+		{
+			ft_printchar(s[i], &count);
+			i++;
+		}
+		if (s[i] == '%')
 		{
 			i++;
-			count += ft_filter(content, i, &args);
+			ft_control(s[i], args, &count);
+			i++;
 		}
-		i++;
 	}
 	va_end(args);
 	return (count);

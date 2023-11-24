@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 15:41:16 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/11/13 11:24:49 by erivero-         ###   ########.fr       */
+/*   Created: 2022/09/20 14:32:55 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:37:41 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
-{
-	int	cont;
+/*find leght of a string*/
 
-	cont = 0;
-	if (!str)
-		return (0);
-	while (str[cont])
-		cont++;
-	return (cont);
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

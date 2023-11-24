@@ -3,29 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 12:52:57 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:53 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/10/03 14:22:06 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:35 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+
+/*counts the number of elements in a list.*/
 
 int	ft_lstsize(t_list *lst)
 {
-	int		i;
-	t_list	*actual;
+	size_t	len;
+	t_list	*tmp;
 
-	if (!lst)
-		return (0);
-	i = 1;
-	actual = lst;
-	while (actual->next)
+	tmp = lst;
+	len = 0;
+	while (tmp)
 	{
-		i++;
-		actual = actual->next;
+		tmp = tmp->next;
+		len++;
 	}
-	return (i);
+	return (len);
 }

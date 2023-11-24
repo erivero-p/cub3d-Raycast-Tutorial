@@ -3,47 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 16:57:03 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/04/19 11:52:12 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/20 14:42:04 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:37:39 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+/*coty strings. take the full size of the buffer (not just the length) and
+guarantee to NUL-terminate the result (as long as size is larger than 0.
+Note that you should include a byte for the NUL in size.Also note that strlcpy()
+only operate on true 'C' strings. This means that src must be NUL-terminated.It
+will append at most size - srtlen(dst - 1 bytes, NUL-terminating the result*/
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+#include "libft.h"
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 {
 	size_t	i;
-	size_t	res;
 
 	i = 0;
-	res = 0;
-	while (src[res])
-		res++;
-	if (size > 0)
+	if (destsize > 0)
 	{
-		while (src[i] && i < (size - 1))
+		while ((src[i] != '\0') && (i < (destsize - 1)))
 		{
 			dest[i] = src[i];
 			i++;
 		}
-		dest[i] = '\0';
+		dest[i] = 0;
 	}
-	return (res);
+	return (ft_strlen(src));
 }
-
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char	dest[50];
-	char	*src;
-	int	size;
-
-	src = "No se muy bien";
-	size = 10;
-	printf("%d\n", ft_strlcpy(dest, src, size));
-	printf("%s\n\n", dest);
-}
-*/	

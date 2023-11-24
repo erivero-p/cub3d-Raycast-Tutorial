@@ -3,28 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 15:27:11 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:23 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/20 14:40:57 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:35:09 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+
+/*Writes n zeroes bytes to the string s. If n is zero, bzero() does nothing.*/
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t			counter;
-	unsigned char	*ptr;
+	size_t	i;
 
-	counter = 0;
-	ptr = (unsigned char *)s;
-	if (n == 0)
-		return ;
-	while (counter < n)
+	i = 0;
+	while (i < n)
 	{
-		ptr[counter] = '\0';
-		counter++;
+		((unsigned char *)s)[i] = 0;
+		i++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 12:39:39 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:14:15 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_img
 
 typedef struct s_map
 {
+	char	**file;
 	char	**map;
 	char	**aux_map;
 	char	*no_path;
@@ -56,12 +57,14 @@ typedef struct s_game
 typedef enum e_errors
 {
 	ARG = 1,
-	EXT, //extensión .cub
+	EXT_CUB, //extensión .cub
 	FD, // al abrir archivo
 	FORMAT, //formato del archivo
 	WALL,
 	CHAR,
+	EMPTY,
 	PLAYER, //más de uno
+	EXT_PNG, //extensión .png
 	
 }		t_errors;
 

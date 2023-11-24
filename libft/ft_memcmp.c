@@ -3,29 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 15:00:11 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/04/18 18:08:33 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/26 18:13:28 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:38 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
+
+/*Compares byte string s1 against byte string s2. Both strings are assumed to
+be n bytes long.
+Returns zero if the two strings are identical, otherwise returns the difference
+between the first two differing bytes (treated as unsigned char values).
+This behavior is not required by C and portable code should only depend on 
+the sign of the returned value.*/
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char	*ptr_s1;
-	unsigned char	*ptr_s2;
-	size_t			a;
+	size_t	i;
 
-	a = 0;
-	ptr_s1 = (unsigned char *)s1;
-	ptr_s2 = (unsigned char *)s2;
-	while (a < n)
+	i = 0;
+	while (i < n)
 	{
-		if (ptr_s1[a] != ptr_s2[a])
-			return (ptr_s1[a] - ptr_s2[a]);
-		a++;
+		if (*(unsigned char *)&s1[i] != *(unsigned char *)&s2[i])
+			return (*(unsigned char *)&s1[i] - *(unsigned char *)&s2[i]);
+		i++;
 	}
 	return (0);
 }

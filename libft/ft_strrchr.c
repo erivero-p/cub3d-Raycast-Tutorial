@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 12:49:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:09:01 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/22 17:38:01 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:37:48 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*Locates the last ocurrence of c (converted to a char) in the string s.
+If c is '\0', locates the terminating '\0'.*/
 
 #include "libft.h"
 
@@ -16,12 +19,14 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = ft_strlen((char *)s);
+	i = 0;
+	while (s[i])
+		i++;
 	while (i >= 0)
 	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
+		if (s[i] == (char)c)
+			return ((char *)(&s[i]));
 		i--;
 	}
-	return (0);
+	return (NULL);
 }

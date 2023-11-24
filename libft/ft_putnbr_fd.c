@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 10:47:42 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/04/21 10:56:00 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/30 16:22:56 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:37:08 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*Outputs the integer ’n’ to the given file descriptor.*/
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -25,11 +27,11 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd('-', fd);
 		n *= -1;
 	}
-	if (n >= 0 && n <= 9)
-		ft_putchar_fd(n + '0', fd);
-	else
+	if (n > 9)
 	{
 		ft_putnbr_fd(n / 10, fd);
 		ft_putnbr_fd(n % 10, fd);
 	}
+	else
+		ft_putchar_fd(n + '0', fd);
 }

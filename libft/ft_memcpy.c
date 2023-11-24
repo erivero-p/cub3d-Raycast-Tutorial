@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 18:12:33 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:10 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/26 12:53:15 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:40 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+
+/*Copies n bytes from memory area src to memory area dst. If s1 and s2
+overlap, behavior is undefined. Applications in which s1 and s2 might overlap
+should use memmmove instead.
+Returns the original value of dst.*/
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t		cont;
-	char		*ptr_dest;
-	const char	*ptr_src;
+	size_t	i;
 
-	if (!src && !dst)
+	if (!dst && !src)
 		return (0);
-	ptr_dest = (char *)dst;
-	ptr_src = (const char *)src;
-	cont = 0;
-	while (cont < n)
+	i = 0;
+	while (i < n)
 	{
-		ptr_dest[cont] = (const char)ptr_src[cont];
-		cont++;
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
 	}
 	return (dst);
 }
