@@ -1,4 +1,4 @@
-#include "../inc/cub3D.h"
+#include "../../inc/cub3D.h"
 
 static int	ft_char_check(char c)
 {
@@ -10,7 +10,7 @@ static int	ft_char_check(char c)
 	if (c == '0' || c == '1')
 		ret = 1;
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		ret == 42;
+		ret = 42;
 	return (ret);
 }
 
@@ -29,7 +29,7 @@ int	ft_char_mapcheck(char **map)
 	{
 		while (map[j][++i])
 		{
-			ret = ft_check_char(map[j][i]);
+			ret = ft_char_check(map[j][i]);
 			if (!ret || count > 1) //si hay un caracter inválido o más de un personaje
 				return (0);
 			if (ret == 42)

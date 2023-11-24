@@ -1,8 +1,8 @@
-#include "../inc/cub3D.h"
+#include "../../inc/cub3D.h"
 
 int	ft_save_info(char *ptr, char *line)
 {
-	if (*ptr == NULL)
+	if (ptr == NULL)
 		ptr = ft_strdup(line);
 	else
 		return (0);
@@ -42,7 +42,7 @@ int	ft_get_map(int fd, t_map *map)
 		return (0);
 	while (line)
 	{
-		tmp_map_line = ft_join_free(tmp_map_line, line);
+		tmp_map_line = ft_strjoin_free(tmp_map_line, line);
 		free(line);
 		line = get_next_line(fd);
 		if (line[0] == '\n') //para que después del split las islas queden bien
@@ -52,14 +52,23 @@ int	ft_get_map(int fd, t_map *map)
 	map->aux_map = ft_split(ft_strtrim_free(tmp_map_line, "	"), '\n');
 	free(line);
 	free(tmp_map_line);
+	return (1);  //si todo guay
 }
 
 void	ft_print_map(t_map *map)
 {
 	int	i = -1;
 
+	ft_printf("-------------------------------\n");
+	ft_printf("NO PATH: %s\n", map->no_path);
+	ft_printf("SO PATH: %s\n", map->so_path);
+	ft_printf("WE PATH: %s\n", map->we_path);
+	ft_printf("EA PATH: %s\n", map->ea_path);
+	ft_printf("COLOR: F: %s\n", map->f_color);
+	ft_printf("COLOR: C: %s\n", map->c_color);
 	while (map->map[++i])
 		ft_printf("%s\n", map->map[i]);
+	ft_printf("-------------------------------\n");
 }
 
 int	ft_read_file(t_game *info, int fd)
@@ -75,7 +84,7 @@ int	ft_read_file(t_game *info, int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break;
-		if (!ft_read_info(info->map, line)); //si hay alguno repe debería salir
+		if (!ft_read_info(info->map, line)) //si hay alguno repe debería salir
 			return (0);
 		if (info->map->counter == 6) //si ya tengo cargados los 6 datos
 		{

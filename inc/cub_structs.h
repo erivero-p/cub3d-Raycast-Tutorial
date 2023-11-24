@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/23 15:58:01 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:13:04 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,10 @@ typedef struct s_game
 	t_map	*map;
 	t_img	*imgs;
 }	t_game;
+
+# define BLUE "\033[0;96m"
+# define GREEN "\033[0;32m"
+# define RED "\033[0;31m"
+# define END "\033[0m"
 
 #endif
