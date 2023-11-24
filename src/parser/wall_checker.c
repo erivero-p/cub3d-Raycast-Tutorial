@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "../../inc/cub3D.h"
 
 int ft_is_wall(char **map, int x, int y, int len)
 {

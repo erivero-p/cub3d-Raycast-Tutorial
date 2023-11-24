@@ -6,7 +6,7 @@
 #    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/11/23 15:54:50 by marirodr         ###   ########.fr        #
+#    Updated: 2023/11/24 11:51:15 by marirodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJ_DIR		=	objs/
 
 #direccion de carpetas dentro de src/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
-PARSE		=	parse wall_checker
+PARSE		=	parse wall_checker map_read char_check
 
 SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
