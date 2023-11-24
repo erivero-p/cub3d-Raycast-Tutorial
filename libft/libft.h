@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 11:58:41 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/11/24 11:15:01 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:29:08 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_strlen(const char *str);
+int				ft_arrlen(char **arr);
 void			*ft_memset(void *s, int c, size_t n);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
@@ -43,6 +44,7 @@ char			*ft_strdup(const char *s1);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strjoin_free(char *s1, char *s2);
+char			**ft_arrjoin(char	**arr, char *str);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strtrim_free(char *s1, char const *set);
 void			ft_arr_free(char **arr);
