@@ -12,6 +12,8 @@ int	main(int ac, char **av)
 	t_game	info;
 
 	fd = ft_arg_check(ac, av);
+	if (fd < 0)
+		return (-1);
 	ft_parse(&info, fd); //-> carga del mapa en memoria y checkeo de que esté correcto
 //	ft_game_handling();
 	close(fd);

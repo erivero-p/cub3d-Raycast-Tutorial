@@ -2,8 +2,12 @@
 
 int	ft_save_info(char *ptr, char *line)
 {
+	printf("en ft_save_info----\n");
 	if (ptr == NULL)
+	{
+		printf("en ft_save_info-> ptr: %s\n", ptr);
 		ptr = ft_strdup(line);
+	}
 	else
 		return (0);
 	return (1);
@@ -14,17 +18,20 @@ int	ft_read_info(t_map *map, char *line)
 	int	ret;
 
 	ret = 1;
-	if (ft_strncmp(line, "NO ", 3))
+	if (!ft_strncmp(line, "NO ", 3))
 		ret = ft_save_info(map->no_path, line);
-	if (ft_strncmp(line, "SO ", 3))
+	if (!ft_strncmp(line, "SO ", 3))
+	{
+		printf("en ft_read_info-> line: %s\n", line);
 		ret = ft_save_info(map->so_path, line);
-	if (ft_strncmp(line, "WE ", 3))
+	}
+	if (!ft_strncmp(line, "WE ", 3))
 		ret = ft_save_info(map->we_path, line);
-	if (ft_strncmp(line, "EA ", 3))
+	if (!ft_strncmp(line, "EA ", 3))
 		ret = ft_save_info(map->ea_path, line);
-	if (ft_strncmp(line, "F ", 2))
+	if (!ft_strncmp(line, "F ", 2))
 		ret = ft_save_info(map->f_color, line);
-	if (ft_strncmp(line, "C ", 2))
+	if (!ft_strncmp(line, "C ", 2))
 		ret = ft_save_info(map->c_color, line);
 	map->counter += ret;
 	free(line);
@@ -76,14 +83,12 @@ int	ft_read_file(t_game *info, int fd)
 //	t_map	map;
 	char	*line;
 
-/* 	info->map = malloc(sizeof(t_map *));
-	if (!map) //con los malloc y toa la pesca
-		return (0); */
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break;
+		printf("LLEGO--\n");
 		if (!ft_read_info(info->map, line)) //si hay alguno repe debería salir
 			return (0);
 		if (info->map->counter == 6) //si ya tengo cargados los 6 datos

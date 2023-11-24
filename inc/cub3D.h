@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 11:46:32 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:59:04 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_is_wall(char **map, int x, int y, int len);
 int	ft_wall_checker(char **map);
 
 //parse.c
+void	ft_init(t_game *info);
 void	ft_parse(t_game *info, int fd);
 int		ft_arg_check(int ac, char **av);
 int		ft_check_ext(char *str, char *ext);
