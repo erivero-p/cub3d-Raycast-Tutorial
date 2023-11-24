@@ -3,118 +3,136 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 13:41:14 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/11/21 12:48:24 by erivero-         ###   ########.fr       */
+/*   Created: 2022/12/06 13:55:48 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:39:17 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*get_next(char *st_ac)
+/*This function is used to read a line from the buffer that we are reading, in
+order to later return it.*/
+
+char	*ft_line(char *buffer)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	if (!buffer[i])
+		return (NULL);
+	while (buffer[i] != '\0' && buffer[i] != '\n')
+		i++;
+	line = ft_calloc_gnl(i + 2, sizeof(char));
+	i = 0;
+	while (buffer[i] != '\0' && buffer[i] != '\n')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	if (buffer[i] != '\0' && buffer[i] == '\n')
+		line[i] = '\n';
+	return (line);
+}
+
+/*This function serves to free the buffer of the previously read line, and keep
+only what could be stored of the next one, in order to later store that remainder
+in the static variable (here 'leftover') when it goes through get_next_line.*/
+
+char	*ft_next_line(char *buffer)
 {
 	int		i;
 	int		j;
-	char	*ret_str;
+	char	*leftover;
 
 	i = 0;
-	while (st_ac[i] != '\0' && st_ac[i] != '\n')
+	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
-	if (st_ac[i] == '\0')
+	if (buffer[i] == '\0')
 	{
-		free(st_ac);
+		free(buffer);
 		return (NULL);
 	}
-	ret_str = ft_calloc((ft_strlen(st_ac) - i + 1), sizeof(char));
+	leftover = ft_calloc_gnl(ft_strlen(buffer) - i + 1, sizeof(char));
 	i++;
 	j = 0;
-	while (st_ac[i] != '\0')
-		ret_str[j++] = st_ac[i++];
-	free(st_ac);
-	if (ret_str[0] == '\0')
+	while (buffer[i] != '\0')
 	{
-		free(ret_str);
-		return (NULL);
-	}
-	return (ret_str);
-}
-
-static char	*get_line(char *st_ac)
-{
-	char	*ret_str;
-	int		i;
-
-	i = 0;
-	if (st_ac[i] == '\0')
-		return (NULL);
-	while (st_ac[i] != '\0' && st_ac[i] != '\n')
+		leftover[j] = buffer[i];
 		i++;
-	ret_str = ft_calloc((i + 2), sizeof(char));
-	i = 0;
-	while (st_ac[i] != '\0' && st_ac[i] != '\n')
-	{
-		ret_str[i] = st_ac[i];
-		i++;
+		j++;
 	}
-	if (st_ac[i] != '\0' && st_ac[i] == '\n')
-		ret_str[i++] = '\n';
-	return (ret_str);
+	free(buffer);
+	return (leftover);
 }
 
-static char	*get_joint(char *st_ac, char *buff)
-{
-	char	*r;
+/*This function replicates the functionality of read(), as it takes the value
+of BUFFER_SIZE to read the same amount of bytes.
 
-	r = ft_strjoin(st_ac, buff);
-	free(st_ac);
-	return (r);
-}
+In addition, it is the one that concatenates the read lines, because we can not
+read the entire file at once. Therefore, we will be returning line by line and 
+maintaining the position of the 'cursor' thanks to the static variable.*/
 
-static char	*get_piece(int fd, char *st_ac)
+char	*ft_read_line(int fd, char *buffer)
 {
 	char	*tmp;
-	int		read_char;
+	int		n;
 
-	if (!st_ac)
-		st_ac = ft_calloc(1, sizeof(char));
-	tmp = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	read_char = 1;
-	while (read_char > 0)
+	tmp = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
+	n = 1;
+	while (n != 0 && !ft_strchr_gnl(buffer, '\n'))
 	{
-		read_char = read(fd, tmp, BUFFER_SIZE);
-		if (read_char < 0)
+		n = read(fd, tmp, BUFFER_SIZE);
+		if (n == -1)
 		{
+			free(buffer);
 			free(tmp);
 			return (NULL);
 		}
-		tmp[read_char] = '\0';
-		st_ac = get_joint(st_ac, tmp);
-		if (ft_strchr_mod(tmp, '\n'))
-			break ;
+		tmp[n] = '\0';
+		buffer = ft_strjoin(buffer, tmp);
 	}
 	free(tmp);
-	return (st_ac);
+	return (buffer);
 }
+
+/*This function actually doesn't do much, because the different actions are
+performed by the other three, but it gives execution order and adds some error
+checks.*/
 
 char	*get_next_line(int fd)
 {
-	static char	*st_ac;
+	static char	*buffer;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (read(fd, 0, 0) < 0)
-	{
-		if (st_ac != NULL)
-		{
-			free(st_ac);
-			st_ac = NULL;
-		}
+	buffer = ft_read_line(fd, buffer);
+	if (!buffer)
 		return (NULL);
-	}
-	st_ac = get_piece(fd, st_ac);
-	line = get_line(st_ac);
-	st_ac = get_next(st_ac);
+	line = ft_line(buffer);
+	buffer = ft_next_line(buffer);
 	return (line);
 }
+
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*str;
+
+// 	fd = 0;
+// 	if (fd == -1)
+// 	{
+// 		perror ("open");
+// 		exit(EXIT_FAILURE);
+// 	}
+// 	str = get_next_line(fd);
+// 	while (ft_strcmp(str, "EOF\n") != 0)
+// 	{
+// 		printf("%s", str);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }

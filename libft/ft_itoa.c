@@ -3,51 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 16:37:42 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:35 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/30 10:23:02 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:35:51 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-static int	ft_dcount(long int n)
-{
-	int	i;
+/*Allocates (with malloc) and returns a string representing the integer received
+as an argument. Negative numbers must be handled.*/
 
-	i = 0;
-	while (n >= 10)
+static int	ft_len(int num)
+{
+	int	len;
+
+	len = 0;
+	if (num == 0)
+		len = 1;
+	if (num < 0)
 	{
-		i++;
-		n /= 10;
+		num *= -1;
+		len++;
 	}
-	return (i + 1);
+	while (num != 0)
+	{
+		num /= 10;
+		len++;
+	}
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*str;
-	long int		n_copy;
-	int				n_len;
+	int		nlen;
+	char	*str;
+	long	num;
 
-	n_copy = n;
-	if (n_copy < 0)
-		n_copy *= -1;
-	n_len = ft_dcount(n_copy);
-	if (n < 0)
-		n_len++;
-	str = malloc((n_len + 1) * sizeof(char));
+	num = (long)n;
+	nlen = ft_len(n);
+	str = (char *)malloc(sizeof(char) * (nlen + 1));
 	if (!str)
 		return (NULL);
-	str[n_len--] = '\0';
-	while (n_len >= 0)
+	str[nlen] = '\0';
+	if (num == 0)
+		str[0] = '0';
+	if (num < 0)
 	{
-		str[n_len--] = (n_copy % 10) + '0';
-		n_copy /= 10;
-	}
-	if (n < 0)
 		str[0] = '-';
+		num *= -1;
+	}
+	nlen--;
+	while (nlen >= 0 && num != 0)
+	{
+		str[nlen] = (num % 10) + '0';
+		num /= 10;
+		nlen--;
+	}
 	return (str);
 }

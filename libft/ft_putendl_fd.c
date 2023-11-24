@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 10:44:53 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:08:24 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/30 16:11:26 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:37:06 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
+
+/*Outputs the string ’s’ to stdout, followed by a newline.*/
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	if (!s || !fd)
+	if (!s)
 		return ;
 	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	write (fd, "\n", 1);
 }

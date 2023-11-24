@@ -3,24 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 12:15:32 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:51 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/10/03 13:57:06 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:33 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*new_l;
+/*create new list. Allocates (malloc) and returns a new element. The variable
+'content' is initialized with the value of the paremeter 'content'. The variable
+'next' is initialized to NULL.*/
 
-	new_l = (t_list *)malloc(sizeof(t_list));
-	if (!new_l)
-		return (NULL);
-	new_l->content = content;
-	new_l->next = NULL;
-	return (new_l);
+t_list	*ft_lstnew(void *data)
+{
+	t_list	*list;
+
+	list = (t_list *)malloc(sizeof(t_list));
+	if (!list)
+		return (0);
+	list->data = data;
+	list->next = NULL;
+	return (list);
 }

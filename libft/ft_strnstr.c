@@ -3,40 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 15:34:29 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/04/19 12:54:02 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/23 12:50:13 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:37:46 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+/*function locates the first occurrence of the null-terminated string needle in
+the string haystack, where not more than len characters (in haystack) are sear-
+ched. Characters that appear after a `\0' character are not searched.
+If needle is an empty string, haystack is returned; if needle occurs
+nowhere in haystack, NULL is returned; otherwise a pointer to the first
+character of the first occurrence of needle is returned.*/
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	h;
+	size_t	n;
 
-	if (to_find[0] == '\0' || (len == 0 && !str))
-		return ((char *)str);
-	i = 0;
-	while (str[i] != '\0' && (size_t)i < len)
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	h = 0;
+	while (haystack[h] != '\0')
 	{
-		j = 0;
-		while (to_find[j] != '\0' && (size_t)i + j < len)
+		n = 0;
+		while (haystack[h + n] == needle[n] && (h + n) < len)
 		{
-			if (str[i + j] == to_find[j])
-			{
-				j++;
-			}
-			else
-				break ;
+			while (haystack[h + n] == '\0' && needle[n] == '\0')
+				return ((char *)&haystack[h]);
+			n++;
 		}
-		if (to_find[j] == '\0')
-		{
-			return ((char *)str + i);
-		}
-		i++;
+		if (needle[n] == '\0')
+			return ((char *)&haystack[h]);
+		h++;
 	}
 	return (0);
 }
+
+/*int main () 
+{
+	const char haystack[40] = "yo soy rosa, yo lima, y yo lavanda";
+	const char needle[10] = "lima";
+	char *result;
+
+    result = ft_strnstr(haystack, needle, 40);
+	printf("The substring is: %s\n", result);
+	printf("original:%s\n", strnstr(haystack, needle, 40));
+	return(0);
+}*/

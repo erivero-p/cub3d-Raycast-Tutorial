@@ -3,34 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 16:15:49 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/04/20 16:32:32 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/09/23 16:09:26 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:34:28 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+/*Converts the initial portion of the string pointede to by str to int
+representation.*/
 
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	sn;
-	int	num;
+	int	sign;
+	int	nb;
 
 	i = 0;
-	sn = 1;
-	num = 0;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
+	sign = 1;
+	nb = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
-	if (str[i] == '-')
-		sn *= -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		num = (str[i] - 48) + (num * 10);
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	num *= sn;
-	return (num);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = (nb * 10) + (str[i] - '0');
+		i++;
+	}
+	return (nb * sign);
 }
+
+/*int main()
+
+{
+	char	*str;
+
+	str = "   +--+-+-+54asdf2";
+	printf("the result of my function is: %d\n", ft_atoi(str));
+	printf("the result the original is: %d\n", atoi(str));
+	return 0;
+}*/

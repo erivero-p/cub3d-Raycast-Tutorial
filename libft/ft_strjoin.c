@@ -3,38 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 16:02:56 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/11/21 12:40:52 by erivero-         ###   ########.fr       */
+/*   Created: 2022/09/28 12:34:39 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:37:35 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*Allocates (with malloc(3)) and returns a new string, which is the
+result of the concatenation of ’s1’ and ’s2’.*/
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*join;
-	size_t	len;
-	int		i;
-	int		a;
+	char	*new;
+	size_t	i;
+	size_t	j;
 
+	if (!s1 || !s2)
+		return (0);
+	new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	i = 0;
-	a = 0;
-	len = ((size_t)ft_strlen(s1) + (size_t)ft_strlen(s2));
-	join = (char *)malloc(((len + 1) * sizeof(char)));
-	if (!join)
+	j = 0;
+	if (new == NULL)
 		return (NULL);
-	while (s1[i])
+	while (s1[i] != '\0')
 	{
-		join[i] = s1[i];
+		new[i] = s1[i];
 		i++;
 	}
-	while (s2[a])
+	while (s2[j] != '\0')
 	{
-		join[i + a] = s2[a];
-		a++;
+		new[i + j] = s2[j];
+		j++;
 	}
-	join[i + a] = '\0';
-	return (join);
+	new[i + j] = '\0';
+	return (new);
 }

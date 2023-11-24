@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 14:28:41 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:37 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/10/04 16:54:21 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:04 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+
+/*adds the element 'new' at the end of the list*/
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*ult;
-
-	if (*lst != 0)
-	{
-		ult = ft_lstlast(*lst);
-		ult->next = new;
-	}
-	else
+	if (!new)
+		return ;
+	if (*lst == NULL)
 		*lst = new;
+	else
+	{
+		ft_lstlast(*lst)->next = new;
+	}
 }

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ealgar-c <ealgar-c@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 15:29:13 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/05/20 21:07:44 by ealgar-c         ###   ########.fr       */
+/*   Created: 2022/10/05 11:39:42 by marirodr          #+#    #+#             */
+/*   Updated: 2023/11/14 11:36:26 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+
+/*Iterates the list 'lst' and applies the funtion 'f' to the content of 
+each element.*/
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
@@ -19,7 +21,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		return ;
 	while (lst)
 	{
-		f(lst->content);
+		f(lst->data);
 		lst = lst->next;
 	}
 }
