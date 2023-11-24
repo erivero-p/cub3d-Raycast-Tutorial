@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/11/24 11:51:15 by marirodr         ###   ########.fr        #
+#    Updated: 2023/11/24 12:02:55 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,13 @@ OBJ_DIR		=	objs/
 #direccion de carpetas dentro de src/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
 PARSE		=	parse wall_checker map_read char_check
+UTILS		=	clean_handle error_handling
 
 SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
+				$(addsuffix .c, $(addprefix utils/, $(UTILS))) \
 #con la linea de arriba le añadimos primero la extension .c a los archivos, le añadimos la ruta de la carpeta donde se encuentra y llamamos a ssu variable correspondiente
+
 
 OBJ			=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
@@ -52,7 +55,7 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 #cada vez que queramos añadir una carpeta, utilizamos una linea similar a la de abajo para dentro de la carpeta /objs ir añadiendolos todos
-	@mkdir -p $(OBJ_DIR)/parser
+	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils
 	@$(CC) $(FLAGS) -c $< -o $@
 # no se si en la linea de arriba tenemos que llamar a $(MLX_FLAGS)
 

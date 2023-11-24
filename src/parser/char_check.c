@@ -30,11 +30,13 @@ int	ft_char_mapcheck(char **map)
 		while (map[j][++i])
 		{
 			ret = ft_char_check(map[j][i]);
-			if (!ret || count > 1) //si hay un caracter inválido o más de un personaje
-				return (0);
+			if (!ret ) //si hay un caracter inválido o más de un personaje
+				return (ft_error(CHAR, NULL));
+			if (count > 1)
+				return (ft_error(PLAYER, NULL));
 			if (ret == 42)
 				count++;
 		}
 	}
-	return (1);
+	return (0); //0 si todo fufa
 }
