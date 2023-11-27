@@ -1,8 +1,10 @@
 #include "../../inc/cub3D.h"
 
-static void ft_print_fileformat()
+static void ft_print_fileformat(char *str)
 {
 	ft_printf("%sError\nIncorrect file format%s\n", RED, END);
+	if (*str)
+		ft_printf("%s%s%s\n", RED, str, END);
 	ft_printf("Please input a file as described below:\n");
 	ft_printf("Floor, ceiling, north, south, east, and west \
 		textures should appear at the beginning of the file, \
@@ -23,7 +25,7 @@ int	ft_error(int err, char *str)
 	if (err == FD)
 		ft_printf("%sError\nProblem while opening file%s\n", RED, END);
 	if (err == FORMAT)
-		ft_print_fileformat();
+		ft_print_fileformat(str);
 	if (err == WALL)
 		ft_printf("%sError\nThe map must be surrounded by walls%s\n", RED, END);
 	if (err == CHAR)
@@ -37,7 +39,7 @@ int	ft_error(int err, char *str)
 	return (-1);
 }
 
-void	ft_print_map(t_map *map)
+/* void	ft_print_map(t_map *map)
 {
 	int	i = -1;
 
@@ -52,7 +54,7 @@ void	ft_print_map(t_map *map)
 	while (map->map[++i])
 		ft_printf("%s\n", map->map[i]);
 	ft_printf("-------------------------------\n");
-}
+} */
 
 void	ft_print_matrix(char **matrix)
 {
