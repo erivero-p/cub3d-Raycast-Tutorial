@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 14:52:36 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:07:37 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_map *ft_read_file(t_game *info, int fd, int len, char *file)
 
 void	ft_parse(t_game *info, int fd, char *file)
 {
-	int len;
+	int	len;
 
 	info->map = ft_init_map_struct(info);
 	len = ft_len_file(fd);

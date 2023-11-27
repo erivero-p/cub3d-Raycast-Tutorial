@@ -36,6 +36,10 @@ int	ft_error(int err, char *str)
 		ft_printf("%sError\nThe map more than one player position%s\n", RED, END);
 	if (err == 42) // para mensaje personalizado
 		ft_printf("%sError\n%s%s\n", RED, str, END);
+	if (err == WINDOW)
+		ft_printf("%sError while opening the window\n%s%s\n", RED, str, END);
+	if (err == IMAGE)
+		ft_printf("%sError while rendering an image\n%s%s\n", RED, str, END);
 	return (-1);
 }
 
@@ -58,12 +62,13 @@ int	ft_error(int err, char *str)
 
 void	ft_print_matrix(char **matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (matrix[i])
 	{
-		ft_printf("%i: %s", i,matrix[i]);
+		ft_printf("%i: %s", i, matrix[i]);
 		i++;
 	}
+	ft_printf("\n");
 }
