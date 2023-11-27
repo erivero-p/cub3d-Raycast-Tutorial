@@ -1,6 +1,6 @@
 #include "../../inc/cub3D.h"
 
-static int	ft_char_check(char c)
+int	ft_char_check(char c)
 {
 	int	ret;
 

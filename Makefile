@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/11/27 15:59:38 by marirodr         ###   ########.fr        #
+#    Updated: 2023/11/27 16:33:21 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJ_DIR		=	objs/
 
 #direccion de carpetas dentro de src/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
-PARSE		=	parse format init error_handling
+PARSE		=	parse format init error_handling map_read char_check
 
 SETTING		=	window controls
 
@@ -36,7 +36,7 @@ SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
 				$(addsuffix .c, $(addprefix utils/, $(UTILS))) \
 				$(addsuffix .c, $(addprefix settings/, $(SETTING))) \
-				$(addsuffix .c, $(addprefix settings/, $(MAP))) \
+				$(addsuffix .c, $(addprefix map/, $(MAP))) \
 #con la linea de arriba le añadimos primero la extension .c a los archivos, le añadimos la ruta de la carpeta donde se encuentra y llamamos a ssu variable correspondiente
 
 

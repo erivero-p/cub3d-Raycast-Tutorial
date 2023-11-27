@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 13:21:44 by marirodr          #+#    #+#              #
-#    Updated: 2023/11/14 11:40:14 by marirodr         ###   ########.fr        #
+#    Updated: 2023/11/27 16:28:38 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC			= 	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isdigit.c \
 				ft_printf.c ft_printf_tools.c ft_printf_tools2.c \
 				get_next_line_bonus.c get_next_line_utils_bonus.c \
 				ft_strjoin_sl.c ft_free_double_pointer.c ft_mini_split.c ft_is_equal.c \
-				ft_old_split.c \
+				ft_old_split.c ft_arrlen.c\
 
 
 OBJT		= 	$(SRC:.c=.o)

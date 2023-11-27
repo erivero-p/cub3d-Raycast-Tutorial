@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 15:41:40 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:31:28 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 void	ft_init(t_game *info);
 void	ft_parse(t_game *info, int fd, char *file);
 int		ft_arg_check(int ac, char **av);
+
+//map_read.c
+int		ft_parse_file(t_map *map);
+
+//char_check.c
+int		ft_char_check(char c);
+int		ft_char_mapcheck(char **map);
 
 //format.c
 int		ft_check_ext(char *str, char *ext);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 13:04:15 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:32:12 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	ft_parse(t_game *info, int fd, char *file)
 	info->map = ft_init_map_struct(info);
 	len = ft_len_file(fd);
 	info->map = ft_read_file(info, fd, len, file);
+	ft_parse_file(info->map);
 	//ft_print_matrix(info->map->file);
 	//ft_print_map(info->map);
 	ft_free_double_pointer(info->map->file);
