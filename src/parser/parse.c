@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 17:15:26 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:04:15 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ t_map *ft_read_file(t_game *info, int fd, int len, char *file)
 
 void	ft_parse(t_game *info, int fd, char *file)
 {
-	int len;
+	int	len;
 
 	info->map = ft_init_map_struct(info);
 	len = ft_len_file(fd);
 	info->map = ft_read_file(info, fd, len, file);
-	ft_print_matrix(info->map->file);
+	//ft_print_matrix(info->map->file);
 	//ft_print_map(info->map);
 	ft_free_double_pointer(info->map->file);
 }

@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 16:31:48 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:41:40 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,13 @@ t_map   *ft_init_map_struct(t_game *info);
 void	ft_print_map(t_map *map);
 int     ft_error(int err, char *str);
 void	ft_print_matrix(char **matrix);
+
+/*							SETTINGS							*/
+//window.c
+int	ft_check_monitor(mlx_t *mlx);
+void	ft_resize(void *param);
+
+//controls.c
+void	ft_controls(mlx_key_data_t keydata, void *param);
 
 #endif
