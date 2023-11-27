@@ -6,7 +6,7 @@
 #    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/11/27 15:59:38 by marirodr         ###   ########.fr        #
+#    Updated: 2023/11/27 16:20:06 by marirodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
 				$(addsuffix .c, $(addprefix utils/, $(UTILS))) \
 				$(addsuffix .c, $(addprefix settings/, $(SETTING))) \
-				$(addsuffix .c, $(addprefix settings/, $(MAP))) \
+				$(addsuffix .c, $(addprefix map/, $(MAP))) \
 #con la linea de arriba le añadimos primero la extension .c a los archivos, le añadimos la ruta de la carpeta donde se encuentra y llamamos a ssu variable correspondiente
 
 
