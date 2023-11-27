@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 18:11:53 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 14:29:40 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:37:54 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		sub[i] = s[start];
 		start++;
 		i++;
-	} //hay que nulterminar?
+	}
 	return (sub);
 }

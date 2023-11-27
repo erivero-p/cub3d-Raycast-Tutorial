@@ -1,15 +1,13 @@
 #include "../../inc/cub3D.h"
 
-static void ft_print_fileformat(char *str)
+static void ft_print_fileformat()
 {
 	ft_printf("%sError\nIncorrect file format%s\n", RED, END);
-	if (*str)
-		ft_printf("%s%s%s\n", RED, str, END);
 	ft_printf("Please input a file as described below:\n");
 	ft_printf("Floor, ceiling, north, south, east, and west \
 		textures should appear at the beginning of the file, \
 		separated by one or more newlines, and in any desired order.\n");
-	ft_printf("The map should be the last element in the file.\n")
+	ft_printf("The map should be the last element in the file.\n");
 }
 
 int	ft_error(int err, char *str)
@@ -25,7 +23,7 @@ int	ft_error(int err, char *str)
 	if (err == FD)
 		ft_printf("%sError\nProblem while opening file%s\n", RED, END);
 	if (err == FORMAT)
-		ft_print_fileformat(str);
+		ft_print_fileformat();
 	if (err == WALL)
 		ft_printf("%sError\nThe map must be surrounded by walls%s\n", RED, END);
 	if (err == CHAR)

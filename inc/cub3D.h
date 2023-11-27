@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 16:06:59 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:41:40 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,6 @@ int		ft_arg_check(int ac, char **av);
 
 //format.c
 int		ft_check_ext(char *str, char *ext);
-
-//map_read.c
-int		ft_parse_file(t_map *map);
-
-//char_check.c
-int		ft_char_check(char c);
-int		ft_char_mapcheck(char **map);
-
 
 /*							UTILS							*/
 int		ft_error(int err, char *str);

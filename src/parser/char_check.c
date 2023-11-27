@@ -1,10 +1,9 @@
 #include "../../inc/cub3D.h"
 
-int	ft_char_check(char c)
+static int	ft_char_check(char c)
 {
 	int	ret;
 
-	ft_printf("I'm checking: %c\n", c);
 	ret = 0;
 	if (c > 0 && c < 33)
 		ret = 1;
