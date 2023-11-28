@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 19:27:11 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:53:17 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,9 @@ t_img para poder usarlas???*/
 
 void	ft_set_window(t_game *info)
 {
-	ft_printf("%sLLEGO%s\n", BLUE, END);
 	info->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", true);
 	if (!info->mlx)
 		ft_error(WINDOW, NULL);
-	ft_printf("%sLLEGO2%s\n", BLUE, END);
 	if (ft_check_monitor(info->mlx) == 0)
 	{
 		//free mierdas
@@ -102,5 +100,5 @@ int	main(int ac, char **av)
 		return (-1);
 	ft_parse(&info, fd, av[1]); //-> carga del mapa en memoria y checkeo de que esté correcto
 	ft_set_window(&info); // le tendré que meter av[1]??
-	//ft_free_all(&info);
+	ft_free_all(&info);
 }
