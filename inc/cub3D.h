@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 16:31:28 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:35:43 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,21 @@ int		ft_char_mapcheck(char **map);
 //format.c
 int		ft_check_ext(char *str, char *ext);
 
-/*							UTILS							*/
+/*							UTILS
+//error_handling.c							*/
 int		ft_error(int err, char *str);
-void	ft_clean(t_game	*game);
+
+//clean_handling.c
+void	ft_clean_map(t_game	*info);
+
 
 //init.c
 t_map   *ft_init_map_struct(t_game *info);
 
 //error_handling.c
-void	ft_print_map(t_map *map);
 int     ft_error(int err, char *str);
 void	ft_print_matrix(char **matrix);
+void	ft_print_map(t_map *map);
 
 /*							SETTINGS							*/
 //window.c

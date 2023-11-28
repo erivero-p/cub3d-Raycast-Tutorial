@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 15:44:08 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:10:14 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void ft_randomize(void *param)  //para pruebas, quitar en futuro
 
 void ft_free_all(t_game *info)
 {
-	free(info->map);
+	ft_clean_map(info); //utils/clean_handling.c
 	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
 	exit(0);
