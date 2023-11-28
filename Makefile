@@ -6,7 +6,7 @@
 #    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/11/27 16:33:21 by erivero-         ###   ########.fr        #
+#    Updated: 2023/11/28 11:29:46 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,13 @@ LIBFT		=	libft/libft.a
 MLX42		=	MLX42/libmlx42.a
 
 SRC_DIR		=	src/
-
 OBJ_DIR		=	objs/
 
 #direccion de carpetas dentro de src/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
-PARSE		=	parse format init error_handling map_read char_check
+PARSE		=	parse format init map_read char_check
+
+UTILS		=	clean_handling error_handling
 
 SETTING		=	window controls
 
@@ -58,11 +59,12 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)$(NAME) compiled ✅$(END)"
 				
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $@)
 #cada vez que queramos añadir una carpeta, utilizamos una linea similar a la de abajo para dentro de la carpeta /objs ir añadiendolos todos
 	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils $(OBJ_DIR)/settings $(OBJ_DIR)/map
 	@$(CC) $(FLAGS) -c $< -o $@
 # no se si en la linea de arriba tenemos que llamar a $(MLX_FLAGS)
+
 
 clean:
 	@$(RM) -r $(OBJ_DIR)

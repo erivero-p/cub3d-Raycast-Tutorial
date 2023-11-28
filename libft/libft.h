@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:33:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 16:29:40 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:36:29 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,13 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_isalnum_plus(int i);
 int					ft_isalpha_plus(int i);
+
+//arrays
+void				ft_arr_free(char **arr);
+int					ft_arrlen(char **arr);
+void				ft_free_double_pointer(char **ptr);
+char 				**ft_subarr(char **arr, int start, int len);
+
 
 //lists
 typedef struct s_list

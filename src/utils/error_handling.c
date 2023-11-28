@@ -1,13 +1,41 @@
 #include "../../inc/cub3D.h"
 
-static void ft_print_fileformat()
+void	ft_print_map(t_map *map)
+{
+	int	i = -1;
+
+	ft_printf("-------------------------------\n");
+	if (map->no_path)
+		ft_printf("NO PATH: %s\n", map->no_path);
+	if (map->so_path)
+		ft_printf("SO PATH: %s\n", map->so_path);
+	if (map->we_path)
+		ft_printf("WE PATH: %s\n", map->we_path);
+	if (map->ea_path)
+		ft_printf("EA PATH: %s\n", map->ea_path);
+	if (map->f_color)
+		ft_printf("COLOR: F: %s\n", map->f_color);
+	if (map->c_color)
+		ft_printf("COLOR: C: %s\n", map->c_color);
+	ft_printf("---------------MAP-------------\n");
+	if (map->map)
+	{
+		while (map->map[++i])
+			ft_printf("%s\n", map->map[i]);
+	}
+	ft_printf("-------------------------------\n");
+}
+
+static void ft_print_fileformat(char *str)
 {
 	ft_printf("%sError\nIncorrect file format%s\n", RED, END);
-	ft_printf("Please input a file as described below:\n");
-	ft_printf("Floor, ceiling, north, south, east, and west \
-		textures should appear at the beginning of the file, \
-		separated by one or more newlines, and in any desired order.\n");
-	ft_printf("The map should be the last element in the file.\n");
+	if (*str)
+		ft_printf("%s%s%s\n", RED, str, END);
+	printf("Please input a file as described below:\n");
+	printf("Floor, ceiling, north, south, east, and west "
+		"textures should appear at the beginning of the file, "
+		"separated by one or more newlines, and in any desired order.\n");
+	printf("The map should be the last element in the file.\n");
 }
 
 int	ft_error(int err, char *str)
@@ -23,14 +51,33 @@ int	ft_error(int err, char *str)
 	if (err == FD)
 		ft_printf("%sError\nProblem while opening file%s\n", RED, END);
 	if (err == FORMAT)
-		ft_print_fileformat();
+		ft_print_fileformat(str);
 	if (err == WALL)
 		ft_printf("%sError\nThe map must be surrounded by walls%s\n", RED, END);
 	if (err == CHAR)
 		ft_printf("%sError\nThe map contains invalid characters%s\n", RED, END);
+	if (err == EMPTY)
+		ft_printf("%sError\nInvalid file, empty map%s\n", RED, END);
 	if (err == PLAYER)
 		ft_printf("%sError\nThe map more than one player position%s\n", RED, END);
 	if (err == 42) // para mensaje personalizado
 		ft_printf("%sError\n%s%s\n", RED, str, END);
+	if (err == WINDOW)
+		ft_printf("%sError while opening the window\n%s%s\n", RED, str, END);
+	if (err == IMAGE)
+		ft_printf("%sError while rendering an image\n%s%s\n", RED, str, END);
 	return (-1);
+}
+
+void	ft_print_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		ft_printf("%i: %s", i, matrix[i]);
+		i++;
+	}
+	ft_printf("\n");
 }
