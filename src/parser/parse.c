@@ -3,25 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 16:32:12 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:52:26 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-		// while (line[0] == '\n')
-		// {
-		// 	free(line);
-		// 	line = get_next_line(fd);
-		// }
-
 int	ft_len_file(int fd)
 {
 	char	*line;
-	int	len;
+	int		len;
 
 	line = get_next_line(fd);
 	if (!line)
@@ -32,27 +26,21 @@ int	ft_len_file(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("lineas del archivo: %i\n", len);
 	close(fd);
 	return (len);
 }
 
-t_map *ft_read_file(t_game *info, int fd, int len, char *file)
+t_map	*ft_read_file(t_game *info, int fd, int len, char *file)
 {
-	char *line;
-	int	i;
+	char	*line;
+	int		i;
 
 	i = 0;
-	info->map->file = malloc(sizeof(char *) * len + 1);
+	info->map->file = (char **)ft_calloc(sizeof(char *), len + 1);
 	fd = open(file, O_RDONLY);
-		line = get_next_line(fd);
+	line = get_next_line(fd);
 	while (line)
 	{
-		// while (line[0] == '\n')
-		// {
-		// 	free(line);
-		// 	line = get_next_line(fd);
-		// }
 		info->map->file[i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);

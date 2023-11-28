@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 11:10:14 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:06:56 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,16 @@ void ft_randomize(void *param)  //para pruebas, quitar en futuro
 	}
 }
 
-void ft_free_all(t_game *info)
+void	ft_free_all(t_game *info)
 {
-	ft_clean_map(info); //utils/clean_handling.c
+	ft_free_double_pointer(info->map->map);
+	free(info->map->no_path);
+	free(info->map->so_path);
+	free(info->map->we_path);
+	free(info->map->ea_path);
+	free(info->map->f_color);
+	free(info->map->c_color);
+	free(info->map);
 	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
 	exit(0);
@@ -52,6 +59,7 @@ void	ft_leaks(void)
 
 void	ft_init_game(t_game *info)
 {
+	ft_init_map(info);
 	mlx_loop_hook(info->mlx, &ft_randomize, info); //& or not, i dont know. 3 param: info ó mlx???
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	//mlx_resize_hook(info->mlx, &ft_resize, info); //seg fault cuando intento agrandar
