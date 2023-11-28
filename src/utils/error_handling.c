@@ -1,31 +1,5 @@
 #include "../../inc/cub3D.h"
 
-void	ft_print_map(t_map *map)
-{
-	int	i = -1;
-
-	ft_printf("-------------------------------\n");
-	if (map->no_path)
-		ft_printf("NO PATH: %s\n", map->no_path);
-	if (map->so_path)
-		ft_printf("SO PATH: %s\n", map->so_path);
-	if (map->we_path)
-		ft_printf("WE PATH: %s\n", map->we_path);
-	if (map->ea_path)
-		ft_printf("EA PATH: %s\n", map->ea_path);
-	if (map->f_color)
-		ft_printf("COLOR: F: %s\n", map->f_color);
-	if (map->c_color)
-		ft_printf("COLOR: C: %s\n", map->c_color);
-	ft_printf("---------------MAP-------------\n");
-	if (map->map)
-	{
-		while (map->map[++i])
-			ft_printf("%s\n", map->map[i]);
-	}
-	ft_printf("-------------------------------\n");
-}
-
 static void ft_print_fileformat(char *str)
 {
 	ft_printf("%sError\nIncorrect file format%s\n", RED, END);
@@ -67,17 +41,4 @@ int	ft_error(int err, char *str)
 	if (err == IMAGE)
 		ft_printf("%sError while rendering an image\n%s%s\n", RED, str, END);
 	return (-1);
-}
-
-void	ft_print_matrix(char **matrix)
-{
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		ft_printf("%i: %s", i, matrix[i]);
-		i++;
-	}
-	ft_printf("\n");
 }
