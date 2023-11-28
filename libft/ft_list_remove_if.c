@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_remove_if.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 11:50:11 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/14 11:36:00 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/28 09:22:35 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_list_remove_if(t_list **begin, void *d_r, int (*cmp)())
+
+
+
+/* void	ft_list_remove_if(t_list **begin, void *d_r, int (*cmp)())
 {
 	t_list	*current;
 
@@ -27,4 +30,6 @@ void	ft_list_remove_if(t_list **begin, void *d_r, int (*cmp)())
 	}
 	current = *begin;
 	ft_list_remove_if(&current->next, d_r, cmp);
-}
+} */
+//la comento pq me da error de compilación en el portatil
+//dejo error de norma pa que nos acordemos de descomentarla 

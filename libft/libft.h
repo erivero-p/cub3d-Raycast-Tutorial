@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:33:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 14:31:51 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/28 09:32:10 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 
 //strings
 size_t				ft_strlen(const char *str);
-int					ft_arrlen(char **arr);
 size_t				ft_strlcpy(char *dest, const char *src, size_t destsize);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
@@ -84,6 +83,13 @@ int					ft_tolower(int c);
 int					ft_isalnum_plus(int i);
 int					ft_isalpha_plus(int i);
 
+//arrays
+void				ft_arr_free(char **arr);
+int					ft_arrlen(char **arr);
+void				ft_free_double_pointer(char **ptr);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+
+
 //lists
 typedef struct s_list
 {
@@ -102,7 +108,6 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lmap(t_list *l, void *(*f)(void *), void (*d)(void *));
 void				ft_list_foreach(t_list *begin_list, void (*f)(void *));
 void				ft_list_remove_if(t_list **begin, void *d_r, int (*cmp)());
-void				ft_free_double_pointer(char **ptr);
 
 //bits
 void				print_bits(unsigned char octet);
