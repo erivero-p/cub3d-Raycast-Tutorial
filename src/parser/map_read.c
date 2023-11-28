@@ -18,7 +18,7 @@ void	ft_print_map(t_map *map)
 	if (map->c_color)
 		ft_printf("COLOR: C: %s\n", map->c_color);
 	ft_printf("---------------MAP-------------\n");
-	if (*map->map)
+	if (map->map)
 	{
 		while (map->map[++i])
 			ft_printf("%s\n", map->map[i]);
@@ -38,28 +38,29 @@ char	*ft_cpy_info(char *line)
 int	ft_save_info(t_map *map, char *line)
 {
 	static int	count = 0;
+	char	*tmp;
 
-	while (*line > 0 && *line < 32)
-		line++;
-	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "NO	", 3))
+	tmp = ft_strtrim(line, "   	");
+	if (!ft_strncmp(tmp, "NO ", 3) || !ft_strncmp(tmp, "NO	", 3))
 		map->no_path = ft_cpy_info(line);
-	else if (!ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "SO	", 3))
+	else if (!ft_strncmp(tmp, "SO ", 3) || !ft_strncmp(tmp, "SO	", 3))
 		map->so_path = ft_cpy_info(line);
-	else if (!ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "WE	", 3))
+	else if (!ft_strncmp(tmp, "WE ", 3) || !ft_strncmp(tmp, "WE	", 3))
 		map->we_path = ft_cpy_info(line);
-	else if (!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "EA	", 3))
+	else if (!ft_strncmp(tmp, "EA ", 3) || !ft_strncmp(tmp, "EA	", 3))
 		map->ea_path = ft_cpy_info(line);
-	else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "F	", 3))
+	else if (!ft_strncmp(tmp, "F ", 2) || !ft_strncmp(tmp, "F	", 3))
 		map->f_color = ft_cpy_info(line);
-	else if (!ft_strncmp(line, "C ", 2) || !ft_strncmp(line, "C	", 3))
+	else if (!ft_strncmp(tmp, "C ", 2) || !ft_strncmp(tmp, "C	", 3))
 		map->c_color = ft_cpy_info(line);
 	else
-		return (1);
+		return (free(tmp), 1);
 	count++;
 	if (count > 6)
-		return (ft_error(FORMAT, "Each parameter can't appear more than once"));
-	return (0);
+		return (free(tmp), ft_error(FORMAT, "Each parameter can't appear more than once"));
+	return (free(tmp), 0);
 }
+
 
 char **ft_subarr(char **arr, int start, int len)
 {
@@ -76,7 +77,6 @@ char **ft_subarr(char **arr, int start, int len)
 	while (arr[start + i] && i < len)
 	{
 		cpy[i] = ft_strdup(arr[start + i]);
-		ft_printf("copying: [%d], %s\n", i, cpy[i]);
 		i++;
 	}
 	cpy[i] = 0;

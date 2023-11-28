@@ -5,11 +5,11 @@ static void ft_print_fileformat(char *str)
 	ft_printf("%sError\nIncorrect file format%s\n", RED, END);
 	if (*str)
 		ft_printf("%s%s%s\n", RED, str, END);
-	ft_printf("Please input a file as described below:\n");
-	ft_printf("Floor, ceiling, north, south, east, and west \
-		textures should appear at the beginning of the file, \
-		separated by one or more newlines, and in any desired order.\n");
-	ft_printf("The map should be the last element in the file.\n");
+	printf("Please input a file as described below:\n");
+	printf("Floor, ceiling, north, south, east, and west "
+		"textures should appear at the beginning of the file, "
+		"separated by one or more newlines, and in any desired order.\n");
+	printf("The map should be the last element in the file.\n");
 }
 
 int	ft_error(int err, char *str)
@@ -36,34 +36,23 @@ int	ft_error(int err, char *str)
 		ft_printf("%sError\nThe map more than one player position%s\n", RED, END);
 	if (err == 42) // para mensaje personalizado
 		ft_printf("%sError\n%s%s\n", RED, str, END);
+	if (err == WINDOW)
+		ft_printf("%sError while opening the window\n%s%s\n", RED, str, END);
+	if (err == IMAGE)
+		ft_printf("%sError while rendering an image\n%s%s\n", RED, str, END);
 	return (-1);
 }
 
-/* void	ft_print_map(t_map *map)
-{
-	int	i = -1;
-
-	ft_printf("-------------------------------\n");
-	ft_printf("NO PATH: %s\n", map->no_path);
-	ft_printf("SO PATH: %s\n", map->so_path);
-	ft_printf("WE PATH: %s\n", map->we_path);
-	ft_printf("EA PATH: %s\n", map->ea_path);
-	ft_printf("COLOR: F: %s\n", map->f_color);
-	ft_printf("COLOR: C: %s\n", map->c_color);
-	ft_printf("---------------MAP-------------\n");
-	while (map->map[++i])
-		ft_printf("%s\n", map->map[i]);
-	ft_printf("-------------------------------\n");
-} */
 
 void	ft_print_matrix(char **matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (matrix[i])
 	{
-		ft_printf("%i: %s", i,matrix[i]);
+		ft_printf("%i: %s", i, matrix[i]);
 		i++;
 	}
+	ft_printf("\n");
 }

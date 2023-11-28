@@ -3,30 +3,88 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:40:55 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/14 11:37:54 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:30:23 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-/*Allocates (with malloc(3)) and returns a copy of ’s1’ with the characters 
-specified in ’set’ removed from the beginning and the end of the string.*/
+static int	initial_pos(char const *s1, char const *set)
+{
+	size_t	a;
+	size_t	b;
+
+	a = 0;
+	b = 0;
+	while (s1[a])
+	{
+		while (set[b])
+		{
+			if (s1[a] == set[b])
+			{
+				a++;
+				break ;
+			}
+			b++;
+		}
+		if (b == ft_strlen(set))
+			return (a);
+		b = 0;
+	}
+	return (0);
+}
+
+static int	final_pos(char const *s1, char const *set)
+{
+	int	len;
+	size_t	j;
+
+	len = 0;
+	j = 0;
+	while (s1[len])
+		len++;
+	while (len > 0)
+	{
+		while (set[j])
+		{
+			if (s1[len - 1] == set[j])
+			{
+				len--;
+				break ;
+			}
+			j++;
+		}
+		if (j == ft_strlen((char *)set))
+			return (len);
+		j = 0;
+	}
+	return (0);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	char	*char_set;
+	int		ini;
+	int		fin;
+	int		i;
+	char	*ret_str;
 
-	char_set = (char *)set;
-	if (!s1 || !char_set)
-		return (0);
-	while (*s1 && ft_strchr(char_set, *s1))
-		s1++;
-	i = ft_strlen(s1);
-	while (i && ft_strchr(char_set, s1[i]))
-		i--;
-	return (ft_substr(s1, 0, i + 1));
+	i = 0;
+	ini = initial_pos(s1, set);
+	fin = final_pos(s1, set);
+	ret_str = malloc((fin - ini + 1) * sizeof(char));
+	if (ret_str == NULL)
+		return (NULL);
+	while (ini < fin)
+	{
+		ret_str[i] = s1[ini];
+		i++;
+		ini++;
+	}
+	ret_str[i] = '\0';
+	return (ret_str);
 }
+

@@ -109,6 +109,10 @@ t_list				*ft_lmap(t_list *l, void *(*f)(void *), void (*d)(void *));
 void				ft_list_foreach(t_list *begin_list, void (*f)(void *));
 void				ft_list_remove_if(t_list **begin, void *d_r, int (*cmp)());
 
+//arrays
+void				ft_free_double_pointer(char **ptr);
+int					ft_arrlen(char **arr);
+
 //bits
 void				print_bits(unsigned char octet);
 unsigned char		reverse_bits(unsigned char octet);

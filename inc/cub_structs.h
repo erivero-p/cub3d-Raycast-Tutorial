@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 16:14:15 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 12:05:58 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_game
 	mlx_t	*mlx;
 	t_map	*map;
 	t_img	*imgs;
+	mlx_image_t	*test; //esta mierda es solo para testear
 }	t_game;
 
 typedef enum e_errors
@@ -65,12 +66,16 @@ typedef enum e_errors
 	EMPTY,
 	PLAYER, //más de uno
 	EXT_PNG, //extensión .png
-	
+	WINDOW, //fallo al abrir la ventana
+	IMAGE, //fallo al abrir la ventana
 }		t_errors;
 
 # define BLUE "\033[0;96m"
 # define GREEN "\033[0;32m"
 # define RED "\033[0;31m"
 # define END "\033[0m"
+
+# define WIDTH 1080
+# define HEIGHT 720
 
 #endif

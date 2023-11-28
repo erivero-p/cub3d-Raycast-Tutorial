@@ -6,7 +6,7 @@
 #    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/11/27 10:58:38 by erivero-         ###   ########.fr        #
+#    Updated: 2023/11/27 16:33:21 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,15 @@ OBJ_DIR		=	objs/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
 PARSE		=	parse format init error_handling map_read char_check
 
+SETTING		=	window controls
+
+MAP			=	map
+
 SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
 				$(addsuffix .c, $(addprefix utils/, $(UTILS))) \
+				$(addsuffix .c, $(addprefix settings/, $(SETTING))) \
+				$(addsuffix .c, $(addprefix map/, $(MAP))) \
 #con la linea de arriba le añadimos primero la extension .c a los archivos, le añadimos la ruta de la carpeta donde se encuentra y llamamos a ssu variable correspondiente
 
 
@@ -54,7 +60,7 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 #cada vez que queramos añadir una carpeta, utilizamos una linea similar a la de abajo para dentro de la carpeta /objs ir añadiendolos todos
-	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils
+	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils $(OBJ_DIR)/settings $(OBJ_DIR)/map
 	@$(CC) $(FLAGS) -c $< -o $@
 # no se si en la linea de arriba tenemos que llamar a $(MLX_FLAGS)
 
