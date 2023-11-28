@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 15:44:08 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:27:11 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,15 @@ void ft_randomize(void *param)  //para pruebas, quitar en futuro
 	}
 }
 
-void ft_free_all(t_game *info)
+void	ft_free_all(t_game *info)
 {
+	ft_free_double_pointer(info->map->map);
+	free(info->map->no_path);
+	free(info->map->so_path);
+	free(info->map->we_path);
+	free(info->map->ea_path);
+	free(info->map->f_color);
+	free(info->map->c_color);
 	free(info->map);
 	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
@@ -52,6 +59,7 @@ void	ft_leaks(void)
 
 void	ft_init_game(t_game *info)
 {
+	ft_init_map(info);
 	mlx_loop_hook(info->mlx, &ft_randomize, info); //& or not, i dont know. 3 param: info ó mlx???
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	//mlx_resize_hook(info->mlx, &ft_resize, info); //seg fault cuando intento agrandar
@@ -63,9 +71,11 @@ t_img para poder usarlas???*/
 
 void	ft_set_window(t_game *info)
 {
+	ft_printf("%sLLEGO%s\n", BLUE, END);
 	info->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", true);
 	if (!info->mlx)
 		ft_error(WINDOW, NULL);
+	ft_printf("%sLLEGO2%s\n", BLUE, END);
 	if (ft_check_monitor(info->mlx) == 0)
 	{
 		//free mierdas
@@ -92,5 +102,5 @@ int	main(int ac, char **av)
 		return (-1);
 	ft_parse(&info, fd, av[1]); //-> carga del mapa en memoria y checkeo de que esté correcto
 	ft_set_window(&info); // le tendré que meter av[1]??
-	ft_free_all(&info);
+	//ft_free_all(&info);
 }

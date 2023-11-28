@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 12:05:58 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:12:40 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ typedef struct s_map
 	char	*f_color;
 	char	*c_color;
 	int		counter;
+	int		len_x;
+	int		len_y;
 }	t_map;
 
 typedef struct s_game
 {
-	mlx_t	*mlx;
-	t_map	*map;
-	t_img	*imgs;
+	mlx_t		*mlx;
+	t_map		*map;
+	t_img		*imgs;
 	mlx_image_t	*test; //esta mierda es solo para testear
 }	t_game;
 

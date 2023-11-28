@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 16:31:28 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:48:40 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,15 @@ void	ft_print_matrix(char **matrix);
 
 /*							SETTINGS							*/
 //window.c
-int	ft_check_monitor(mlx_t *mlx);
+int	    ft_check_monitor(mlx_t *mlx);
 void	ft_resize(void *param);
 
 //controls.c
 void	ft_controls(mlx_key_data_t keydata, void *param);
+
+/*							MAP							*/
+//map.c
+void	ft_init_map(t_game *info);
+int     ft_get_map_x(t_game *info);
 
 #endif

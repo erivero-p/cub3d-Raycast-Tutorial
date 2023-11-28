@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:44:53 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 16:14:28 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:30:22 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ t_map	*ft_init_map_struct(t_game *info)
 	info->map->c_color = NULL;
 	info->map->file = NULL;
 	info->map->map = NULL;
+	info->map->len_x = -1;
+	info->map->len_y = -1;
 	return (info->map);
 }

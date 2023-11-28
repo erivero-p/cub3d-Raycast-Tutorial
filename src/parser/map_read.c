@@ -61,7 +61,6 @@ int	ft_save_info(t_map *map, char *line)
 	return (free(tmp), 0);
 }
 
-
 char **ft_subarr(char **arr, int start, int len)
 {
 	char	**cpy;
@@ -71,7 +70,8 @@ char **ft_subarr(char **arr, int start, int len)
 	if (len > ft_arrlen(arr))
 		return (NULL);
 	ft_printf("start: %d, len: %d\n", start, len);
-	cpy = malloc(sizeof(char **) * (len + 1));
+	cpy = malloc(sizeof(char *) * (len + 1));
+	//cpy = (char **)ft_calloc_gnl(len + 1, sizeof(char *));
 	if (!cpy)
 		return (NULL);
 	while (arr[start + i] && i < len)
@@ -79,7 +79,7 @@ char **ft_subarr(char **arr, int start, int len)
 		cpy[i] = ft_strdup(arr[start + i]);
 		i++;
 	}
-	cpy[i] = 0;
+	cpy[i] = NULL;
 	return (cpy);
 }
 
