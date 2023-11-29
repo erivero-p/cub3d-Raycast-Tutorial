@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 17:07:26 by marirodr         ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2023/11/29 11:42:36 by erivero-         ###   ########.fr       */                                                                           */
 /* ************************************************************************** */
 
 #ifndef CUB_STRUCTS_H
@@ -33,27 +32,27 @@ typedef struct s_img
 	mlx_image_t		*ea_img;
 }	t_img;
 
-typedef struct s_map
+typedef struct s_scene
 {
-	char		**file;
-	char		**map;
-	char		**aux_map;
-	char		*no_path;
-	char		*so_path;
-	char		*we_path;
-	char		*ea_path;
-	char		*f_color;
-	char		*c_color;
-	int			counter;
-	int			len_x;
-	int			len_y;
+	char	**file;
+	char	**map;
+	char	**aux_map;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	char	*f_color;
+	char	*c_color;
+	int		counter;
+	int		len_x;
+	int		len_y;
+}	t_scene;
 	mlx_image_t	*img;
-}	t_map;
 
 typedef struct s_game
 {
 	mlx_t		*mlx;
-	t_map		*map;
+	t_scene		*scene;
 	t_img		*imgs;
 	mlx_image_t	*test; //esta mierda es solo para testear
 }	t_game;

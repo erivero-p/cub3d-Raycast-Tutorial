@@ -39,15 +39,15 @@
 
 void	ft_free_all(t_game *info)
 {
-	ft_free_double_pointer(info->map->map);
-	free(info->map->no_path);
-	free(info->map->so_path);
-	free(info->map->we_path);
-	free(info->map->ea_path);
-	free(info->map->f_color);
-	free(info->map->c_color);
-	free(info->map);
-	//free las matrices y los paths de t_map
+	ft_free_double_pointer(info->scene->map);
+	free(info->scene->no_path);
+	free(info->scene->so_path);
+	free(info->scene->we_path);
+	free(info->scene->ea_path);
+	free(info->scene->f_color);
+	free(info->scene->c_color);
+	free(info->scene);
+	//free las matrices y los paths de t_scene
 	//mlx_close_window(info->mlx); ??
 	exit(0);
 }
@@ -59,6 +59,7 @@ void	ft_leaks(void)
 
 void	ft_init_game(t_game *info)
 {
+  lx_loop_hook(info->mlx, &ft_randomize, info); //& or not, i dont know. 3 param: info ó mlx???
 	ft_init_map(info);
 	//mlx_loop_hook(info->mlx, &ft_randomize, info); //& or not, i dont know. 3 param: info ó mlx???
 	//mlx_loop_hook(info->mlx, &ft_paint_minimap, info); //& or not, i dont know. 3 param: info ó mlx???
@@ -103,6 +104,6 @@ int	main(int ac, char **av)
 	if (ft_parse(&info, fd, av[1]) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
 	{
 		ft_set_window(&info); // le tendré que meter av[1]??
-		ft_free_all(&info);
 	}
+	ft_free_all(&info);
 }
