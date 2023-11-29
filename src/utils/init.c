@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:44:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 17:41:45 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:27:19 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 /* void	ft_init(t_game *info)
 {
-	info->map = malloc(sizeof(t_map *));
-	if (!info->map) //con los malloc y toa la pesca
+	info->scene = malloc(sizeoft_scene *));
+	if (!info->scene) //con los malloc y toa la pesca
 		return ;
-	info->map->no_path = NULL;
-	info->map->so_path = NULL;
-	info->map->we_path = NULL;
-	info->map->ea_path = NULL;
-	info->map->f_color = NULL;
-	info->map->c_color = NULL;
-	// info->map->map = NULL;
-	// info->map->aux_map = NULL;
+	info->scene->no_path = NULL;
+	info->scene->so_path = NULL;
+	info->scene->we_path = NULL;
+	info->scene->ea_path = NULL;
+	info->scene->f_color = NULL;
+	info->scene->c_color = NULL;
+	// info->scene->map = NULL;
+	// info->scene->aux_map = NULL;
 }
  */

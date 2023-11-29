@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:03:17 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:08:41 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_img
 	mlx_image_t		*ea_img;
 }	t_img;
 
-typedef struct s_map
+typedef struct s_scene
 {
 	char		**file;
 	char		**map;
@@ -56,7 +56,7 @@ typedef struct s_map
 typedef struct s_game
 {
 	mlx_t		*mlx;
-	t_map		*map;
+	t_scene		*scene;
 	t_img		*imgs;
 	mlx_image_t	*canvas; //esta mierda es solo para testear
 }	t_game;
