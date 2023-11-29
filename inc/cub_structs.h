@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 17:12:40 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:07:26 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,19 @@ typedef struct s_img
 
 typedef struct s_map
 {
-	char	**file;
-	char	**map;
-	char	**aux_map;
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
-	char	*f_color;
-	char	*c_color;
-	int		counter;
-	int		len_x;
-	int		len_y;
+	char		**file;
+	char		**map;
+	char		**aux_map;
+	char		*no_path;
+	char		*so_path;
+	char		*we_path;
+	char		*ea_path;
+	char		*f_color;
+	char		*c_color;
+	int			counter;
+	int			len_x;
+	int			len_y;
+	mlx_image_t	*img;
 }	t_map;
 
 typedef struct s_game
@@ -72,12 +73,17 @@ typedef enum e_errors
 	IMAGE, //fallo al abrir la ventana
 }		t_errors;
 
-# define BLUE "\033[0;96m"
+# define CYAN "\033[0;96m"
 # define GREEN "\033[0;32m"
 # define RED "\033[0;31m"
 # define END "\033[0m"
 
 # define WIDTH 1080
 # define HEIGHT 720
+
+# define BLACK 0x00000000
+# define WHITE 0xFFFFFF00
+# define BLUE 0x0000FF00
+# define PINK 0xFF69B400
 
 #endif
