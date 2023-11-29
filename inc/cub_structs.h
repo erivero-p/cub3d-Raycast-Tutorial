@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:21:46 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:41:26 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef enum e_errors
 	EMPTY,
 	PLAYER, //más de uno
 	EXT_PNG, //extensión .png
+	COLOR, //formato rgb
 	WINDOW, //fallo al abrir la ventana
 	IMAGE, //fallo al abrir la ventana
 }		t_errors;
