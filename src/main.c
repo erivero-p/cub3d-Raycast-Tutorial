@@ -6,36 +6,11 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:12:37 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:24:09 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
-
-// int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a) //para pruebas, quitar en futuro
-// {
-//     return (r << 24 | g << 16 | b << 8 | a);
-// }
-
-// void ft_randomize(void *param)  //para pruebas, quitar en futuro
-// {
-// 	t_game *info;
-
-// 	info = (t_game *)param;
-// 	for (int32_t i = 0; i < (int32_t)info->test->width; ++i)
-// 	{
-// 		for (int32_t y = 0; y < (int32_t)info->test->height; ++y)
-// 		{
-// 			uint32_t color = ft_pixel(
-// 				rand() % 0xFF, // R
-// 				rand() % 0xFF, // G
-// 				rand() % 0xFF, // B
-// 				rand() % 0xFF  // A
-// 			);
-// 			mlx_put_pixel(info->test, i, y, color);
-// 		}
-// 	}
-// }
 
 void	ft_free_all(t_game *info)
 {
@@ -61,7 +36,6 @@ void	ft_init_game(t_game *info)
 {
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	ft_init_map(info);
-	//mlx_loop_hook(info->mlx, &ft_randomize, info); //& or not, i dont know. 3 param: info ó mlx???
 	//mlx_loop_hook(info->mlx, &ft_paint_minimap, info); //& or not, i dont know. 3 param: info ó mlx???
 	//mlx_resize_hook(info->mlx, &ft_resize, info); //seg fault cuando intento agrandar
 	mlx_loop(info->mlx);
@@ -82,7 +56,7 @@ void	ft_set_window(t_game *info)
 	}
 	mlx_set_window_limit(info->mlx, 500, 500, WIDTH, HEIGHT); // ponemos limites de la ventana, en prueba ahora mismo??, 2560, 1440 ->valores de pantalla completa
 	info->canvas = mlx_new_image(info->mlx, WIDTH, HEIGHT);
-	info->map->img = info->canvas; //para poder rendear las imagenes?
+	info->scene->img = info->canvas; //para poder rendear las imagenes, cómo crear un lienzp donde poder dibujar pixeles
 	if (!info->canvas)
 		ft_error(IMAGE, NULL);
 	if (mlx_image_to_window(info->mlx, info->canvas, 0, 0) == -1)

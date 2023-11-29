@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:16:24 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:25:29 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,39 +91,11 @@ void	ft_paint_background(t_game *game)
 	}
 }
 
-void	ft_paint_background(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < (HEIGHT / 2))
-	{
-		j = 0;
-		while (j < WIDTH)
-		{
-			mlx_put_pixel(game->canvas, j, i, BLUE);
-			j++;
-		}
-		i++;
-	}
-	while (i < (HEIGHT))
-	{
-		j = 0;
-		while (j < WIDTH)
-		{
-			mlx_put_pixel(game->canvas, j, i, PINK);
-			j++;
-		}
-		i++;
-	}
-}
-
 void	ft_init_map(t_game *info)
 {
 	info->scene->len_y = ft_arrlen(info->scene->map);
 	//ft_printf("%sla y/altura del map es: %i%s\n", BLUE, info->map->len_y, END);
-	info->scene->len_x = ft_get_scene_x(info);
+	info->scene->len_x = ft_get_map_x(info);
 	info->scene->limit = 30; //why?
 	info->scene->w = info->scene->len_y * info->scene->limit;  //why?
 	info->scene->h = info->scene->len_x * info->scene->limit;  //why?
