@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 12:25:45 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:53:43 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	ft_parse(t_game *info, int fd, char *file)
 	ft_read_file(info, fd, len, file);
 	if (ft_parse_file(info->scene) == -1)
 		return (ft_free_double_pointer(info->scene->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
+	if (ft_scene_check(info->scene) == -1)
+		return (ft_free_double_pointer(info->scene->file), -1);
 	return (ft_free_double_pointer(info->scene->file), 0);
 }
 //	ft_print_matrix(info->scene->file, 1);
