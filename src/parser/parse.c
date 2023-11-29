@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 13:52:26 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:18:54 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_len_file(int fd)
 	char	*line;
 	int		len;
 
+	len = 0;
 	line = get_next_line(fd);
 	if (!line)
 		ft_error(EMPTY, NULL);
@@ -30,7 +31,7 @@ int	ft_len_file(int fd)
 	return (len);
 }
 
-t_map	*ft_read_file(t_game *info, int fd, int len, char *file)
+void	ft_read_file(t_game *info, int fd, int len, char *file)
 {
 	char	*line;
 	int		i;
@@ -48,21 +49,23 @@ t_map	*ft_read_file(t_game *info, int fd, int len, char *file)
 	}
 	close(fd);
 	free(line);
-	return (info->map);
 }
 
-void	ft_parse(t_game *info, int fd, char *file)
+int	ft_parse(t_game *info, int fd, char *file)
 {
 	int	len;
 
-	info->map = ft_init_map_struct(info);
+	ft_init_map_struct(info);
 	len = ft_len_file(fd);
-	info->map = ft_read_file(info, fd, len, file);
-	ft_parse_file(info->map);
-	//ft_print_matrix(info->map->file);
-	//ft_print_map(info->map);
-	ft_free_double_pointer(info->map->file);
+	if (len <= 0)
+		return (-1);
+	ft_read_file(info, fd, len, file);
+	if (ft_parse_file(info->map) == -1)
+		return (ft_free_double_pointer(info->map->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
+	return (ft_free_double_pointer(info->map->file), 0);
 }
+//	ft_print_matrix(info->map->file, 1);
+//	ft_print_matrix(info->map->map, 2);
 
 int	ft_arg_check(int ac, char **av)
 {
