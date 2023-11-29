@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 19:01:51 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:18:54 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_len_file(int fd)
 	char	*line;
 	int		len;
 
+	len = 0;
 	line = get_next_line(fd);
 	if (!line)
 		ft_error(EMPTY, NULL);
@@ -50,18 +51,21 @@ void	ft_read_file(t_game *info, int fd, int len, char *file)
 	free(line);
 }
 
-void	ft_parse(t_game *info, int fd, char *file)
+int	ft_parse(t_game *info, int fd, char *file)
 {
 	int	len;
 
 	ft_init_map_struct(info);
 	len = ft_len_file(fd);
+	if (len <= 0)
+		return (-1);
 	ft_read_file(info, fd, len, file);
-//	ft_print_matrix(info->map->file, 1);
-	ft_parse_file(info);
-//	ft_print_matrix(info->map->map, 2);
-	ft_free_double_pointer(info->map->file);
+	if (ft_parse_file(info->map) == -1)
+		return (ft_free_double_pointer(info->map->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
+	return (ft_free_double_pointer(info->map->file), 0);
 }
+//	ft_print_matrix(info->map->file, 1);
+//	ft_print_matrix(info->map->map, 2);
 
 int	ft_arg_check(int ac, char **av)
 {
