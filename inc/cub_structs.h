@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:08:41 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:21:46 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_scene
 	float		limit;
 	float		w;
 	float		h;
-}	t_map;
+}	t_scene;
 
 typedef struct s_game
 {
