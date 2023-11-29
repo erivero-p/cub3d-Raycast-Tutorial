@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 12:25:45 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:15:29 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ int	main(int ac, char **av)
 	if (ft_parse(&info, fd, av[1]) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
 	{
 		ft_set_window(&info); // le tendré que meter av[1]??
-		ft_free_all(&info);
 	}
+	ft_free_all(&info);
 }

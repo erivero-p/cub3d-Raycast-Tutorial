@@ -32,7 +32,7 @@ int	ft_char_mapcheck(char **map)
 			ret = ft_char_check(map[j][i]);
 			if (!ret ) //si hay un caracter inválido o más de un personaje
 				return (ft_error(CHAR, NULL));
-			if (count > 1)
+			if (count != 1)
 				return (ft_error(PLAYER, NULL));
 			if (ret == 42)
 				count++;

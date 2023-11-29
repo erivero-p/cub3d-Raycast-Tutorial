@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 12:25:27 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:13:26 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,14 @@ int		ft_arg_check(int ac, char **av);
 int		ft_parse_file(t_scene *scene);
 //int		ft_parse_file(t_game *info);
 
+//scene_check.c
+int		ft_scene_check(t_scene *scene);
+
 //char_check.c
 int		ft_char_check(char c);
 int		ft_char_mapcheck(char **map);
+//ft_wall_checker.c
+int		ft_wall_check(char **map);
 
 //format.c
 int		ft_check_ext(char *str, char *ext);

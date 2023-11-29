@@ -28,7 +28,7 @@ int ft_is_wall(char **map, int x, int y, int len)
 	return (j);
 } */
 
-int	ft_wall_checker(char **map)
+int	ft_wall_check(char **map)
 {
 	int x = 0;
 	int y = 0;
@@ -48,7 +48,7 @@ int	ft_wall_checker(char **map)
 		x = 0;
 		y++;
 	}
-	return (1);
+	return (0);
 }
 
 /* int main(void)
