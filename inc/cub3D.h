@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
 /*   Updated: 2023/11/29 11:43:07 by erivero-         ###   ########.fr       */
@@ -67,7 +67,8 @@ void	ft_controls(mlx_key_data_t keydata, void *param);
 
 /*							MAP							*/
 //map.c
-void	ft_init_scene(t_game *info);
-int     ft_get_scene_x(t_game *info);
+void	ft_init_map(t_game *info);
+int     ft_get_map_x(t_game *info);
+void	ft_paint_minimap(void *param);
 
 #endif
