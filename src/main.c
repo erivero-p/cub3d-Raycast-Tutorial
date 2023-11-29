@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 19:13:33 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:20:03 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,9 @@ int	main(int ac, char **av)
 	fd = ft_arg_check(ac, av);
 	if (fd < 0)
 		return (-1);
-	ft_parse(&info, fd, av[1]); //-> carga del mapa en memoria y checkeo de que esté correcto
-	ft_set_window(&info); // le tendré que meter av[1]??
-	ft_free_all(&info);
+	if (ft_parse(&info, fd, av[1]) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
+	{
+		ft_set_window(&info); // le tendré que meter av[1]??
+		ft_free_all(&info);
+	}
 }
