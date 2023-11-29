@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 11:43:07 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:25:27 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	ft_clean_map(t_game	*info);
 
 
 //init.c
-void   ft_init_scene_struct(t_game *info);
+void   ft_init_map_struct(t_game *info);
 
 //error_handling.c
 int     ft_error(int err, char *str);
 
 //debug.c
-void	ft_print_scene(t_scene *scene);
+void	ft_print_map(t_scene *scene);
 void 	ft_print_matrix(char **matrix, int test);
 
 

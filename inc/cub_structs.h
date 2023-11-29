@@ -6,7 +6,8 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 11:42:36 by erivero-         ###   ########.fr       */                                                                           */
+/*   Updated: 2023/11/29 12:25:02 by erivero-         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_STRUCTS_H
@@ -34,20 +35,20 @@ typedef struct s_img
 
 typedef struct s_scene
 {
-	char	**file;
-	char	**map;
-	char	**aux_map;
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
-	char	*f_color;
-	char	*c_color;
-	int		counter;
-	int		len_x;
-	int		len_y;
-}	t_scene;
+	char		**file;
+	char		**map;
+	char		**aux_map;
+	char		*no_path;
+	char		*so_path;
+	char		*we_path;
+	char		*ea_path;
+	char		*f_color;
+	char		*c_color;
+	int			counter;
+	int			len_x;
+	int			len_y;
 	mlx_image_t	*img;
+}	t_scene;
 
 typedef struct s_game
 {

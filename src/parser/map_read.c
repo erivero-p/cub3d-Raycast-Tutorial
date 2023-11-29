@@ -57,7 +57,7 @@ char **ft_subarr(char **arr, int start, int len)
 	return (cpy);
 }
 
-int ft_get_scene(char **file, t_scene *scene, int j)
+int ft_get_map(char **file, t_scene *scene, int j)
 {
 	int		len;
 	char	**cpy;
@@ -89,10 +89,10 @@ int	ft_parse_file(t_scene *scene)
 		ret = ft_save_info(scene, scene->file[j]);
 		if (ret == 1) //si no es ninguno de los parámetros salgo y guardo el mapa fuera del loop
 			break ;
-		if (ret == -1) //parámetro repe o get_scene fallando
+		if (ret == -1) //parámetro repe o get_map fallando
 			return (-1);
 	}
-	ret = ft_get_scene(scene->file, scene, j);
-	ft_print_scene(scene);
+	ret = ft_get_map(scene->file, scene, j);
+	ft_print_map(scene);
 	return (ret);
 }

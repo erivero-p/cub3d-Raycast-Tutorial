@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 11:44:46 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:25:45 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_free_all(t_game *info)
 	free(info->scene->f_color);
 	free(info->scene->c_color);
 	free(info->scene);
-	//free las matrices y los paths de t_scene
+	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
 	exit(0);
 }
@@ -59,7 +59,6 @@ void	ft_leaks(void)
 
 void	ft_init_game(t_game *info)
 {
-  lx_loop_hook(info->mlx, &ft_randomize, info); //& or not, i dont know. 3 param: info ó mlx???
 	ft_init_map(info);
 	//mlx_loop_hook(info->mlx, &ft_randomize, info); //& or not, i dont know. 3 param: info ó mlx???
 	//mlx_loop_hook(info->mlx, &ft_paint_minimap, info); //& or not, i dont know. 3 param: info ó mlx???
@@ -83,7 +82,7 @@ void	ft_set_window(t_game *info)
 	}
 	mlx_set_window_limit(info->mlx, 500, 500, 2560, 1440); // ponemos limites de la ventana, en prueba ahora mismo??
 	info->test = mlx_new_image(info->mlx, WIDTH, HEIGHT);
-	info->map->img = info->test; //qué estoy haciendo aquí exactamente?
+	info->scene->img = info->test; //qué estoy haciendo aquí exactamente?
 	if (!info->test)
 		ft_error(IMAGE, NULL);
 	if (mlx_image_to_window(info->mlx, info->test, 0, 0) == -1)
@@ -104,6 +103,6 @@ int	main(int ac, char **av)
 	if (ft_parse(&info, fd, av[1]) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
 	{
 		ft_set_window(&info); // le tendré que meter av[1]??
+		ft_free_all(&info);
 	}
-	ft_free_all(&info);
 }

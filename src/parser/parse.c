@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 11:43:07 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:25:45 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_parse(t_game *info, int fd, char *file)
 {
 	int	len;
 
-	ft_init_scene_struct(info);
+	ft_init_map_struct(info);
 	len = ft_len_file(fd);
 	if (len <= 0)
 		return (-1);
