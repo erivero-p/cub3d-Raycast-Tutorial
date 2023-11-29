@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 13:44:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/24 13:44:28 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:41:45 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-void	ft_init(t_game *info)
+/* void	ft_init(t_game *info)
 {
 	info->map = malloc(sizeof(t_map *));
 	if (!info->map) //con los malloc y toa la pesca
@@ -26,3 +26,4 @@ void	ft_init(t_game *info)
 	// info->map->map = NULL;
 	// info->map->aux_map = NULL;
 }
+ */

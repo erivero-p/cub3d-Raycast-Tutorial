@@ -1,6 +1,5 @@
 #include "../../inc/cub3D.h"
 
-
 char	*ft_cpy_info(char *line)
 {
 	while (*line && *line > 32) //salto hasta enontrar un espacio

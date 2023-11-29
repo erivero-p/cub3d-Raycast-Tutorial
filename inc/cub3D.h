@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 14:02:00 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:05:41 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		ft_arg_check(int ac, char **av);
 
 //map_read.c
 int		ft_parse_file(t_map *map);
+//int		ft_parse_file(t_game *info);
+
 
 //char_check.c
 int		ft_char_check(char c);
@@ -37,8 +39,8 @@ int		ft_char_mapcheck(char **map);
 //format.c
 int		ft_check_ext(char *str, char *ext);
 
-/*							UTILS
-//error_handling.c							*/
+/*							UTILS							*/
+//error_handling.c							
 int		ft_error(int err, char *str);
 
 //clean_handling.c
@@ -46,12 +48,15 @@ void	ft_clean_map(t_game	*info);
 
 
 //init.c
-t_map   *ft_init_map_struct(t_game *info);
+void   ft_init_map_struct(t_game *info);
 
 //error_handling.c
 int     ft_error(int err, char *str);
-void	ft_print_matrix(char **matrix);
+
+//debug.c
 void	ft_print_map(t_map *map);
+void 	ft_print_matrix(char **matrix, int test);
+
 
 /*							SETTINGS							*/
 //window.c
