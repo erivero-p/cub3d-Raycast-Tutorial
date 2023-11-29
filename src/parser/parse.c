@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 11:18:54 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:43:07 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	ft_read_file(t_game *info, int fd, int len, char *file)
 	int		i;
 
 	i = 0;
-	info->map->file = (char **)ft_calloc(sizeof(char *), len + 1);
+	info->scene->file = (char **)ft_calloc(sizeof(char *), len + 1);
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
-		info->map->file[i] = ft_strdup(line);
+		info->scene->file[i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 		i++;
@@ -55,17 +55,17 @@ int	ft_parse(t_game *info, int fd, char *file)
 {
 	int	len;
 
-	ft_init_map_struct(info);
+	ft_init_scene_struct(info);
 	len = ft_len_file(fd);
 	if (len <= 0)
 		return (-1);
 	ft_read_file(info, fd, len, file);
-	if (ft_parse_file(info->map) == -1)
-		return (ft_free_double_pointer(info->map->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
-	return (ft_free_double_pointer(info->map->file), 0);
+	if (ft_parse_file(info->scene) == -1)
+		return (ft_free_double_pointer(info->scene->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
+	return (ft_free_double_pointer(info->scene->file), 0);
 }
-//	ft_print_matrix(info->map->file, 1);
-//	ft_print_matrix(info->map->map, 2);
+//	ft_print_matrix(info->scene->file, 1);
+//	ft_print_matrix(info->scene->map, 2);
 
 int	ft_arg_check(int ac, char **av)
 {

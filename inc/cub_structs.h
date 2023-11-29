@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/27 17:12:40 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:42:36 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_img
 	mlx_image_t		*ea_img;
 }	t_img;
 
-typedef struct s_map
+typedef struct s_scene
 {
 	char	**file;
 	char	**map;
@@ -47,12 +47,12 @@ typedef struct s_map
 	int		counter;
 	int		len_x;
 	int		len_y;
-}	t_map;
+}	t_scene;
 
 typedef struct s_game
 {
 	mlx_t		*mlx;
-	t_map		*map;
+	t_scene		*scene;
 	t_img		*imgs;
 	mlx_image_t	*test; //esta mierda es solo para testear
 }	t_game;
