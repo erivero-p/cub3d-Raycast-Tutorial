@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 11:47:25 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:50:28 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 /*							PARSE							*/
 
 //parse.c
-void	ft_init(t_game *info);
 int		ft_parse(t_game *info, int fd, char *file);
 int		ft_arg_check(int ac, char **av);
 

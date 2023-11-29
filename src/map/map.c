@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 11:17:14 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:50:14 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,43 @@ void	ft_paint_minimap(void *param)
 	}
 }
 
+void	ft_paint_background(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < (HEIGHT / 2))
+	{
+		j = 0;
+		while (j < WIDTH)
+		{
+			mlx_put_pixel(game->canvas, j, i, BLUE);
+			j++;
+		}
+		i++;
+	}
+	while (i < (HEIGHT))
+	{
+		j = 0;
+		while (j < WIDTH)
+		{
+			mlx_put_pixel(game->canvas, j, i, PINK);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	ft_init_map(t_game *info)
 {
 	info->map->len_y = ft_arrlen(info->map->map);
 	//ft_printf("%sla y/altura del map es: %i%s\n", BLUE, info->map->len_y, END);
 	info->map->len_x = ft_get_map_x(info);
+	info->map->limit = 30; //why?
+	info->map->w = info->map->len_y * info->map->limit;  //why?
+	info->map->h = info->map->len_x * info->map->limit;  //why?
 	//ft_printf("%sla x/longuitud del map es: %i%s\n", BLUE, info->map->len_x, END);
 	//ft_paint_minimap(info);
+	ft_paint_background(info);
 }

@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 11:44:46 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:51:22 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	ft_leaks(void)
 
 void	ft_init_game(t_game *info)
 {
+	mlx_key_hook(info->mlx, &ft_controls, info);
 	ft_init_map(info);
 	//mlx_loop_hook(info->mlx, &ft_randomize, info); //& or not, i dont know. 3 param: info ó mlx???
 	//mlx_loop_hook(info->mlx, &ft_paint_minimap, info); //& or not, i dont know. 3 param: info ó mlx???
-	mlx_key_hook(info->mlx, &ft_controls, info);
 	//mlx_resize_hook(info->mlx, &ft_resize, info); //seg fault cuando intento agrandar
 	mlx_loop(info->mlx);
 }
@@ -80,12 +80,12 @@ void	ft_set_window(t_game *info)
 		//free mierdas
 		return ;
 	}
-	mlx_set_window_limit(info->mlx, 500, 500, 2560, 1440); // ponemos limites de la ventana, en prueba ahora mismo??
-	info->test = mlx_new_image(info->mlx, WIDTH, HEIGHT);
-	info->map->img = info->test; //qué estoy haciendo aquí exactamente?
-	if (!info->test)
+	mlx_set_window_limit(info->mlx, 500, 500, WIDTH, HEIGHT); // ponemos limites de la ventana, en prueba ahora mismo??, 2560, 1440 ->valores de pantalla completa
+	info->canvas = mlx_new_image(info->mlx, WIDTH, HEIGHT);
+	info->map->img = info->canvas; //para poder rendear las imagenes?
+	if (!info->canvas)
 		ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(info->mlx, info->test, 0, 0) == -1)
+	if (mlx_image_to_window(info->mlx, info->canvas, 0, 0) == -1)
 		ft_error(IMAGE, NULL);
 	ft_init_game(info);
 	mlx_terminate(info->mlx);
@@ -103,6 +103,6 @@ int	main(int ac, char **av)
 	if (ft_parse(&info, fd, av[1]) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
 	{
 		ft_set_window(&info); // le tendré que meter av[1]??
-		ft_free_all(&info);
 	}
+	ft_free_all(&info);
 }

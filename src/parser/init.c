@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:44:53 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 17:47:19 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:31:26 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,7 @@ void	ft_init_map_struct(t_game *info)
 	info->map->map = NULL;
 	info->map->len_x = -1;
 	info->map->len_y = -1;
+	info->map->limit = -1;
+	info->map->w = -1;
+	info->map->h = -1;
 }

@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/28 17:07:26 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:03:17 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ typedef struct s_map
 	int			len_x;
 	int			len_y;
 	mlx_image_t	*img;
+	float		limit;
+	float		w;
+	float		h;
 }	t_map;
 
 typedef struct s_game
@@ -55,7 +58,7 @@ typedef struct s_game
 	mlx_t		*mlx;
 	t_map		*map;
 	t_img		*imgs;
-	mlx_image_t	*test; //esta mierda es solo para testear
+	mlx_image_t	*canvas; //esta mierda es solo para testear
 }	t_game;
 
 typedef enum e_errors
@@ -81,9 +84,9 @@ typedef enum e_errors
 # define WIDTH 1080
 # define HEIGHT 720
 
-# define BLACK 0x00000000
-# define WHITE 0xFFFFFF00
-# define BLUE 0x0000FF00
-# define PINK 0xFF69B400
+# define BLACK 0x000000FF
+# define WHITE 0xFFFFFFFF
+# define BLUE 0xADD8E6
+# define PINK 0xFFC0CBFF
 
 #endif
