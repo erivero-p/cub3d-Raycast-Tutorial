@@ -2,6 +2,7 @@
 
 int ft_is_wall(char **map, int x, int y, int len)
 {
+//	ft_printf("ft_is_wall is checking: map[%i][%i]: %c\n", y, x, map[y][x]);
 	if (y == 0 && map[y][x] > 32) //si estoy arriba y hay algo
 		return (1);
 	if (x == 0 && map[y][x] > 32) // si estoy a la izquierda y hay algo
@@ -19,33 +20,28 @@ int ft_is_wall(char **map, int x, int y, int len)
 	return (0);
 }
 
-/* int	ft_arraylen(char **arr)
-{
-	int	j = 0;
-	while (arr[j])
-		j++;
-	printf("len is: %i\n", j);
-	return (j);
-} */
-
 int	ft_wall_check(char **map)
 {
-	int x = 0;
+	int x = -1;
 	int y = 0;
-	int	len = 13; //friendly reminder de actualizar manualmente
+	int len;
 
-//	printf("len is: %i\n", len);
-	while (map[y] && y < len)
+	y = 0;
+	ft_printf("%sft_wall_check map is: \n----------------\n", CYAN);
+	ft_print_matrix(map, 1);
+	ft_printf("----------------\n%s", END);
+	len = ft_arrlen(map);
+	while (map[y])
 	{
-		while (map[y][x])
+		x = -1;
+//		printf("%sft_wall_check is checking: map[%i] %s\n%s",GREEN, y, map[y], END);
+		while (map[y][x] && map[y][++x])
 		{
 			while (map[y][x] > 0 && map[y][x] <= 32)
 				x++;
-			if (map[y][x] > 0 && ft_is_wall(map, x, y, len) && map[y][x] != '1')
+			if (map[y][x] != 0 && ft_is_wall(map, x, y, len) && map[y][x] != '1')
 				return (ft_error(WALL, NULL));
-			x++;
 		}
-		x = 0;
 		y++;
 	}
 	return (1);

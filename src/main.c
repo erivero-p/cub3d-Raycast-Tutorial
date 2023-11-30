@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:24:09 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:16:41 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	ft_free_all(t_game *info)
 {
-	ft_free_double_pointer(info->scene->map);
+	ft_clean_map(info);
+/* 	ft_free_double_pointer(info->scene->map);
 	free(info->scene->no_path);
 	free(info->scene->so_path);
 	free(info->scene->we_path);
 	free(info->scene->ea_path);
 	free(info->scene->f_color);
 	free(info->scene->c_color);
-	free(info->scene);
+	free(info->scene); */
 	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
 	exit(0);
