@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/30 12:49:18 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:59:25 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 /*							PARSE							*/
 
 //parse.c
-int		ft_parse(t_game *info, int fd, char *file);
+int		ft_parse(t_scene *scene, int fd, char *file);
 int		ft_arg_check(int ac, char **av);
 
 //map_read.c
