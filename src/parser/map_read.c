@@ -43,9 +43,7 @@ char **ft_subarr(char **arr, int start, int len)
 	i = 0;
 	if (len > ft_arrlen(arr))
 		return (NULL);
-	ft_printf("start: %d, len: %d\n", start, len);
-	cpy = malloc(sizeof(char *) * (len + 1));
-	//cpy = (char **)ft_calloc_gnl(len + 1, sizeof(char *));
+	cpy = (char **)ft_calloc(len + 1, sizeof(char *));
 	if (!cpy)
 		return (NULL);
 	while (arr[start + i] && i < len)
@@ -93,6 +91,6 @@ int	ft_parse_file(t_scene *scene)
 			return (-1);
 	}
 	ret = ft_get_map(scene->file, scene, j);
-	ft_print_map(scene);
+//	ft_print_scene(scene);
 	return (ret);
 }

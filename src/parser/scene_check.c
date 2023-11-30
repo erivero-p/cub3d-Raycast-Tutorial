@@ -52,12 +52,12 @@ int	ft_rgbcheck(char *color)
 		ret = -1;
 	if (ph_atoi(rgb[2]) < 0 || ph_atoi(rgb[2]) > 255)
 		ret = -1;
-	ft_print_matrix(rgb, 22);
+
 	ft_free_double_pointer(rgb);
-	ft_printf("ret is: %i", ret);
+//	ft_printf("ret is: %i", ret);
 	return (ret);
 }
-int	ft_color_check(t_scene *scene) //está chiquito, es solo pa probar
+int	ft_color_check(t_scene *scene)
 {
 	if (ft_rgbcheck(scene->c_color) == -1)
 		return (ft_error(COLOR, NULL));
@@ -69,7 +69,7 @@ int	ft_color_check(t_scene *scene) //está chiquito, es solo pa probar
 int	ft_scene_check(t_scene *scene)
 {
 	if (ft_texture_check(scene) == -1 || ft_color_check(scene))
-	//	|| ft_char_mapcheck(scene->map) == -1 ) || ft_wall_check(scene->map) == -1)
+//		|| ft_char_mapcheck(scene->map) == -1 || ft_wall_check(scene->map) == -1)
 		return (-1);
 	return (0);
 }

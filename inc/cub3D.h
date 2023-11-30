@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 15:52:16 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:49:18 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void   ft_init_map_struct(t_game *info);
 int     ft_error(int err, char *str);
 
 //debug.c
-void	ft_print_map(t_scene *scene);
+void	ft_print_scene(t_scene *scene);
 void 	ft_print_matrix(char **matrix, int test);
 
 
