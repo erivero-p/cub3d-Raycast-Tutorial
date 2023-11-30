@@ -10,7 +10,7 @@ void ft_print_matrix(char **matrix, int test)
 	ft_printf("-------------\n");
 }
 
-void	ft_print_map(t_scene *scene)
+void	ft_print_scene(t_scene *scene)
 {
 	int	i = -1;
 

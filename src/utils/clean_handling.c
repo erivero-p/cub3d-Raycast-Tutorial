@@ -5,9 +5,9 @@ void	ft_clean_map(t_game	*info)
 	if (info->scene)
 	{
 		if (info->scene->map)
-			ft_arr_free(info->scene->map);
+			ft_free_double_pointer(info->scene->map);
 		if (info->scene->aux_map)
-			ft_arr_free(info->scene->aux_map);
+			ft_free_double_pointer(info->scene->aux_map);
 		if (info->scene->no_path)
 			free(info->scene->no_path);
 		if (info->scene->so_path)

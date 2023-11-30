@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_double_pointer.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:50:46 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/14 11:35:21 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:00:35 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	ft_free_double_pointer(char **ptr)
 		i++;
 	}
 	free(ptr);
+	ptr = NULL;
 }

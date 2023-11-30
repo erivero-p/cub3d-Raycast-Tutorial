@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:44:53 by marirodr          #+#    #+#             */
 /*   Updated: 2023/11/30 11:41:48 by marirodr         ###   ########.fr       */
@@ -23,6 +23,7 @@ void	ft_init_map_struct(t_game *info)
 	info->scene->c_color = NULL;
 	info->scene->file = NULL;
 	info->scene->map = NULL;
+	info->scene->aux_map = NULL;
 	info->scene->len_x = -1;
 	info->scene->len_y = -1;
 	info->scene->tile = -1;
