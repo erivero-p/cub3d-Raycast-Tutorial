@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:44:53 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:18:14 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:41:48 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_init_map_struct(t_game *info)
 	info->scene->map = NULL;
 	info->scene->len_x = -1;
 	info->scene->len_y = -1;
-	info->scene->limit = -1;
-	info->scene->w = -1;
-	info->scene->h = -1;
+	info->scene->tile = -1;
+	info->scene->mini_x = -1;
+	info->scene->mini_y = -1;
 }

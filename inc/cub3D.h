@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:10:14 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:16:47 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void	ft_controls(mlx_key_data_t keydata, void *param);
 //map.c
 void	ft_init_map(t_game *info);
 int     ft_get_map_x(t_game *info);
-void	ft_paint_minimap(void *param);
+void	ft_paint_minimap(t_game *info, t_scene *scene);
 
 #endif

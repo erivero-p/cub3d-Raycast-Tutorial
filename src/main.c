@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:24:09 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:40:11 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	ft_set_window(t_game *info)
 		//free mierdas
 		return ;
 	}
-	mlx_set_window_limit(info->mlx, 500, 500, WIDTH, HEIGHT); // ponemos limites de la ventana, en prueba ahora mismo??, 2560, 1440 ->valores de pantalla completa
-	info->canvas = mlx_new_image(info->mlx, WIDTH, HEIGHT);
-	info->scene->img = info->canvas; //para poder rendear las imagenes, cómo crear un lienzp donde poder dibujar pixeles
+	mlx_set_window_limit(info->mlx, 500, 500, 2560, 1440); // ponemos limites de la ventana, en prueba ahora mismo??, 2560, 1440 ->valores de pantalla completa
+	info->canvas = mlx_new_image(info->mlx, 2560, 1440); //para poder rendear las imagenes, cómo crear un lienzp donde poder dibujar pixeles
+	info->scene->img = info->canvas; //para pintar mapa como en otra capa?
 	if (!info->canvas)
 		ft_error(IMAGE, NULL);
 	if (mlx_image_to_window(info->mlx, info->canvas, 0, 0) == -1)

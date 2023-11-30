@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/29 13:21:46 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:39:13 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ typedef struct s_scene
 	int			len_x;
 	int			len_y;
 	mlx_image_t	*img;
-	float		limit;
-	float		w;
-	float		h;
+	mlx_image_t	*mini;
+	float		tile;
+	float		mini_x;
+	float		mini_y;
 }	t_scene;
 
 typedef struct s_game
@@ -76,9 +77,9 @@ typedef enum e_errors
 	IMAGE, //fallo al abrir la ventana
 }		t_errors;
 
-# define CYAN "\033[0;96m"
-# define GREEN "\033[0;32m"
-# define RED "\033[0;31m"
+# define DEBUG_COLOR "\033[0;96m"
+# define GOOD "\033[0;32m"
+# define WRONG "\033[0;31m"
 # define END "\033[0m"
 
 # define WIDTH 1080
@@ -88,5 +89,7 @@ typedef enum e_errors
 # define WHITE 0xFFFFFFFF
 # define BLUE 0xADD8E6
 # define PINK 0xFFC0CBFF
+# define RED 0xFF0000FF
+# define GREEN 0x007F007F
 
 #endif
