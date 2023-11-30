@@ -74,6 +74,6 @@ void	ft_controls(mlx_key_data_t keydata, void *param);
 //map.c
 void	ft_init_map(t_game *info);
 int     ft_get_map_x(t_game *info);
-void	ft_paint_minimap(void *param);
+void	ft_paint_minimap(t_game *info, t_scene *scene);
 
 #endif
