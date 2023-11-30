@@ -27,7 +27,7 @@ int	ft_wall_check(char **map)
 	int len;
 
 	y = 0;
-	ft_printf("%sft_wall_check map is: \n----------------\n", CYAN);
+//	ft_printf("%sft_wall_check map is: \n----------------\n", DEBUG_COLOUR);
 	ft_print_matrix(map, 1);
 	ft_printf("----------------\n%s", END);
 	len = ft_arrlen(map);
