@@ -6,7 +6,7 @@ void ft_print_matrix(char **matrix, char *colour)
 	int len = ft_arrlen(matrix);
 	ft_printf("-------------\n");
 	for (int j = 0; j < len + 1; j++) 
- 	   printf("matrix[%d]: %s\n", j, matrix[j]);
+ 	   printf("matrix[%d]:	\'%s\'\n", j, matrix[j]);
 	ft_printf("-------------\n");
 	ft_printf("%s", END);
 
