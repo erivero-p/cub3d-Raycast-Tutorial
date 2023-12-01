@@ -1,15 +1,15 @@
 #include "../../inc/cub3D.h"
 
-int	ft_texture_check(t_scene *scene)
+static int	ft_texture_check(t_scene *scene)
 {
 	if (ft_check_ext(scene->no_path, ".png") == -1)
-		return (ft_error(EXT_PNG, NULL));
+		return (-1);
 	if (ft_check_ext(scene->so_path, ".png") == -1)
-		return (ft_error(EXT_PNG, NULL));
+		return (-1);
 	if (ft_check_ext(scene->we_path, ".png") == -1)
-		return (ft_error(EXT_PNG, NULL));
+		return (-1);
 	if (ft_check_ext(scene->ea_path, ".png") == -1)
-		return (ft_error(EXT_PNG, NULL));
+		return (-1);
 	return (0);
 }
 
@@ -34,16 +34,35 @@ static int	ph_atoi(char *str)
 	return (num);
 
 }
-
-int	ft_rgbcheck(char *color)
+static int	ft_char_counter(char *str, char c)
 {
-	int		len;
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int	ft_color_check(char *color)
+{
+	int		i;
+	int		cont;
 	int		ret;
 	char	**rgb;
 
 	ret = 0;
+	i = -1;
+
+	if (ft_char_counter(color, ',') > 2)
+		return (-1);
 	rgb = ft_split(color, ',');
-	len =  ft_arrlen(rgb);
 	if (ft_arrlen(rgb) != 3)
 		ret = -1;
 	if (ph_atoi(rgb[0]) < 0 || ph_atoi(rgb[0]) > 255)
@@ -52,24 +71,21 @@ int	ft_rgbcheck(char *color)
 		ret = -1;
 	if (ph_atoi(rgb[2]) < 0 || ph_atoi(rgb[2]) > 255)
 		ret = -1;
-
 	ft_free_double_pointer(rgb);
 //	ft_printf("ret is: %i", ret);
 	return (ret);
 }
-int	ft_color_check(t_scene *scene)
-{
-	if (ft_rgbcheck(scene->c_color) == -1)
-		return (ft_error(COLOR, NULL));
-	if (ft_rgbcheck(scene->f_color) == -1)
-		return (ft_error(COLOR, NULL));
-	return (0);
-}
 
 int	ft_scene_check(t_scene *scene)
 {
-	if (ft_texture_check(scene) == -1 || ft_color_check(scene))
-//		|| ft_char_mapcheck(scene->map) == -1 || ft_wall_check(scene->map) == -1)
+	ft_print_scene(scene, DEBUG_COLOR);
+	if (ft_texture_check(scene) == -1)
+		return (ft_error(EXT_PNG, NULL));
+	if (ft_color_check(scene->f_color)  == -1 || ft_color_check(scene->c_color) == -1)
+		return (ft_error(COLOR, NULL));
+	if (ft_char_mapcheck(scene->map) == -1)
 		return (-1);
+	if (ft_wall_check(scene->map) == -1)
+		return (ft_error(WALL, NULL));
 	return (0);
 }

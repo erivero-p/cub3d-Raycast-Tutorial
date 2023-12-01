@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:33:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/30 11:43:54 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:33:13 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void				ft_list_remove_if(t_list **begin, void *d_r, int (*cmp)());
 //arrays
 void				ft_free_double_pointer(char **ptr);
 int					ft_arrlen(char **arr);
+char 				**ft_subarr(char **arr, int start, int len);
 
 //bits
 void				print_bits(unsigned char octet);

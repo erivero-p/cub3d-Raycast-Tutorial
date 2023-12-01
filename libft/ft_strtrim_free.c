@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 17:20:22 by ealgar-c          #+#    #+#             */
-/*   Updated: 2023/11/23 14:53:37 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:12:59 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ char	*ft_strtrim_free(char *s1, char const *set)
 	i = 0;
 	ini = initial_pos(s1, set);
 	fin = final_pos(s1, set);
-	ret_str = malloc((fin - ini + 1) * sizeof(char));
-	if (ret_str == NULL)
+	ret_str = ft_calloc((fin - ini + 1), sizeof(char));
+	if (!ret_str)
 		return (NULL);
 	while (ini < fin)
 	{

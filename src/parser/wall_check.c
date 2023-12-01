@@ -28,19 +28,18 @@ int	ft_wall_check(char **map)
 
 	y = 0;
 //	ft_printf("%sft_wall_check map is: \n----------------\n", DEBUG_COLOUR);
-	ft_print_matrix(map, 1);
-	ft_printf("----------------\n%s", END);
+/* 	ft_print_matrix(map, 1);
+	ft_printf("----------------\n%s", END); */
 	len = ft_arrlen(map);
 	while (map[y])
 	{
 		x = -1;
-//		printf("%sft_wall_check is checking: map[%i] %s\n%s",GREEN, y, map[y], END);
-		while (map[y][x] && map[y][++x])
+		while (map[y][++x])
 		{
 			while (map[y][x] > 0 && map[y][x] <= 32)
 				x++;
 			if (map[y][x] != 0 && ft_is_wall(map, x, y, len) && map[y][x] != '1')
-				return (ft_error(WALL, NULL));
+				return (-1);
 		}
 		y++;
 	}
