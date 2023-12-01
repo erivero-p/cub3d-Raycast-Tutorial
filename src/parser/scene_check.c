@@ -85,7 +85,7 @@ int	ft_scene_check(t_scene *scene)
 		return (ft_error(COLOR, NULL));
 	if (ft_char_mapcheck(scene->map) == -1)
 		return (-1);
-	if (ft_wall_check(scene->map) == -1)
+	if (ft_wall_check(scene->map, scene) == -1)
 		return (ft_error(WALL, NULL));
 	return (0);
 }

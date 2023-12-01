@@ -11,7 +11,6 @@ int	ft_char_check(char c)
 		ret = 1;
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		ret = 42;
-	ft_printf("char_check checks: %c, ret is: %i\n", c, ret);
 	return (ret);
 }
 
