@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 09:31:28 by erivero-          #+#    #+#             */
-/*   Updated: 2023/11/28 10:36:11 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:32:47 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@ char **ft_subarr(char **arr, int start, int len)
 	i = 0;
 	if (len > ft_arrlen(arr))
 		return (NULL);
-	ft_printf("start: %d, len: %d\n", start, len);
-	cpy = malloc(sizeof(char **) * (len + 1));
+	cpy = (char **)ft_calloc(len + 1, sizeof(char *));
 	if (!cpy)
 		return (NULL);
 	while (arr[start + i] && i < len)
 	{
-		cpy[i] = ft_strdup(arr[start + i]);
+		cpy[i] = ft_strtrim(arr[start + i], "\n");
 		i++;
 	}
-	cpy[i] = 0;
+	cpy[i] = NULL;
 	return (cpy);
 }

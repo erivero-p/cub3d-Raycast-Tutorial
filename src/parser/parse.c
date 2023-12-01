@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/30 17:58:54 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:35:52 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,15 @@ void	ft_read_file(t_scene *scene, int fd, int len, char *file)
 	line = get_next_line(fd);
 	while (line)
 	{
+//		scene->file[i] = ft_strtrim(line, "\n");
+//		ft_printf("ft_read_file saved: \'%s\'\n", scene->file[i]);
 		scene->file[i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
 	close(fd);
+//	ft_print_matrix(scene->file, DEBUG_COLOR);
 	free(line);
 }
 
