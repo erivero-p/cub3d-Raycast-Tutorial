@@ -40,7 +40,7 @@ char **ft_subarr(char **arr, int start, int len)
 	return (cpy);
 }
 
-void	ft_rectang_map(char **matrix, int j, int len)
+/* void	ft_rectang_map(char **matrix, int j, int len)
 {
 
-}
+} */
