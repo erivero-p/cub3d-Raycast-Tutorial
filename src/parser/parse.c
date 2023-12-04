@@ -6,68 +6,47 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/30 12:01:00 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/01 15:29:55 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-int	ft_len_file(int fd)
+void	ft_init_scene(t_scene *scene)
 {
-	char	*line;
-	int		len;
-
-	len = 0;
-	line = get_next_line(fd);
-	if (!line)
-		ft_error(EMPTY, NULL);
-	while (line)
-	{
-		len++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (len);
+	scene->no_path = NULL;
+	scene->so_path = NULL;
+	scene->we_path = NULL;
+	scene->ea_path = NULL;
+	scene->f_color = NULL;
+	scene->c_color = NULL;
+	scene->file = NULL;
+	scene->map = NULL;
+	scene->aux_map = NULL;
+	scene->len_x = -1;
+	scene->len_y = -1;
+/* 	scene->limit = -1;
+	scene->w = -1;
+	scene->h = -1; */
 }
 
-void	ft_read_file(t_game *info, int fd, int len, char *file)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	info->scene->file = (char **)ft_calloc(sizeof(char *), len + 1);
-	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		info->scene->file[i] = ft_strdup(line);
-		free(line);
-		line = get_next_line(fd);
-		i++;
-	}
-	close(fd);
-	free(line);
-}
-
-int	ft_parse(t_game *info, int fd, char *file)
+int	ft_parse(t_scene *scene, int fd, char *file)
 {
 	int	len;
 
-	ft_init_map_struct(info);
+	ft_init_scene(scene);
 	len = ft_len_file(fd);
 	if (len <= 0)
 		return (-1);
-	ft_read_file(info, fd, len, file);
-	if (ft_parse_file(info->scene) == -1)
-		return (ft_free_double_pointer(info->scene->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
-	if (ft_scene_check(info->scene) == -1)
-		return (ft_free_double_pointer(info->scene->file), -1);
-	return (ft_free_double_pointer(info->scene->file), 0);
+	ft_read_file(scene, fd, len, file);
+	if (ft_parse_file(scene) == -1)
+		return (ft_free_double_pointer(scene->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
+	if (ft_scene_check(scene) == -1)
+		return (ft_free_double_pointer(scene->file), -1);
+	return (ft_free_double_pointer(scene->file), 0);
 }
-//	ft_print_matrix(info->scene->file, 1);
-//	ft_print_matrix(info->scene->map, 2);
+//	ft_print_matrix(scene->file, 1);
+//	ft_print_matrix(scene->map, 2);
 
 int	ft_arg_check(int ac, char **av)
 {

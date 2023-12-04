@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/30 11:16:41 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:56:18 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,14 @@ int	main(int ac, char **av)
 	atexit(ft_leaks);
 	int	fd;
 	t_game	info;
+	t_scene	scene;
 
 	fd = ft_arg_check(ac, av);
 	if (fd < 0)
 		return (-1);
-	if (ft_parse(&info, fd, av[1]) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
+	if (ft_parse(&scene, fd, av[1]) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
 	{
+		info.scene = &scene;
 		ft_set_window(&info); // le tendré que meter av[1]??
 	}
 	ft_free_all(&info);

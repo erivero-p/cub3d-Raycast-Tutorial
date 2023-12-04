@@ -21,22 +21,22 @@ int	ft_char_mapcheck(char **map)
 	int	ret;
 	int	count;
 
-	i = -1;
 	j = -1;
 	ret = 0;
 	count = 0;
 	while (map[++j])
 	{
+		i = -1;
 		while (map[j][++i])
 		{
 			ret = ft_char_check(map[j][i]);
-			if (!ret ) //si hay un caracter inválido o más de un personaje
+			if (!ret ) //si hay un caracter inválido
 				return (ft_error(CHAR, NULL));
-			if (count > 1)
-				return (ft_error(PLAYER, NULL));
 			if (ret == 42)
 				count++;
 		}
 	}
+	if (count != 1) //si hay más de un personaje o ninguno
+		return (ft_error(PLAYER, NULL));
 	return (0); //0 si todo fufa
 }
