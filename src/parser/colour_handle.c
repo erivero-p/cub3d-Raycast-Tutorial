@@ -37,14 +37,16 @@ static int	ph_atoi(char *str)
 	return (num);
 
 }
+/* 
+	concatena los valores rgba desplazándolos a la izquierda y combinándolos con or
+	el alfa en este caso es fijo 0xFF
+ */
 
-static int	ft_rgb_to_hex(int r, int g, int b)
+int ft_rgb_to_hex(int r, int g, int b)
 {
-	return ((r << 16) | (g << 8) | b);
+	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }
-/* toma los 3 enteros y los va desplazando a la izquierda para que el rojo ocupe la primera
-posición, seguido del verde y del azul, y combinándolos con or en principio las funciones
-de mlx deberían ser capaces de leerlo tal cual (o eso me gusta pensar xd)*/
+
 
 
 int	ft_get_colour(char  **rgb)
@@ -60,6 +62,8 @@ int	ft_get_colour(char  **rgb)
 	if (r < 0 || r > 255 || g < 0 || g > 255
 		|| b < 0 || b > 255)
 		return (-1);
+	unsigned int color = ft_rgb_to_hex(220, 100, 0);
+	printf("color is: %08x\n", color);
 	return (ft_rgb_to_hex(r, g, b));
 }
 int	ft_color_check(char *color)

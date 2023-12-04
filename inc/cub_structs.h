@@ -45,7 +45,8 @@ typedef struct s_scene
 	char		*f_color;
 	char		*c_color;
 	int			floor; //color en hexadecimal
-	int			ceiling; //color en hexadecimal
+	int
+				ceiling; //color en hexadecimal
 	int			counter;
 	int			len_x;
 	int			len_y;
