@@ -62,8 +62,6 @@ int	ft_get_colour(char  **rgb)
 	if (r < 0 || r > 255 || g < 0 || g > 255
 		|| b < 0 || b > 255)
 		return (-1);
-	unsigned int color = ft_rgb_to_hex(220, 100, 0);
-	printf("color is: %08x\n", color);
 	return (ft_rgb_to_hex(r, g, b));
 }
 int	ft_color_check(char *color)
