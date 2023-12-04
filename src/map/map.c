@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/04 11:37:45 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:10:52 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_init_map(t_game *info)
 {
 	info->scene->tile = 15.0f; //de tile para minimap
 	info->scene->mini_y = info->scene->len_y * info->scene->tile;  //anchura total minimapa con tiles de 15
-	info->scene->mini_x = (info->scene->len_x - 1) * info->scene->tile;  //altura total minimap con tiles de 15; le restamos la longuitud de un tile para que no saque la ultima columnta (por la mierda de siempre de que los arrays empeizan en 0)
+	info->scene->mini_x = info->scene->len_x * info->scene->tile;  //altura total minimap con tiles de 15; le restamos la longuitud de un tile para que no saque la ultima columnta (por la mierda de siempre de que los arrays empeizan en 0)
 
 	printf("%sft_init_map: tile: %f\n", GOOD, info->scene->tile);
 	printf("ft_init_map: len_y: %i\n", info->scene->len_y);

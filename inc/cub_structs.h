@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/04 10:20:18 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:27:34 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,21 @@ typedef struct s_scene
 	float		mini_y;
 }	t_scene;
 
+typedef struct s_player
+{
+	t_coord		*pos_map;
+	mlx_image_t	*player_img; //->para igualar a s_game->mlx 
+	mlx_t		*mlx; //->para igualar a s_game->mlx
+	int			color;
+}	t_player;
+
 typedef struct s_game
 {
 	mlx_t		*mlx;
 	t_scene		*scene;
 	t_img		*imgs;
 	mlx_image_t	*canvas; //esta mierda es solo para testear
+	t_player	*player;
 }	t_game;
 
 typedef enum e_errors
