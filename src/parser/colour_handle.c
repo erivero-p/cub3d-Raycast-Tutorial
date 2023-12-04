@@ -47,7 +47,7 @@ posición, seguido del verde y del azul, y combinándolos con or en principio la
 de mlx deberían ser capaces de leerlo tal cual (o eso me gusta pensar xd)*/
 
 
-int	ft_get_colour(int *rgb)
+int	ft_get_colour(char  **rgb)
 {
 	int	r;
 	int	g;
