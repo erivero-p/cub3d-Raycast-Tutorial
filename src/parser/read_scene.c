@@ -44,10 +44,10 @@ int	ft_get_max_len(char **matrix, int j)
 	while (matrix[j])
 	{
 		len = ft_strlen(matrix[j]);
-		if (len > max)
+		if (len > max && matrix[j][len - 1] == 10)
+			max = len - 1;
+		else if (len > max)
 			max = len;
-		if (matrix[j][len - 1] == 10)
-			max--;
 		j++;
 	}
 	ft_printf("max len is: %i", max);
