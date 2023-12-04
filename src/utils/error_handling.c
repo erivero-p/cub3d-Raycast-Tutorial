@@ -33,7 +33,7 @@ void	ft_parse_errors(int	err, char *str)
 	if (err == EMPTY)
 		ft_printf("%sError\nInvalid file, empty map%s\n", WRONG, END);
 	if (err == PLAYER)
-		ft_printf("%sError\nThe map more than one player position%s\n", WRONG, END);
+		ft_printf("%sError\nThe map must have one player position%s\n", WRONG, END);
 	if (err == COLOR)
 		ft_printf("%sError\nIncorrect colour format%s\n", WRONG, END);
 }

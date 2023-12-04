@@ -6,8 +6,8 @@ void	ft_clean_map(t_game	*info)
 	{
 		if (info->scene->map)
 			ft_free_double_pointer(info->scene->map);
-		if (info->scene->aux_map)
-			ft_free_double_pointer(info->scene->aux_map);
+/* 		if (info->scene->aux_map)
+			ft_free_double_pointer(info->scene->aux_map); */
 		if (info->scene->no_path)
 			free(info->scene->no_path);
 		if (info->scene->so_path)
@@ -20,6 +20,5 @@ void	ft_clean_map(t_game	*info)
 			free(info->scene->f_color);
 		if (info->scene->c_color)
 			free(info->scene->c_color);
-		free(info->scene);
 	}
 }

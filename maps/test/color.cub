@@ -1,0 +1,11 @@
+NO /Users/marirodr/cursus/cub3d/textures/Brick_02-256x256.png
+SO /Users/marirodr/cursus/cub3d/textures/Metal_15-256x256.png
+WE /Users/marirodr/cursus/cub3d/textures/Tile_08-256x256.png
+EA /Users/marirodr/cursus/cub3d/textures/Wood_07-256x256.png
+
+F 220,100,700,
+C 225,30,0
+
+111111
+100001
+111111

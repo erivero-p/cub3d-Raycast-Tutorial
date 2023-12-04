@@ -6,7 +6,7 @@ char	*ft_cpy_info(char *line)
 		line++;
 	while (*line > 0 && *line < 33) //salto los espacios tras el nombre
 		line++;
-	return (ft_strdup(line));
+	return (ft_strtrim(line, "\n"));
 }
 
 int	ft_save_info(t_scene *scene, char *line)
@@ -34,25 +34,18 @@ int	ft_save_info(t_scene *scene, char *line)
 		return (free(tmp), ft_error(FORMAT, "Each parameter can't appear more than once"));
 	return (free(tmp), 0);
 }
-
-char **ft_subarr(char **arr, int start, int len)
+int	ft_get_max_len(char **matrix, int j)
 {
-	char	**cpy;
-	int		i;
+	int	max;
 
-	i = 0;
-	if (len > ft_arrlen(arr))
-		return (NULL);
-	cpy = (char **)ft_calloc(len + 1, sizeof(char *));
-	if (!cpy)
-		return (NULL);
-	while (arr[start + i] && i < len)
+	max = 0;
+	while (matrix[j])
 	{
-		cpy[i] = ft_strdup(arr[start + i]);
-		i++;
+		if (ft_strlen(matrix[j]) > max)
+			max = ft_strlen(matrix[j]);
+		j++;
 	}
-	cpy[i] = NULL;
-	return (cpy);
+	return (max);
 }
 
 int ft_get_map(char **file, t_scene *scene, int j)
@@ -66,8 +59,9 @@ int ft_get_map(char **file, t_scene *scene, int j)
 	len = 0;
 	while(file[j + len])
 		len++;
-	ft_printf("len is: %i\n", len);
-	scene->map = ft_subarr(file, j, len);
+	scene->len_y = len;
+	scene->len_x = ft_get_max_len(file, j) - 1; // -1 porque cuenta el maxlen con el \n
+	scene->map = ft_get_spaced_map(file, j, len, scene->len_x);
 	return (0);
 }
 
