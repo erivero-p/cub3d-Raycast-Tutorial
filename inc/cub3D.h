@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/01 15:50:21 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:26:23 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ char **ft_get_spaced_map(char **arr, int start, int len, int max);
 
 //scene_check.c
 int		ft_scene_check(t_scene *scene);
+//colour_handle.c
+int		ft_color_check(char *color);
+
 
 //char_check.c
 int		ft_char_check(char c);
