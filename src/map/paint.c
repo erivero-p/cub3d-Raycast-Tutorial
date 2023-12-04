@@ -104,7 +104,9 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 		}
 		y++;
 	}
-	// ----ESTE BLOQUE DE CODIGO ES PARA SACAR LA ULTIMA LINEA LIMPIA
+}
+
+	// ----ESTE BLOQUE DE CODIGO ES PARA SACAR LA ULTIMA LINEA LIMPIA -> ya no es necesario pero lo dejamos por si aca
 	// ---PONER ESTO MAS COOERENTE -> 1 BUCLE: h -> 2 BUCLE: w
 	// printf("en ft_paint_minimap: y * scene->tile: %f / x * scene->tile: %f\n", y * scene->tile, x * scene->tile);
 	// int w = (x * scene->tile) - 1;
@@ -117,7 +119,6 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 	// 	while (++h < scene->mini_y)
 	// 		mlx_put_pixel(info->scene->mini, w, h, PINK); //el color esta mal puesto a proposito para acordarme que este bloque de codigo puede dar problemas
 	// }
-}
 
 int	ft_get_color(char **map, int y, int x)
 {
@@ -139,17 +140,14 @@ a abajo. pasamos tanto la posicion a pintar del mapa (y, x) por las dimensiones
 del tile y establecemos como los maximos las dimensiones totales de mapa por
 las dimensiones del tile. rellena celda a celda.
 de 0 a 15 -> 15 a 30 -> 30 a 45 ->etc.
-el eje horizontal si se va resetando pero el vertical tira palante como las gatas*/
+el eje horizontal si se va resetando pero el vertical tira palante como las
+gatas*/
 
 void	ft_fill_tile(t_game *game, int x, int y, int color)
 {
 	int	tmp;
 
 	tmp = x;
-	//printf("ft_fill_tile: len_y: %i / len_x: %i\n", game->scene->len_y, game->scene->len_x);
-	//printf("ft_fill_tile: y: %i / x: %i / scene->tile: %f\n", y, x, game->scene->tile);
-	// printf("game->scene->tile * game->scene->len_x: %f\n", game->scene->tile * game->scene->len_x);
-	// printf("game->scene->mini_x: %f / game->scene->mini_y: %f\n", game->scene->mini_x, game->scene->mini_y);
 	while (y < game->scene->mini_y)
 	{
 		x = tmp;
@@ -161,3 +159,8 @@ void	ft_fill_tile(t_game *game, int x, int y, int color)
 		y++;
 	}
 }
+
+	//printf("ft_fill_tile: len_y: %i / len_x: %i\n", game->scene->len_y, game->scene->len_x);
+	//printf("ft_fill_tile: y: %i / x: %i / scene->tile: %f\n", y, x, game->scene->tile);
+	// printf("game->scene->tile * game->scene->len_x: %f\n", game->scene->tile * game->scene->len_x);
+	// printf("game->scene->mini_x: %f / game->scene->mini_y: %f\n", game->scene->mini_x, game->scene->mini_y);

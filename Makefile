@@ -6,7 +6,7 @@
 #    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/12/04 10:27:06 by erivero-         ###   ########.fr        #
+#    Updated: 2023/12/04 12:54:53 by marirodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ UTILS		=	clean_handling error_handling debug
 
 SETTING		=	window controls
 
-MAP			=	map paint
+MAP			=	map paint player
 
 SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
