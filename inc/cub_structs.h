@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/11/30 14:39:13 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:20:18 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_scene
 	char		*ea_path;
 	char		*f_color;
 	char		*c_color;
+	int			floor; //color en hexadecimal
+	int			ceiling; //color en hexadecimal
 	int			counter;
 	int			len_x;
 	int			len_y;

@@ -6,7 +6,7 @@
 #    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/12/01 15:34:22 by erivero-         ###   ########.fr        #
+#    Updated: 2023/12/04 10:27:06 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJ_DIR		=	objs/
 
 #direccion de carpetas dentro de src/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
-PARSE		=	parse read_file format read_scene char_check wall_check scene_check get_map
+PARSE		=	parse read_file format read_scene char_check wall_check scene_check get_map colour_handle
 
 UTILS		=	clean_handling error_handling debug
 
