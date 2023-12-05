@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/04 14:02:47 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:20:33 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,6 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 	}
 }
 
-	// ----ESTE BLOQUE DE CODIGO ES PARA SACAR LA ULTIMA LINEA LIMPIA -> ya no es necesario pero lo dejamos por si aca
-	// ---PONER ESTO MAS COOERENTE -> 1 BUCLE: h -> 2 BUCLE: w
-	// printf("en ft_paint_minimap: y * scene->tile: %f / x * scene->tile: %f\n", y * scene->tile, x * scene->tile);
-	// int w = (x * scene->tile) - 1;
-	// int h = (y * scene->tile) - 1 - scene->tile;
-	// int tmp = (y * scene->tile) - 1 - scene->tile;
-	// printf("en ft_paint_minimap: w: %i / h: %d / mini_y: %f / mini_x: %f\n", w, h, scene->mini_y, scene->mini_x);
-	// while (++w < scene->mini_x)
-	// {
-	// 	h = tmp;
-	// 	while (++h < scene->mini_y)
-	// 		mlx_put_pixel(info->scene->mini, w, h, PINK); //el color esta mal puesto a proposito para acordarme que este bloque de codigo puede dar problemas
-	// }
 
 int	ft_get_color(char **map, int y, int x)
 {
@@ -128,7 +115,7 @@ int	ft_get_color(char **map, int y, int x)
 	else if (map[y][x] == '0')
 	color = WHITE;
 	else if (ft_strchr("NSEW", map[y][x])) //esto probablemente lo voy a tener que rendear despues del mapa y aparte?? o no porque son pixeles???
-		color = RED;
+		color = GREEN;
 	else
 		color = GREEN; //este color es de pruebas en verdad no cuenta, mas bien que solo hace falta si no pintamos un background al minimapa
 	return (color);

@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/04 13:15:22 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:11:08 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ void	ft_resize(void *param);
 
 //controls.c
 void	ft_controls(mlx_key_data_t keydata, void *param);
+void	ft_up(t_game *game);
+void	ft_down(t_game *game);
+void	ft_left(t_game *game);
+void	ft_right(t_game *game);
 
 /*							MAP							*/
 //map.c
