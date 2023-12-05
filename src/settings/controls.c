@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 11:59:59 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:22:28 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,23 @@ void	ft_controls(mlx_key_data_t keydata, void *param)
 void	ft_up(t_game *game)
 {
 	ft_printf("ESTOY PULSANDO W\n"); //image->instances[0].y -= 5;
-	game->test->instances[0].y -= 5;
+	game->player->player_img->instances[0].y -= 5;
 }
 
 void	ft_down(t_game *game)
 {
 	ft_printf("ESTOY PULSANDO S\n");
-	game->test->instances[0].y += 5;
+	game->player->player_img->instances[0].y += 5;
 }
 
 void	ft_left(t_game *game)
 {
 	ft_printf("ESTOY PULSANDO A\n");
-	game->test->instances[0].x -= 5;
+	game->player->player_img->instances[0].x -= 5;
 }
 
 void	ft_right(t_game *game)
 {
 	ft_printf("ESTOY PULSANDO D\n");
-	game->test->instances[0].x += 5;
+	game->player->player_img->instances[0].x += 5;
 }

@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 13:20:33 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:29:56 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,32 +45,6 @@ void	ft_paint_background(t_game *game, int h, int w)
 	}
 }
 
-/*pintamos el "canvas" del minimapa. no se si esto en verdad esta funcion en
-verdad puedo fusionarla con ft_paint_minimap()?*/
-
-void	ft_mini_background(t_game *game)
-{
-	int	x;
-	int	y;
-
-	game->scene->mini = mlx_new_image(game->mlx, game->scene->mini_x, game->scene->mini_y); //limites de la imagen
-	if (!game->scene->mini)
-		ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(game->mlx, game->scene->mini, 30, 30) < 0) // en que coordenadas carga la imagen
-		ft_error(IMAGE, NULL);
-	y = 0;
-	while (y < game->scene->mini_y)
-	{
-		x = 0;
-		while (x < game->scene->mini_x)
-		{
-			mlx_put_pixel(game->scene->mini, x, y, WHITE); //x e y no se pueden pasar de los limites establecidos para la imagen
-			x++;
-		}
-		y++;
-	}
-}
-
 /*pintamos el minimapa en la ventana, establleiendo previamente las dimensiones
 del tile (celda) que va a ocupar en la ventana cada caracter representado.
 tal y como yo lo he hecho es: pinto un solo pixel del tile -esquina superior
@@ -81,15 +55,17 @@ por tanto en la funcion ft_fill_tile le paso el valor en coordenadas del mapa
 en la que nos encontramos por las dimensiones totales de los tiles, para asi
 en un bucle ir pintando tile a tile el minimapa.*/
 
-			// int t = y * scene->tile;
-			// int z = x * scene->tile;
-
 void	ft_paint_minimap(t_game *info, t_scene *scene)
 {
 	int	color;
 	int	x;
 	int	y;
 
+	info->scene->mini = mlx_new_image(info->mlx, info->scene->mini_x, info->scene->mini_y); //limites de la imagen
+	if (!info->scene->mini)
+		ft_error(IMAGE, NULL);
+	if (mlx_image_to_window(info->mlx, info->scene->mini, 30, 30) < 0) // en que coordenadas carga la imagen
+		ft_error(IMAGE, NULL);
 	y = 0;
 	while (scene->map[y])
 	{
@@ -113,8 +89,8 @@ int	ft_get_color(char **map, int y, int x)
 	if (map[y][x] == '1')
 		color = BLACK;
 	else if (map[y][x] == '0')
-	color = WHITE;
-	else if (ft_strchr("NSEW", map[y][x])) //esto probablemente lo voy a tener que rendear despues del mapa y aparte?? o no porque son pixeles???
+		color = WHITE;
+	else if (ft_strchr("NSEW", map[y][x])) //esto lo tengo que unir al 0 en verdad, pero se queda ahora para saber que espauneamos donde toca
 		color = GREEN;
 	else
 		color = GREEN; //este color es de pruebas en verdad no cuenta, mas bien que solo hace falta si no pintamos un background al minimapa
@@ -150,3 +126,28 @@ void	ft_fill_tile(t_game *game, int x, int y, int color)
 	//printf("ft_fill_tile: y: %i / x: %i / scene->tile: %f\n", y, x, game->scene->tile);
 	// printf("game->scene->tile * game->scene->len_x: %f\n", game->scene->tile * game->scene->len_x);
 	// printf("game->scene->mini_x: %f / game->scene->mini_y: %f\n", game->scene->mini_x, game->scene->mini_y);
+
+void	ft_render_player(t_game *game, t_scene *scene)
+{
+	t_coord	inital;
+	int		y;
+	int		x;
+
+	inital = ft_get_player_pos(game);
+	y = 0;
+	scene->player = mlx_new_image(game->mlx, scene->tile, scene->tile);
+	if (!scene->player)
+		ft_error(IMAGE, NULL);
+	if (mlx_image_to_window(game->mlx, scene->player, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) == -1)
+		ft_error(IMAGE, NULL);
+	while (y < scene->tile)
+	{
+		x = 0;
+		while (x < scene->tile)
+		{
+			mlx_put_pixel(scene->player, x, y, RED);
+			x++;
+		}
+		y++;
+	}
+}

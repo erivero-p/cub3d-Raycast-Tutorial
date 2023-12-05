@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 13:11:08 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:15:43 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ void	ft_paint_minimap(t_game *info, t_scene *scene);
 
 //paint.c
 void	ft_paint_background(t_game *game, int h, int w);
-void	ft_mini_background(t_game *game);
 void	ft_paint_minimap(t_game *info, t_scene *scene);
 int     ft_get_color(char **map, int x, int y);
 void	ft_fill_tile(t_game *game, int y, int x, int color);
+void	ft_render_player(t_game *game, t_scene *scene);
 
 //player.c
 void	ft_init_player(t_player *player, t_game *game);

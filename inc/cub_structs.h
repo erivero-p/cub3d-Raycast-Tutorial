@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 12:13:00 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:23:27 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ typedef struct s_game
 	t_scene		*scene;
 	t_img		*imgs;
 	mlx_image_t	*canvas;
-	mlx_image_t	*test; //esta mierda es solo para testear
 	t_player	*player;
 }	t_game;
 

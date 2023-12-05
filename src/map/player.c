@@ -6,22 +6,18 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 11:52:56 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:27:10 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
-
-	//player->player_img = game->canvas; //se mueve el canvas
-	//player->player_img = game->scene->img; //se mueve el canvas
-	//player->player_img = game->scene->mini; //se mueve el minimapa
 
 void	ft_init_player(t_player *player, t_game *game)
 {
 	game->player->pos_map = malloc(sizeof(t_coord));
 	*player->pos_map = ft_get_player_pos(game);
 	player->mlx = game->mlx;
-	player->player_img = game->scene->mini;
+	player->player_img = game->scene->player;
 	player->color = RED;
 	player->mov_speed = 3 * game->mlx->delta_time; //pixeles
 	player->rot_speed = 1.5 * game->mlx->delta_time; // 3 + (math.pi / 180) -> grados
