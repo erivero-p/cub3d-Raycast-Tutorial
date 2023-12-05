@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/04 14:10:52 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:15:34 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,26 @@ void	ft_init_map(t_game *info)
 	printf("ft_init_map: len_y: %i\n", info->scene->len_y);
 	printf("ft_init_map: len_x: %i%s\n", info->scene->len_x, END);
 	ft_paint_background(info, HEIGHT, WIDTH);
-	ft_mini_background(info);
+	//ft_mini_background(info);
 	ft_paint_minimap(info, info->scene);
+	ft_render_player(info, info->scene);
 	//no sé exactamente cómo pero tenemos que borrar el background y volver a pintarlo (todas la imagenes en general), cada vez que se haga un resize
 }
+	//ft_fill_tile(info, 0, 0, RED, info->test);
+	// t_coord inital = ft_get_player_pos(info);
+	// printf("ft_init_map: inital.y: %i / inital.x: %i\n", inital.y, inital.x);
+	// printf("ft_init_map: inital.y + 15: %i / inital.x + 15: %i\n", inital.y + 15, inital.x + 15);
+	// int tmp = inital.x;
+	// while (inital.y < (inital.y + 15))
+	// {
+	// 	inital.x = tmp;
+	// 	while (inital.x < (inital.x + 15)) //(info->scene->tile * info->scene->len_y)
+	// 	{
+	// 		mlx_put_pixel(info->test, inital.x, inital.y, RED);
+	// 		inital.x++;
+	// 	}
+	// 	inital.y++;
+	// }
 	//mierdas de debugeo
 	// printf("ft_init_map: mini_y: %f\n", info->scene->mini_y);
 	// printf("ft_init_map: mini_x: %f\n", info->scene->mini_x);

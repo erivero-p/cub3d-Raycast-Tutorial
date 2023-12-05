@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 10:34:02 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:15:43 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ void	ft_resize(void *param);
 
 //controls.c
 void	ft_controls(mlx_key_data_t keydata, void *param);
+void	ft_up(t_game *game);
+void	ft_down(t_game *game);
+void	ft_left(t_game *game);
+void	ft_right(t_game *game);
 
 /*							MAP							*/
 //map.c
@@ -86,10 +90,10 @@ void	ft_paint_minimap(t_game *info, t_scene *scene);
 
 //paint.c
 void	ft_paint_background(t_game *game, int h, int w);
-void	ft_mini_background(t_game *game);
 void	ft_paint_minimap(t_game *info, t_scene *scene);
 int     ft_get_color(char **map, int x, int y);
 void	ft_fill_tile(t_game *game, int y, int x, int color);
+void	ft_render_player(t_game *game, t_scene *scene);
 
 //player.c
 void	ft_init_player(t_player *player, t_game *game);
