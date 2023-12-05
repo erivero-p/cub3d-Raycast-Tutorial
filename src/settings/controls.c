@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 14:22:28 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:15:30 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,46 @@ void	ft_controls(mlx_key_data_t keydata, void *param)
 
 void	ft_up(t_game *game)
 {
-	ft_printf("ESTOY PULSANDO W\n"); //image->instances[0].y -= 5;
-	game->player->player_img->instances[0].y -= 5;
+	printf("ESTOY PULSANDO W\n"); //image->instances[0].y -= 5;
+	if (game->player->player_img->instances[0].y - 5 == 25)
+	{
+		printf("NO PUEDES PASAR\n"); //image->instances[0].y -= 5;
+		return ;
+	}
+	//printf("INIT: player_img.intances.y: %i / player_img.intances.x: %i\n", game->player->player_img->instances[0].y, game->player->player_img->instances[0].x);
+	game->player->player_img->instances[0].y -= (5 * game->mlx->delta_time); //5 pixeles hacia arriba
+	//printf("player_img.intances.y: %i / player_img.intances.x: %i\n", game->player->player_img->instances[0].y, game->player->player_img->instances[0].x);
 }
 
 void	ft_down(t_game *game)
 {
-	ft_printf("ESTOY PULSANDO S\n");
+	if (game->player->player_img->instances[0].y + 5 == 230)
+	{
+		printf("NO PUEDES PASAR\n"); //image->instances[0].y -= 5;
+		return ;
+	}
+	printf("ESTOY PULSANDO S\n");
 	game->player->player_img->instances[0].y += 5;
 }
 
 void	ft_left(t_game *game)
 {
-	ft_printf("ESTOY PULSANDO A\n");
+	if (game->player->player_img->instances[0].x - 5 == 25)
+	{
+		printf("NO PUEDES PASAR\n"); //image->instances[0].y -= 5;
+		return ;
+	}
+	printf("ESTOY PULSANDO A\n");
 	game->player->player_img->instances[0].x -= 5;
 }
 
 void	ft_right(t_game *game)
 {
-	ft_printf("ESTOY PULSANDO D\n");
+	if (game->player->player_img->instances[0].x + 5 == 530)
+	{
+		printf("NO PUEDES PASAR\n"); //image->instances[0].y -= 5;
+		return ;
+	}
+	printf("ESTOY PULSANDO D\n");
 	game->player->player_img->instances[0].x += 5;
 }
