@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   paint.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
 /*   Updated: 2023/12/05 14:29:56 by marirodr         ###   ########.fr       */
@@ -25,10 +25,11 @@ void	ft_paint_background(t_game *game, int h, int w)
 	y = 0;
 	while (y < (h / 2))
 	{
+
 		x = 0;
 		while (x < w)
 		{
-			mlx_put_pixel(game->canvas, x, y, BLUE); //aqui tendria que ir c_color en hexadecimal
+			mlx_put_pixel(game->canvas, x, y, game->scene->ceiling); //aqui tendria que ir c_color en hexadecimal
 			x++;
 		}
 		y++;
@@ -38,7 +39,7 @@ void	ft_paint_background(t_game *game, int h, int w)
 		x = 0;
 		while (x < w)
 		{
-			mlx_put_pixel(game->canvas, x, y, PINK);  //aqui tendria que ir f_color en hexadecimal
+			mlx_put_pixel(game->canvas, x, y, game->scene->floor);  //aqui tendria que ir f_color en hexadecimal
 			x++;
 		}
 		y++;

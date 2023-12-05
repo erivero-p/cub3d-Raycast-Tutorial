@@ -37,14 +37,20 @@ int	ft_save_info(t_scene *scene, char *line)
 int	ft_get_max_len(char **matrix, int j)
 {
 	int	max;
+	int	len;
 
 	max = 0;
+	len = 0;
 	while (matrix[j])
 	{
-		if (ft_strlen(matrix[j]) > max)
-			max = ft_strlen(matrix[j]);
+		len = ft_strlen(matrix[j]);
+		if (len > max && matrix[j][len - 1] == 10)
+			max = len - 1;
+		else if (len > max)
+			max = len;
 		j++;
 	}
+	ft_printf("max len is: %i", max);
 	return (max);
 }
 
@@ -60,7 +66,7 @@ int ft_get_map(char **file, t_scene *scene, int j)
 	while(file[j + len])
 		len++;
 	scene->len_y = len;
-	scene->len_x = ft_get_max_len(file, j) - 1; // -1 porque cuenta el maxlen con el \n
+	scene->len_x = ft_get_max_len(file, j); // -1 porque cuenta el maxlen con el \n
 	scene->map = ft_get_spaced_map(file, j, len, scene->len_x);
 	return (0);
 }
