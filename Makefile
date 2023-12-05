@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/12/04 12:54:53 by marirodr         ###   ########.fr        #
+#    Updated: 2023/12/05 10:33:40 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJ_DIR		=	objs/
 
 #direccion de carpetas dentro de src/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
-PARSE		=	parse read_file format read_scene char_check wall_check scene_check get_map colour_handle
+PARSE		=	parse read_file read_scene char_check wall_check scene_check get_map colour_handle
 
 UTILS		=	clean_handling error_handling debug
 
