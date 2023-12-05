@@ -1,5 +1,22 @@
 #include "../../inc/cub3D.h"
 
+int	ft_check_ext(char *str, char *ext)
+{
+	int		i;
+	char	*tmp;
+
+	if (ft_strchr(str, '.') != 0)
+	{
+		i = ft_strlen(str);
+		while (str[i] != '.')
+			i--;
+		tmp = &str[i];
+		if (!ft_strncmp(tmp, ext, 4))
+			return (0);
+	}
+	return (-1);
+}
+
 static int	ft_texture_check(t_scene *scene)
 {
 	if (ft_check_ext(scene->no_path, ".png") == -1)

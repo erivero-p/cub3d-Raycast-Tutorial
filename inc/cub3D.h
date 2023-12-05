@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/04 13:15:22 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:34:02 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int		ft_parse_file(t_scene *scene);
 char **ft_get_spaced_map(char **arr, int start, int len, int max);
 
 //scene_check.c
+int		ft_check_ext(char *str, char *ext);
 int		ft_scene_check(t_scene *scene);
+
 //colour_handle.c
 int		ft_color_check(char *color);
 
@@ -48,9 +50,6 @@ int		ft_char_mapcheck(char **map);
 
 //ft_wall_checker.c
 int	ft_wall_check(char **map, t_scene *scene);
-
-//format.c
-int		ft_check_ext(char *str, char *ext);
 
 /*							UTILS							*/
 //error_handling.c							
