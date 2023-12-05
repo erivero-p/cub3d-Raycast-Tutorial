@@ -3,8 +3,8 @@ SO /Users/marirodr/cursus/cub3d/textures/Metal_15-256x256.png
 WE /Users/marirodr/cursus/cub3d/textures/Tile_08-256x256.png
 EA /Users/marirodr/cursus/cub3d/textures/Wood_07-256x256.png
 
-F 220,100,0
-C 225,30,0
+F 113,66,52
+C 100,149,237	
 
         1111111111111111111111111
         1000000000110000000000001
