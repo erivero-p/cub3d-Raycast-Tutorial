@@ -7,7 +7,7 @@ char	*ft_space_fill(char *str, int max)
 
 	spaced = ft_strtrim(str, "\n");
 	len = ft_strlen(spaced);
-	ft_printf("len: %i, max: %i\n", len, max);
+//	ft_printf("len: %i, max: %i\n", len, max);
 	while (len++ < max)
 		spaced = ft_strjoin_sl(spaced, " ");
 	return (spaced);
