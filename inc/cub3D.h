@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 14:15:43 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:57:21 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "cub_structs.h"
 # include <unistd.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <stdio.h>
 

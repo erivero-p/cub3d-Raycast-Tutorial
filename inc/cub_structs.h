@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 14:23:27 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:41:17 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,15 @@ typedef struct s_player
 	int			color;
 	double		mov_speed;
 	double		rot_speed;
+	float		angle; //(?)
 }	t_player;
+
+typedef	struct s_ray
+{
+	bool	col; //colisión
+	t_coord	dir; //dirección del rayo
+	t_coord	step; //tamaño de cada paso a aumentar en busca de una colisión
+}	t_ray;
 
 typedef struct s_game
 {
