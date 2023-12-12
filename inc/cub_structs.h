@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 14:23:27 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:38:21 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ typedef struct s_scene
 	char		*f_color;
 	char		*c_color;
 	int			floor; //color en hexadecimal
-	int
-				ceiling; //color en hexadecimal
+	int			ceiling; //color en hexadecimal
 	int			counter;
 	int			len_x;
 	int			len_y;
@@ -66,6 +65,7 @@ typedef struct s_player
 	int			color;
 	double		mov_speed;
 	double		rot_speed;
+	double		angle;
 }	t_player;
 
 typedef struct s_game
