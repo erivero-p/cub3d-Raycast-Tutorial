@@ -15,18 +15,22 @@ void 	ft_print_ray(t_ray *ray)
 
 void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 {
+	int	sn;
+
+	sn = 1;
 	ray->coll = false;
 //	ray->origin.x = info->player->pos_map->x;
 //	ray->origin.y = info->player->pos_map->y;
 	ray->origin.x = (double)3.5;
 	ray->origin.y = (double)2.5;
-	ft_printf("holi?\n");
-	ray->dir.x = cos(angle);
+	ray->dir.x = (double)cos(angle);
 	ray->dir.y = sin(angle);
 	ray->x_cross.x = 1 / tan(angle);
 	ray->x_cross.y = 1; // (alto del info->scene->tile)
 	ray->y_cross.x = 1; // (ancho del info->scene->tile)
 	ray->y_cross.y = 1 / tan(angle);
+	if (ray->dir.y < 0)
+		ray->x_cross.y *= -1;
 }
 bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info)
 {
@@ -37,6 +41,9 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info)
 	No sé si hace falta dividir pq no sé si a estas alturas la posición
 	está en coordenadas o en píxeles xd */
 	map = info->scene->map;
+	coord.x = (int)pos.x;
+	coord.y = (int)pos.y;
+//	printf("coord.y = %d, coord.x = %d\n", pos.y, pos.x);
 	if (ray->dir.x < 0) //si el coseno es negativo mira pa la izquierda
 		coord.x -= 1;
 	if(ray->dir.y > 0) //si el seno es negativo mira hacia arriba
@@ -57,8 +64,10 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 //el primer paso que es más chiquito:
 	pos.x += (step.x - step.x % 1);
 	pos.y += (step.y - step.y % 1);
+//	printf("%safter first step, pos.x: %d, pos.y: %d\n%s", WRONG, pos.x, pos.y, END);
 	while (1)
 	{
+		printf("position checked: pos.x (%d), pos.y(%d)\n", pos.x, pos.y);
 		ray->coll = ft_coll_checker(pos, ray, info);
 		if (ray->coll)
 			break ;
@@ -74,17 +83,16 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 
 double	ft_ray_caster(t_game *info)
 {
-	double	x_len;
-	double	y_len;
+	double	len;
 	t_ray	ray;
 
 //	ft_init_ray(&ray, info, info->player->angle);
-	ft_init_ray(&ray, info, 270 * M_PI / 180.0); //hard codeado, el pj supuestamente mira al norte (270º a radianes)
+	double	angle = 270;
+	ft_init_ray(&ray, info, angle * M_PI / 180.0); //hard codeado, el pj supuestamente mira al norte
 	ft_print_ray(&ray);
-	x_len = ft_cross_checker(&ray, ray.x_cross, info);
-	y_len = ft_cross_checker(&ray, ray.y_cross, info);
-	if (x_len < y_len)
-		return (x_len);
+	if (angle > 45 && angle < 135 || angle > 225 && angle < 315)
+		len = ft_cross_checker(&ray, ray.x_cross, info);
 	else
-		return (y_len);
+		len = ft_cross_checker(&ray, ray.y_cross, info);
+	return (len);
 }
