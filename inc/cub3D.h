@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/11 15:20:25 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:37:04 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int		ft_scene_check(t_scene *scene);
 //colour_handle.c
 int		ft_color_check(char *color);
 
-
 //char_check.c
 int		ft_char_check(char c);
 int		ft_char_mapcheck(char **map);
@@ -60,7 +59,6 @@ int		ft_error(int err, char *str);
 //clean_handling.c
 void	ft_clean_map(t_game	*info);
 
-
 //init.c
 void   ft_init_map_struct(t_game *info);
 
@@ -71,7 +69,6 @@ int     ft_error(int err, char *str);
 void	ft_print_scene(t_scene *scene, char *colour);
 void 	ft_print_matrix(char **matrix, char *colour);
 
-
 /*							SETTINGS							*/
 //window.c
 int	    ft_check_monitor(mlx_t *mlx);
@@ -79,10 +76,9 @@ void	ft_resize(void *param);
 
 //controls.c
 void	ft_controls(mlx_key_data_t keydata, void *param);
-void	ft_up(t_game *game);
-void	ft_down(t_game *game);
-void	ft_left(t_game *game);
-void	ft_right(t_game *game);
+void	ft_ws(t_player *player, double dir);
+void	ft_ad(t_player *player, double dir, double ang);
+void	ft_rotate(t_player *player, double sign);
 
 /*							MAP							*/
 //map.c
@@ -99,7 +95,8 @@ void	ft_render_player(t_game *game, t_scene *scene);
 
 //player.c
 void	ft_init_player(t_player *player, t_game *game);
-t_coord	ft_get_player_pos(t_game *game);
+t_coord	ft_get_player_init_pos(t_game *game);
 void	ft_free_player(t_game *game);
+double	ft_deg_to_rad(double deg);
 
 #endif

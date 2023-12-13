@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 14:29:56 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:39:48 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_paint_background(t_game *game, int h, int w)
 	y = 0;
 	while (y < (h / 2))
 	{
-
 		x = 0;
 		while (x < w)
 		{
@@ -55,6 +54,7 @@ ser de 15x15. es decir nuestro primer tile es el 0,0 y sus pixeles son 15x15.
 por tanto en la funcion ft_fill_tile le paso el valor en coordenadas del mapa
 en la que nos encontramos por las dimensiones totales de los tiles, para asi
 en un bucle ir pintando tile a tile el minimapa.*/
+//mlx_put_pixel(info->scene->mini, x * scene->tile, y * scene->tile, PINK); //esta linea sobra en verdad solo la tengo de referencia
 
 void	ft_paint_minimap(t_game *info, t_scene *scene)
 {
@@ -75,13 +75,11 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 		{
 			color = ft_get_color(scene->map, y, x);
 			ft_fill_tile(info, x * scene->tile, y * scene->tile, color);
-			//mlx_put_pixel(info->scene->mini, x * scene->tile, y * scene->tile, PINK); //esta linea sobra en verdad solo la tengo de referencia
 			x++;
 		}
 		y++;
 	}
 }
-
 
 int	ft_get_color(char **map, int y, int x)
 {
@@ -134,13 +132,23 @@ void	ft_render_player(t_game *game, t_scene *scene)
 	int		y;
 	int		x;
 
-	inital = ft_get_player_pos(game);
+	inital = ft_get_player_init_pos(game);
 	y = 0;
 	scene->player = mlx_new_image(game->mlx, scene->tile, scene->tile);
 	if (!scene->player)
 		ft_error(IMAGE, NULL);
 	if (mlx_image_to_window(game->mlx, scene->player, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) == -1)
 		ft_error(IMAGE, NULL);
+	// while (y < scene->tile / 2)
+	// {
+	// 	x = 0;
+	// 	while (x < scene->tile)
+	// 	{
+	// 		mlx_put_pixel(scene->player, x, y, PINK);
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
 	while (y < scene->tile)
 	{
 		x = 0;
