@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "cub_structs.h"
 # include <unistd.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>

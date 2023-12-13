@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/11 11:38:21 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:56:32 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,18 @@ typedef struct s_player
 	int			color;
 	double		mov_speed;
 	double		rot_speed;
-	double		angle;
+	float		angle; //(?)
 }	t_player;
+
+typedef	struct s_ray
+{
+	bool	coll; //colisión
+	t_coord	origin;
+	t_coord	dir; //dirección del rayo
+	t_coord	x_cross; //tamaño de cada paso a aumentar en busca de una colisión
+	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
+	
+}	t_ray;
 
 typedef struct s_game
 {
@@ -75,6 +85,7 @@ typedef struct s_game
 	t_img		*imgs;
 	mlx_image_t	*canvas;
 	t_player	*player;
+	t_ray		*ray;
 }	t_game;
 
 typedef enum e_errors

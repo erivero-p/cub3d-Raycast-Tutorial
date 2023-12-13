@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 12:27:39 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:26:36 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_set_window(t_game *info)
 	ft_init_game(info);
 	mlx_terminate(info->mlx);
 }
+void	ft_ray_caster(t_game *info);
 
 int	main(int ac, char **av)
 {
@@ -75,7 +76,9 @@ int	main(int ac, char **av)
 	{
 		info.scene = &scene;
 		info.player = &player;
-		ft_set_window(&info); // le tendré que meter av[1]??
+		ft_print_scene(&scene, DEBUG_COLOR);
+		ft_ray_caster(&info);
+//		ft_set_window(&info); // le tendré que meter av[1]??
 	}
 	ft_free_all(&info);
 }
