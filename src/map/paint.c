@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/05 15:32:54 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:39:48 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_paint_background(t_game *game, int h, int w)
 	y = 0;
 	while (y < (h / 2))
 	{
-
 		x = 0;
 		while (x < w)
 		{
@@ -140,6 +139,16 @@ void	ft_render_player(t_game *game, t_scene *scene)
 		ft_error(IMAGE, NULL);
 	if (mlx_image_to_window(game->mlx, scene->player, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) == -1)
 		ft_error(IMAGE, NULL);
+	// while (y < scene->tile / 2)
+	// {
+	// 	x = 0;
+	// 	while (x < scene->tile)
+	// 	{
+	// 		mlx_put_pixel(scene->player, x, y, PINK);
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
 	while (y < scene->tile)
 	{
 		x = 0;

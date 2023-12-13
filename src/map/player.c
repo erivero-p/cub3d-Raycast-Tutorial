@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/12 11:39:00 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:29:58 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ double	ft_get_player_angle(t_scene *scene)
 		while (scene->map[y][x])
 		{
 			if (scene->map[y][x] == 'E')
-				return (ft_deg_to_rad(0.0));
+				return (0.0);
 			if (scene->map[y][x] == 'S')
-				return (ft_deg_to_rad(90.0));
+				return (90.0);
 			if (scene->map[y][x] == 'W')
-				return (ft_deg_to_rad(180.0));
+				return (180.0);
 			if (scene->map[y][x] == 'N')
-				return (ft_deg_to_rad(270.0));
+				return (270.0);
 			x++;
 		}
 		y++;
@@ -80,10 +80,9 @@ void	ft_init_player(t_player *player, t_game *game)
 	//la velocidad de giro son cuantos grados va a girar y tenemos que hacer la conversion a radianes -> game->mlx->delta_time
 	player->rot_speed = 3.0 * (M_PI / 180); // pi/180 conversion a radianes -> game->mlx->delta_time
 	//3.0 * (M_PI / 180) -> ft_deg_to_rad(3.0);
-	player->angle = ft_get_player_angle(game->scene);
-	//printf("en ft_init_player: angle: %f\n", player->angle);
-	//player->angle = ft_deg_to_rad(player->angle);
-	// printf("en ft_init_player: rad: %f\n", player->angle);
+	player->angle = ft_get_player_angle(game->scene); //en grados
+	printf("en ft_init_player: angle: %f\n", player->angle);
+	printf("en ft_init_player: rad: %f\n", ft_deg_to_rad(player->angle));
 	// printf("en ft_init_player: coseno(angle): %f\n", cos(player->angle));
 	// printf("en ft_init_player: seno(angle): %f\n", sin(player->angle));
 }
