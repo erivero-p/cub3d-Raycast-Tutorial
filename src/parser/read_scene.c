@@ -50,7 +50,6 @@ int	ft_get_max_len(char **matrix, int j)
 			max = len;
 		j++;
 	}
-	ft_printf("max len is: %i", max);
 	return (max);
 }
 

@@ -6,7 +6,7 @@
 #    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/12/05 10:33:40 by erivero-         ###   ########.fr        #
+#    Updated: 2023/12/11 15:04:10 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,14 @@ SETTING		=	window controls
 
 MAP			=	map paint player
 
+RAYCAST		= 	raycast
+
 SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
 				$(addsuffix .c, $(addprefix utils/, $(UTILS))) \
 				$(addsuffix .c, $(addprefix settings/, $(SETTING))) \
 				$(addsuffix .c, $(addprefix map/, $(MAP))) \
+				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST))) \
 #con la linea de arriba le añadimos primero la extension .c a los archivos, le añadimos la ruta de la carpeta donde se encuentra y llamamos a ssu variable correspondiente
 
 

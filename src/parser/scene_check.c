@@ -32,7 +32,6 @@ static int	ft_texture_check(t_scene *scene)
 
 int	ft_scene_check(t_scene *scene)
 {
-	ft_print_scene(scene, DEBUG_COLOR);
 	if (ft_texture_check(scene) == -1)
 		return (ft_error(EXT_PNG, NULL));
 	scene->floor = ft_color_check(scene->f_color); //no sé si guardar estos enteros en otra estructura
