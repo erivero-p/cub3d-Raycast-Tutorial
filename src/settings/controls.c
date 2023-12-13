@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/13 13:36:24 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:21:57 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*checkear en todas las funciones si estoy pasando grados o radianes
 debo usar player->angle directamente o usar variables temporales*/
 
-void	ft_ws(t_player *player, double dir)
+void	ft_ws(t_player *player, double dir, t_game *game)
 {
 	// double res = (dir * sin(ft_deg_to_rad(player->angle)) * 5.0);
 	// printf("ft_ws: esta mierda que res : %f\n", res);
@@ -24,8 +24,16 @@ void	ft_ws(t_player *player, double dir)
 	// 	printf("ESTOY PULSANDO S\n");
 	// else if (dir == -1.0)
 	// 	printf("ESTOY PULSANDO W\n");
+	printf("instace.x: %d\n", player->player_img->instances[0].x);
+	printf("instace.y: %d\n", player->player_img->instances[0].y);
 	player->player_img->instances[0].y += dir * sin(ft_deg_to_rad(player->angle)) * 5.0;
 	player->player_img->instances[0].x += dir * cos(ft_deg_to_rad(player->angle)) * 5.0;
+	printf("instace.x: %d\n", player->player_img->instances[0].x);
+	printf("instace.y: %d\n", player->player_img->instances[0].y);
+	player->pos->x = (player->player_img->instances[0].x - 30) / game->scene->tile;
+	player->pos->y = (player->player_img->instances[0].y - 30) / game->scene->tile;
+	printf("x: %f\n", player->pos->x);
+	printf("y: %f\n", player->pos->y);
 	//printf("ft_ws: despues de mover player->angle : %f\n", player->angle);
 }
 
@@ -79,9 +87,9 @@ void	ft_controls(mlx_key_data_t keydata, void *param)
 
 	game = (t_game *)param;
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_REPEAT)
-		ft_ws(game->player, 1.0);
+		ft_ws(game->player, 1.0, game);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_REPEAT)
-		ft_ws(game->player, -1.0);
+		ft_ws(game->player, -1.0, game);
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_REPEAT)
 		ft_ad(game->player, -1.0, -90);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_REPEAT)

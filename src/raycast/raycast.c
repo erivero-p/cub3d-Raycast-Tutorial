@@ -7,10 +7,10 @@ void 	ft_print_ray(t_ray *ray, char *col)
 	if (!ray->coll)
 	{
 		printf("before collision, ray parameters are:\n");
-		printf("origin.x: %d, origin.y: %d\n", ray->origin.x, ray->origin.y);
+		printf("origin.x: %f, origin.y: %f\n", ray->origin.x, ray->origin.y);
 //		printf("dir.x: %f, dir.y: %f\n", ray->dir.x, ray->dir.y);
-		printf("x_cross.x: %d, x_cross.y: %d\n", ray->x_cross.x, ray->x_cross.y);
-		printf("y_cross.x: %d, y_cross.y: %d\n", ray->y_cross.x, ray->y_cross.y);
+		printf("x_cross.x: %f, x_cross.y: %f\n", ray->x_cross.x, ray->x_cross.y);
+		printf("y_cross.x: %f, y_cross.y: %f\n", ray->y_cross.x, ray->y_cross.y);
 	}
 	printf("%s", END);
 }
@@ -77,8 +77,8 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info)
 		x *= -1; //así que debo checkear la celda de la izda a la que estoy
 	if(ray->dir.y < 0) //si el seno es negativo mira hacia arriba
 		y *= -1; //así que debo checkear la celda de arriba
-	if (map[coord.y + y][coord.x + x] == '1')
-		return (true);
+	// if (map[coord.y + y][coord.x + x] == '1')
+	// 	return (true);
 	return (false);
 }
 
@@ -91,19 +91,19 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 	pos.x = ray->origin.x;
 	pos.y = ray->origin.y;
 //el primer paso que es más chiquito:
-	pos.x += (step.x - step.x % 1);
-	pos.y += (step.y - step.y % 1);
+	// pos.x += (step.x - step.x % 1);
+	// pos.y += (step.y - step.y % 1);
 //	printf("%safter first step, pos.x: %d, pos.y: %d\n%s", WRONG, pos.x, pos.y, END);
 	while (1)
 	{
-		printf("position checked: pos.x (%d), pos.y(%d)\n", pos.x, pos.y);
+		printf("position checked: pos.x (%f), pos.y(%f)\n", pos.x, pos.y);
 		ray->coll = ft_coll_checker(pos, ray, info);
 		if (ray->coll)
 			break ;
 		pos.x += step.x;
 		pos.y += step.y;
 	}
-	printf("%scollision on: (%d, %d)%s\n", GOOD, pos.y, pos.x, END);
+	printf("%scollision on: (%f, %f)%s\n", GOOD, pos.y, pos.x, END);
 	cateto.x = pos.x - ray->origin.x;
 	cateto.y = pos.y - ray->origin.y;
 	distance = sqrt(pow(cateto.x, 2) + pow(cateto.y, 2));

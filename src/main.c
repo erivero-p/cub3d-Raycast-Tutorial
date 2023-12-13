@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/11 15:26:36 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:25:48 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	main(int ac, char **av)
 		info.scene = &scene;
 		info.player = &player;
 		ft_print_scene(&scene, DEBUG_COLOR);
-		ft_ray_caster(&info);
-//		ft_set_window(&info); // le tendré que meter av[1]??
+		//ft_ray_caster(&info);
+		ft_set_window(&info); // le tendré que meter av[1]??
 	}
 	ft_free_all(&info);
 }

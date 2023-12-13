@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/13 11:29:58 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:23:00 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void ft_get_corner(t_game *game)
 	printf("LLEGO\n");
 	sup_left.y = game->player->player_img->instances[0].y;
 	sup_left.x = game->player->player_img->instances[0].x;
-	printf("ft_get_corner: esquina superior izquierda: y: %i / x: %i\n", sup_left.y, sup_left.x);
+	printf("ft_get_corner: esquina superior izquierda: y: %f / x: %f\n", sup_left.y, sup_left.x);
 	sup_right.y = game->player->player_img->instances[0].y;
 	sup_right.x = game->player->player_img->instances[0].x + game->scene->tile;
-	printf("ft_get_corner: esquina superior derecha: y: %i / x: %i\n", sup_right.y, sup_right.x);
+	printf("ft_get_corner: esquina superior derecha: y: %f / x: %f\n", sup_right.y, sup_right.x);
 	inf_left.y = game->player->player_img->instances[0].y + game->scene->tile;
 	inf_left.x = game->player->player_img->instances[0].x;
-	printf("ft_get_corner: esquina inferior izquierda: y: %i / x: %i\n", inf_left.y, inf_left.x);
+	printf("ft_get_corner: esquina inferior izquierda: y: %f / x: %f\n", inf_left.y, inf_left.x);
 	inf_right.y = game->player->player_img->instances[0].y + game->scene->tile;
 	inf_right.x = game->player->player_img->instances[0].x + game->scene->tile;
-	printf("ft_get_corner: esquina inferior derecha: y: %i / x: %i\n", inf_right.y, inf_right.x);
+	printf("ft_get_corner: esquina inferior derecha: y: %f / x: %f\n", inf_right.y, inf_right.x);
 	centre_x = sup_left.x + game->scene->tile / 2;
 	centre_y = sup_left.y + game->scene->tile / 2;
 	printf("ft_get_corner: centro: y: %f / x: %f\n", centre_y, centre_x);
@@ -71,9 +71,10 @@ void	ft_init_player(t_player *player, t_game *game)
 {
 	player->mlx = game->mlx;
 	player->player_img = game->scene->player;
-	game->player->pos_map = malloc(sizeof(t_coord));
-	*player->pos_map = ft_get_player_init_pos(game);
-	printf("en ft_init_player: player_y: %i / player_x: %i\n", player->player_img->instances[0].y, player->player_img->instances[0].x);
+	game->player->pos = malloc(sizeof(t_coord));
+	*player->pos = ft_get_player_init_pos(game);
+	printf("en ft_init_player: player_y: %d / player_x: %d\n", player->player_img->instances[0].y, player->player_img->instances[0].x);
+	printf("en ft_init_player: player.pos.y: %f / player.pos.x: %f\n", player->pos->y, player->pos->x);
 	//ft_get_corner(game);
 	player->color = RED;
 	player->mov_speed = 5.0; //pixeles
@@ -82,7 +83,6 @@ void	ft_init_player(t_player *player, t_game *game)
 	//3.0 * (M_PI / 180) -> ft_deg_to_rad(3.0);
 	player->angle = ft_get_player_angle(game->scene); //en grados
 	printf("en ft_init_player: angle: %f\n", player->angle);
-	printf("en ft_init_player: rad: %f\n", ft_deg_to_rad(player->angle));
 	// printf("en ft_init_player: coseno(angle): %f\n", cos(player->angle));
 	// printf("en ft_init_player: seno(angle): %f\n", sin(player->angle));
 }
@@ -121,5 +121,5 @@ double	ft_deg_to_rad(double deg)
 
 void	ft_free_player(t_game *game)
 {
-	free(game->player->pos_map);
+	free(game->player->pos);
 }

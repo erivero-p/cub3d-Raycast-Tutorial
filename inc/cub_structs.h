@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/11 12:56:32 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/13 16:42:42 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct s_coord
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_coord;
 
 typedef struct s_img
@@ -59,7 +59,7 @@ typedef struct s_scene
 
 typedef struct s_player
 {
-	t_coord		*pos_map;
+	t_coord		*pos;
 	mlx_image_t	*player_img; //->para igualar a s_game->mlx 
 	mlx_t		*mlx; //->para igualar a s_game->mlx
 	int			color;
