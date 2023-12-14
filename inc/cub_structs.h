@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/11 12:56:32 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:39:05 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct s_coord
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_coord;
 
 typedef struct s_img
@@ -75,7 +75,7 @@ typedef	struct s_ray
 	t_coord	dir; //dirección del rayo
 	t_coord	x_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
-	
+	t_coord	sgn; //para el signo según la dirección
 }	t_ray;
 
 typedef struct s_game

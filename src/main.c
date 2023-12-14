@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/11 15:26:36 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:02:01 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int ac, char **av)
 		info.player = &player;
 		ft_print_scene(&scene, DEBUG_COLOR);
 		ft_ray_caster(&info);
-//		ft_set_window(&info); // le tendré que meter av[1]??
+		ft_set_window(&info); // le tendré que meter av[1]??
 	}
 	ft_free_all(&info);
 }
