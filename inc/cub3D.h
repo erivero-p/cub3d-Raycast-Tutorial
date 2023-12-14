@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/13 13:37:04 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:21:58 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int     ft_error(int err, char *str);
 //debug.c
 void	ft_print_scene(t_scene *scene, char *colour);
 void 	ft_print_matrix(char **matrix, char *colour);
+void 	ft_print_ray(t_ray *ray, char *col);
+
 
 /*							SETTINGS							*/
 //window.c
