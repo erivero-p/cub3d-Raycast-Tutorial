@@ -1,5 +1,4 @@
 #include "../../inc/cub3D.h"
-#include <stdbool.h>
 
 void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 {
