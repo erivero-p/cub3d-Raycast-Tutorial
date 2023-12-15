@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/14 13:39:05 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:29:24 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ typedef enum e_errors
 
 # define WIDTH 1080
 # define HEIGHT 720
+# define WALL_H 500 // altura del muro, puse eso por probar xd
+# define FOV 500 // campo de visión
 
 # define BLACK 0x000000FF
 # define WHITE 0xFFFFFFFF

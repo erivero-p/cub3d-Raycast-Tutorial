@@ -1,5 +1,4 @@
 #include "../../inc/cub3D.h"
-#include <stdbool.h>
 
 void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 {
@@ -77,14 +76,14 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 	return (distance);
 }
 
-double	ft_ray_caster(t_game *info)
+double	ft_ray_caster(t_game *info, float angle)
 {
 	double	len;
 	t_ray	ray;
 
 //	ft_init_ray(&ray, info, info->player->angle);
-	double	angle = 45;
-	ft_init_ray(&ray, info, angle * M_PI / 180.0); //hard codeado, el rayo supuestamente mira al norte
+//	double	angle = 45;
+	ft_init_ray(&ray, info, angle); // * M_PI / 180.0); //hard codeado, el rayo supuestamente mira al norte
 	ft_print_ray(&ray, "\033[95m"); //purple
 	if (angle > 45 && angle < 135 || angle > 225 && angle < 315)
 		len = ft_cross_checker(&ray, ray.x_cross, info);
