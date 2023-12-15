@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/14 10:21:58 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:32:18 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ int		ft_char_mapcheck(char **map);
 
 //ft_wall_checker.c
 int	ft_wall_check(char **map, t_scene *scene);
+
+/*							RAYCAST							*/
+double	ft_ray_caster(t_game *info, float angle);
 
 /*							UTILS							*/
 //error_handling.c							
