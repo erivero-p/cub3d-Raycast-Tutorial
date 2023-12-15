@@ -82,7 +82,7 @@ double	ft_ray_caster(t_game *info, float angle)
 	t_ray	ray;
 
 //	ft_init_ray(&ray, info, info->player->angle);
-	double	angle = 45;
+//	double	angle = 45;
 	ft_init_ray(&ray, info, angle); // * M_PI / 180.0); //hard codeado, el rayo supuestamente mira al norte
 	ft_print_ray(&ray, "\033[95m"); //purple
 	if (angle > 45 && angle < 135 || angle > 225 && angle < 315)
