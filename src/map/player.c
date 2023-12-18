@@ -6,40 +6,21 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 11:31:30 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:42:54 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-void ft_get_corner(t_game *game)
+t_coord	ft_get_center(t_game *game)
 {
-	float	centre_x;
-	float	centre_y;
-	t_coord sup_left;
-	t_coord sup_right;
-	t_coord inf_left;
-	t_coord inf_right;
+	t_coord	center;
 
-	printf("LLEGO\n");
-	sup_left.y = game->player->player_img->instances[0].y;
-	sup_left.x = game->player->player_img->instances[0].x;
-	printf("ft_get_corner: esquina superior izquierda: y: %f / x: %f\n", sup_left.y, sup_left.x);
-	sup_right.y = game->player->player_img->instances[0].y;
-	sup_right.x = game->player->player_img->instances[0].x + game->scene->tile;
-	printf("ft_get_corner: esquina superior derecha: y: %f / x: %f\n", sup_right.y, sup_right.x);
-	inf_left.y = game->player->player_img->instances[0].y + game->scene->tile;
-	inf_left.x = game->player->player_img->instances[0].x;
-	printf("ft_get_corner: esquina inferior izquierda: y: %f / x: %f\n", inf_left.y, inf_left.x);
-	inf_right.y = game->player->player_img->instances[0].y + game->scene->tile;
-	inf_right.x = game->player->player_img->instances[0].x + game->scene->tile;
-	printf("ft_get_corner: esquina inferior derecha: y: %f / x: %f\n", inf_right.y, inf_right.x);
-	centre_x = sup_left.x + game->scene->tile / 2;
-	centre_y = sup_left.y + game->scene->tile / 2;
-	printf("ft_get_corner: centro: y: %f / x: %f\n", centre_y, centre_x);
+	center.x = game->player->player_img->instances[0].x + game->scene->tile / 2;
+	center.y = game->player->player_img->instances[0].y + game->scene->tile / 2;
+	printf("ft_get_corner: centro: y: %f / x: %f\n", center.y, center.x);
+	return (center);
 }
-
-//sale el angulo de inicio en radianes directamente
 
 double	ft_get_player_angle(t_scene *scene)
 {
@@ -67,32 +48,16 @@ double	ft_get_player_angle(t_scene *scene)
 	return (-1); //esto es pa que se calle el compilador porque realmente nunca llegaría aqui
 }
 
-void	ft_render_line(t_game *game)
-{
-	game->player->line_img = mlx_new_image(game->mlx, 1, 10);
-	if (!game->player->line_img)
-		ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(game->mlx, game->player->line_img, 90 + 30, 180 + 30) < 0)
-		ft_error(IMAGE, NULL);
-	int z = 179;
-	int w = 90;
-	while (z > 169)
-	{
-		mlx_put_pixel(game->player->line_img, w, z, RED);
-		z--;
-	}
-}
-
 void	ft_init_player(t_player *player, t_game *game)
 {
 	player->mlx = game->mlx;
 	ft_render_player(game, game->scene, game->player);
-	//ft_render_line(game);
 	game->player->pos = malloc(sizeof(t_coord));
 	*player->pos = ft_get_player_init_pos(game);
 	printf("en ft_init_player: player_y: %d / player_x: %d\n", player->player_img->instances[0].y, player->player_img->instances[0].x);
 	printf("en ft_init_player: player.pos.y: %f / player.pos.x: %f\n", player->pos->y, player->pos->x);
-	//ft_get_corner(game);
+	game->player->center = malloc(sizeof(t_coord));
+	*player->center = ft_get_center(game);
 	player->color = RED;
 	player->mov_speed = 5.0; //pixeles
 	//la velocidad de giro son cuantos grados va a girar y tenemos que hacer la conversion a radianes -> game->mlx->delta_time

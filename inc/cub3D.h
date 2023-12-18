@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 11:29:42 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:45:27 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_resize(void *param);
 //controls.c
 void	ft_controls(mlx_key_data_t keydata, void *param);
 void	ft_ws(t_player *player, double dir, t_game *game);
-void	ft_ad(t_player *player, double dir, double ang);
+void	ft_ad(t_player *player, double dir, double ang, t_game *game);
 void	ft_rotate(t_player *player, double sign, t_game *game);
 
 /*							MAP							*/
@@ -94,6 +94,7 @@ void	ft_fill_tile(t_game *game, int y, int x, int color);
 void	ft_render_player(t_game *game, t_scene *scene, t_player *player);
 
 //player.c
+t_coord	ft_get_center(t_game *game);
 void	ft_init_player(t_player *player, t_game *game);
 t_coord	ft_get_player_init_pos(t_game *game);
 void	ft_free_player(t_game *game);

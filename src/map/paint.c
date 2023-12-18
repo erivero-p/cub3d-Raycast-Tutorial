@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 11:29:08 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:01:23 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ void	ft_fill_tile(t_game *game, int x, int y, int color)
 	// printf("game->scene->tile * game->scene->len_x: %f\n", game->scene->tile * game->scene->len_x);
 	// printf("game->scene->mini_x: %f / game->scene->mini_y: %f\n", game->scene->mini_x, game->scene->mini_y);
 
+/*cambiar de archivo esta funcion -> player.c*/
+
 void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 {
 	t_coord	inital;
@@ -144,7 +146,7 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 		x = 0;
 		while (x < scene->tile)
 		{
-			mlx_put_pixel(player->player_img, x, y, PINK);
+			mlx_put_pixel(player->player_img, x, y, RED);
 			x++;
 		}
 		y++;

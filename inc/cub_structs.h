@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 11:31:21 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:42:38 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_scene
 typedef struct s_player
 {
 	t_coord		*pos;
+	t_coord		*center;
 	mlx_image_t	*player_img; //->para igualar a s_game->mlx 
 	mlx_image_t	*line_img; //->para igualar a s_game->mlx 
 	mlx_t		*mlx; //->para igualar a s_game->mlx
