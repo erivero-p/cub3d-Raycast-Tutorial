@@ -6,7 +6,7 @@
 #    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/12/11 15:04:10 by erivero-         ###   ########.fr        #
+#    Updated: 2023/12/18 11:58:02 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SETTING		=	window controls
 
 MAP			=	map paint player
 
-RAYCAST		= 	raycast
+RAYCAST		= 	raycast 3Der
 
 SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
