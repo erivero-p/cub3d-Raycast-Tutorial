@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/13 13:39:48 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:29:08 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_paint_background(t_game *game, int h, int w)
 		x = 0;
 		while (x < w)
 		{
-			mlx_put_pixel(game->canvas, x, y, game->scene->ceiling); //aqui tendria que ir c_color en hexadecimal
+			mlx_put_pixel(game->scene->canvas, x, y, game->scene->ceiling); //aqui tendria que ir c_color en hexadecimal
 			x++;
 		}
 		y++;
@@ -38,7 +38,7 @@ void	ft_paint_background(t_game *game, int h, int w)
 		x = 0;
 		while (x < w)
 		{
-			mlx_put_pixel(game->canvas, x, y, game->scene->floor);  //aqui tendria que ir f_color en hexadecimal
+			mlx_put_pixel(game->scene->canvas, x, y, game->scene->floor);  //aqui tendria que ir f_color en hexadecimal
 			x++;
 		}
 		y++;
@@ -126,7 +126,7 @@ void	ft_fill_tile(t_game *game, int x, int y, int color)
 	// printf("game->scene->tile * game->scene->len_x: %f\n", game->scene->tile * game->scene->len_x);
 	// printf("game->scene->mini_x: %f / game->scene->mini_y: %f\n", game->scene->mini_x, game->scene->mini_y);
 
-void	ft_render_player(t_game *game, t_scene *scene)
+void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 {
 	t_coord	inital;
 	int		y;
@@ -134,27 +134,17 @@ void	ft_render_player(t_game *game, t_scene *scene)
 
 	inital = ft_get_player_init_pos(game);
 	y = 0;
-	scene->player = mlx_new_image(game->mlx, scene->tile, scene->tile);
-	if (!scene->player)
+	player->player_img = mlx_new_image(game->mlx, scene->tile, scene->tile);
+	if (!player->player_img)
 		ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(game->mlx, scene->player, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) == -1)
+	if (mlx_image_to_window(game->mlx, player->player_img, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) == -1)
 		ft_error(IMAGE, NULL);
-	// while (y < scene->tile / 2)
-	// {
-	// 	x = 0;
-	// 	while (x < scene->tile)
-	// 	{
-	// 		mlx_put_pixel(scene->player, x, y, PINK);
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
 	while (y < scene->tile)
 	{
 		x = 0;
 		while (x < scene->tile)
 		{
-			mlx_put_pixel(scene->player, x, y, RED);
+			mlx_put_pixel(player->player_img, x, y, PINK);
 			x++;
 		}
 		y++;

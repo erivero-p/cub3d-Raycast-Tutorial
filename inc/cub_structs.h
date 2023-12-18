@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/13 16:42:42 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:31:21 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ typedef struct s_scene
 	int			counter;
 	int			len_x;
 	int			len_y;
-	mlx_image_t	*img;
+	mlx_image_t	*canvas;
 	mlx_image_t	*mini;
-	mlx_image_t	*player;
 	float		tile; //dimension de la celda
 	float		mini_x;
 	float		mini_y;
@@ -61,6 +60,7 @@ typedef struct s_player
 {
 	t_coord		*pos;
 	mlx_image_t	*player_img; //->para igualar a s_game->mlx 
+	mlx_image_t	*line_img; //->para igualar a s_game->mlx 
 	mlx_t		*mlx; //->para igualar a s_game->mlx
 	int			color;
 	double		mov_speed;
@@ -75,7 +75,6 @@ typedef	struct s_ray
 	t_coord	dir; //dirección del rayo
 	t_coord	x_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
-	
 }	t_ray;
 
 typedef struct s_game
@@ -83,7 +82,6 @@ typedef struct s_game
 	mlx_t		*mlx;
 	t_scene		*scene;
 	t_img		*imgs;
-	mlx_image_t	*canvas;
 	t_player	*player;
 	t_ray		*ray;
 }	t_game;

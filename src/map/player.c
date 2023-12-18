@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/15 13:06:42 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:31:30 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,27 @@ double	ft_get_player_angle(t_scene *scene)
 	return (-1); //esto es pa que se calle el compilador porque realmente nunca llegaría aqui
 }
 
+void	ft_render_line(t_game *game)
+{
+	game->player->line_img = mlx_new_image(game->mlx, 1, 10);
+	if (!game->player->line_img)
+		ft_error(IMAGE, NULL);
+	if (mlx_image_to_window(game->mlx, game->player->line_img, 90 + 30, 180 + 30) < 0)
+		ft_error(IMAGE, NULL);
+	int z = 179;
+	int w = 90;
+	while (z > 169)
+	{
+		mlx_put_pixel(game->player->line_img, w, z, RED);
+		z--;
+	}
+}
+
 void	ft_init_player(t_player *player, t_game *game)
 {
 	player->mlx = game->mlx;
-	player->player_img = game->scene->player;
+	ft_render_player(game, game->scene, game->player);
+	//ft_render_line(game);
 	game->player->pos = malloc(sizeof(t_coord));
 	*player->pos = ft_get_player_init_pos(game);
 	printf("en ft_init_player: player_y: %d / player_x: %d\n", player->player_img->instances[0].y, player->player_img->instances[0].x);

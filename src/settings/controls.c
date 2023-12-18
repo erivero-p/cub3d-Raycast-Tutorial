@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/15 13:07:30 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/15 14:00:36 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,13 @@ void	ft_ad(t_player *player, double dir, double ang)
 	//printf("ft_ad: despues de mover player->angle : %f\n", player->angle);
 }
 
-void	ft_rotate(t_player *player, double sign)
+void	ft_rotate(t_player *player, double sign, t_game *game)
 {
 	float	ang;
 	float	tile = 15.0f;
-	int		x;
-	int		y = 0;
+	float		x;
+	float		y;
+	//mlx_image_t *line;
 	//printf("%sen ft_rotate: player->angle: %f%s\n", GOOD, player->angle, END);
 	player->angle += sign * player->rot_speed;
 	printf("%sen ft_rotate: player->angle: %f%s\n", WRONG, player->angle, END);
@@ -75,7 +76,21 @@ void	ft_rotate(t_player *player, double sign)
 	if (player->angle >= 360)
 		player->angle -= 360;
 	//pruebas: cometar antes de subir
-	//ang = ft_deg_to_rad(player->angle);
+	ang = ft_deg_to_rad(player->angle);
+	x = player->player_img->instances[0].x + cos(ang) * 20;
+	y = player->player_img->instances[0].y + sin(ang) * 20;
+	// line = mlx_new_image(game->mlx, 1, 10);
+	// if (!line)
+	// 	ft_error(IMAGE, NULL);
+	// printf("en ft_rotate: player.x: %d / y: %d\n", player->player_img->instances[0].x, player->player_img->instances[0].y);
+	// if (mlx_image_to_window(game->mlx, line, player->player_img->instances[0].x, player->player_img->instances[0].y) < 0)
+	// 	ft_error(IMAGE, NULL);
+	// int z = player->player_img->instances[0].y;
+	// while (z < player->player_img->instances[0].y + 10)
+	// {
+	// 	mlx_put_pixel(line, player->player_img->instances[0].x, z, PINK);
+	// 	z++;
+	// }
 }
 	// while (y < tile)
 	// {
@@ -104,9 +119,9 @@ void	ft_controls(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_D && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		ft_ad(game->player, 1.0, 90);
 	if (keydata.key == MLX_KEY_LEFT && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS)) //MLX_REPEAT
-		ft_rotate(game->player, -1.0);
+		ft_rotate(game->player, -1.0, game);
 	if (keydata.key == MLX_KEY_RIGHT && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-		ft_rotate(game->player, 1.0);
+		ft_rotate(game->player, 1.0, game);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE) //mlx_press??
 		mlx_close_window(game->mlx);
 }
