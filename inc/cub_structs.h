@@ -76,6 +76,7 @@ typedef	struct s_ray
 	t_coord	dir; //dirección del rayo
 	t_coord	x_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
+	t_coord	sgn; //para el signo según la dirección
 }	t_ray;
 
 typedef struct s_game
@@ -110,6 +111,8 @@ typedef enum e_errors
 
 # define WIDTH 1080
 # define HEIGHT 720
+# define WALL_H 500 // altura del muro, puse eso por probar xd
+# define FOV 500 // campo de visión
 
 # define BLACK 0x000000FF
 # define WHITE 0xFFFFFFFF

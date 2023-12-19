@@ -1,5 +1,19 @@
 #include "../../inc/cub3D.h"
 
+void 	ft_print_ray(t_ray *ray, char *col)
+{
+	printf("%s", col);
+	if (!ray->coll)
+	{
+		printf("before collision, ray parameters are:\n");
+		printf("origin.x: %f, origin.y: %f\n", ray->origin.x, ray->origin.y);
+		printf("dir.x: %f, dir.y: %f\n", ray->dir.x, ray->dir.y);
+		printf("x_cross.x: %f, x_cross.y: %f\n", ray->x_cross.x, ray->x_cross.y);
+		printf("y_cross.x: %f, y_cross.y: %f\n", ray->y_cross.x, ray->y_cross.y);
+	}
+	printf("%s", END);
+}
+
 void ft_print_matrix(char **matrix, char *colour)
 {
 	ft_printf("%s", colour);

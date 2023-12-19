@@ -53,7 +53,6 @@ void	ft_set_window(t_game *info)
 	ft_init_game(info);
 	mlx_terminate(info->mlx);
 }
-void	ft_ray_caster(t_game *info);
 
 int	main(int ac, char **av)
 {

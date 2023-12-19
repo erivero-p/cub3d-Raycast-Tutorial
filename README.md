@@ -32,7 +32,7 @@
 │   │   └── window.c
 │   └── utils
 │       ├── clean_handling.c	{ft_clean_map}
-│       ├── debug.c		{ft_print_matrix, ft_print_scene}
+│       ├── debug.c		{ft_print_matrix, ft_print_scene, ft_print_ray}
 │       ├── error_handling.c	{ft_print_fileformat, ft_parse_errors, ft_mlx_errors, ft_error}
 │       └── init.c
 └── Makefile

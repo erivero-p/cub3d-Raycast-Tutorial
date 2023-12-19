@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
 /*   Updated: 2023/12/19 12:18:55 by marirodr         ###   ########.fr       */
@@ -52,6 +52,9 @@ int		ft_char_mapcheck(char **map);
 //ft_wall_checker.c
 int		ft_wall_check(char **map, t_scene *scene);
 
+/*							RAYCAST							*/
+double	ft_ray_caster(t_game *info, float angle);
+
 /*							UTILS							*/
 //error_handling.c							
 int		ft_error(int err, char *str);
@@ -67,7 +70,8 @@ int		ft_error(int err, char *str);
 
 //debug.c
 void	ft_print_scene(t_scene *scene, char *colour);
-void	ft_print_matrix(char **matrix, char *colour);
+void 	ft_print_matrix(char **matrix, char *colour);
+void 	ft_print_ray(t_ray *ray, char *col);
 
 /*							SETTINGS							*/
 //window.c
