@@ -10,7 +10,8 @@ float 	ft_scalator(t_game *info, float angle)
 	len = (WIDTH / 2) / tan(ft_deg_to_rad(FOV / 2));
 //	deltang = info->player->angle - angle;
 	deltang = 270 - angle;
-	distance = ft_ray_caster(info, angle) * cos(ft_deg_to_rad(deltang));
+//	distance = ft_ray_caster(info, angle) * cos(ft_deg_to_rad(deltang));
+	distance = 10;
 	scale = WALL_H / distance; // * len; dice yolanthe que no hace falta el len pa na
 //	printf("%sft_scalator:\nlen: %f, deltang: %f, distance: %f, scale: %f%s\n", DEBUG_COLOR, len, deltang, distance, scale, END);
 	return (scale);

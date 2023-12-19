@@ -6,11 +6,11 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 
 	sn = 1;
 //	ray->coll = false;
-	ray->angle = angle * 180 / M_PI;
 //	ray->origin.x = info->player->pos_map->x;
 //	ray->origin.y = info->player->pos_map->y;
 	ray->origin.x = 3.5;
 	ray->origin.y = 3.5;
+	ray->angle =  angle * 180 / M_PI;
 	ray->dir.x = cos(angle);
 	ray->dir.y = sin(angle);
 	ray->sgn.x = 1;
@@ -19,13 +19,27 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 		ray->sgn.x *= -1;
 	if (ray->dir.y < 0)
 		ray->sgn.y *= -1;
-	ray->x_cross.x = ray->sgn.x / tan(angle);
+	ray->x_cross.x = ray->sgn.y / tan(angle); //no sé si sgn.x o y pero bueno
 	ray->x_cross.y = ray->sgn.y;
 	ray->y_cross.x = ray->sgn.x;
 	ray->y_cross.y = tan(angle);
-	ray->collp.x = 0;
-	ray->collp.y = 0;
 }
+
+/* bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info)
+{
+	char **map;
+	int		j;
+	int		i;
+
+	map = info->scene->map;
+//	printf("col_checker pos.x: %d, pos.y: %d\n", pos.x, pos.y);
+	j = (int)pos.y; //+ (int)ray->sgn.y; //esto es para sumarle o restarle 1 en función de si mira arriba o abajo
+	i = (int)pos.x; //+ (int)ray->sgn.x; //no sé hasta qué punto es necesario ahora mismo
+//	printf("position checked: pos.x (%f), pos.y(%f), char (%c)\n", pos.x, pos.y, map[j][i]);
+	if (map[j][i] == '1')
+		return (true);
+	return (false);
+} */
 
 bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info)
 {
@@ -35,24 +49,28 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info)
 
 	map = info->scene->map;
 //	printf("col_checker pos.x: %d, pos.y: %d\n", pos.x, pos.y);
-	j = (int)pos.y + (int)ray->sgn.y; //esto es para sumarle o restarle 1 en función de si mira arriba o abajo
-	i = (int)pos.x + (int)ray->sgn.x; //no sé hasta qué punto es necesario ahora mismo
+	j = (int)pos.y; //+ (int)ray->sgn.y; //esto es para sumarle o restarle 1 en función de si mira arriba o abajo
+	i = (int)pos.x; //+ (int)ray->sgn.x; //no sé hasta qué punto es necesario ahora mismo
+	if (ray->angle >= 225 && ray->angle < 315)
+		j--; //si mira arriba
+	if (ray->angle > 135 && ray->angle < 225)
+		i--; //si mira a la izda
+//	printf("position checked: pos.x (%f), pos.y(%f), char (%c)\n", pos.x, pos.y, map[j][i]);
 	if (map[j][i] == '1')
 		return (true);
 	return (false);
 }
 
-t_coord	ft_first_step(t_coord	origin, t_coord	step)
+
+t_coord	ft_first_step(t_coord origin, t_coord step, double angle)
 {
 	t_coord	pos;
 
-	if (step.x != 0)
-		pos.x = (int)origin.x + step.x;
-	else
+	pos.y = (int)origin.y + step.y;
+	pos.x = (int)origin.x + step.x;
+	if (angle == 90 || angle == 270)
 		pos.x = origin.x;
-	if (step.y != 0)
-		pos.y = (int)origin.y + step.y;
-	else
+	if (angle == 0 || angle == 180)
 		pos.y = origin.y;
 	return (pos);
 }
@@ -63,14 +81,13 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 	t_coord	cateto;
 	double	distance;
 
-	pos = ft_first_step(ray->origin, step);
+	pos = ft_first_step(ray->origin, step, ray->angle);
 	while (1)
 	{
-//		printf("position checked: pos.x (%d), pos.y(%d)\n", (int)pos.x, (int)pos.y);
 		if (ft_coll_checker(pos, ray, info))
 		{
-			ray->collp.x = pos.x;
-			ray->collp.y = pos.y;
+			ray->coll.x = pos.x;
+			ray->coll.y = pos.y;
 			break ;
 		}
 		pos.x += step.x;
@@ -81,62 +98,33 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 	distance = sqrt(pow(cateto.x, 2) + pow(cateto.y, 2));
 	return (distance);
 }
-/* void	ft_ray_drawer(t_game *info, t_ray *ray)
-{
-	t_coord	origin;
-	t_coord	end;
-	t_coord	step;
-	origin.x = (int)ray->origin.x * 15 + 30;
-	origin.y = (int)ray->origin.y * 15 + 30;
-	end.x = (int)ray->collp.x * 15 + 30;
-	end.y = (int)ray->collp.y * 15 + 30;
-	step.x = (int)ray->dir.x * 15;
-	step.x = (int)ray->dir.y * 15;
- 	while (origin.x < end.x)
-	{
-		mlx_put_pixel(info->scene->mini, origin.x, origin.y, PINK);
-		origin.x += step.x;
-		origin.y += step.y;
-	}
-	mlx_put_pixel(info->canvas, end.x, end.y, PINK);
-} */
-void	ft_raydebug(t_coord	pos, t_ray *ray, char *col)
-{
-	static int i = 0;
-	i++;
-//	if (pos.x - (int)pos.x == 0)
-	if ( i % 100 == 0)
-	{
-		printf("%s", col);
-		printf("ray nº: %i\n", i);
-		printf("collision on (x, y): [%f][%f]\n", pos.x, pos.y);
-		printf("ray angle: %f", ray->angle);
-		printf("%s", END);
-	}
-/* 	if (i > 448 && i < 452)
-		printf("collision on (x, y): [%f][%f]\n", pos.x, pos.y); */
-}
 
-double	ft_ray_caster(t_game *info, float angle)
+void	ft_ray_caster(t_game *info, t_ray *ray, float angle)
 {
-	double	len;
-	t_ray	ray;
-
-//	ft_init_ray(&ray, info, info->player->angle);
-//	double	angle = 45;
-//	printf("\033[33mft_raycaster angle is: %f\n%s", angle, END);
-	ft_init_ray(&ray, info, ft_deg_to_rad(angle)); // * M_PI / 180.0); //hard codeado, el rayo supuestamente mira al norte
+	ft_init_ray(ray, info, ft_deg_to_rad(angle));
 //	ft_print_ray(&ray, "\033[95m"); //purple
 	if (angle > 45 && angle < 135 || angle > 225 && angle < 315)
-		len = ft_cross_checker(&ray, ray.x_cross, info);
+		ray->len = ft_cross_checker(ray, ray->x_cross, info);
 	else
-		len = ft_cross_checker(&ray, ray.y_cross, info);
+		ray->len = ft_cross_checker(ray, ray->y_cross, info);
 //	printf("len is: %f\n", len);
-	ft_raydebug(ray.collp, &ray, DEBUG_COLOR);
-	return (len);
+//	return (len);
 }
 /* Me ha dicho yolanthe que lo de elegir de antemano en función del ángulo si checkear
 los x_cross o los y_cross está muy bien pero que si el personaje está desplazado del centro
 de la celda, no siempre se va a cumplir que la colisión esté antes en el eje correspondiente
 Así que parece ser que siempre vamos a tener que calcular los dos y coger el menor */
 
+void	ft_ray_tester(t_game *info)
+{
+	t_ray	ray;
+
+	ft_ray_caster(info, &ray, 0);
+	ft_print_ray(&ray, WRONG);
+	ft_ray_caster(info, &ray, 90);
+	ft_print_ray(&ray, DEBUG2);
+	ft_ray_caster(info, &ray, 180);
+	ft_print_ray(&ray, GOOD);
+	ft_ray_caster(info, &ray, 270);
+	ft_print_ray(&ray, DEBUG_COLOR);
+}
