@@ -6,40 +6,21 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/13 11:29:58 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:42:54 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-void ft_get_corner(t_game *game)
+t_coord	ft_get_center(t_game *game)
 {
-	float	centre_x;
-	float	centre_y;
-	t_coord sup_left;
-	t_coord sup_right;
-	t_coord inf_left;
-	t_coord inf_right;
+	t_coord	center;
 
-	printf("LLEGO\n");
-	sup_left.y = game->player->player_img->instances[0].y;
-	sup_left.x = game->player->player_img->instances[0].x;
-	printf("ft_get_corner: esquina superior izquierda: y: %i / x: %i\n", sup_left.y, sup_left.x);
-	sup_right.y = game->player->player_img->instances[0].y;
-	sup_right.x = game->player->player_img->instances[0].x + game->scene->tile;
-	printf("ft_get_corner: esquina superior derecha: y: %i / x: %i\n", sup_right.y, sup_right.x);
-	inf_left.y = game->player->player_img->instances[0].y + game->scene->tile;
-	inf_left.x = game->player->player_img->instances[0].x;
-	printf("ft_get_corner: esquina inferior izquierda: y: %i / x: %i\n", inf_left.y, inf_left.x);
-	inf_right.y = game->player->player_img->instances[0].y + game->scene->tile;
-	inf_right.x = game->player->player_img->instances[0].x + game->scene->tile;
-	printf("ft_get_corner: esquina inferior derecha: y: %i / x: %i\n", inf_right.y, inf_right.x);
-	centre_x = sup_left.x + game->scene->tile / 2;
-	centre_y = sup_left.y + game->scene->tile / 2;
-	printf("ft_get_corner: centro: y: %f / x: %f\n", centre_y, centre_x);
+	center.x = game->player->player_img->instances[0].x + game->scene->tile / 2;
+	center.y = game->player->player_img->instances[0].y + game->scene->tile / 2;
+	printf("ft_get_corner: centro: y: %f / x: %f\n", center.y, center.x);
+	return (center);
 }
-
-//sale el angulo de inicio en radianes directamente
 
 double	ft_get_player_angle(t_scene *scene)
 {
@@ -70,21 +51,19 @@ double	ft_get_player_angle(t_scene *scene)
 void	ft_init_player(t_player *player, t_game *game)
 {
 	player->mlx = game->mlx;
-	player->player_img = game->scene->player;
-	game->player->pos_map = malloc(sizeof(t_coord));
-	*player->pos_map = ft_get_player_init_pos(game);
-	printf("en ft_init_player: player_y: %i / player_x: %i\n", player->player_img->instances[0].y, player->player_img->instances[0].x);
-	//ft_get_corner(game);
+	ft_render_player(game, game->scene, game->player);
+	game->player->pos = malloc(sizeof(t_coord));
+	*player->pos = ft_get_player_init_pos(game);
+	printf("en ft_init_player: player_y: %d / player_x: %d\n", player->player_img->instances[0].y, player->player_img->instances[0].x);
+	printf("en ft_init_player: player.pos.y: %f / player.pos.x: %f\n", player->pos->y, player->pos->x);
+	game->player->center = malloc(sizeof(t_coord));
+	*player->center = ft_get_center(game);
 	player->color = RED;
 	player->mov_speed = 5.0; //pixeles
 	//la velocidad de giro son cuantos grados va a girar y tenemos que hacer la conversion a radianes -> game->mlx->delta_time
-	player->rot_speed = 3.0 * (M_PI / 180); // pi/180 conversion a radianes -> game->mlx->delta_time
-	//3.0 * (M_PI / 180) -> ft_deg_to_rad(3.0);
+	player->rot_speed = 5.0; //multiplicar por * (M_PI / 180) -> pi/180 conversion a radianes -> game->mlx->delta_time
 	player->angle = ft_get_player_angle(game->scene); //en grados
 	printf("en ft_init_player: angle: %f\n", player->angle);
-	printf("en ft_init_player: rad: %f\n", ft_deg_to_rad(player->angle));
-	// printf("en ft_init_player: coseno(angle): %f\n", cos(player->angle));
-	// printf("en ft_init_player: seno(angle): %f\n", sin(player->angle));
 }
 
 t_coord	ft_get_player_init_pos(t_game *game)
@@ -121,5 +100,5 @@ double	ft_deg_to_rad(double deg)
 
 void	ft_free_player(t_game *game)
 {
-	free(game->player->pos_map);
+	free(game->player->pos);
 }

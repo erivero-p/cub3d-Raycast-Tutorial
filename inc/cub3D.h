@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/15 11:32:18 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/19 12:18:55 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_read_file(t_scene *scene, int fd, int len, char *file);
 int		ft_parse_file(t_scene *scene);
 
 //get_map.c
-char **ft_get_spaced_map(char **arr, int start, int len, int max);
+char	**ft_get_spaced_map(char **arr, int start, int len, int max);
 
 //scene_check.c
 int		ft_check_ext(char *str, char *ext);
@@ -50,7 +50,7 @@ int		ft_char_check(char c);
 int		ft_char_mapcheck(char **map);
 
 //ft_wall_checker.c
-int	ft_wall_check(char **map, t_scene *scene);
+int		ft_wall_check(char **map, t_scene *scene);
 
 /*							RAYCAST							*/
 double	ft_ray_caster(t_game *info, float angle);
@@ -66,42 +66,49 @@ void	ft_clean_map(t_game	*info);
 void   ft_init_map_struct(t_game *info);
 
 //error_handling.c
-int     ft_error(int err, char *str);
+int		ft_error(int err, char *str);
 
 //debug.c
 void	ft_print_scene(t_scene *scene, char *colour);
 void 	ft_print_matrix(char **matrix, char *colour);
 void 	ft_print_ray(t_ray *ray, char *col);
 
-
 /*							SETTINGS							*/
 //window.c
-int	    ft_check_monitor(mlx_t *mlx);
+int		ft_check_monitor(mlx_t *mlx);
 void	ft_resize(void *param);
 
 //controls.c
 void	ft_controls(mlx_key_data_t keydata, void *param);
-void	ft_ws(t_player *player, double dir);
-void	ft_ad(t_player *player, double dir, double ang);
-void	ft_rotate(t_player *player, double sign);
+void	ft_ws(t_player *player, double dir, t_game *game);
+void	ft_ad(t_player *player, double dir, double ang, t_game *game);
+void	ft_rotate(t_player *player, double sign, t_game *game);
 
 /*							MAP							*/
 //map.c
 void	ft_init_map(t_game *info);
-int     ft_get_map_x(t_game *info);
+int		ft_get_map_x(t_game *info);
 void	ft_paint_minimap(t_game *info, t_scene *scene);
 
 //paint.c
 void	ft_paint_background(t_game *game, int h, int w);
 void	ft_paint_minimap(t_game *info, t_scene *scene);
-int     ft_get_color(char **map, int x, int y);
+int		ft_get_color(char **map, int x, int y);
 void	ft_fill_tile(t_game *game, int y, int x, int color);
-void	ft_render_player(t_game *game, t_scene *scene);
+void	ft_render_player(t_game *game, t_scene *scene, t_player *player);
 
 //player.c
+t_coord	ft_get_center(t_game *game);
 void	ft_init_player(t_player *player, t_game *game);
 t_coord	ft_get_player_init_pos(t_game *game);
 void	ft_free_player(t_game *game);
 double	ft_deg_to_rad(double deg);
+
+/*							MAP							*/
+//collision.c
+int		ft_frontal_collision(t_game *game, int y, int x);
+int		ft_back_collision(t_game *game, int y, int x);
+int		ft_left_collision(t_game *game, int y, int x);
+int		ft_right_collision(t_game *game, int y, int x);
 
 #endif
