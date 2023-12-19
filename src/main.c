@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/19 11:15:36 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:32:16 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,6 @@ void	ft_set_window(t_game *info)
 		return ;
 	}
 	mlx_set_window_limit(info->mlx, 500, 500, 2560, 1440); // ponemos limites de la ventana, en prueba ahora mismo??, 2560, 1440 ->valores de pantalla completa
-	info->canvas = mlx_new_image(info->mlx, 2560, 1440); //para poder rendear las imagenes, cómo crear un lienzp donde poder dibujar pixeles
-	info->scene->img = info->canvas; //para pintar mapa como en otra capa?, quizas no necesito esta mierda
-	if (!info->canvas)
-		ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(info->mlx, info->canvas, 0, 0) == -1)
-		ft_error(IMAGE, NULL);
 	ft_init_game(info);
 	mlx_terminate(info->mlx);
 }
@@ -75,9 +69,9 @@ int	main(int ac, char **av)
 	{
 		info.scene = &scene;
 		info.player = &player;
-		ft_ray_tester(&info);
-//		ft_print_scene(&scene, DEBUG_COLOR);
-//		ft_set_window(&info); // le tendré que meter av[1]??
+		ft_print_scene(&scene, DEBUG_COLOR);
+		//ft_ray_caster(&info);
+		ft_set_window(&info); // le tendré que meter av[1]??
 	}
 	ft_free_all(&info);
 }

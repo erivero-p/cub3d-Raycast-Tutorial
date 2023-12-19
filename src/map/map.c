@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 15:15:13 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:32:28 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ void	ft_init_map(t_game *info)
 
 /* 	printf("%sft_init_map: tile: %f\n", GOOD, info->scene->tile);
 	printf("ft_init_map: len_y: %i\n", info->scene->len_y);
-	printf("ft_init_map: len_x: %i%s\n", info->scene->len_x, END); */
-//	ft_paint_background(info, HEIGHT, WIDTH);
-	//ft_mini_background(info);
-//	ft_paint_minimap(info, info->scene);
-	ft_3Der(info);
-	ft_render_player(info, info->scene);
+	printf("ft_init_map: len_x: %i%s\n", info->scene->len_x, END);
+	info->scene->canvas = mlx_new_image(info->mlx, 2560, 1440); //para poder rendear las imagenes, cómo crear un lienzp donde poder dibujar pixeles
+	if (!info->scene->canvas)
+		ft_error(IMAGE, NULL);
+	if (mlx_image_to_window(info->mlx, info->scene->canvas, 0, 0) == -1)
+		ft_error(IMAGE, NULL);
+	ft_paint_background(info, HEIGHT, WIDTH);
+	ft_paint_minimap(info, info->scene);
 	//no sé exactamente cómo pero tenemos que borrar el background y volver a pintarlo (todas la imagenes en general), cada vez que se haga un resize
 }
-	//mierdas de debugeo
-	// printf("ft_init_map: mini_y: %f\n", info->scene->mini_y);
-	// printf("ft_init_map: mini_x: %f\n", info->scene->mini_x);

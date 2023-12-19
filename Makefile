@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
+#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
 #    Updated: 2023/12/18 11:58:02 by erivero-         ###   ########.fr        #
@@ -35,12 +35,15 @@ MAP			=	map paint player
 
 RAYCAST		= 	raycast 3Der
 
+COLLISION	=	collision
+
 SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
 				$(addsuffix .c, $(addprefix utils/, $(UTILS))) \
 				$(addsuffix .c, $(addprefix settings/, $(SETTING))) \
 				$(addsuffix .c, $(addprefix map/, $(MAP))) \
 				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST))) \
+				$(addsuffix .c, $(addprefix collision/, $(COLLISION))) \
 #con la linea de arriba le añadimos primero la extension .c a los archivos, le añadimos la ruta de la carpeta donde se encuentra y llamamos a ssu variable correspondiente
 
 
@@ -64,7 +67,7 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 #cada vez que queramos añadir una carpeta, utilizamos una linea similar a la de abajo para dentro de la carpeta /objs ir añadiendolos todos
-	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils $(OBJ_DIR)/settings $(OBJ_DIR)/map
+	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils $(OBJ_DIR)/settings $(OBJ_DIR)/map $(OBJ_DIR)/raycast $(OBJ_DIR)/collision
 	@$(CC) $(FLAGS) -c $< -o $@
 # no se si en la linea de arriba tenemos que llamar a $(MLX_FLAGS)
 
