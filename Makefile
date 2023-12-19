@@ -6,7 +6,7 @@
 #    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/12/19 12:16:42 by marirodr         ###   ########.fr        #
+#    Updated: 2023/12/18 11:58:02 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SETTING		=	window controls
 
 MAP			=	map paint player
 
-RAYCAST		= 	raycast
+RAYCAST		= 	raycast 3Der
 
 COLLISION	=	collision
 
