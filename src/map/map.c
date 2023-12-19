@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 11:32:28 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/19 13:26:37 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,6 @@ void	ft_init_map(t_game *info)
 	ft_paint_background(info, HEIGHT, WIDTH);
 	ft_paint_minimap(info, info->scene);
 	//no sé exactamente cómo pero tenemos que borrar el background y volver a pintarlo (todas la imagenes en general), cada vez que se haga un resize
+*/
 }
+

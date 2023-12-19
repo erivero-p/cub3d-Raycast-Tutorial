@@ -48,15 +48,6 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info)
 	int		i;
 
 	map = info->scene->map;
-	coord.x = (int)pos.x;
-	coord.y = (int)pos.y;
-//	printf("coord.y = %d, coord.x = %d\n", pos.y, pos.x);
-	if (ray->dir.x < 0) //si el coseno es negativo mira pa la izquierda, 
-		x *= -1; //así que debo checkear la celda de la izda a la que estoy
-	if(ray->dir.y < 0) //si el seno es negativo mira hacia arriba
-		y *= -1; //así que debo checkear la celda de arriba
-	// if (map[coord.y + y][coord.x + x] == '1')
-	// 	return (true);
 //	printf("col_checker pos.x: %d, pos.y: %d\n", pos.x, pos.y);
 	j = (int)pos.y; //+ (int)ray->sgn.y; //esto es para sumarle o restarle 1 en función de si mira arriba o abajo
 	i = (int)pos.x; //+ (int)ray->sgn.x; //no sé hasta qué punto es necesario ahora mismo

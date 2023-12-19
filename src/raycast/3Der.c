@@ -30,7 +30,7 @@ void	ft_draw_coll(t_game	*info, float scale, int	coll)
 	bot = top + wall;
 //	printf("ft_draw_coll:\nwall: %i, top: %i, bot: %i\n", wall, top, bot);
 	j = 0;
-	while (j < HEIGHT)
+/* 	while (j < HEIGHT)
 	{
 		if (j < top)
 			mlx_put_pixel(info->canvas, coll, j, BLUE);
@@ -41,7 +41,7 @@ void	ft_draw_coll(t_game	*info, float scale, int	coll)
 		//cuando j sea top habrá que empezar a pintar muro
 		//cuando j sea top + wall habrá que dejar de pintar muro
 		j++;
-	}
+	} */
 }
 
 /* void	ft_test(t_game *info, int i)
