@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 12:19:21 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:52:38 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_init_game(t_game *info)
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	ft_init_map(info);
 	ft_init_player(info->player, info);
+	ft_3Der(info);
 	ft_load_images(info);
 	//mlx_loop_hook(info->mlx, &ft_paint_minimap, info); //& or not, i dont know. 3 param: info ó mlx???
 	mlx_loop(info->mlx);
@@ -75,7 +76,7 @@ int	main(int ac, char **av)
 		info.imgs = &imgs;
 		ft_print_scene(&scene, DEBUG_COLOR);
 		//ft_ray_caster(&info);
-		ft_ray_tester(&info);
+		//ft_ray_tester(&info);
 		ft_set_window(&info); // le tendré que meter av[1]??
 	}
 	ft_free_all(&info);
