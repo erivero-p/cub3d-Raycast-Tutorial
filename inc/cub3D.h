@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/19 11:41:18 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/20 10:37:25 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ void 	ft_print_matrix(char **matrix, char *colour);
 void 	ft_print_ray(t_ray *ray, char *col);
 void	ft_xy_printer(char **map, int y, int x, char *colour);
 
+
+//load_images
+void	ft_load_images(t_game *game);
+void	ft_delete_text(t_game *game);
 
 /*							SETTINGS							*/
 //window.c

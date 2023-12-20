@@ -93,7 +93,7 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 		pos.x += step.x;
 		pos.y += step.y;
 	}
-	printf("%scollision on: (%f, %f)%s\n", GOOD, pos.y, pos.x, END);
+  printf("%scollision on: (%f, %f)%s\n", GOOD, pos.y, pos.x, END);
 	cateto.x = pos.x - ray->origin.x;
 	cateto.y = pos.y - ray->origin.y;
 	distance = sqrt(pow(cateto.x, 2) + pow(cateto.y, 2));
@@ -102,6 +102,9 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 
 void	ft_ray_caster(t_game *info, t_ray *ray, float angle)
 {
+	double	len;
+	t_ray	ray;
+
 	ft_init_ray(ray, info, ft_deg_to_rad(angle));
 //	ft_print_ray(&ray, "\033[95m"); //purple
 	if (angle > 45 && angle < 135 || angle > 225 && angle < 315)

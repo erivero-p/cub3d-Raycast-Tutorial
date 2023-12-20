@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/19 13:25:12 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:19:21 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_free_all(t_game *info)
 {
 	ft_clean_map(info);
 	ft_free_player(info);
+	ft_delete_text(info);
 	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
 	exit(0);
@@ -31,8 +32,8 @@ void	ft_init_game(t_game *info)
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	ft_init_map(info);
 	ft_init_player(info->player, info);
+	ft_load_images(info);
 	//mlx_loop_hook(info->mlx, &ft_paint_minimap, info); //& or not, i dont know. 3 param: info ó mlx???
-	//mlx_resize_hook(info->mlx, &ft_resize, info); //seg fault cuando intento agrandar
 	mlx_loop(info->mlx);
 }
 
@@ -41,6 +42,7 @@ t_img para poder usarlas???*/
 
 void	ft_set_window(t_game *info)
 {
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	info->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", true);
 	if (!info->mlx)
 		ft_error(WINDOW, NULL);
@@ -61,6 +63,7 @@ int	main(int ac, char **av)
 	t_game		info;
 	t_scene		scene;
 	t_player	player;
+	t_img		imgs;
 
 	fd = ft_arg_check(ac, av);
 	if (fd < 0)
@@ -69,6 +72,7 @@ int	main(int ac, char **av)
 	{
 		info.scene = &scene;
 		info.player = &player;
+		info.imgs = &imgs;
 		ft_print_scene(&scene, DEBUG_COLOR);
 		//ft_ray_caster(&info);
 		ft_ray_tester(&info);
