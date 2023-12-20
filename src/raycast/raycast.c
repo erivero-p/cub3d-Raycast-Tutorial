@@ -103,7 +103,6 @@ double	ft_cross_checker(t_ray *ray, t_coord step, t_game *info)
 void	ft_ray_caster(t_game *info, t_ray *ray, float angle)
 {
 	double	len;
-	t_ray	ray;
 
 	ft_init_ray(ray, info, ft_deg_to_rad(angle));
 //	ft_print_ray(&ray, "\033[95m"); //purple
