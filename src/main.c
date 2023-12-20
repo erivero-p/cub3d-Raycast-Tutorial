@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 12:35:38 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:52:38 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_init_game(t_game *info)
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	ft_init_map(info);
 	ft_init_player(info->player, info);
+	ft_3Der(info);
 	ft_load_images(info);
 	ft_3Der(info);
 	//mlx_loop_hook(info->mlx, &ft_paint_minimap, info); //& or not, i dont know. 3 param: info ó mlx???
