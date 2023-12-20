@@ -6,11 +6,11 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 
 	sn = 1;
 //	ray->coll = false;
-//	ray->origin.x = info->player->pos_map->x;
-//	ray->origin.y = info->player->pos_map->y;
+	ray->origin.x = info->player->pos->x;
+	ray->origin.y = info->player->pos->y;
 /* 	ray->origin.x = 3.5;
 	ray->origin.y = 3.5; */
-	ray->origin = ft_get_player_init_pos(info); //hardcodeado
+//	ray->origin = ft_get_player_init_pos(info); //hardcodeado
 	ray->origin.x += 0.5;
 	ray->origin.y += 0.5;
 	ray->angle =  angle * 180 / M_PI;
@@ -28,7 +28,7 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 	ray->y_cross.y = tan(angle);
 }
 
-/* bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info)
+/* bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info, char cross)
 {
 	char **map;
 	int		j;
@@ -38,7 +38,14 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 //	printf("col_checker pos.x: %d, pos.y: %d\n", pos.x, pos.y);
 	j = (int)pos.y; //+ (int)ray->sgn.y; //esto es para sumarle o restarle 1 en función de si mira arriba o abajo
 	i = (int)pos.x; //+ (int)ray->sgn.x; //no sé hasta qué punto es necesario ahora mismo
+
+	if (ray->sgn.y == -1 && cross == 'x')
+		j--; //si mira arriba y estoy checkeando los cruces con x
+	if (ray->sgn.x == -1 && cross == 'y')
+		i--; //si mira a la izda y checkeo los y_crosses
 //	printf("position checked: pos.x (%f), pos.y(%f), char (%c)\n", pos.x, pos.y, map[j][i]);
+	if (i >= info->scene->len_x || j >= info->scene->len_y || i < 0 || j < 0)
+		return (true); //esto para no salirme del mapa
 	if (map[j][i] == '1')
 		return (true);
 	return (false);
@@ -54,11 +61,23 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info, char cross)
 //	printf("col_checker pos.x: %d, pos.y: %d\n", pos.x, pos.y);
 	j = (int)pos.y; //+ (int)ray->sgn.y; //esto es para sumarle o restarle 1 en función de si mira arriba o abajo
 	i = (int)pos.x; //+ (int)ray->sgn.x; //no sé hasta qué punto es necesario ahora mismo
-	if (ray->sgn.y == -1 && cross == 'x')
-		j--; //si mira arriba y estoy checkeando los cruces con x
-	if (ray->sgn.x == -1 && cross == 'y')
-		i--; //si mira a la izda y checkeo los y_crosses
-//	printf("position checked: pos.x (%f), pos.y(%f), char (%c)\n", pos.x, pos.y, map[j][i]);
+
+	if (cross == 'x')
+	{
+		if (ray->sgn.x == 1) //si miro a la derecha
+			i++; //casteo al alza
+		if (ray->sgn.y == -1) //si miro arriba
+			j--; //miro la string superior
+		printf("X_CROSS pos.x: %f, pos.y: %f, i: %d, j: %d\n", pos.x, pos.y, i, j);
+	}
+	if (cross == 'y')
+	{
+		if (ray->sgn.y == 1) //si miro hacia abajo
+			j++; //casteo al alza
+		if (ray->sgn.x == -1) //si miro a la izda
+			i--; //checkeo el caracter anterior
+		printf("Y_CROSS pos.x: %f, pos.y: %f, i: %d, j: %d\n", pos.x, pos.y, i, j);
+	}
 	if (i >= info->scene->len_x || j >= info->scene->len_y || i < 0 || j < 0)
 		return (true); //esto para no salirme del mapa
 	if (map[j][i] == '1')
@@ -76,10 +95,7 @@ t_coord	ft_first_step(t_coord origin, t_coord step, double angle, t_game *info)
 		pos.x = origin.x;
 	if (angle == 0 || angle == 180)
 		pos.y = origin.y;
-/* 	if (pos.x >= info->scene->len_x)
-		pos.x = info->scene->len_x - 1;
-	if (pos.y >= info->scene->len_y)
-		pos.y = info->scene->len_y - 1; */
+//	printf("after 1st step: pos.x (%f), pos.y (%f)\n", pos.x, pos.y);
 	return (pos);
 }
 
@@ -133,7 +149,7 @@ void	ft_raydebug(t_ray *ray, char *col)
 {
 	ft_init_ray(ray, info, ft_deg_to_rad(angle));
 //	ft_print_ray(&ray, "\033[95m"); //purple
-	if (angle > 45 && angle < 135 || angle >= 225 && angle < 315)
+	if (angle > 45 && angle <= 135 || angle >= 225 && angle < 315)
 		ray->len = ft_cross_checker(ray, ray->x_cross, info, 'x');
 	else
 		ray->len = ft_cross_checker(ray, ray->y_cross, info, 'y');
@@ -155,12 +171,13 @@ void	ft_ray_caster(t_game *info, t_ray *ray, float angle)
 	{
 		ray->len = xlen;
 		ray->coll = impact; //para recuperar la colisión de x;
+		printf("raylen is x_len\n");
 	}
 	else
 		ray->len = ylen;
 //	printf("len is: %f\n", len);
 //	return (len);
-	ft_raydebug(ray, DEBUG_COLOR);
+//	ft_raydebug(ray, DEBUG_COLOR);
 }
 /* Me ha dicho yolanthe que lo de elegir de antemano en función del ángulo si checkear
 los x_cross o los y_cross está muy bien pero que si el personaje está desplazado del centro

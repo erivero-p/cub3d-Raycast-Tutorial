@@ -56,6 +56,20 @@ void	ft_draw_coll(t_game	*info, float scale, int	coll)
 	printf("%s\n", END);
 } */
 
+void	ft_ray_tester(t_game *info)
+{
+	t_ray	ray;
+
+	ft_ray_caster(info, &ray, 10);
+	ft_print_ray(&ray, WRONG);
+	ft_ray_caster(info, &ray, 100);
+	ft_print_ray(&ray, DEBUG2);
+	ft_ray_caster(info, &ray, 190);
+	ft_print_ray(&ray, GOOD);
+	ft_ray_caster(info, &ray, 280);
+	ft_print_ray(&ray, DEBUG_COLOR);
+}
+
 void	ft_3Der(t_game *info)
 {
 	float	angle;
@@ -65,12 +79,13 @@ void	ft_3Der(t_game *info)
 	int		j;
 
 //	angle = info->player->angle - (FOV / 2); //empezamos a lanzar desde -45 y hasta +45
-	angle = 270 - (FOV / 2); //empezamos a lanzar desde -45 y hasta +45
+	angle = info->player->angle - (FOV / 2); //empezamos a lanzar desde -45 y hasta +45
 	a = 0.08333; //lo que tengo que aumentar el ángulo en cada iteración (mentira T_T)
 	i = 0;
 	if (angle < 0)
 		angle += 360;
 //	ft_test(info, 1080/2);
+//	ft_ray_tester(info);
 	while (i < WIDTH)
 	{
 		scale = ft_scalator(info, angle);
