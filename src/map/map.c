@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 11:44:41 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:32:05 by marirodr         ###   ########.fr       */
+
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +45,5 @@ void	ft_init_map(t_game *info)
 		ft_error(IMAGE, NULL);
 	ft_paint_background(info, HEIGHT, WIDTH);
 	ft_paint_minimap(info, info->scene);
-	//no sé exactamente cómo pero tenemos que borrar el background y volver a pintarlo (todas la imagenes en general), cada vez que se haga un resize
 }
 
