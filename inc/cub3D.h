@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 10:37:25 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:09:37 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		ft_ray_caster(t_game *info, t_ray *ray, float angle);
 
 void	ft_ray_tester(t_game *info);
 
-void	ft_3Der(t_game *info);
+void	ft_3Der(void *param);
 
 
 /*							UTILS							*/
@@ -80,10 +80,12 @@ void 	ft_print_matrix(char **matrix, char *colour);
 void 	ft_print_ray(t_ray *ray, char *col);
 void	ft_xy_printer(char **map, int y, int x, char *colour);
 
-
 //load_images
 void	ft_load_images(t_game *game);
 void	ft_delete_text(t_game *game);
+void	ft_redisplay(t_game *game);
+void	ft_draw_pixel(t_game *game);
+unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x);
 
 /*							SETTINGS							*/
 //window.c

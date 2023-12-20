@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/19 17:03:22 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:07:41 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ typedef struct s_coord
 
 typedef struct s_img
 {
-	mlx_texture_t	*no_text;
-	mlx_texture_t	*so_text;
-	mlx_texture_t	*we_text;
-	mlx_texture_t	*ea_text;
-	mlx_image_t		*no_img;
-	mlx_image_t		*so_img;
-	mlx_image_t		*we_img;
-	mlx_image_t		*ea_img;
+	mlx_texture_t		*no_text;
+	mlx_texture_t		*so_text;
+	mlx_texture_t		*we_text;
+	mlx_texture_t		*ea_text;
+	int					size;
+	long unsigned int	color_pix;
 }	t_img;
 
 typedef struct s_scene
