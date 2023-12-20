@@ -6,7 +6,7 @@
 #    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/12/18 11:58:02 by erivero-         ###   ########.fr        #
+#    Updated: 2023/12/19 15:53:10 by marirodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJ_DIR		=	objs/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
 PARSE		=	parse read_file read_scene char_check wall_check scene_check get_map colour_handle
 
-UTILS		=	clean_handling error_handling debug
+UTILS		=	clean_handling error_handling debug load_images
 
 SETTING		=	window controls
 
