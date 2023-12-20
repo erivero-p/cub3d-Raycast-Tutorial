@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 15:42:38 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/19 13:11:14 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef	struct s_ray
 	t_coord	x_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	sgn; //para el signo según la dirección
+	t_coord	collp; //punto de colisión
 }	t_ray;
 
 typedef struct s_game

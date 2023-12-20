@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:38:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 11:43:54 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:13:12 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_check_monitor(mlx_t *mlx)
 
 /*esta mierda no va ha ser necesaria creo*/
 
-void	ft_resize(void *param)
+void	ft_resize(void *param) //borrar
 {
 	t_game	*info;
 	int		w;
