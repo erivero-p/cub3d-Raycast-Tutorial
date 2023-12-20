@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
 /*   Updated: 2023/12/20 12:19:21 by marirodr         ###   ########.fr       */
@@ -75,6 +75,7 @@ int	main(int ac, char **av)
 		info.imgs = &imgs;
 		ft_print_scene(&scene, DEBUG_COLOR);
 		//ft_ray_caster(&info);
+		ft_ray_tester(&info);
 		ft_set_window(&info); // le tendré que meter av[1]??
 	}
 	ft_free_all(&info);

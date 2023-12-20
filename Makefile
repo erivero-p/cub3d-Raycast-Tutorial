@@ -33,7 +33,7 @@ SETTING		=	window controls
 
 MAP			=	map paint player
 
-RAYCAST		= 	raycast
+RAYCAST		= 	raycast 3Der
 
 COLLISION	=	collision
 

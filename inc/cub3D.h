@@ -53,7 +53,13 @@ int		ft_char_mapcheck(char **map);
 int		ft_wall_check(char **map, t_scene *scene);
 
 /*							RAYCAST							*/
-double	ft_ray_caster(t_game *info, float angle);
+//double	ft_ray_caster(t_game *info, float angle);
+void		ft_ray_caster(t_game *info, t_ray *ray, float angle);
+
+void	ft_ray_tester(t_game *info);
+
+void	ft_3Der(t_game *info);
+
 
 /*							UTILS							*/
 //error_handling.c							
@@ -72,6 +78,8 @@ int		ft_error(int err, char *str);
 void	ft_print_scene(t_scene *scene, char *colour);
 void 	ft_print_matrix(char **matrix, char *colour);
 void 	ft_print_ray(t_ray *ray, char *col);
+void	ft_xy_printer(char **map, int y, int x, char *colour);
+
 
 //load_images
 void	ft_load_images(t_game *game);

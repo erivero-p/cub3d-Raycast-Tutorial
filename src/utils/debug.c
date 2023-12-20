@@ -3,15 +3,17 @@
 void 	ft_print_ray(t_ray *ray, char *col)
 {
 	printf("%s", col);
-	if (!ray->coll)
+	printf("(%fº) ray parameters are:\n", ray->angle);
+	printf("origin.x: %f, origin.y: %f\n", ray->origin.x, ray->origin.y);
+	printf("dir.x: %f, dir.y: %f\n", ray->dir.x, ray->dir.y);
+	printf("x_cross.x: %f, x_cross.y: %f\n", ray->x_cross.x, ray->x_cross.y);
+	printf("y_cross.x: %f, y_cross.y: %f\n", ray->y_cross.x, ray->y_cross.y);
+	if (ray->len)
 	{
-		printf("before collision, ray parameters are:\n");
-		printf("origin.x: %f, origin.y: %f\n", ray->origin.x, ray->origin.y);
-		printf("dir.x: %f, dir.y: %f\n", ray->dir.x, ray->dir.y);
-		printf("x_cross.x: %f, x_cross.y: %f\n", ray->x_cross.x, ray->x_cross.y);
-		printf("y_cross.x: %f, y_cross.y: %f\n", ray->y_cross.x, ray->y_cross.y);
+		printf("collision found at (x, y): [%f][%f]", ray->coll.x, ray->coll.y);
+		printf("ray len is: %f\n", ray->len);
 	}
-	printf("%s", END);
+	printf("%s\n", END);
 }
 
 void ft_print_matrix(char **matrix, char *colour)
@@ -23,7 +25,23 @@ void ft_print_matrix(char **matrix, char *colour)
  	   printf("matrix[%d]:	\'%s\'\n", j, matrix[j]);
 	ft_printf("-------------\n");
 	ft_printf("%s", END);
-
+}
+//Para printear columnna y/o fila específicas de una matriz
+void ft_xy_printer(char **map, int y, int x, char *colour)
+{
+	printf("%s", colour);
+	if (y)
+	{
+		printf("[0123456789]\n");
+		printf(" %s\n", map[y]);
+	}
+	if (x)
+	{
+		y = -1;
+		while (map[++y])
+			printf("[%i]: %c\n", y, map[y][x]);
+	}
+	printf("%s", END);
 }
 
 void	ft_print_scene(t_scene *scene, char *colour)

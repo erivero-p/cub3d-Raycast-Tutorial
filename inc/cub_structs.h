@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/19 13:11:14 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:18:24 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,15 @@ typedef struct s_player
 
 typedef	struct s_ray
 {
-	bool	coll; //colisión
+//	bool	coll; //colisión
+	double	angle;
 	t_coord	origin;
 	t_coord	dir; //dirección del rayo
 	t_coord	x_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	sgn; //para el signo según la dirección
-	t_coord	collp; //punto de colisión
+	t_coord	coll; //punto de colisión
+	double	len;
 }	t_ray;
 
 typedef struct s_game
@@ -106,6 +108,7 @@ typedef enum e_errors
 }		t_errors;
 
 # define DEBUG_COLOR "\033[0;96m"
+# define DEBUG2 "\033[95m"
 # define GOOD "\033[0;32m"
 # define WRONG "\033[0;31m"
 # define END "\033[0m"
@@ -113,7 +116,7 @@ typedef enum e_errors
 # define WIDTH 1080
 # define HEIGHT 720
 # define WALL_H 500 // altura del muro, puse eso por probar xd
-# define FOV 500 // campo de visión
+# define FOV 90 // campo de visión
 
 # define BLACK 0x000000FF
 # define WHITE 0xFFFFFFFF
