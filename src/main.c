@@ -7,7 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
 
-/*   Updated: 2023/12/20 17:39:29 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 12:55:35 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	ft_free_all(t_game *info)
 {
 	ft_clean_map(info);
-	ft_free_player(info);
+	//ft_free_player(info);
 	//ft_delete_text(info);
 	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
@@ -32,7 +32,6 @@ void	ft_init_game(t_game *info)
 {
 	ft_init_map(info);
 	ft_init_player(info->player, info);
-//	ft_load_images(info);
 	//ft_draw_pixel(info);
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	mlx_loop_hook(info->mlx, &ft_3Der, info);
@@ -54,8 +53,6 @@ void	ft_set_window(t_game *info)
 		return ;
 	}
 	mlx_set_window_limit(info->mlx, 500, 500, 2560, 1440); // ponemos limites de la ventana, en prueba ahora mismo??, 2560, 1440 ->valores de pantalla completa
-	ft_init_game(info);
-	mlx_terminate(info->mlx);
 }
 
 int	main(int ac, char **av)
@@ -70,13 +67,15 @@ int	main(int ac, char **av)
 	fd = ft_arg_check(ac, av);
 	if (fd < 0)
 		return (-1);
-	if (ft_parse(&scene, fd, av[1]) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
+	if (ft_parse(&scene, fd, av[1], &imgs) != -1) //-> carga del mapa en memoria y checkeo de que esté correcto
 	{
 		info.scene = &scene;
 		info.player = &player;
 		info.imgs = &imgs;
 		ft_print_scene(&scene, DEBUG_COLOR);
 		ft_set_window(&info); // le tendré que meter av[1]??
+		ft_init_game(&info);
+		mlx_terminate(info.mlx);
 	}
 	ft_free_all(&info);
 }

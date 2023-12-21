@@ -65,6 +65,7 @@ typedef struct s_player
 	double		mov_speed;
 	double		rot_speed;
 	float		angle; //(?)
+	int			size;
 }	t_player;
 
 typedef	struct s_ray
@@ -77,7 +78,7 @@ typedef	struct s_ray
 	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	sgn; //para el signo según la dirección
 	t_coord	coll; //punto de colisión real
-	int		txt; //textura: 1 E -1 W 2 S -2 N
+	//int		txt; //textura: 1 E -1 W 2 S -2 N
 	double	len;
 }	t_ray;
 
@@ -131,5 +132,6 @@ typedef enum e_errors
 # define PINK 0xFFC0CBFF
 # define RED 0xFF0000FF
 # define GREEN 0x007F007F
+# define TRANSP 0xFF000000
 
 #endif

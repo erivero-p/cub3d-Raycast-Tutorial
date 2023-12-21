@@ -98,7 +98,7 @@ void	ft_3Der(void *param)
 	if (angle < 0)
 		angle += 360;
 //	ft_test(info, 1080/2);
-//	ft_ray_tester(info);
+	//ft_ray_tester(info);
 	while (i < WIDTH)
 	{
 		coll = ft_ray_caster(info, angle);

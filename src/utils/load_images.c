@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:20:33 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 16:03:28 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:58:03 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	ft_draw_pixel(t_game *game)
 {
-	long unsigned int	color_pix;
 	int	pixel_y;
 	int	pixel_x;
 
 	pixel_y = 0;
 	pixel_x = 0;
-	while (pixel_y < 64)
+	game->imgs->size = 64;
+	while (pixel_y < game->imgs->size)
 	{
 		pixel_x = 0;
-		while (pixel_x < 64)
+		while (pixel_x < game->imgs->size)
 		{
-			color_pix = ft_get_pixel_color(game->imgs->ea_text, pixel_y, pixel_x);
-			mlx_put_pixel(game->scene->canvas, pixel_x + 300, pixel_y + 300, color_pix);
+			game->imgs->color_pix = ft_get_pixel_color(game->imgs->no_text, pixel_y, pixel_x, game->imgs->size);
+			mlx_put_pixel(game->scene->canvas, pixel_x + 300, pixel_y + 300, game->imgs->color_pix); //300 es la posicion donde se quiere dibujar, es decir la pared
 			pixel_x++;
 		}
 		pixel_y++;
 	}
 }
 
-unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x)
+unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x, int size)
 {
 	int	r;
 	int	g;
@@ -46,7 +46,7 @@ unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x)
 	g = texture->pixels[p + 1];
 	b = texture->pixels[p + 2];
 	a = texture->pixels[p + 3];
-	return (r << 24 | g << 16 | b << 8 | 0xFF); //a = 0xFF?
+	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }
 
 void	ft_redisplay(t_game *game)
@@ -61,26 +61,43 @@ void	ft_redisplay(t_game *game)
 	game->scene->canvas->instances[0].z = 0;
 }
 
-void	ft_load_images(t_game *game)
+int	ft_load_images(t_scene *scene, t_img *imgs)
 {
-	game->imgs->no_text = mlx_load_png(game->scene->no_path);
-	if (!game->imgs->no_text)
+	imgs->no_text = mlx_load_png(scene->no_path);
+	if (!imgs->no_text)
+	{
 		ft_error(IMAGE, NULL);
-	game->imgs->so_text = mlx_load_png(game->scene->so_path);
-	if (!game->imgs->so_text)
+		return (-1);
+	}
+	imgs->so_text = mlx_load_png(scene->so_path);
+	if (!imgs->so_text)
+	{
 		ft_error(IMAGE, NULL);
-	game->imgs->we_text = mlx_load_png(game->scene->we_path);
-	if (!game->imgs->we_text)
+		return (-1);
+	}
+	imgs->we_text = mlx_load_png(scene->we_path);
+	if (!imgs->we_text)
+	{
 		ft_error(IMAGE, NULL);
-	game->imgs->ea_text = mlx_load_png(game->scene->ea_path);
-	if (!game->imgs->we_text)
+		return (-1);
+	}
+	imgs->ea_text = mlx_load_png(scene->ea_path);
+	if (!imgs->ea_text)
+	{
 		ft_error(IMAGE, NULL);
+		return (-1);
+	}
+	return (0);
 }
 
 void	ft_delete_text(t_game *game)
 {
-	mlx_delete_texture(game->imgs->no_text);
-	mlx_delete_texture(game->imgs->so_text);
-	mlx_delete_texture(game->imgs->we_text);
-	mlx_delete_texture(game->imgs->ea_text);
+	if (game->imgs->no_text)
+		mlx_delete_texture(game->imgs->no_text);
+	if (game->imgs->so_text)
+		mlx_delete_texture(game->imgs->so_text);
+	if (game->imgs->we_text)
+		mlx_delete_texture(game->imgs->we_text);
+	if (game->imgs->ea_text)
+		mlx_delete_texture(game->imgs->ea_text);
 }

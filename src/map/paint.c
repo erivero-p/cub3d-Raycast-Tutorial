@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/18 13:01:23 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:27:52 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,10 @@ int	ft_get_color(char **map, int y, int x)
 
 	if (map[y][x] == '1')
 		color = BLACK;
-	else if (map[y][x] == '0')
+	else if (ft_strchr("NSEW0", map[y][x]))
 		color = WHITE;
-	else if (ft_strchr("NSEW", map[y][x])) //esto lo tengo que unir al 0 en verdad, pero se queda ahora para saber que espauneamos donde toca
-		color = GREEN;
 	else
-		color = GREEN; //este color es de pruebas en verdad no cuenta, mas bien que solo hace falta si no pintamos un background al minimapa
+		color = TRANSP;
 	return (color);
 }
 
@@ -136,15 +134,16 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 
 	inital = ft_get_player_init_pos(game);
 	y = 0;
-	player->player_img = mlx_new_image(game->mlx, scene->tile, scene->tile);
+	player->player_img = mlx_new_image(game->mlx, player->size, player->size);
 	if (!player->player_img)
 		ft_error(IMAGE, NULL);
 	if (mlx_image_to_window(game->mlx, player->player_img, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) == -1)
 		ft_error(IMAGE, NULL);
-	while (y < scene->tile)
+	printf("player.size: %d\n", player->size);
+	while (y < player->size)
 	{
 		x = 0;
-		while (x < scene->tile)
+		while (x < player->size)
 		{
 			mlx_put_pixel(player->player_img, x, y, RED);
 			x++;
