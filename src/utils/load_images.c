@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:20:33 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 16:03:28 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:42:28 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	ft_draw_pixel(t_game *game)
 {
-	long unsigned int	color_pix;
 	int	pixel_y;
 	int	pixel_x;
 
 	pixel_y = 0;
 	pixel_x = 0;
-	while (pixel_y < 64)
+	game->imgs->size = 64;
+	while (pixel_y < game->imgs->size)
 	{
 		pixel_x = 0;
-		while (pixel_x < 64)
+		while (pixel_x < game->imgs->size)
 		{
-			color_pix = ft_get_pixel_color(game->imgs->ea_text, pixel_y, pixel_x);
-			mlx_put_pixel(game->scene->canvas, pixel_x + 300, pixel_y + 300, color_pix);
+			game->imgs->color_pix = ft_get_pixel_color(game->imgs->no_text, pixel_y, pixel_x, game->imgs->size);
+			mlx_put_pixel(game->scene->canvas, pixel_x + 300, pixel_y + 300, game->imgs->color_pix); //300 es la posicion donde se quiere dibujar, es decir la pared
 			pixel_x++;
 		}
 		pixel_y++;
 	}
 }
 
-unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x)
+unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x, int size)
 {
 	int	r;
 	int	g;
@@ -46,7 +46,7 @@ unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x)
 	g = texture->pixels[p + 1];
 	b = texture->pixels[p + 2];
 	a = texture->pixels[p + 3];
-	return (r << 24 | g << 16 | b << 8 | 0xFF); //a = 0xFF?
+	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }
 
 void	ft_redisplay(t_game *game)

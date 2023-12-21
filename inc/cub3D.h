@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 14:09:37 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:17:17 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_load_images(t_game *game);
 void	ft_delete_text(t_game *game);
 void	ft_redisplay(t_game *game);
 void	ft_draw_pixel(t_game *game);
-unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x);
+unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x, int size);
 
 /*							SETTINGS							*/
 //window.c

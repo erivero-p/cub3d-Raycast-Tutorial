@@ -31,7 +31,7 @@ int	ft_get_map_x(t_game *info)
 
 void	ft_init_map(t_game *info)
 {
-	info->scene->tile = 15.0f; //de tile para minimap
+	info->scene->tile = 10.0f; //de tile para minimap
 	info->scene->mini_y = info->scene->len_y * info->scene->tile;  //anchura total minimapa con tiles de 15
 	info->scene->mini_x = info->scene->len_x * info->scene->tile;  //altura total minimap con tiles de 15; le restamos la longuitud de un tile para que no saque la ultima columnta (por la mierda de siempre de que los arrays empeizan en 0)
 
@@ -46,4 +46,3 @@ void	ft_init_map(t_game *info)
 	//ft_paint_background(info, HEIGHT, WIDTH);
 	ft_paint_minimap(info, info->scene);
 }
-

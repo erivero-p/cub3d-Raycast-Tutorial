@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 16:07:41 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:26:37 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_player
 	double		mov_speed;
 	double		rot_speed;
 	float		angle; //(?)
+	int			size;
 }	t_player;
 
 typedef	struct s_ray
@@ -122,5 +123,6 @@ typedef enum e_errors
 # define PINK 0xFFC0CBFF
 # define RED 0xFF0000FF
 # define GREEN 0x007F007F
+# define TRANSP 0xFF000000
 
 #endif
