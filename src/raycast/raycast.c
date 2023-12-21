@@ -25,7 +25,7 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 	ray->x_cross.x = ray->sgn.y / tan(angle); //no sé si sgn.x o y pero bueno
 	ray->x_cross.y = ray->sgn.y;
 	ray->y_cross.x = ray->sgn.x;
-	ray->y_cross.y = tan(angle);
+	ray->y_cross.y = tan(angle) * ray->sgn.x;
 }
 
 /* bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info, char cross)
@@ -66,17 +66,18 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info, char cross)
 	{
 		if (ray->sgn.x == 1) //si miro a la derecha
 			i++; //casteo al alza
-		if (ray->sgn.y == -1) //si miro arriba
-			j--; //miro la string superior
-		printf("X_CROSS pos.x: %f, pos.y: %f, i: %d, j: %d\n", pos.x, pos.y, i, j);
+//		if (ray->sgn.y == -1) //si miro arriba
+//			i += ray->sgn.x;
+			j += ray->sgn.y; //miro la string superior
+//		printf("X_CROSS pos.x: %f, pos.y: %f, i: %d, j: %d\n", pos.x, pos.y, i, j);
 	}
 	if (cross == 'y')
 	{
 		if (ray->sgn.y == 1) //si miro hacia abajo
 			j++; //casteo al alza
-		if (ray->sgn.x == -1) //si miro a la izda
-			i--; //checkeo el caracter anterior
-		printf("Y_CROSS pos.x: %f, pos.y: %f, i: %d, j: %d\n", pos.x, pos.y, i, j);
+//		if (ray->sgn.x == -1) //si miro a la izda
+			i += ray->sgn.x; //checkeo el caracter anterior
+//		printf("Y_CROSS pos.x: %f, pos.y: %f, i: %d, j: %d\n", pos.x, pos.y, i, j);
 	}
 	if (i >= info->scene->len_x || j >= info->scene->len_y || i < 0 || j < 0)
 		return (true); //esto para no salirme del mapa
@@ -174,11 +175,12 @@ void	ft_ray_caster(t_game *info, t_ray *ray, float angle)
 	{
 		ray->len = xlen;
 		ray->coll = impact; //para recuperar la colisión de x;
-		printf("raylen is x_len\n");
+//		printf("angle: %f raylen is x_len\n", angle);
 	}
 	else
 		ray->len = ylen;
-//	printf("len is: %f\n", len);
+	
+//	printf("xlen is: %f\nylen: %f\n", xlen, ylen);
 //	return (len);
 //	ft_raydebug(ray, DEBUG_COLOR);
 }
