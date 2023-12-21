@@ -9,8 +9,8 @@ float 	ft_scalator(t_game *info, float angle)
 	t_ray	ray;
 
 	len = (WIDTH / 2) / tan(ft_deg_to_rad(FOV / 2));
-//	deltang = info->player->angle - angle;
-	deltang = 270 - angle;
+	deltang = info->player->angle - angle;
+//	deltang = 270 - angle;
 	ft_ray_caster(info, &ray, angle);
 	distance = ray.len * cos(ft_deg_to_rad(deltang));
 //	distance = ft_ray_caster(info, angle) * cos(ft_deg_to_rad(deltang));
@@ -60,13 +60,13 @@ void	ft_ray_tester(t_game *info)
 {
 	t_ray	ray;
 
-	ft_ray_caster(info, &ray, 10);
+	ft_ray_caster(info, &ray, 340);
 	ft_print_ray(&ray, WRONG);
-	ft_ray_caster(info, &ray, 100);
+	ft_ray_caster(info, &ray, 350);
 	ft_print_ray(&ray, DEBUG2);
-	ft_ray_caster(info, &ray, 190);
+	ft_ray_caster(info, &ray, 0);
 	ft_print_ray(&ray, GOOD);
-	ft_ray_caster(info, &ray, 280);
+	ft_ray_caster(info, &ray, 45);
 	ft_print_ray(&ray, DEBUG_COLOR);
 }
 
@@ -79,16 +79,16 @@ void	ft_3Der(void *param)
 	int		i;
 	int		j;
 
+
 	info = (t_game *)param;
 	ft_redisplay(info);
-//	angle = info->player->angle - (FOV / 2); //empezamos a lanzar desde -45 y hasta +45
 	angle = info->player->angle - (FOV / 2); //empezamos a lanzar desde -45 y hasta +45
 	a = 0.08333; //lo que tengo que aumentar el ángulo en cada iteración (mentira T_T)
 	i = 0;
 	if (angle < 0)
 		angle += 360;
 //	ft_test(info, 1080/2);
-//	ft_ray_tester(info);
+	ft_ray_tester(info);
 	while (i < WIDTH)
 	{
 		scale = ft_scalator(info, angle);
@@ -96,7 +96,7 @@ void	ft_3Der(void *param)
 		i++;
 //		printf("\033[38mft_3Der angle is: %f\n%s", angle, END);
 		angle += a;
-		if (angle > 359)
+		if (angle >= 360)
 			angle -= 360;
 	}
 }
