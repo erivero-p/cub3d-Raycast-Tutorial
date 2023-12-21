@@ -17,7 +17,7 @@ void	ft_free_all(t_game *info)
 {
 	ft_clean_map(info);
 	ft_free_player(info);
-	ft_delete_text(info);
+	//ft_delete_text(info);
 	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
 	exit(0);
@@ -32,7 +32,7 @@ void	ft_init_game(t_game *info)
 {
 	ft_init_map(info);
 	ft_init_player(info->player, info);
-	ft_load_images(info);
+//	ft_load_images(info);
 	//ft_draw_pixel(info);
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	mlx_loop_hook(info->mlx, &ft_3Der, info);
