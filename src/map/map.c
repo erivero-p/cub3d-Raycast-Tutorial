@@ -41,9 +41,9 @@ void	ft_init_map(t_game *info)
 	info->scene->canvas = mlx_new_image(info->mlx, 2560, 1440); //para poder rendear las imagenes, cómo crear un lienzp donde poder dibujar pixeles
 	if (!info->scene->canvas)
 		ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(info->mlx, info->scene->canvas, 0, 0) == -1)
+	if (mlx_image_to_window(info->mlx, info->scene->canvas, 0, 0) < 0)
 		ft_error(IMAGE, NULL);
-	ft_paint_background(info, HEIGHT, WIDTH);
+	//ft_paint_background(info, HEIGHT, WIDTH);
 	ft_paint_minimap(info, info->scene);
 }
 

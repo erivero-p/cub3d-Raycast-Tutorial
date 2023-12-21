@@ -70,16 +70,19 @@ void	ft_ray_tester(t_game *info)
 	ft_print_ray(&ray, DEBUG_COLOR);
 }
 
-void	ft_3Der(t_game *info)
+void	ft_3Der(void *param)
 {
+	t_game	*info;
 	float	angle;
 	double	a; //Yolanthe dice que el aumento del ángulo no es uniforme así que tengo que arreglar esto
 	float	scale;
 	int		i;
 	int		j;
 
-	angle = 180 - (FOV / 2); //empezamos a lanzar desde -45 y hasta +45
-//	angle = info->player->angle - (FOV / 2); //empezamos a lanzar desde -45 y hasta +45
+
+	info = (t_game *)param;
+	ft_redisplay(info);
+	angle = info->player->angle - (FOV / 2); //empezamos a lanzar desde -45 y hasta +45
 	a = 0.08333; //lo que tengo que aumentar el ángulo en cada iteración (mentira T_T)
 	i = 0;
 	if (angle < 0)

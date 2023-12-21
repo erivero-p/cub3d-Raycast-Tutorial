@@ -6,7 +6,8 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/20 13:22:26 by erivero-         ###   ########.fr       */
+
+/*   Updated: 2023/12/20 17:39:29 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +30,12 @@ void	ft_leaks(void)
 
 void	ft_init_game(t_game *info)
 {
-	mlx_key_hook(info->mlx, &ft_controls, info);
 	ft_init_map(info);
 	ft_init_player(info->player, info);
-	ft_3Der(info);
-//	ft_load_images(info);
-	//mlx_loop_hook(info->mlx, &ft_paint_minimap, info); //& or not, i dont know. 3 param: info ó mlx???
+	ft_load_images(info);
+	//ft_draw_pixel(info);
+	mlx_key_hook(info->mlx, &ft_controls, info);
+	mlx_loop_hook(info->mlx, &ft_3Der, info);
 	mlx_loop(info->mlx);
 }
 
