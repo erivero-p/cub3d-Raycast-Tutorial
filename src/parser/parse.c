@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/01 15:29:55 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:41:02 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_init_scene(t_scene *scene)
 	scene->h = -1; */
 }
 
-int	ft_parse(t_scene *scene, int fd, char *file)
+int	ft_parse(t_scene *scene, int fd, char *file, t_img *img)
 {
 	int	len;
 
@@ -42,6 +42,8 @@ int	ft_parse(t_scene *scene, int fd, char *file)
 	if (ft_parse_file(scene) == -1)
 		return (ft_free_double_pointer(scene->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
 	if (ft_scene_check(scene) == -1)
+		return (ft_free_double_pointer(scene->file), -1);
+	if (ft_load_images(scene, img) == -1)
 		return (ft_free_double_pointer(scene->file), -1);
 	return (ft_free_double_pointer(scene->file), 0);
 }

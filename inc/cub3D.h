@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/21 11:17:17 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:41:35 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 /*							PARSE							*/
 
 //parse.c
-int		ft_parse(t_scene *scene, int fd, char *file);
+int	ft_parse(t_scene *scene, int fd, char *file, t_img *img);
 int		ft_arg_check(int ac, char **av);
 
 //read_file.c
@@ -81,7 +81,7 @@ void 	ft_print_ray(t_ray *ray, char *col);
 void	ft_xy_printer(char **map, int y, int x, char *colour);
 
 //load_images
-void	ft_load_images(t_game *game);
+int     ft_load_images(t_scene *scene, t_img *imgs);
 void	ft_delete_text(t_game *game);
 void	ft_redisplay(t_game *game);
 void	ft_draw_pixel(t_game *game);

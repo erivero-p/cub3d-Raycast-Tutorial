@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:20:33 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/21 11:42:28 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:58:03 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,43 @@ void	ft_redisplay(t_game *game)
 	game->scene->canvas->instances[0].z = 0;
 }
 
-void	ft_load_images(t_game *game)
+int	ft_load_images(t_scene *scene, t_img *imgs)
 {
-	game->imgs->no_text = mlx_load_png(game->scene->no_path);
-	if (!game->imgs->no_text)
+	imgs->no_text = mlx_load_png(scene->no_path);
+	if (!imgs->no_text)
+	{
 		ft_error(IMAGE, NULL);
-	game->imgs->so_text = mlx_load_png(game->scene->so_path);
-	if (!game->imgs->so_text)
+		return (-1);
+	}
+	imgs->so_text = mlx_load_png(scene->so_path);
+	if (!imgs->so_text)
+	{
 		ft_error(IMAGE, NULL);
-	game->imgs->we_text = mlx_load_png(game->scene->we_path);
-	if (!game->imgs->we_text)
+		return (-1);
+	}
+	imgs->we_text = mlx_load_png(scene->we_path);
+	if (!imgs->we_text)
+	{
 		ft_error(IMAGE, NULL);
-	game->imgs->ea_text = mlx_load_png(game->scene->ea_path);
-	if (!game->imgs->we_text)
+		return (-1);
+	}
+	imgs->ea_text = mlx_load_png(scene->ea_path);
+	if (!imgs->ea_text)
+	{
 		ft_error(IMAGE, NULL);
+		return (-1);
+	}
+	return (0);
 }
 
 void	ft_delete_text(t_game *game)
 {
-	mlx_delete_texture(game->imgs->no_text);
-	mlx_delete_texture(game->imgs->so_text);
-	mlx_delete_texture(game->imgs->we_text);
-	mlx_delete_texture(game->imgs->ea_text);
+	if (game->imgs->no_text)
+		mlx_delete_texture(game->imgs->no_text);
+	if (game->imgs->so_text)
+		mlx_delete_texture(game->imgs->so_text);
+	if (game->imgs->we_text)
+		mlx_delete_texture(game->imgs->we_text);
+	if (game->imgs->ea_text)
+		mlx_delete_texture(game->imgs->ea_text);
 }
