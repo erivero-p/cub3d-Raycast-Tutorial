@@ -51,6 +51,10 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 		return (true);
 	return (false);
 } */
+/* void ft_coll_caster(t_ray *ray, char cross, int *i, int *j)
+{
+
+} */
 
 bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info, char cross)
 {
@@ -59,44 +63,61 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info, char cross)
 	int		i;
 
 	map = info->scene->map;
-//	printf("col_checker pos.x: %d, pos.y: %d\n", pos.x, pos.y);
 	j = (int)pos.y; //+ (int)ray->sgn.y; //esto es para sumarle o restarle 1 en función de si mira arriba o abajo
 	i = (int)pos.x; //+ (int)ray->sgn.x; //no sé hasta qué punto es necesario ahora mismo
-
-	if (cross == 'x')
-	{
-		if (ray->sgn.x == 1) //si miro a la derecha
-			i++; //casteo al alza
-//		if (ray->sgn.y == -1) //si miro arriba
-//			i += ray->sgn.x;
-			j += ray->sgn.y; //miro la string superior
-//		printf("X_CROSS pos.x: %f, pos.y: %f, i: %d, j: %d\n", pos.x, pos.y, i, j);
-	}
-	if (cross == 'y')
-	{
-		if (ray->sgn.y == 1) //si miro hacia abajo
-			j++; //casteo al alza
-//		if (ray->sgn.x == -1) //si miro a la izda
-			i += ray->sgn.x; //checkeo el caracter anterior
-//		printf("Y_CROSS pos.x: %f, pos.y: %f, i: %d, j: %d\n", pos.x, pos.y, i, j);
-	}
+	if (cross == 'x' && ray->sgn.y == -1)
+		j--;
+	if (cross == 'y' && ray->sgn.x == -1)
+		i--;	
+/* 	printf("col_checker pos.x: %f, pos.y: %f\n", pos.x, pos.y);
+	printf("casted pos.x: %d, pos.y: %d\n", i, j); */
 	if (i >= info->scene->len_x || j >= info->scene->len_y || i < 0 || j < 0)
 		return (true); //esto para no salirme del mapa
 	if (map[j][i] == '1')
+	{
+		printf("casted collision on (i, j): %i, %i\n", i, j);
 		return (true);
+	}
 	return (false);
 }
 
-t_coord	ft_first_step(t_coord origin, t_coord step, double angle, t_game *info)
+/* t_coord	ft_first_step(t_ray *ray, t_coord step, double angle, t_game *info)
 {
 	t_coord	pos;
+	t_coord	first;
+	
+	first.x = sqrt(pow(step.x, 2)) - fmod(ray->origin.x, 1.0);
+	first.y = sqrt(pow(step.y, 2)) - fmod(ray->origin.y, 1.0);
 
+//	printf("rest.x: %f, rest.y: %f\n", rest.x, rest.y);
 	pos.y = (int)origin.y + step.y;
 	pos.x = (int)origin.x + step.x;
+	pos.x = ray->origin.x + (first.x * ray->sgn.x);
+	pos.y = ray->origin.y + (first.y * ray->sgn.y);
 	if (angle == 90 || angle == 270)
-		pos.x = origin.x;
+		pos.x = ray->origin.x;
 	if (angle == 0 || angle == 180)
-		pos.y = origin.y;
+		pos.y = ray->origin.y;
+//	printf("after 1st step: pos.x (%f), pos.y (%f)\n", pos.x, pos.y);
+	return (pos);
+} */
+t_coord	ft_first_step(t_ray *ray, t_coord step, double angle, t_game *info)
+{
+	t_coord	pos;
+	t_coord	first;
+	
+	first.x = sqrt(pow(step.x, 2)) - fmod(ray->origin.x, 1.0);
+	first.y = sqrt(pow(step.y, 2)) - fmod(ray->origin.y, 1.0);
+
+//	printf("rest.x: %f, rest.y: %f\n", rest.x, rest.y);
+/* 	pos.y = (int)origin.y + step.y;
+	pos.x = (int)origin.x + step.x; */
+	pos.x = ray->origin.x + (first.x * ray->sgn.x);
+	pos.y = ray->origin.y + (first.y * ray->sgn.y);
+	if (angle == 90 || angle == 270)
+		pos.x = ray->origin.x;
+	if (angle == 0 || angle == 180)
+		pos.y = ray->origin.y;
 //	printf("after 1st step: pos.x (%f), pos.y (%f)\n", pos.x, pos.y);
 	return (pos);
 }
@@ -108,7 +129,7 @@ t_coll	ft_cross_checker(t_ray *ray, t_coord step, t_game *info, char cross)
 	t_coll	coll;
 	double	distance;
 
-	pos = ft_first_step(ray->origin, step, ray->angle, info);
+	pos = ft_first_step(ray, step, ray->angle, info);
 	while (1)
 	{
 		if (ft_coll_checker(pos, ray, info, cross))
@@ -140,6 +161,8 @@ t_coll	ft_ray_caster(t_game *info, float angle)
 	t_coll	x_coll;
 	t_coll	y_coll;
 	t_ray	ray; 
+	int i;
+	int j;
 
 	ft_init_ray(&ray, info, ft_deg_to_rad(angle));
 	x_coll = ft_cross_checker(&ray, ray.x_cross, info, 'x');
@@ -152,3 +175,40 @@ t_coll	ft_ray_caster(t_game *info, float angle)
 		return (y_coll);
 }
 
+char	ft_raycast_debug(t_game *info, float angle, char *col)
+{
+	t_coll	x_coll;
+	t_coll	y_coll;
+	t_ray	ray; 
+
+	ft_init_ray(&ray, info, ft_deg_to_rad(angle));
+	ft_print_ray(&ray, col);
+	x_coll = ft_cross_checker(&ray, ray.x_cross, info, 'x');
+	ft_printcoll(&x_coll, 'x', col);
+	y_coll = ft_cross_checker(&ray, ray.y_cross, info, 'y');
+	ft_printcoll(&y_coll, 'y', col);
+	if (x_coll.raylen < y_coll.raylen)
+		return ('x');
+	else
+		return ('y');
+}
+
+void	ft_ray_tester(t_game *info, double a1, double a2, double a3, double a4)
+{
+	t_ray	ray;
+
+/* 	int	angle = 270 - 45; // Esto para encontrar el primer y_cross
+	char c;
+
+	while (c != 'y')
+	{
+		c = ft_raycast_debug(info, angle, WRONG);
+		angle++;
+	} 
+	printf("Y cross found at: %d\n", angle);*/
+	//printf("(5, 1): %c\n", info->scene->map[1][5]);
+	printf("%c_cross chosen\n\n", ft_raycast_debug(info, 45, WRONG));
+	printf("%c_cross chosen\n\n", ft_raycast_debug(info, 135, DEBUG2));
+	printf("%c_cross chosen\n\n", ft_raycast_debug(info, 225, GOOD));
+	printf("%c_cross chosen\n\n", ft_raycast_debug(info, 315, DEBUG_COLOR));
+}

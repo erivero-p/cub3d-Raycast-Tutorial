@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/22 12:15:07 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:53:16 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		ft_wall_check(char **map, t_scene *scene);
 t_coll		ft_ray_caster(t_game *info, float angle);
 
 
-void	ft_ray_tester(t_game *info);
+void	ft_ray_tester(t_game *info, double a1, double a2, double a3, double a4);
 
 void	ft_3Der(void *param);
 
@@ -82,7 +82,7 @@ void 	ft_print_matrix(char **matrix, char *colour);
 void 	ft_print_ray(t_ray *ray, char *col);
 void	ft_xy_printer(char **map, int y, int x, char *colour);
 void	ft_raydebug(t_ray *ray, char *col);
-void	ft_printcoll(t_coll *coll, char c);
+void	ft_printcoll(t_coll *coll, char c, char *colour);
 
 
 
