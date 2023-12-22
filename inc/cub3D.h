@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/22 11:19:44 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:30:07 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ int		ft_wall_check(char **map, t_scene *scene);
 
 /*							RAYCAST							*/
 //double	ft_ray_caster(t_game *info, float angle);
-void		ft_ray_caster(t_game *info, t_ray *ray, float angle);
+//void		ft_ray_caster(t_game *info, t_ray *ray, float angle);
+t_coll		ft_ray_caster(t_game *info, float angle);
+
 
 void	ft_ray_tester(t_game *info);
 

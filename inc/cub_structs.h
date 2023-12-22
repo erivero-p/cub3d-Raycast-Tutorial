@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/21 11:26:37 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:11:51 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,17 @@ typedef	struct s_ray
 	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
 	t_coord	sgn; //para el signo según la dirección
 	t_coord	coll; //punto de colisión real
+	//int		txt; //textura: 1 E -1 W 2 S -2 N
 	double	len;
 }	t_ray;
+
+typedef	struct	s_coll
+{
+	t_coord	collision; //punto de colisión real
+	double	raylen;
+	double	distance;
+	int		txt; //texture: 1 E -1 W 2 S -2 N
+}	t_coll;
 
 typedef struct s_game
 {

@@ -1,25 +1,26 @@
 #include "../../inc/cub3D.h"
 
-float 	ft_scalator(t_game *info, float angle)
+float 	ft_scalator(t_game *info, float angle, t_coll *coll)
 {
 	float	scale;
 	float	len; //distancia al plano de proyección. Es fija
 	float	distance; //distancia real al rayo
 	float	deltang; //ángulo entre el rayo y el vector de dirección
-	t_ray	ray;
+//	t_coll	coll;
+//	t_ray	ray;
 
 	len = (WIDTH / 2) / tan(ft_deg_to_rad(FOV / 2));
 	deltang = info->player->angle - angle;
 //	deltang = 270 - angle;
-	ft_ray_caster(info, &ray, angle);
-	distance = ray.len * cos(ft_deg_to_rad(deltang));
+
+	coll->distance = coll->raylen * cos(ft_deg_to_rad(deltang));
 //	distance = ft_ray_caster(info, angle) * cos(ft_deg_to_rad(deltang));
-	scale = WALL_H / distance; // * len; dice yolanthe que no hace falta el len pa na
+	scale = WALL_H / coll->distance; // * len; dice yolanthe que no hace falta el len pa na
 //	printf("%sft_scalator:\nlen: %f, deltang: %f, distance: %f, scale: %f%s\n", DEBUG_COLOR, len, deltang, distance, scale, END);
 	return (scale);
 }
 
-void	ft_draw_coll(t_game	*info, float scale, int	coll)
+void	ft_draw_col(t_game	*info, float scale, int	coll, int txt)
 {
 	int	j;
 	int	top; //el pixel de arriba del todo del muro
@@ -39,7 +40,16 @@ void	ft_draw_coll(t_game	*info, float scale, int	coll)
 		else if (j > bot)
 			mlx_put_pixel(info->scene->canvas, coll, j, GREEN);
 		else
-			mlx_put_pixel(info->scene->canvas, coll, j, PINK); //se supone que es naranja clarito
+		{
+			if (txt == 1) // E
+				mlx_put_pixel(info->scene->canvas, coll, j, PINK);
+			if (txt == -1) // W
+				mlx_put_pixel(info->scene->canvas, coll, j, BLACK);
+			if (txt == 2) // S
+				mlx_put_pixel(info->scene->canvas, coll, j, WHITE);
+			if (txt == -2) // N
+				mlx_put_pixel(info->scene->canvas, coll, j, RED);
+		}
 		//cuando j sea top habrá que empezar a pintar muro
 		//cuando j sea top + wall habrá que dejar de pintar muro
 		j++;
@@ -60,14 +70,14 @@ void	ft_ray_tester(t_game *info)
 {
 	t_ray	ray;
 
-	ft_ray_caster(info, &ray, 340);
-	ft_print_ray(&ray, WRONG);
-	ft_ray_caster(info, &ray, 350);
-	ft_print_ray(&ray, DEBUG2);
-	ft_ray_caster(info, &ray, 0);
-	ft_print_ray(&ray, GOOD);
-	ft_ray_caster(info, &ray, 45);
-	ft_print_ray(&ray, DEBUG_COLOR);
+	ft_ray_caster(info, 45);
+//	ft_print_ray(&ray, WRONG);
+	ft_ray_caster(info, 135);
+//	ft_print_ray(&ray, DEBUG2);
+	ft_ray_caster(info, 225);
+//	ft_print_ray(&ray, GOOD);
+	ft_ray_caster(info, 315);
+//	ft_print_ray(&ray, DEBUG_COLOR);
 }
 
 void	ft_3Der(void *param)
@@ -76,9 +86,9 @@ void	ft_3Der(void *param)
 	float	angle;
 	double	a; //Yolanthe dice que el aumento del ángulo no es uniforme así que tengo que arreglar esto
 	float	scale;
+	t_coll	coll;
 	int		i;
 	int		j;
-
 
 	info = (t_game *)param;
 	ft_redisplay(info);
@@ -91,8 +101,9 @@ void	ft_3Der(void *param)
 	//ft_ray_tester(info);
 	while (i < WIDTH)
 	{
-		scale = ft_scalator(info, angle);
-		ft_draw_coll(info, scale, i); // (?)
+		coll = ft_ray_caster(info, angle);
+		scale = ft_scalator(info, angle, &coll);
+		ft_draw_col(info, scale, i, coll.txt); // (?)
 		i++;
 //		printf("\033[38mft_3Der angle is: %f\n%s", angle, END);
 		angle += a;
