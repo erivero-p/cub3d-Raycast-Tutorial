@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/19 12:54:16 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:20:49 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,37 @@ void	ft_controls(mlx_key_data_t keydata, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+	{
+		printf("BUSCANDO SEG FALUT2\n");
 		ft_ws(game->player, 1.0, game);
-	if (keydata.key == MLX_KEY_S && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
+	}
+	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
 		ft_ws(game->player, -1.0, game);
-	if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
 		ft_ad(game->player, -1.0, -90, game);
-	if (keydata.key == MLX_KEY_D && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		ft_ad(game->player, 1.0, 90, game);
-	if (keydata.key == MLX_KEY_LEFT && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		ft_rotate(game->player, -1.0, game);
-	if (keydata.key == MLX_KEY_RIGHT && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		ft_rotate(game->player, 1.0, game);
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE) //mlx_press??
+	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(game->mlx);
 }
+
+	// game = (t_game *)param;
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+	// 	ft_ws(game->player, 1.0, game);
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_S))
+	// 	ft_ws(game->player, -1.0, game);
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_A))
+	// 	ft_ad(game->player, -1.0, -90, game);
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_D))
+	// 	ft_ad(game->player, 1.0, 90, game);
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+	// 	ft_rotate(game->player, -1.0, game);
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+	// 	ft_rotate(game->player, 1.0, game);
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+	// 	mlx_close_window(game->mlx);
