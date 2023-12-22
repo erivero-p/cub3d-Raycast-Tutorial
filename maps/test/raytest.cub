@@ -1,15 +1,16 @@
-NO /Users/marirodr/cursus/cub3d/textures/redbrick.png
-SO /Users/marirodr/cursus/cub3d/textures/bluestone.png
-WE /Users/marirodr/cursus/cub3d/textures/greystone.png
-EA /Users/marirodr/cursus/cub3d/textures/purplestone.png
+NO /Users/erivero-/Desktop/cube/textures/redbrick.png
+SO /Users/erivero-/Desktop/cube/textures/bluestone.png
+WE /Users/erivero-/Desktop/cube/textures/greystone.png
+EA /Users/erivero-/Desktop/cube/textures/purplestone.png
 
 F 100,149,237
 C 225,30,0
 
 11111111111
+11111011111
 10000000001
+10000N00001
 10000000001
-10000W00001
 10000000001
 10000000001
 10000000001

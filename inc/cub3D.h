@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/22 11:30:07 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:15:07 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ void	ft_print_scene(t_scene *scene, char *colour);
 void 	ft_print_matrix(char **matrix, char *colour);
 void 	ft_print_ray(t_ray *ray, char *col);
 void	ft_xy_printer(char **map, int y, int x, char *colour);
+void	ft_raydebug(t_ray *ray, char *col);
+void	ft_printcoll(t_coll *coll, char c);
+
+
 
 //load_images
 int     ft_load_images(t_scene *scene, t_img *imgs);

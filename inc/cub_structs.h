@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/21 16:11:51 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:08:41 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ typedef struct s_player
 typedef	struct s_ray
 {
 //	bool	coll; //colisión
-	double	angle;
+	double	angle; // en grados, rayangle
+	double	deltaang; // en radianes, playerangle - rayangle
 	t_coord	origin;
 	t_coord	dir; //dirección del rayo
 	t_coord	x_cross; //tamaño de cada paso a aumentar en busca de una colisión
