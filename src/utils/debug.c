@@ -16,6 +16,36 @@ void 	ft_print_ray(t_ray *ray, char *col)
 	printf("%s\n", END);
 }
 
+void	ft_printcoll(t_coll *coll, char c)
+{
+	printf("%c_coll:\n", c);
+	printf("collision at: %f, %f\n", coll->collision.x, coll->collision.y);
+	printf("raylen is: %f\n", coll->raylen);
+}
+void	ft_raydebug(t_ray *ray, char *col)
+{
+	static int i = 0;
+	i++;
+//	if (pos.x - (int)pos.x == 0)
+	if (i == 1)
+		printf("player pos (x,y): %f, %f\n", ray->origin.x, ray->origin.y);
+	if (i == 1 || i == 3 || i % 100 == 0 || i == 1080 - 1)
+	{
+		printf("%s", col);
+		printf("ray nº: %i (%fº)\n", i, ray->angle);
+		printf("collision on (x, y): [%f][%f]\n", ray->coll.x, ray->coll.y);
+		printf("%s", END);
+	}
+	if (i == 1080/2 + 1)
+	{
+		printf("%son central ray (%f);\n", WRONG, ray->angle);
+		printf("collision on (x, y): [%f][%f]\n", ray->coll.x, ray->coll.y);
+		printf("step sizes are: x: %f, y: %f\n", ray->x_cross.x, ray->x_cross.y);
+	}
+/* 	if (i > 448 && i < 452)
+		printf("collision on (x, y): [%f][%f]\n", pos.x, pos.y); */
+}
+
 void ft_print_matrix(char **matrix, char *colour)
 {
 	ft_printf("%s", colour);

@@ -1,6 +1,6 @@
 #include "../../inc/cub3D.h"
 
-float 	ft_scalator(t_game *info, float angle, t_coll *coll)
+/* float 	ft_scalator(t_game *info, float angle, t_coll *coll)
 {
 	float	scale;
 	float	len; //distancia al plano de proyección. Es fija
@@ -18,7 +18,7 @@ float 	ft_scalator(t_game *info, float angle, t_coll *coll)
 	scale = WALL_H / coll->distance; // * len; dice yolanthe que no hace falta el len pa na
 //	printf("%sft_scalator:\nlen: %f, deltang: %f, distance: %f, scale: %f%s\n", DEBUG_COLOR, len, deltang, distance, scale, END);
 	return (scale);
-}
+} */
 
 void	ft_draw_col(t_game	*info, float scale, int	coll, int txt)
 {
@@ -102,7 +102,7 @@ void	ft_3Der(void *param)
 	while (i < WIDTH)
 	{
 		coll = ft_ray_caster(info, angle);
-		scale = ft_scalator(info, angle, &coll);
+		scale = WALL_H / coll.distance;
 		ft_draw_col(info, scale, i, coll.txt); // (?)
 		i++;
 //		printf("\033[38mft_3Der angle is: %f\n%s", angle, END);
