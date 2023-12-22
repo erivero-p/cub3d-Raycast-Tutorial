@@ -66,19 +66,7 @@ void	ft_draw_col(t_game	*info, float scale, int	coll, int txt)
 	printf("%s\n", END);
 } */
 
-void	ft_ray_tester(t_game *info)
-{
-	t_ray	ray;
 
-	ft_ray_caster(info, 45);
-//	ft_print_ray(&ray, WRONG);
-	ft_ray_caster(info, 135);
-//	ft_print_ray(&ray, DEBUG2);
-	ft_ray_caster(info, 225);
-//	ft_print_ray(&ray, GOOD);
-	ft_ray_caster(info, 315);
-//	ft_print_ray(&ray, DEBUG_COLOR);
-}
 
 void	ft_3Der(void *param)
 {

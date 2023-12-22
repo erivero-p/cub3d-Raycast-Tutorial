@@ -8,19 +8,22 @@ void 	ft_print_ray(t_ray *ray, char *col)
 	printf("dir.x: %f, dir.y: %f\n", ray->dir.x, ray->dir.y);
 	printf("x_cross.x: %f, x_cross.y: %f\n", ray->x_cross.x, ray->x_cross.y);
 	printf("y_cross.x: %f, y_cross.y: %f\n", ray->y_cross.x, ray->y_cross.y);
-	if (ray->len)
+/* 	if (ray->len)
 	{
 		printf("collision found at (x, y): [%f][%f]", ray->coll.x, ray->coll.y);
 		printf("ray len is: %f\n", ray->len);
-	}
+	} */
 	printf("%s\n", END);
 }
 
-void	ft_printcoll(t_coll *coll, char c)
+void	ft_printcoll(t_coll *coll, char c, char *colour)
 {
+	printf("%s", colour);
 	printf("%c_coll:\n", c);
 	printf("collision at: %f, %f\n", coll->collision.x, coll->collision.y);
 	printf("raylen is: %f\n", coll->raylen);
+	printf("%s\n", END);
+
 }
 void	ft_raydebug(t_ray *ray, char *col)
 {
