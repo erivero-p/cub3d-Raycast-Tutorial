@@ -35,7 +35,6 @@ static int	ph_atoi(char *str)
 		i++;
 	}
 	return (num);
-
 }
 /* 
 	concatena los valores rgba desplazándolos a la izquierda y combinándolos con or
@@ -46,8 +45,6 @@ int ft_rgb_to_hex(int r, int g, int b)
 {
 	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }
-
-
 
 int	ft_get_colour(char  **rgb)
 {
@@ -64,6 +61,7 @@ int	ft_get_colour(char  **rgb)
 		return (-1);
 	return (ft_rgb_to_hex(r, g, b));
 }
+
 int	ft_color_check(char *color)
 {
 	int		i;
@@ -76,11 +74,11 @@ int	ft_color_check(char *color)
 
 	if (ft_char_counter(color, ',') > 2)
 		return (-1);
-	rgb = ft_split(color, ',');
+	rgb = ft_old_split(color, ',');
 	if (ft_arrlen(rgb) != 3)
 		ret = -1;
-	ret = ft_get_colour(rgb);
+	else
+		ret = ft_get_colour(rgb);
 	ft_free_double_pointer(rgb);
-//	ft_printf("ret is: %i", ret);
 	return (ret);
 }
