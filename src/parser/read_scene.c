@@ -1,9 +1,11 @@
 #include "../../inc/cub3D.h"
 
-char	*ft_cpy_info(char *line)
+char	*ft_cpy_info(char *line, char *path)
 {
 	while (*line > 0 && *line < 33) //salto los espacios antes del nombre
 		line++;
+	if (path != NULL)
+		free(path);
 	while (*line && *line > 32) //salto hasta enontrar un espacio
 		line++;
 	while (*line > 0 && *line < 33) //salto los espacios tras el nombre
@@ -18,18 +20,17 @@ int	ft_save_info(t_scene *scene, char *line)
 
 	tmp = ft_strtrim(line, "   	");
 	if (!ft_strncmp(tmp, "NO ", 3) || !ft_strncmp(tmp, "NO	", 3))
-		scene->no_path = ft_cpy_info(line);
-	//printf("%sen ft_save_info: no_path: %s%s\n", DEBUG_COLOR, scene->no_path, END);
+		scene->no_path = ft_cpy_info(line, scene->no_path);
 	else if (!ft_strncmp(tmp, "SO ", 3) || !ft_strncmp(tmp, "SO	", 3))
-		scene->so_path = ft_cpy_info(line);
+		scene->so_path = ft_cpy_info(line, scene->so_path);
 	else if (!ft_strncmp(tmp, "WE ", 3) || !ft_strncmp(tmp, "WE	", 3))
-		scene->we_path = ft_cpy_info(line);
+		scene->we_path = ft_cpy_info(line, scene->we_path);
 	else if (!ft_strncmp(tmp, "EA ", 3) || !ft_strncmp(tmp, "EA	", 3))
-		scene->ea_path = ft_cpy_info(line);
+		scene->ea_path = ft_cpy_info(line, scene->ea_path);
 	else if (!ft_strncmp(tmp, "F ", 2) || !ft_strncmp(tmp, "F	", 3))
-		scene->f_color = ft_cpy_info(line);
+		scene->f_color = ft_cpy_info(line, scene->f_color);
 	else if (!ft_strncmp(tmp, "C ", 2) || !ft_strncmp(tmp, "C	", 3))
-		scene->c_color = ft_cpy_info(line);
+		scene->c_color = ft_cpy_info(line, scene->c_color);
 	else
 		return (free(tmp), 1);
 	count++;
@@ -90,9 +91,9 @@ int	ft_parse_file(t_scene *scene)
 		ret = ft_save_info(scene, scene->file[j]);
 		if (ret == 1) //si no es ninguno de los parámetros salgo y guardo el mapa fuera del loop
 			break ;
-		//exit(0);
 		if (ret == -1) //parámetro repe o get_map fallando
 		{
+			exit(0);
 			return (-1);
 		}
 	}
