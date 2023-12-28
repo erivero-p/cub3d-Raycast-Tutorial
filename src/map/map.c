@@ -44,5 +44,6 @@ void	ft_init_map(t_game *info)
 	if (mlx_image_to_window(info->mlx, info->scene->canvas, 0, 0) < 0)
 		ft_error(IMAGE, NULL);
 	//ft_paint_background(info, HEIGHT, WIDTH);
-	ft_paint_minimap(info, info->scene);
+	if (BONUS == 1)
+		ft_paint_minimap(info, info->scene);
 }
