@@ -35,6 +35,7 @@ void	ft_init_game(t_game *info)
 	//ft_draw_pixel(info);
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	mlx_loop_hook(info->mlx, &ft_3Der, info);
+//	ft_ray_tester(info, 241, 242, 270, 298);
 	mlx_loop(info->mlx);
 }
 

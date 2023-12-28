@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/22 16:45:00 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/28 12:04:07 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ t_coord	ft_get_player_init_pos(t_game *game)
 		}
 		y++;
 	}
+	pos.x += 0.5;
+	pos.y += 0.5;
 	return (pos);
 }
 
