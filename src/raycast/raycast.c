@@ -36,7 +36,6 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info, char cross)
 	if (i >= info->scene->len_x || j >= info->scene->len_y || i < 0 || j < 0)
 		return (true); //esto para no salirme del mapa
 	if (map[j][i] == '1')
-
 		return (true);
 	return (false);
 }

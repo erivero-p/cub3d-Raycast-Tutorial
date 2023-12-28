@@ -12,11 +12,13 @@ char	*ft_cpy_info(char *line)
 int	ft_save_info(t_scene *scene, char *line)
 {
 	static int	count = 0;
-	char	*tmp;
+	char		*tmp;
 
 	tmp = ft_strtrim(line, "   	");
+	printf("en ft_save_info: tmp: %s\n", tmp);
 	if (!ft_strncmp(tmp, "NO ", 3) || !ft_strncmp(tmp, "NO	", 3))
 		scene->no_path = ft_cpy_info(line);
+	//printf("%sen ft_save_info: no_path: %s%s\n", DEBUG_COLOR, scene->no_path, END);
 	else if (!ft_strncmp(tmp, "SO ", 3) || !ft_strncmp(tmp, "SO	", 3))
 		scene->so_path = ft_cpy_info(line);
 	else if (!ft_strncmp(tmp, "WE ", 3) || !ft_strncmp(tmp, "WE	", 3))
@@ -34,6 +36,7 @@ int	ft_save_info(t_scene *scene, char *line)
 		return (free(tmp), ft_error(FORMAT, "Each parameter can't appear more than once"));
 	return (free(tmp), 0);
 }
+
 int	ft_get_max_len(char **matrix, int j)
 {
 	int	max;
@@ -53,16 +56,16 @@ int	ft_get_max_len(char **matrix, int j)
 	return (max);
 }
 
-int ft_get_map(char **file, t_scene *scene, int j)
+int	ft_get_map(char **file, t_scene *scene, int j)
 {
 	int		len;
 	char	**cpy;
 
 	if (!(scene->no_path && scene->so_path && scene->we_path
-		&& scene->ea_path && scene->f_color && scene->c_color))
+			&& scene->ea_path && scene->f_color && scene->c_color))
 		return (ft_error(FORMAT, "All six parameter must be above the map"));
 	len = 0;
-	while(file[j + len])
+	while (file[j + len])
 		len++;
 	scene->len_y = len;
 	scene->len_x = ft_get_max_len(file, j); // -1 porque cuenta el maxlen con el \n
@@ -78,16 +81,20 @@ int	ft_parse_file(t_scene *scene)
 
 	j = -1;
 	ret = 0;
-	while(scene->file[j] && scene->file[++j])
+	while (scene->file[j] && scene->file[++j])
 	{
+		printf("------HOLAAAAAA--------%s\n", scene->file[j]);
 		i = 0;
-		while(scene->file[j][0] == 10)
+		while (scene->file[j][0] == 10)
 			j++;
 		ret = ft_save_info(scene, scene->file[j]);
 		if (ret == 1) //si no es ninguno de los parámetros salgo y guardo el mapa fuera del loop
 			break ;
+		//exit(0);
 		if (ret == -1) //parámetro repe o get_map fallando
+		{
 			return (-1);
+		}
 	}
 	ret = ft_get_map(scene->file, scene, j);
 //	ft_print_scene(scene);
