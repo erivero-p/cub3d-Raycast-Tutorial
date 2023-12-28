@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/28 12:04:07 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/28 18:48:50 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_init_player(t_player *player, t_game *game)
 	game->player->center = malloc(sizeof(t_coord));
 	*player->center = ft_get_center(game);
 	player->color = RED;
-	player->mov_speed = 3.0; //pixeles
+	player->mov_speed = 1.0; //pixeles
 	//la velocidad de giro son cuantos grados va a girar y tenemos que hacer la conversion a radianes -> game->mlx->delta_time
 	player->rot_speed = 5.0; //multiplicar por * (M_PI / 180) -> pi/180 conversion a radianes -> game->mlx->delta_time
 	player->angle = ft_get_player_angle(game->scene); //en grados

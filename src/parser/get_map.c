@@ -32,8 +32,3 @@ char **ft_get_spaced_map(char **arr, int start, int len, int max)
 	cpy[i] = NULL;
 	return (cpy);
 }
-
-/* void	ft_rectang_map(char **matrix, int j, int len)
-{
-
-} */

@@ -2,13 +2,15 @@
 
 char	*ft_cpy_info(char *line, char *path)
 {
+	while (*line > 0 && *line < 33) //salto los espacios antes del nombre
+		line++;
 	if (path != NULL)
 		free(path);
 	while (*line && *line > 32) //salto hasta enontrar un espacio
 		line++;
 	while (*line > 0 && *line < 33) //salto los espacios tras el nombre
 		line++;
-	return (ft_strtrim(line, "\n"));
+	return (ft_strtrim(line, "\n 	"));
 }
 
 int	ft_save_info(t_scene *scene, char *line)
@@ -83,7 +85,6 @@ int	ft_parse_file(t_scene *scene)
 	ret = 0;
 	while (scene->file[j] && scene->file[++j])
 	{
-		printf("------HOLAAAAAA--------%s\n", scene->file[j]);
 		i = 0;
 		while (scene->file[j][0] == 10)
 			j++;
@@ -97,6 +98,6 @@ int	ft_parse_file(t_scene *scene)
 		}
 	}
 	ret = ft_get_map(scene->file, scene, j);
-//	ft_print_scene(scene);
+	ft_print_scene(scene, DEBUG2);
 	return (ret);
 }
