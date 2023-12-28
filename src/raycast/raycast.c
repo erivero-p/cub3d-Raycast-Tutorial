@@ -8,11 +8,12 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle)
 //	ray->coll = false;
 	ray->origin.x = info->player->pos->x;
 	ray->origin.y = info->player->pos->y;
+	ray->deltaang = ft_deg_to_rad(info->player->angle) - angle;
 /* 	ray->origin.x = 3.5;
 	ray->origin.y = 3.5; */
 //	ray->origin = ft_get_player_init_pos(info); //hardcodeado
-	ray->origin.x += 0.5;
-	ray->origin.y += 0.5;
+/* 	ray->origin.x += 0.5;
+	ray->origin.y += 0.5; */
 	ray->angle =  angle * 180 / M_PI;
 	ray->dir.x = cos(angle);
 	ray->dir.y = sin(angle);
@@ -117,8 +118,7 @@ t_coll	ft_cross_checker(t_ray *ray, t_coord step, t_game *info, char cross)
 			if (cross == 'y')
 				coll.txt = 1 * ray->sgn.x; //1 si es este -1 si es oeste
 			else
-				coll.txt = 2 * ray->sgn.y;
-		
+				coll.txt = 2 * ray->sgn.y; //2 si es sur -2 si es norte
 			break ;
 		}
 		pos.x += step.x;
@@ -126,55 +126,12 @@ t_coll	ft_cross_checker(t_ray *ray, t_coord step, t_game *info, char cross)
 	}
  // printf("%scollision on: (%f, %f)%s\n", GOOD, pos.y, pos.x, END);
 	coll.raylen = sqrt(pow(pos.x - ray->origin.x, 2) + pow(pos.y - ray->origin.y, 2));
-//	coll.distance = coll.raylen * cos(ft_deg_to_rad(info->player->angle - ray->angle));
+	coll.distance = coll.raylen * cos(ray->deltaang);
 	return (coll);
 }
 /* 	cateto.x = pos.x - ray->origin.x;
 	cateto.y = pos.y - ray->origin.y; */
-void	ft_raydebug(t_ray *ray, char *col)
-{
-	static int i = 0;
-	i++;
-//	if (pos.x - (int)pos.x == 0)
-	if (i == 1)
-		printf("player pos (x,y): %f, %f\n", ray->origin.x, ray->origin.y);
-	if (i == 1 || i == 3 || i % 100 == 0 || i == 1080 - 1)
-	{
-		printf("%s", col);
-		printf("ray nº: %i (%fº)\n", i, ray->angle);
-		printf("collision on (x, y): [%f][%f]\n", ray->coll.x, ray->coll.y);
-		printf("%s", END);
-	}
-	if (i == 1080/2 + 1)
-	{
-		printf("%son central ray (%f);\n", WRONG, ray->angle);
-		printf("collision on (x, y): [%f][%f]\n", ray->coll.x, ray->coll.y);
-		printf("step sizes are: x: %f, y: %f\n", ray->x_cross.x, ray->x_cross.y);
-	}
-/* 	if (i > 448 && i < 452)
-		printf("collision on (x, y): [%f][%f]\n", pos.x, pos.y); */
-}
-/* void	ft_ray_caster(t_game *info, t_ray *ray, float angle)
-{
-	double	len;
 
-	ft_init_ray(ray, info, ft_deg_to_rad(angle));
-//	ft_print_ray(&ray, "\033[95m"); //purple
-	if (angle > 45 && angle <= 135 || angle >= 225 && angle < 315)
-		ray->len = ft_cross_checker(ray, ray->x_cross, info, 'x');
-	else
-		ray->len = ft_cross_checker(ray, ray->y_cross, info, 'y');
-//	printf("len is: %f\n", len);
-//	return (len);
-	ft_raydebug(ray, DEBUG_COLOR);
-} */
-
-void	ft_printcoll(t_coll *coll, char c)
-{
-	printf("%c_coll:\n", c);
-	printf("collision at: %f, %f\n", coll->collision.x, coll->collision.y);
-	printf("raylen is: %f\n", coll->raylen);
-}
 
 t_coll	ft_ray_caster(t_game *info, float angle)
 {
@@ -194,21 +151,4 @@ t_coll	ft_ray_caster(t_game *info, float angle)
 	else
 		return (y_coll);
 }
-/* Me ha dicho yolanthe que lo de elegir de antemano en función del ángulo si checkear
-los x_cross o los y_cross está muy bien pero que si el personaje está desplazado del centro
-de la celda, no siempre se va a cumplir que la colisión esté antes en el eje correspondiente
-Así que parece ser que siempre vamos a tener que calcular los dos y coger el menor */
 
-/* void	ft_ray_tester(t_game *info)
-{
-	t_ray	ray;
-
-	ft_ray_caster(info, &ray, 0);
-	ft_print_ray(&ray, WRONG);
-	ft_ray_caster(info, &ray, 90);
-	ft_print_ray(&ray, DEBUG2);
-	ft_ray_caster(info, &ray, 180);
-	ft_print_ray(&ray, GOOD);
-	ft_ray_caster(info, &ray, 270);
-	ft_print_ray(&ray, DEBUG_COLOR);
-} */
