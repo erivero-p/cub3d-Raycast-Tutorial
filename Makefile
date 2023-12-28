@@ -6,7 +6,7 @@
 #    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2023/12/19 15:53:10 by marirodr         ###   ########.fr        #
+#    Updated: 2023/12/28 11:45:04 by marirodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,23 +57,32 @@ END			=	\033[0m
 
 RM			=	rm -rf
 
+BONUS		=	0
+
+#esto es lo que se llama directiva condicional de Makefile. Si la variable BONUS = 1, entonces se añade -DBONUS a la varibale CFLAGS. -DBONUS es una opcion del compilador que define una macro llamada BONUS, que puede ser usado en el codigo fuente para condicionar la compilacion de ciertas partes del codigo
+ifeq ($(BONUS), 1)
+	CFLAGS += -DBONUS
+endif
+
 all: $(NAME)
 $(NAME): $(OBJ)
 	@make -s -C libft
 	@make -s -C MLX42
-	@$(CC) $(CFLAGS) $(OBJ) $(MLX42) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
-	@echo "$(GREEN)$(NAME) compiled ✅$(END)"
+#-DBONUS=$(BONUS): con esta 'regla' el compilador define una macro llamada BONUS y le asigna el valor de la variable BONUS de Makefile y puede ser usado en el codigo fuente.
+	@$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(OBJ) $(MLX42) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+#	dentro de una regla en vez de usarse 'ifeq' se deben usar comandos de shell. en este caso usamos el comando if de shell que lo que hace es comprobar si BONUS es igual a 0 y en ese caso imprime el mensaje
+	@if [ $(BONUS) -eq 0 ]; then echo "$(GREEN)$(NAME) compiled ✅$(END)"; fi
 				
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 #cada vez que queramos añadir una carpeta, utilizamos una linea similar a la de abajo para dentro de la carpeta /objs ir añadiendolos todos
 	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils $(OBJ_DIR)/settings $(OBJ_DIR)/map $(OBJ_DIR)/raycast $(OBJ_DIR)/collision
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -DBONUS=$(BONUS) -c $< -o $@
 # no se si en la linea de arriba tenemos que llamar a $(MLX_FLAGS)
 
 
 clean:
-	@$(RM) -r $(OBJ_DIR)
+	@$(RM) -rf $(OBJ_DIR)
 	@echo "$(RED)Compiled objects have been removed$(END)"
 
 fclean:	clean
@@ -83,5 +92,10 @@ fclean:	clean
 	@echo "$(RED)$(NAME) cleaned 🗑$(END)"
 
 re: fclean all
+
+# la regla bonus basicamente limpia lo anterior y recompila el codigo con la variable BONUS establecida en 1 para asi poder usarla en el codigo fuente.
+bonus:
+	@make re BONUS=1
+	@echo "$(GREEN)$(NAME) with bonus compiled ✅$(END)"
 
 .PHONY: all, clean, fclean, re

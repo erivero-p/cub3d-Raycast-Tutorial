@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:14:14 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/22 12:27:57 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/28 11:29:42 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	ft_frontal_collision(t_game *game, int y, int x)
 
 	lim = x + 4;
 	size = (int)game->scene->tile;
-	printf("en ft_sy: %d / x: %d\n", y, x);
-	printf("en lim: %d / size: %d\n", lim, size);
-	printf("casilla.y(y - 30) / size: %d / casilla.x(x - 30) / size: %d\n", (y - 30) / size, (x - 30) / size);
+	// printf("en ft_sy: %d / x: %d\n", y, x);
+	// printf("en lim: %d / size: %d\n", lim, size);
+	// printf("casilla.y(y - 30) / size: %d / casilla.x(x - 30) / size: %d\n", (y - 30) / size, (x - 30) / size);
 	while (x < lim)
 	{
 		if (game->scene->map[(y - 30) / size][(x - 30) / size] == '1') //size ->scene.tile
 		{
-			printf("%sNO PUEDES PASAR%s\n", GOOD, END);
+			printf("%sNO PUEDES PASAR%s\n", WRONG, END);
 			return (1);
 		}
 		x++;
@@ -41,14 +41,14 @@ int	ft_back_collision(t_game *game, int y, int x)
 
 	lim = x + 4;
 	size = (int)game->scene->tile;
-	printf("en ft_sy: %d / x: %d\n", y, x);
-	printf("en lim: %d / size: %d\n", lim, size);
-	printf("casilla.y(y - 30) / size: %d / casilla.x(x - 30) / size: %d\n", (y - 30) / size, (x - 30) / size);
+	// printf("en ft_sy: %d / x: %d\n", y, x);
+	// printf("en lim: %d / size: %d\n", lim, size);
+	// printf("casilla.y(y - 30) / size: %d / casilla.x(x - 30) / size: %d\n", (y - 30) / size, (x - 30) / size);
 	while (x < lim)
 	{
 		if (game->scene->map[(y + 4 - 30) / size][(x - 30) / size] == '1')
 		{
-			printf("%sNO PUEDES PASAR%s\n", GOOD, END);
+			printf("%sNO PUEDES PASAR%s\n", WRONG, END);
 			return (1);
 		}
 		x++;
@@ -63,13 +63,13 @@ int	ft_left_collision(t_game *game, int y, int x)
 
 	lim = y + 4;
 	size = (int)game->scene->tile;
-	printf("en ft_sy: %d / x: %d\n", y, x);
-	printf("en lim: %d\n", lim);
+	// printf("en ft_sy: %d / x: %d\n", y, x);
+	// printf("en lim: %d\n", lim);
 	while (y < lim)
 	{
 		if (game->scene->map[(y - 30) / size][(x - 30) / size] == '1')
 		{
-			printf("%sNO PUEDES PASAR%s\n", GOOD, END);
+			printf("%sNO PUEDES PASAR%s\n", WRONG, END);
 			return (1);
 		}
 		y++;
@@ -84,13 +84,13 @@ int	ft_right_collision(t_game *game, int y, int x)
 
 	lim = y + 4;
 	size = (int)game->scene->tile;
-	printf("en ft_sy: %d / x: %d\n", y, x);
-	printf("en lim: %d\n", lim);
+	// printf("en ft_sy: %d / x: %d\n", y, x);
+	// printf("en lim: %d\n", lim);
 	while (y < lim)
 	{
 		if (game->scene->map[(y - 30) / size][(x + 4 - 30) / size] == '1')
 		{
-			printf("%sNO PUEDES PASAR%s\n", GOOD, END);
+			printf("%sNO PUEDES PASAR 🧙🏼‍♂️ %s\n", WRONG, END);
 			return (1);
 		}
 		y++;
