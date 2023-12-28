@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:40:55 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/01 12:14:27 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/28 17:12:46 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ret_str[i] = '\0';
 	return (ret_str);
 }
-
