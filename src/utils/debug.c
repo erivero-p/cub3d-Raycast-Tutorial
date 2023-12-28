@@ -25,6 +25,24 @@ void	ft_printcoll(t_coll *coll, char c, char *colour)
 	printf("%s\n", END);
 
 }
+/* char	ft_raycast_debug(t_game *info, float angle, char *col)
+{
+	t_coll	x_coll;
+	t_coll	y_coll;
+	t_ray	ray; 
+
+	ft_init_ray(&ray, info, ft_deg_to_rad(angle));
+	ft_print_ray(&ray, col);
+	x_coll = ft_cross_checker(&ray, ray.x_cross, info, 'x');
+	ft_printcoll(&x_coll, 'x', col);
+	y_coll = ft_cross_checker(&ray, ray.y_cross, info, 'y');
+	ft_printcoll(&y_coll, 'y', col);
+	if (x_coll.raylen < y_coll.raylen)
+		return ('x');
+	else
+		return ('y');
+} */
+
 void	ft_raydebug(t_ray *ray, char *col)
 {
 	static int i = 0;
