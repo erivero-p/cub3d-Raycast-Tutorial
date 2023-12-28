@@ -48,7 +48,7 @@ bool	ft_coll_checker(t_coord pos, t_ray *ray, t_game *info, char cross)
 		return (true); //esto para no salirme del mapa
 	if (map[j][i] == '1')
 	{
-		printf("casted collision on (i, j): %i, %i\n", i, j);
+		//printf("casted collision on (i, j): %i, %i\n", i, j);
 		return (true);
 	}
 	return (false);
@@ -81,7 +81,7 @@ t_coord	ft_first_step(t_ray *ray, char cross, double angle, t_game *info)
 		pos.x = ray->origin.x;
 	if (angle == 0 || angle == 180)
 		pos.y = ray->origin.y; */
-	printf("after 1st step: pos.x (%f), pos.y (%f)\n", pos.x, pos.y);
+	//printf("after 1st step: pos.x (%f), pos.y (%f)\n", pos.x, pos.y);
 	return (pos);
 }
 /* t_coord	ft_first_step(t_ray *ray, t_coord step, double angle, t_game *info)

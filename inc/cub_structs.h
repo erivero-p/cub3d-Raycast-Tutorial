@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/22 12:08:41 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/28 12:51:07 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,10 @@ typedef enum e_errors
 # define RED 0xFF0000FF
 # define GREEN 0x007F007F
 # define TRANSP 0xFF000000
+
+//si BONUS no está definido porque no se ha usado la regla 'make bonus' al compilar se define como 0. En caso contrario, entonces la definición en el Makefile tiene prioridad y BONUS se define como 1.
+# ifndef BONUS
+#  define BONUS 0
+# endif
 
 #endif

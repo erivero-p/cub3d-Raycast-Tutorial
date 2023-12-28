@@ -73,8 +73,6 @@ int	main(int ac, char **av)
 		info.scene = &scene;
 		info.player = &player;
 		info.imgs = &imgs;
-		if (BONUS == 1)
-		 	printf("-----HOLAAAAAA------\n");
 		ft_print_scene(&scene, DEBUG_COLOR);
 		ft_set_window(&info);
 		ft_init_game(&info);
