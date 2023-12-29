@@ -24,13 +24,10 @@ int ft_is_wall(char **map, int x, int y, t_scene *scene)
 
 int	ft_wall_check(char **map, t_scene *scene)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
-//	ft_printf("%sft_wall_check map is: \n----------------\n", DEBUG_COLOUR);
-/* 	ft_print_matrix(map, 1);
-	ft_printf("----------------\n%s", END); */
 	while (map[y] && y < scene->len_y)
 	{
 		x = 0;
@@ -38,9 +35,11 @@ int	ft_wall_check(char **map, t_scene *scene)
 		{
 			while (map[y][x] > 0 && map[y][x] <= 32)
 				x++;
-			if (map[y][x] != 0 && ft_is_wall(map, x, y, scene) && map[y][x] != '1')
+			if (map[y][x] != 0 && ft_is_wall(map, x, y, scene)
+				&& map[y][x] != '1')
 			{
-				ft_printf("%sFAILED AT: map[%i][%i] %c\n%s", GOOD, y, x, map[y][x], END);
+				ft_printf("%sFAILED AT: map[%i][%i] %c\n%s", \
+				GOOD, y, x, map[y][x], END);
 				return (-1);
 			}
 			x++;

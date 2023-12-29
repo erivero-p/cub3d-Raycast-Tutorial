@@ -36,7 +36,7 @@ int	ft_scene_check(t_scene *scene)
 		return (ft_error(EXT_PNG, NULL));
 	scene->floor = ft_color_check(scene->f_color); //no sé si guardar estos enteros en otra estructura
 	scene->ceiling = ft_color_check(scene->c_color);
-	if (scene->floor  == -1 || scene->ceiling == -1)
+	if (scene->floor == -1 || scene->ceiling == -1)
 		return (ft_error(COLOR, NULL));
 	if (ft_char_mapcheck(scene->map) == -1)
 		return (-1);

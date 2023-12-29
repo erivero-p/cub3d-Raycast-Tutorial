@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/28 16:41:44 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/29 10:57:17 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_parse(t_scene *scene, int fd, char *file, t_img *img)
 	ft_read_file(scene, fd, len, file);
 	if (ft_parse_file(scene) == -1)
 		return (ft_free_double_pointer(scene->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
-	//exit(0);
 	if (ft_scene_check(scene) == -1)
 		return (ft_free_double_pointer(scene->file), -1);
 	if (ft_load_images(scene, img) == -1)

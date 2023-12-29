@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/22 16:43:52 by marirodr         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:47:06 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 	double	rot; //aux para no cambiar el angulo real del player
 
 	rot = player->angle + ang; //en grados
-	// printf("ft_ad: esta mierda que rot : %f\n", rot);
-	// printf("ft_ad: rot en radianes: %f\n", ft_deg_to_rad(rot));
-	// printf("%sANTESen ft_rotate: player->angle: %f%s\n", GOOD, player->angle, END);
+	printf("ft_ad: esta mierda que rot : %f\n", rot);
+	printf("%sANTESen ft_rotate: player->angle: %f%s\n", GOOD, player->angle, END);
 	// printf("instace.x: %d\n", player->player_img->instances[0].x);
 	// printf("instace.y: %d\n", player->player_img->instances[0].y);
 	y_c = player->player_img->instances[0].y + (sin(ft_deg_to_rad(rot)) * player->mov_speed);
@@ -66,7 +65,7 @@ void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 		// printf("instace.y: %d\n%s", player->player_img->instances[0].y, END);
 		player->pos->x = (player->player_img->instances[0].x - 30) / game->scene->tile;
 		player->pos->y = (player->player_img->instances[0].y - 30) / game->scene->tile;
-		//printf("%sDESPUESen ft_rotate: player->angle: %f%s\n", WRONG, player->angle, END);
+		printf("%sDESPUESen ft_rotate: player->angle: %f%s\n", WRONG, player->angle, END);
 	}
 }
 
@@ -95,7 +94,10 @@ void	ft_controls(mlx_key_data_t keydata, void *param)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
 		ft_ad(game->player, -1.0, -90, game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
+	{
+		printf("----PULSO LA D-----\n");
 		ft_ad(game->player, 1.0, 90, game);
+	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		ft_rotate(game->player, -1.0, game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))

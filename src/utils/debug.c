@@ -1,6 +1,6 @@
 #include "../../inc/cub3D.h"
 
-void 	ft_print_ray(t_ray *ray, char *col)
+void	ft_print_ray(t_ray *ray, char *col)
 {
 	printf("%s", col);
 	printf("(%fº) ray parameters are:\n", ray->angle);
