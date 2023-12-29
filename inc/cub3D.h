@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/22 12:53:16 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:16:01 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 /*							PARSE							*/
 
 //parse.c
-int	ft_parse(t_scene *scene, int fd, char *file, t_img *img);
+int		ft_parse(t_scene *scene, int fd, char *file, t_img *img);
 int		ft_arg_check(int ac, char **av);
 
 //read_file.c
@@ -55,7 +55,7 @@ int		ft_wall_check(char **map, t_scene *scene);
 /*							RAYCAST							*/
 //double	ft_ray_caster(t_game *info, float angle);
 //void		ft_ray_caster(t_game *info, t_ray *ray, float angle);
-t_coll		ft_ray_caster(t_game *info, float angle);
+t_coll	ft_ray_caster(t_game *info, float angle);
 
 
 void	ft_ray_tester(t_game *info, double a1, double a2, double a3, double a4);
@@ -71,15 +71,15 @@ int		ft_error(int err, char *str);
 void	ft_clean_map(t_game	*info);
 
 //init.c
-void   ft_init_map_struct(t_game *info);
+void	ft_init_map_struct(t_game *info);
 
 //error_handling.c
 int		ft_error(int err, char *str);
 
 //debug.c
 void	ft_print_scene(t_scene *scene, char *colour);
-void 	ft_print_matrix(char **matrix, char *colour);
-void 	ft_print_ray(t_ray *ray, char *col);
+void	ft_print_matrix(char **matrix, char *colour);
+void	ft_print_ray(t_ray *ray, char *col);
 void	ft_xy_printer(char **map, int y, int x, char *colour);
 void	ft_raydebug(t_ray *ray, char *col);
 void	ft_printcoll(t_coll *coll, char c, char *colour);
@@ -87,7 +87,7 @@ void	ft_printcoll(t_coll *coll, char c, char *colour);
 
 
 //load_images
-int     ft_load_images(t_scene *scene, t_img *imgs);
+int		ft_load_images(t_scene *scene, t_img *imgs);
 void	ft_delete_text(t_game *game);
 void	ft_redisplay(t_game *game);
 void	ft_draw_pixel(t_game *game);
@@ -96,7 +96,7 @@ unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x, int size)
 /*							SETTINGS							*/
 //window.c
 int		ft_check_monitor(mlx_t *mlx);
-void	ft_resize(void *param);
+void	ft_mouse(mouse_key_t k, action_t act, modifier_key_t mod, void *param);
 
 //controls.c
 void	ft_controls(mlx_key_data_t keydata, void *param);
