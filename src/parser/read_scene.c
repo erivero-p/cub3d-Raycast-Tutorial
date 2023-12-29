@@ -83,7 +83,6 @@ int	ft_parse_file(t_scene *scene)
 	ret = 0;
 	while (scene->file[j] && scene->file[++j])
 	{
-		printf("------HOLAAAAAA--------%s\n", scene->file[j]);
 		i = 0;
 		while (scene->file[j][0] == 10)
 			j++;
