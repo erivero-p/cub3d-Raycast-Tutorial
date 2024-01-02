@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:14:14 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/28 11:29:42 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:47:20 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_right_collision(t_game *game, int y, int x)
 	{
 		if (game->scene->map[(y - 30) / size][(x + 4 - 30) / size] == '1')
 		{
-			printf("%sNO PUEDES PASAR 🧙🏼‍♂️ %s\n", WRONG, END);
+			printf("%sNO PUEDES PASAR 🧙🏼‍♂️%s\n", WRONG, END);
 			return (1);
 		}
 		y++;

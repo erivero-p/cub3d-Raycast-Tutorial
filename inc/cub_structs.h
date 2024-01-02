@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/28 12:51:07 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:30:24 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_player
 	int			color;
 	double		mov_speed;
 	double		rot_speed;
-	float		angle; //(?)
+	int			angle; //(?)
 	int			size;
 }	t_player;
 
