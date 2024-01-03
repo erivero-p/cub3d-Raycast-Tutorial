@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/28 12:51:07 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:33:36 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ typedef	struct	s_coll
 	double	raylen;
 	double	distance;
 	int		txt; //texture: 1 E -1 W 2 S -2 N
+	mlx_texture_t	*texture;
+	t_coord	pixel; //el pixel en el que empiezo a cargar la textura
 }	t_coll;
 
 typedef struct s_game
@@ -125,6 +127,7 @@ typedef enum e_errors
 # define WIDTH 1080
 # define HEIGHT 720
 # define WALL_H 500 // altura del muro, puse eso por probar xd
+# define WALL_W 500 // ancho del muro, puse eso por probar xd
 # define FOV 90 // campo de visión
 
 # define BLACK 0x000000FF

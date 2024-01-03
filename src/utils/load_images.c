@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:20:33 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/21 15:58:03 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:51:50 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x, int size)
 	int	a;
 	int	p;
 
-	p = 4 * x + (4 * y * 64);
+	p = 4 * x + (4 * y * size);
 	r = texture->pixels[p];
 	g = texture->pixels[p + 1];
 	b = texture->pixels[p + 2];
 	a = texture->pixels[p + 3];
 	return (r << 24 | g << 16 | b << 8 | 0xFF);
+	return (0);
 }
 
 void	ft_redisplay(t_game *game)
