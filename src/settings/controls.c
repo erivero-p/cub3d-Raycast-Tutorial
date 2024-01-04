@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/29 12:47:06 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:17:12 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 	//colision bruta
 	// y_coll = ((player->player_img->instances[0].y + (dir * sin(ft_deg_to_rad(player->angle)) * player->mov_speed) - 30) / game->scene->tile);
-	// x_coll = ((player->player_img->instances[0].x + (dir * cos(ft_deg_to_rad(player->angle)) * player->mov_speed) - 30) / game->scene->tile);
+	// x_coll = ((player->player_img->instances[0].x + (dir * cos(ft_deg_to_rad(player->angle)) * player->mov_speed) - 30) / game->scene->tile)
+
+/* bool	ft_collision(t_game *info, float angle)
+{
+	t_coll	coll;
+	
+	coll = ft_ray_caster(info, angle);
+	if (coll.raylen < info->player->mov_speed)
+		return (true);
+	return (false);
+} */
+
 void	ft_ws(t_player *player, double dir, t_game *game)
 {
 	double	x_c;
@@ -29,7 +40,7 @@ void	ft_ws(t_player *player, double dir, t_game *game)
 	// printf("calculo en y: %f\n", dir * sin(ft_deg_to_rad(player->angle)) * player->mov_speed);
 	// printf("x_c: %f\n", x_c);
 	// printf("y_c: %f\n", y_c);
-	if (!ft_frontal_collision(game, y_c, x_c) && !ft_back_collision(game, y_c, x_c))
+	if (!ft_frontal_collision(game, y_c - 1, x_c) && !ft_back_collision(game, y_c, x_c))
 	{
 		player->player_img->instances[0].y = y_c;
 		player->player_img->instances[0].x = x_c;
@@ -57,7 +68,7 @@ void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 	x_c = player->player_img->instances[0].x + (cos(ft_deg_to_rad(rot)) * player->mov_speed);
 	// printf("x_c: %d\n", x_c);
 	// printf("y_c: %d\n", y_c);
-	if (!ft_left_collision(game, y_c, x_c) && !ft_right_collision(game, y_c, x_c))
+	if (!ft_left_collision(game, y_c, x_c - 1) && !ft_right_collision(game, y_c, x_c))
 	{
 		player->player_img->instances[0].x += cos(ft_deg_to_rad(rot)) * player->mov_speed;//ft_deg_to_rad(player->angle)
 		player->player_img->instances[0].y += sin(ft_deg_to_rad(rot)) * player->mov_speed;
