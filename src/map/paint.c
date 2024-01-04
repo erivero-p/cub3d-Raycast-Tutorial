@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/02 17:53:27 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:02:49 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,15 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 	int	color;
 	int	x;
 	int	y;
+	int	center_x;
+	int	center_y;
 
 	info->scene->mini = mlx_new_image(info->mlx, info->scene->mini_x, info->scene->mini_y); //limites de la imagen
 	if (!info->scene->mini)
 		ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(info->mlx, info->scene->mini, 30, 30) < 0) // en que coordenadas carga la imagen
+	center_x = 75 + info->player->size - (info->player->pos->x * scene->tile); //75->mitad hueco para minimapa, 5 tamaño jugador
+	center_y = 75 + info->player->size - (info->player->pos->y * scene->tile);
+	if (mlx_image_to_window(info->mlx, info->scene->mini, center_x, center_y) < 0) // en que coordenadas carga la imagen
 		ft_error(IMAGE, NULL);
 	y = 0;
 	while (scene->map[y])
@@ -79,6 +83,8 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 		}
 		y++;
 	}
+	scene->mini->instances[0].z = 0;
+	//scene->mini->enabled = false;
 }
 
 int	ft_get_color(char **map, int y, int x)
@@ -87,7 +93,11 @@ int	ft_get_color(char **map, int y, int x)
 
 	if (map[y][x] == '1')
 		color = BLACK;
-	else if (ft_strchr("NSEW0", map[y][x]))
+	// else if (ft_strchr("NSEW0", map[y][x]))
+	// 	color = WHITE;
+	else if (ft_strchr("NSEW", map[y][x]))
+		color = GREEN;
+	else if (ft_strchr("0", map[y][x]))
 		color = WHITE;
 	else
 		color = TRANSP;
@@ -137,7 +147,9 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 	player->player_img = mlx_new_image(game->mlx, player->size, player->size);
 	if (!player->player_img)
 		ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(game->mlx, player->player_img, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) == -1)
+	// if (mlx_image_to_window(game->mlx, player->player_img, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) < 0) //antigua ver
+	// 	ft_error(IMAGE, NULL);
+	if (mlx_image_to_window(game->mlx, player->player_img, (150 / 2)/* - 2.5*/, (150 / 2)/* - 2.5) */) < 0) //version jugador estatico -> 150 tamaño sin dibujar en canvas; / 2 para mitad; - 2.5 el la mitad del tamaño de la imagen para ajustarlo al centro 
 		ft_error(IMAGE, NULL);
 	//printf("ft_render_player: player.size: %d\n", player->size); //comment
 	while (y < player->size)
@@ -152,7 +164,10 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 	}
 	player->player_img->instances[0].enabled = false;
 	if (BONUS == 1)
+	{
 		player->player_img->instances[0].enabled = true;
+		player->player_img->instances[0].z = 2;
+	}
 }
 
 /*void draw_line(t_img *img, int x1, int y1, int x2, int y2, int color) {

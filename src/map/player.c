@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/02 17:29:22 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/04 10:47:48 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	ft_init_player(t_player *player, t_game *game)
 	*player->pos = ft_get_player_init_pos(game);
 	printf("en ft_init_player: player_y: %d / player_x: %d\n", player->player_img->instances[0].y, player->player_img->instances[0].x);
 	printf("en ft_init_player: player.pos.y: %f / player.pos.x: %f\n", player->pos->y, player->pos->x);
-	game->player->center = malloc(sizeof(t_coord));
-	*player->center = ft_get_center(game);
+	//game->player->center = malloc(sizeof(t_coord));
+	//*player->center = ft_get_center(game);
 	player->color = RED;
 	player->mov_speed = 1.5; //pixeles -> 1.1 para que aparentemente vaya mas fluido por pantalla y sin tanto salto -> minimapa menos "exacto" cuanto mas pequeño es el numero
 	player->rot_speed = 2.0;

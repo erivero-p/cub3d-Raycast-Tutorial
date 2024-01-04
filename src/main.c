@@ -30,8 +30,8 @@ void	ft_leaks(void)
 
 void	ft_init_game(t_game *info)
 {
-	ft_init_map(info);
 	ft_init_player(info->player, info);
+	ft_init_map(info);
 	//ft_draw_pixel(info);
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	if (BONUS == 1)

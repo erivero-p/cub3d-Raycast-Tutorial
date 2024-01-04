@@ -10,9 +10,12 @@ void	ft_draw_col(t_game	*info, float scale, int	coll, int txt)
 	wall = scale;
 	top = HEIGHT / 2 - wall / 2;
 	bot = top + wall;
+	//printf("top: %d / bot: %d\n", top, bot);
 	j = 0;
 	while (j < HEIGHT)
 	{
+		if (j <= 150 && coll <= 150)
+			j = 150;
 		if (j < top)
 			mlx_put_pixel(info->scene->canvas, coll, j, BLUE);
 		else if (j > bot)
