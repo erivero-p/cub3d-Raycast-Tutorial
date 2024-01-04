@@ -4,40 +4,70 @@ void ft_init_pixel(t_coll *coll, int wall, t_game *info)
 {
 	t_coord	pixel;
 
-	if (coll->txt == 1 || coll->txt == -1) // si miré un y_cross
-		coll->pixel.x = fmod(coll->collision.y, 1.0) * coll->texture->width; //es por el ancho de la textura en vdd
-	else if (coll->txt == 2 || coll->txt == -2) // si miré un x_cross
-		coll->pixel.x = fmod(coll->collision.x, 1.0) * coll->texture->width;
-	coll->pixel.y = 0;
-	if (wall > HEIGHT)
-		coll->pixel.y += (wall - HEIGHT) / 2;
 	if (coll->txt == 1) // E
 		coll->texture = info->imgs->ea_text;
-	if (coll->txt == -1) // W
+	else if (coll->txt == -1) // W
 		coll->texture =  info->imgs->we_text;
-	if (coll->txt == 2) // S
+	else if (coll->txt == 2) // S
 		coll->texture =  info->imgs->so_text;
-	if (coll->txt == -2) // N
+	else if (coll->txt == -2) // N
 		coll->texture =  info->imgs->no_text;
+	coll->wall = wall;
+	coll->ratio = (float)coll->texture->height / coll->wall;
+	if (coll->txt == 1 || coll->txt == -1) // si miré un y_cross
+		coll->pixel.x = fmod(coll->collision.y, 1.0) * coll->texture->width; // * coll->ratio;
+	else if (coll->txt == 2 || coll->txt == -2) // si miré un x_cross
+		coll->pixel.x = fmod(coll->collision.x, 1.0) * coll->texture->width; // * coll->ratio;
+	coll->pixel.y = 0;
+	if (wall > HEIGHT)
+		coll->pixel.y += (float)((wall - HEIGHT) / 2 * coll->ratio);
 }
 
-/* void ft_copy_texture_pixels(t_game *all, int i, int j, mlx_texture_t *texture, float pos_modifier)
+/* void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 {
-	float scale = WALL_H / all->window->dist.projy;
-	float scale_texture = texture->height / scale;
-	float pos = fmod(pos_modifier, 1.0);
-	pos = pos * texture->width;
-	pos = pos - fmod(pos, 1.0);
+	unsigned long	color;
+	int				k;
+	int				x;
+	float			ratio;
 
-	int n = (int)(scale_texture * (j - (HEIGHT / 2 - scale / 2)));
-	int k = 0;
-	while (k < texture->bytes_per_pixel)
+	k = 0;
+	x = (int)coll->pixel.x;
+	ratio = coll->texture->height / coll->wall;
+	int n = (int)(ratio * (j - (HEIGHT / 2 - coll->wall / 2)));
+	while (k < coll->texture->bytes_per_pixel) // && j < HEIGHT)
 	{
-		all->window->g_img-> [WIDTH * j * 4 + (i) * 4 + k] =
-			texture->pixels[texture->width * n * texture->bytes_per_pixel + (int)pos * texture->bytes_per_pixel + k];
+		//color = ft_get_pixel_color(coll->texture, (int)y, x, coll->texture->width);
+		color = coll->texture->pixels[coll->texture->width * n * coll->texture->bytes_per_pixel \
+		+ (int)coll->pixel.x * coll->texture->bytes_per_pixel + k];
+		mlx_put_pixel(info->scene->canvas, col, j, color);
+		j++;
 		k++;
 	}
+	printf("a ver por qué\n");
 } */
+
+void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
+{
+	unsigned long	color;
+	float			y;
+	int				x;
+
+	y = coll->pixel.y;
+	x = (int)coll->pixel.x;
+	while ((int)y < coll->texture->height && j < HEIGHT / 2 + coll->wall / 2)
+	{
+		color = ft_get_pixel_color(coll->texture, (int)y, x, coll->texture->width);
+/* 		if (coll->wall > HEIGHT)
+			printf("col: %d, j: %d\n", col, j); */
+		if (j < 0 || j > HEIGHT)
+			break;
+		mlx_put_pixel(info->scene->canvas, col, j, color);
+/* 		if (coll->wall > HEIGHT)
+			printf("%sHOLA?\n%s", DEBUG2, END); */
+		j++;
+		y += coll->ratio;
+	}
+}
 
 void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 {
@@ -46,29 +76,23 @@ void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 	int	bot;
 
 	top = HEIGHT / 2 - wall / 2;
+	if (top < 0)
+		top = 0;
 	bot = top + wall;
 	j = 0;
 
 	ft_init_pixel(coll, wall, info);
-	int x = col;
-/* 	int	x = (int)coll->pixel.x;
-	int	y = (int)coll->pixel.y; */
-	int y = 0;
+	int	x = (int)coll->pixel.x;
+	int	y = (int)coll->pixel.y;
 	while (j < HEIGHT)
 	{
 		if (j < top)
 			mlx_put_pixel(info->scene->canvas, col, j, BLUE);
 		else if (j > bot)
 			mlx_put_pixel(info->scene->canvas, col, j, GREEN);
-		if (j >= top && j <= bot)
-		{
-			unsigned long color = ft_get_pixel_color(coll->texture, y, x, coll->texture->width);
- //			if (color > 0)
-			mlx_put_pixel(info->scene->canvas, col, j, color);
-			y++;
-		}
 		j++;
 	}
+	ft_draw_wall(info, coll, col, top);
 }
 
 double	ft_rayangle(int	i, double angle)
@@ -108,7 +132,6 @@ void	ft_3Der(void *param)
 	ft_redisplay(info);
 	player_angle = ft_deg_to_rad(info->player->angle);
 	i = 0;
-
 	while (i < WIDTH)
 	{
 		rayangle = ft_rayangle(i, player_angle);

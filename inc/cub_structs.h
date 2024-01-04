@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/03 11:33:36 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:19:01 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,15 @@ typedef	struct	s_coll
 	int		txt; //texture: 1 E -1 W 2 S -2 N
 	mlx_texture_t	*texture;
 	t_coord	pixel; //el pixel en el que empiezo a cargar la textura
+	int		wall;
+	float	ratio;
 }	t_coll;
+
+/* typedef	struct	s_draw
+{
+	t_coord	pixel; //pixel inicial
+	float	ratio; //relación de aspecto textura:muro
+} */
 
 typedef struct s_game
 {
