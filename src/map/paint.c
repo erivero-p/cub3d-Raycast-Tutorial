@@ -67,7 +67,7 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 	info->scene->mini = mlx_new_image(info->mlx, info->scene->mini_x, info->scene->mini_y); //limites de la imagen
 	if (!info->scene->mini)
 		ft_error(IMAGE, NULL);
-	center_x = 75 + info->player->size - (info->player->pos->x * scene->tile); //75->mitad hueco para minimapa, 5 tamaño jugador
+	center_x = 75 + info->player->size - (info->player->pos->x * scene->tile); //a la mitad del hueco (centro) del minimap le restamos las coordenadas 
 	center_y = 75 + info->player->size - (info->player->pos->y * scene->tile);
 	if (mlx_image_to_window(info->mlx, info->scene->mini, center_x, center_y) < 0) // en que coordenadas carga la imagen
 		ft_error(IMAGE, NULL);
