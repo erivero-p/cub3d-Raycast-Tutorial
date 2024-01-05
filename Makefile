@@ -6,7 +6,7 @@
 #    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2024/01/05 12:39:26 by erivero-         ###   ########.fr        #
+#    Updated: 2024/01/05 15:55:21 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SETTING		=	window controls
 
 MAP			=	map paint player
 
-RAYCAST		= 	raycast 3Der
+RAYCAST		= 	raycast 3Der homer
 
 COLLISION	=	collision
 

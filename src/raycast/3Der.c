@@ -1,6 +1,6 @@
 #include "../../inc/cub3D.h"
 
-void ft_init_pixel(t_coll *coll, int wall, t_game *info)
+void ft_init_pixel(t_coll *coll, int wall, t_game *info, int col)
 {
 	t_coord	pixel;
 
@@ -12,6 +12,8 @@ void ft_init_pixel(t_coll *coll, int wall, t_game *info)
 		coll->texture =  info->imgs->so_text;
 	else if (coll->txt == -2) // N
 		coll->texture =  info->imgs->no_text;
+	else
+		coll->texture = ft_homerizer(info, col);
 	coll->wall = wall;
 	coll->ratio = (float)coll->texture->height / coll->wall;
 	if (coll->txt == 1 || coll->txt == -1) // si miré un y_cross
@@ -53,7 +55,7 @@ void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 		top = 0;
 	bot = top + wall;
 	j = 0;
-	ft_init_pixel(coll, wall, info);
+	ft_init_pixel(coll, wall, info, col);
 	while (j < HEIGHT)
 	{
 		if (j < top)
@@ -113,4 +115,5 @@ void	ft_3Der(void *param)
 		ft_draw_col(info, scale, i, &coll); // (?)
 		i++;
 	}
+//	printf("delta_time: %f\n", info->mlx->delta_time);
 }

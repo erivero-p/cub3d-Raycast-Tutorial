@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/05 14:36:03 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/05 16:18:24 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ int		ft_right_collision(t_game *game, int y, int x); */
 /* bool	ft_sidecoll(t_game *info, float angle);
 bool	ft_frontcoll(t_game *info, float angle); */
 bool	ft_collision(t_game *info, float angle);
+mlx_texture_t *ft_homerizer(t_game *game, int col);
 
 
 

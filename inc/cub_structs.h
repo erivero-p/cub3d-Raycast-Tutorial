@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/04 13:19:01 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/05 16:47:36 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,19 @@ typedef	struct	s_coll
 	float	ratio; //relación de aspecto textura:muro
 } */
 
+
+typedef	struct s_homer
+{
+	mlx_texture_t *h0;
+	mlx_texture_t *h1;
+	mlx_texture_t *h2;
+	mlx_texture_t *h3;
+	mlx_texture_t *h4;
+	mlx_texture_t *h5;
+	mlx_texture_t *h6;
+	mlx_texture_t *h7;
+}	t_homer;
+
 typedef struct s_game
 {
 	mlx_t		*mlx;
@@ -108,6 +121,7 @@ typedef struct s_game
 	t_img		*imgs;
 	t_player	*player;
 	t_ray		*ray;
+	t_homer		homer;
 }	t_game;
 
 typedef enum e_errors

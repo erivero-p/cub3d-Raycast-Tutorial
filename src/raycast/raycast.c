@@ -88,7 +88,8 @@ t_coll	ft_cross_checker(t_ray *ray, t_coord step, t_game *info, char cross)
 			if (cross == 'y')
 				coll.txt = 1 * ray->sgn.x; //1 si es este -1 si es oeste
 			else
-				coll.txt = 2 * ray->sgn.y; //2 si es sur -2 si es norte
+				coll.txt = 3;
+			//	coll.txt = 2 * ray->sgn.y; //2 si es sur -2 si es norte
 			break ;
 		}
 		pos.x += step.x;
