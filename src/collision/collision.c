@@ -3,97 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:14:14 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/28 11:29:42 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/05 14:42:08 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-int	ft_frontal_collision(t_game *game, int y, int x)
+bool	ft_sidecoll(t_game *info, float angle, t_coord mod)
 {
-	int	lim;
-	int	size;
-
-	lim = x + 4;
-	size = (int)game->scene->tile;
-	// printf("en ft_sy: %d / x: %d\n", y, x);
-	// printf("en lim: %d / size: %d\n", lim, size);
-	// printf("casilla.y(y - 30) / size: %d / casilla.x(x - 30) / size: %d\n", (y - 30) / size, (x - 30) / size);
-	while (x < lim)
+	t_coll	coll;
+		
+	mod.y -= 0.25;
+	while (mod.y <= 0.25)
 	{
-		if (game->scene->map[(y - 30) / size][(x - 30) / size] == '1') //size ->scene.tile
-		{
-			printf("%sNO PUEDES PASAR%s\n", WRONG, END);
-			return (1);
-		}
-		x++;
+		coll = ft_ray_caster(info, angle, mod);
+		if (coll.raylen < 0.38)
+			return (true);
+		mod.y += 0.25;
 	}
-	return (0);
+	return (false);
 }
 
-int	ft_back_collision(t_game *game, int y, int x)
+bool	ft_frontcoll(t_game *info, float angle, t_coord mod)
 {
-	int	lim;
-	int	size;
-
-	lim = x + 4;
-	size = (int)game->scene->tile;
-	// printf("en ft_sy: %d / x: %d\n", y, x);
-	// printf("en lim: %d / size: %d\n", lim, size);
-	// printf("casilla.y(y - 30) / size: %d / casilla.x(x - 30) / size: %d\n", (y - 30) / size, (x - 30) / size);
-	while (x < lim)
+	t_coll	coll;
+		
+	mod.x -= 0.25;
+	while (mod.x <= 0.25)
 	{
-		if (game->scene->map[(y + 4 - 30) / size][(x - 30) / size] == '1')
-		{
-			printf("%sNO PUEDES PASAR%s\n", WRONG, END);
-			return (1);
-		}
-		x++;
+		coll = ft_ray_caster(info, angle, mod);
+		if (coll.raylen < 0.38)
+			return (true);
+		mod.x += 0.25;
 	}
-	return (0);
+	return (false);
 }
 
-int	ft_left_collision(t_game *game, int y, int x)
+bool	ft_collision(t_game *info, float angle)
 {
-	int	lim;
-	int	size;
+	t_coll	coll;
+	t_coord	mod;
+	float	rayangle;
+	bool	ret;
 
-	lim = y + 4;
-	size = (int)game->scene->tile;
-	// printf("en ft_sy: %d / x: %d\n", y, x);
-	// printf("en lim: %d\n", lim);
-	while (y < lim)
+	mod.x = 0;
+	mod.y = 0;
+	if (BONUS == 1)
 	{
-		if (game->scene->map[(y - 30) / size][(x - 30) / size] == '1')
-		{
-			printf("%sNO PUEDES PASAR%s\n", WRONG, END);
-			return (1);
-		}
-		y++;
+		mod.x -= 0.25;
+		mod.y -= 0.25;
 	}
-	return (0);
-}
-
-int	ft_right_collision(t_game *game, int y, int x)
-{
-	int	lim;
-	int	size;
-
-	lim = y + 4;
-	size = (int)game->scene->tile;
-	// printf("en ft_sy: %d / x: %d\n", y, x);
-	// printf("en lim: %d\n", lim);
-	while (y < lim)
-	{
-		if (game->scene->map[(y - 30) / size][(x + 4 - 30) / size] == '1')
-		{
-			printf("%sNO PUEDES PASAR 🧙🏼‍♂️ %s\n", WRONG, END);
-			return (1);
-		}
-		y++;
-	}
-	return (0);
+	rayangle = info->player->angle + angle;
+	if (rayangle > 360)
+		rayangle -= 360;
+	coll = ft_ray_caster(info, rayangle, mod);
+	if (coll.txt == 1 || coll.txt == -1)
+		ret = ft_sidecoll(info, rayangle, mod);
+	else
+		ret = ft_frontcoll(info, rayangle, mod);
+	return (ret);
 }

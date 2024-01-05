@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/29 12:16:01 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/05 14:36:03 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		ft_wall_check(char **map, t_scene *scene);
 /*							RAYCAST							*/
 //double	ft_ray_caster(t_game *info, float angle);
 //void		ft_ray_caster(t_game *info, t_ray *ray, float angle);
-t_coll	ft_ray_caster(t_game *info, float angle);
+t_coll	ft_ray_caster(t_game *info, float angle, t_coord mod);
 
 
 void	ft_ray_tester(t_game *info, double a1, double a2, double a3, double a4);
@@ -100,7 +100,7 @@ void	ft_mouse(mouse_key_t k, action_t act, modifier_key_t mod, void *param);
 
 //controls.c
 void	ft_controls(mlx_key_data_t keydata, void *param);
-void	ft_ws(t_player *player, double dir, t_game *game);
+void	ft_ws(t_player *player, double dir, t_game *game, float angle);
 void	ft_ad(t_player *player, double dir, double ang, t_game *game);
 void	ft_rotate(t_player *player, double sign, t_game *game);
 
@@ -126,9 +126,14 @@ double	ft_deg_to_rad(double deg);
 
 /*							MAP							*/
 //collision.c
-int		ft_frontal_collision(t_game *game, int y, int x);
+/* int		ft_frontal_collision(t_game *game, int y, int x);
 int		ft_back_collision(t_game *game, int y, int x);
 int		ft_left_collision(t_game *game, int y, int x);
-int		ft_right_collision(t_game *game, int y, int x);
+int		ft_right_collision(t_game *game, int y, int x); */
+/* bool	ft_sidecoll(t_game *info, float angle);
+bool	ft_frontcoll(t_game *info, float angle); */
+bool	ft_collision(t_game *info, float angle);
+
+
 
 #endif

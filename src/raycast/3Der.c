@@ -23,29 +23,6 @@ void ft_init_pixel(t_coll *coll, int wall, t_game *info)
 		coll->pixel.y += (float)((wall - HEIGHT) / 2 * coll->ratio);
 }
 
-/* void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
-{
-	unsigned long	color;
-	int				k;
-	int				x;
-	float			ratio;
-
-	k = 0;
-	x = (int)coll->pixel.x;
-	ratio = coll->texture->height / coll->wall;
-	int n = (int)(ratio * (j - (HEIGHT / 2 - coll->wall / 2)));
-	while (k < coll->texture->bytes_per_pixel) // && j < HEIGHT)
-	{
-		//color = ft_get_pixel_color(coll->texture, (int)y, x, coll->texture->width);
-		color = coll->texture->pixels[coll->texture->width * n * coll->texture->bytes_per_pixel \
-		+ (int)coll->pixel.x * coll->texture->bytes_per_pixel + k];
-		mlx_put_pixel(info->scene->canvas, col, j, color);
-		j++;
-		k++;
-	}
-	printf("a ver por qué\n");
-} */
-
 void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 {
 	unsigned long	color;
@@ -57,13 +34,9 @@ void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 	while ((int)y < coll->texture->height && j < HEIGHT / 2 + coll->wall / 2)
 	{
 		color = ft_get_pixel_color(coll->texture, (int)y, x, coll->texture->width);
-/* 		if (coll->wall > HEIGHT)
-			printf("col: %d, j: %d\n", col, j); */
 		if (j < 0 || j > HEIGHT)
 			break;
 		mlx_put_pixel(info->scene->canvas, col, j, color);
-/* 		if (coll->wall > HEIGHT)
-			printf("%sHOLA?\n%s", DEBUG2, END); */
 		j++;
 		y += coll->ratio;
 	}
@@ -80,10 +53,7 @@ void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 		top = 0;
 	bot = top + wall;
 	j = 0;
-
 	ft_init_pixel(coll, wall, info);
-	int	x = (int)coll->pixel.x;
-	int	y = (int)coll->pixel.y;
 	while (j < HEIGHT)
 	{
 		if (j < top)
@@ -127,7 +97,10 @@ void	ft_3Der(void *param)
 	int		i;
 	double	player_angle;
 	double	rayangle;
+	t_coord	mod; //me cabe esto por norminette?
 
+	mod.x = 0;
+	mod.y = 0;
 	info = (t_game *)param;
 	ft_redisplay(info);
 	player_angle = ft_deg_to_rad(info->player->angle);
@@ -135,7 +108,7 @@ void	ft_3Der(void *param)
 	while (i < WIDTH)
 	{
 		rayangle = ft_rayangle(i, player_angle);
-		coll = ft_ray_caster(info, rayangle);
+		coll = ft_ray_caster(info, rayangle, mod);
 		scale = WALL_H / coll.distance;
 		ft_draw_col(info, scale, i, &coll); // (?)
 		i++;

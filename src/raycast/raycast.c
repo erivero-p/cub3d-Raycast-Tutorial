@@ -1,9 +1,14 @@
 #include "../../inc/cub3D.h"
 
-void	ft_init_ray(t_ray *ray, t_game *info, double angle)
+void	ft_init_ray(t_ray *ray, t_game *info, double angle, t_coord mod)
 {
-	ray->origin.x = info->player->pos->x;
-	ray->origin.y = info->player->pos->y;
+	ray->origin.x = info->player->pos->x + mod.x; // + 0.25;
+	ray->origin.y = info->player->pos->y + mod.y; // + 0.5;
+	if (BONUS == 1)
+	{
+		ray->origin.x += 0.25;
+		ray->origin.y += 0.25;
+	}
 	ray->deltaang = ft_deg_to_rad(info->player->angle) - angle;
 	ray->angle =  angle;// * 180 / M_PI; por si lo quiero pasar a grados para dbug
 	ray->dir.x = cos(angle);
@@ -94,7 +99,7 @@ t_coll	ft_cross_checker(t_ray *ray, t_coord step, t_game *info, char cross)
 	return (coll);
 }
 
-t_coll	ft_ray_caster(t_game *info, float angle)
+t_coll	ft_ray_caster(t_game *info, float angle, t_coord mod)
 {
 	t_coll	x_coll;
 	t_coll	y_coll;
@@ -102,7 +107,7 @@ t_coll	ft_ray_caster(t_game *info, float angle)
 	int i;
 	int j;
 
-	ft_init_ray(&ray, info, ft_deg_to_rad(angle));
+	ft_init_ray(&ray, info, ft_deg_to_rad(angle), mod);
 	x_coll = ft_cross_checker(&ray, ray.x_cross, info, 'x');
 	y_coll = ft_cross_checker(&ray, ray.y_cross, info, 'y');
 	if (x_coll.raylen < y_coll.raylen)
