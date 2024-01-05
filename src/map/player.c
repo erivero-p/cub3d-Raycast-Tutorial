@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/29 17:39:07 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/05 14:40:15 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_init_player(t_player *player, t_game *game)
 	game->player->center = malloc(sizeof(t_coord));
 	*player->center = ft_get_center(game);
 	player->color = RED;
-	player->mov_speed = 3.0; //pixeles 
+	player->mov_speed = 1.5; //pixeles 
 	//la velocidad de giro son cuantos grados va a girar y tenemos que hacer la conversion a radianes -> game->mlx->delta_time
 	player->rot_speed = 5.0; //multiplicar por * (M_PI / 180) -> pi/180 conversion a radianes -> game->mlx->delta_time
 	player->angle = ft_get_player_angle(game->scene); //en grados
@@ -91,6 +91,13 @@ t_coord	ft_get_player_init_pos(t_game *game)
 	}
 	pos.x += 0.5;
 	pos.y += 0.5;
+	printf("bonus: %d\n", BONUS);
+	if (BONUS == 1)
+	{
+		pos.x -= 0.25;
+		pos.y -= 0.25;
+		//printf("bonus: %d\n", BONUS);
+	}
 	return (pos);
 }
 
