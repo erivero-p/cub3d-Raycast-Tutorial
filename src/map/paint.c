@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/05 12:23:12 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:05:38 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,14 @@ en la que nos encontramos por las dimensiones totales de los tiles, para asi
 en un bucle ir pintando tile a tile el minimapa.*/
 //mlx_put_pixel(info->scene->mini, x * scene->tile, y * scene->tile, PINK); //esta linea sobra en verdad solo la tengo de referencia
 
-void	ft_paint_minimap(t_game *info, t_scene *scene)
+void	ft_paint_minimap(t_game *info, t_scene *scene, int delete)
 {
 	int	color;
 	int	x;
 	int	y;
 
+	if (delete == 1)
+		mlx_delete_image(info->mlx, scene->mini);
 	info->scene->mini = mlx_new_image(info->mlx, info->scene->mini_x, info->scene->mini_y); //limites de la imagen
 	if (!info->scene->mini)
 		ft_error(IMAGE, NULL);
@@ -79,6 +81,7 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 		}
 		y++;
 	}
+	scene->mini->instances[0].z = 0;
 }
 
 int	ft_get_color(char **map, int y, int x)
@@ -152,5 +155,8 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 	}
 	player->player_img->instances[0].enabled = false;
 	if (BONUS == 1)
+	{
 		player->player_img->instances[0].enabled = true;
+		player->player_img->instances[0].z = 1;
+	}
 }

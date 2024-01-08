@@ -56,6 +56,8 @@ void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 	ft_init_pixel(coll, wall, info);
 	while (j < HEIGHT)
 	{
+		if ((j <= 150 && col <= 150) && BONUS == 1) // -> miniventana
+			j = 150;
 		if (j < top)
 			mlx_put_pixel(info->scene->canvas, col, j, BLUE);
 		else if (j > bot)
@@ -65,7 +67,7 @@ void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 	ft_draw_wall(info, coll, col, top);
 }
 
-double	ft_rayangle(int	i, double angle)
+double	ft_rayangle(int i, double angle)
 {
 	int	sine;
 	int	cosine;
