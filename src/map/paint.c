@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 18:50:16 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:02:45 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,3 +171,37 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 		player->player_img->instances[0].z = 2;
 	}
 }
+
+/*void draw_line(t_img *img, int x1, int y1, int x2, int y2, int color) {
+    int dx = abs(x2 - x1);
+    int dy = abs(y2 - y1);
+    int sx = (x1 < x2) ? 1 : -1;
+    int sy = (y1 < y2) ? 1 : -1;
+    int err = dx - dy;
+
+    while (1) {
+        mlx_put_pixel(img, x1, y1, color);
+        if (x1 == x2 && y1 == y2)
+            break;
+        int e2 = 2 * err;
+        if (e2 > -dy) {
+            err -= dy;
+            x1 += sx;
+        }
+        if (e2 < dx) {
+            err += dx;
+            y1 += sy;
+        }
+    }
+}
+
+void draw_diagonal_square(t_img *img, int size, int color) {
+    int half_size = size / 2;
+    draw_line(img, 0, 0, half_size, half_size, color);  // Top-left to center
+    draw_line(img, size - 1, 0, half_size, half_size, color);  // Top-right to center
+    draw_line(img, 0, size - 1, half_size, half_size, color);  // Bottom-left to center
+    draw_line(img, size - 1, size - 1, half_size, half_size, color);  // Bottom-right to center
+}
+
+// Usage:
+draw_diagonal_square(player->player_img, player->size, RED);*/

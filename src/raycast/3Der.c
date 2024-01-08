@@ -55,6 +55,7 @@ void	ft_draw_col(t_game	*info, float wall, int col, t_coll *coll)
 	if (top < 0)
 		top = 0;
 	bot = top + wall;
+	//printf("top: %d / bot: %d\n", top, bot);
 	j = 0;
 	ft_init_pixel(coll, wall, info);
 	while (j < HEIGHT)

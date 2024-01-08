@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 17:22:51 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:07:52 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_init_player(t_player *player, t_game *game)
 	//la velocidad de giro son cuantos grados va a girar y tenemos que hacer la conversion a radianes -> game->mlx->delta_time
 	player->rot_speed = 2.0; //multiplicar por * (M_PI / 180) -> pi/180 conversion a radianes -> game->mlx->delta_time
 	player->angle = ft_get_player_angle(game->scene); //en grados
-	printf("en ft_init_player: angle: %f\n", player->angle);
+	printf("en ft_init_player: angle: %d\n", player->angle);
 }
 //con mov_speed 1.0 y rot_speed 3.0 se rompe 
 
