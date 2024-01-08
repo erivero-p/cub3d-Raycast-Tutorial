@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:20:33 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 17:35:29 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:03:38 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_redisplay(t_game *game)
 		ft_error(IMAGE, NULL);
 	if (mlx_image_to_window(game->mlx, game->scene->canvas, 0, 0) < 0)
 		ft_error(IMAGE, NULL);
+	game->scene->canvas->instances[0].z = 1;
 	game->scene->canvas->instances[0].z = 1;
 }
 

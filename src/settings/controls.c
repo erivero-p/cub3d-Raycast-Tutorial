@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 16:58:25 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:14:29 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ void	ft_ws(t_player *player, double dir, t_game *game, float angle)
 
 void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 {
-	int	x_c;
-	int	y_c;
-	double	rot; //aux para no cambiar el angulo real del player
+	int	rot; //aux para no cambiar el angulo real del player
+	double	y_c;
+	double	x_c;
 
+	printf("------------------------\n");
 	rot = player->angle + ang; //en grados
 	if (!ft_collision(game, ang))
 	{
@@ -55,14 +56,14 @@ void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 void	ft_rotate(t_player *player, double sign, t_game *game)
 {
 	float	ang;
-	//printf("%sANTESen ft_rotate: player->angle: %f%s\n", GOOD, player->angle, END);
+	// printf("%sANTESen ft_rotate: player->angle: %d%s\n", GOOD, player->angle, END);
 	player->angle += sign * player->rot_speed;
-	//printf("%sDESPUESen ft_rotate: player->angle: %f%s\n", WRONG, player->angle, END);
+	// printf("%sDESPUESen ft_rotate: player->angle: %d%s\n", WRONG, player->angle, END);
 	if (player->angle < 0)
 		player->angle += 360;
 	if (player->angle >= 360)
-		player->angle -= 360;
-	//printf("%sDESPUESen ft_rotate: player->angle: %f%s\n", WRONG, player->angle, END);
+		player->angle = player->angle % 360;
+	printf("%sDESPUESen ft_rotate: player->angle: %d%s\n", WRONG, player->angle, END);
 }
 
 void	ft_controls(mlx_key_data_t keydata, void *param)
