@@ -23,7 +23,7 @@ void ft_init_pixel(t_coll *coll, int wall, t_game *info)
 		coll->pixel.y += (float)((wall - HEIGHT) / 2 * coll->ratio);
 }
 
-void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
+void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j, int tmp)
 {
 	unsigned long	color;
 	float			y;
@@ -35,14 +35,17 @@ void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 	{
 		color = ft_get_pixel_color(coll->texture, (int)y, x, coll->texture->width);
 		if (j < 0 || j > HEIGHT)
-			break;
-		mlx_put_pixel(info->scene->canvas, col, j, color);
+			break ;
+		if (!(col < 150 && j < 150) && BONUS == 1)
+			mlx_put_pixel(info->scene->canvas, col, j, color);
+		else if (BONUS == 0)
+			mlx_put_pixel(info->scene->canvas, col, j, color);
 		j++;
 		y += coll->ratio;
 	}
 }
 
-void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
+void	ft_draw_col(t_game	*info, float wall, int col, t_coll *coll)
 {
 	int	j;
 	int	top; //el pixel de arriba del todo del muro
@@ -59,18 +62,18 @@ void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 		if ((j <= 150 && col <= 150) && BONUS == 1) // -> miniventana
 			j = 150;
 		if (j < top)
-			mlx_put_pixel(info->scene->canvas, col, j, PINK);
+			mlx_put_pixel(info->scene->canvas, col, j, info->scene->ceiling);
 		else if (j > bot)
-			mlx_put_pixel(info->scene->canvas, col, j, GREEN);
+			mlx_put_pixel(info->scene->canvas, col, j, info->scene->floor);
 		j++;
 	}
-	ft_draw_wall(info, coll, col, top);
+	ft_draw_wall(info, coll, col, top, j);
 }
 
 double	ft_rayangle(int i, double angle)
 {
-	int	sine;
-	int	cosine;
+	int		sine;
+	int		cosine;
 	double	rayangle;
 
 	sine = (WIDTH / 2) / tan(ft_deg_to_rad(FOV / 2)); //esta es la distancia del personaje al plano de proyección

@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 17:28:11 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/08 18:50:16 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ int	ft_get_color(char **map, int y, int x)
 
 	if (map[y][x] == '1')
 		color = BLACK;
-	// else if (ft_strchr("NSEW0", map[y][x]))
+	// else if (ft_strchr("NSEW0", map[y][x])) 
 	// 	color = WHITE;
-	else if (ft_strchr("NSEW", map[y][x]))
+	else if (ft_strchr("NSEW", map[y][x])) //borrar, ver buena arriba
 		color = GREEN;
-	else if (ft_strchr("0", map[y][x]))
+	else if (ft_strchr("0", map[y][x])) //borrar, ver buena arriba
 		color = WHITE;
 	else
 		color = TRANSP;
