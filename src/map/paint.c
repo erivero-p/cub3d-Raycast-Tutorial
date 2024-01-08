@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/04 12:02:49 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:46:31 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ en la que nos encontramos por las dimensiones totales de los tiles, para asi
 en un bucle ir pintando tile a tile el minimapa.*/
 //mlx_put_pixel(info->scene->mini, x * scene->tile, y * scene->tile, PINK); //esta linea sobra en verdad solo la tengo de referencia
 
-void	ft_paint_minimap(t_game *info, t_scene *scene)
+void	ft_paint_minimap(t_game *info, t_scene *scene, int delete)
 {
 	int	color;
 	int	x;
@@ -64,6 +64,8 @@ void	ft_paint_minimap(t_game *info, t_scene *scene)
 	int	center_x;
 	int	center_y;
 
+	if (delete == 1)
+		mlx_delete_image(info->mlx, scene->mini);
 	info->scene->mini = mlx_new_image(info->mlx, info->scene->mini_x, info->scene->mini_y); //limites de la imagen
 	if (!info->scene->mini)
 		ft_error(IMAGE, NULL);

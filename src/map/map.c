@@ -45,5 +45,5 @@ void	ft_init_map(t_game *info)
 		ft_error(IMAGE, NULL);
 	//ft_paint_background(info, HEIGHT, WIDTH);
 	if (BONUS == 1)
-		ft_paint_minimap(info, info->scene);
+		ft_paint_minimap(info, info->scene, 0);
 }

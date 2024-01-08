@@ -14,16 +14,16 @@ void	ft_draw_col(t_game	*info, float scale, int	coll, int txt)
 	j = 0;
 	while (j < HEIGHT)
 	{
-		if (j <= 150 && coll <= 150)
+		if ((j <= 150 && coll <= 150) && BONUS == 1)
 			j = 150;
 		if (j < top)
-			mlx_put_pixel(info->scene->canvas, coll, j, BLUE);
+			mlx_put_pixel(info->scene->canvas, coll, j, PINK);
 		else if (j > bot)
 			mlx_put_pixel(info->scene->canvas, coll, j, GREEN);
 		else
 		{
 			if (txt == 1) // E
-				mlx_put_pixel(info->scene->canvas, coll, j, PINK);
+				mlx_put_pixel(info->scene->canvas, coll, j, BLUE);
 			if (txt == -1) // W
 				mlx_put_pixel(info->scene->canvas, coll, j, BLACK);
 			if (txt == 2) // S

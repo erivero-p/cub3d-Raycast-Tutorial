@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/29 12:16:01 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:47:29 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,10 @@ void	ft_rotate(t_player *player, double sign, t_game *game);
 //map.c
 void	ft_init_map(t_game *info);
 int		ft_get_map_x(t_game *info);
-void	ft_paint_minimap(t_game *info, t_scene *scene);
 
 //paint.c
 void	ft_paint_background(t_game *game, int h, int w);
-void	ft_paint_minimap(t_game *info, t_scene *scene);
+void	ft_paint_minimap(t_game *info, t_scene *scene, int delete);
 int		ft_get_color(char **map, int x, int y);
 void	ft_fill_tile(t_game *game, int y, int x, int color);
 void	ft_render_player(t_game *game, t_scene *scene, t_player *player);
