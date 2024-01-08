@@ -59,7 +59,7 @@ void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 		if ((j <= 150 && col <= 150) && BONUS == 1) // -> miniventana
 			j = 150;
 		if (j < top)
-			mlx_put_pixel(info->scene->canvas, col, j, BLUE);
+			mlx_put_pixel(info->scene->canvas, col, j, PINK);
 		else if (j > bot)
 			mlx_put_pixel(info->scene->canvas, col, j, GREEN);
 		j++;

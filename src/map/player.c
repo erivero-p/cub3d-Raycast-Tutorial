@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/05 14:40:15 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:22:51 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	ft_init_player(t_player *player, t_game *game)
 	*player->pos = ft_get_player_init_pos(game);
 	printf("en ft_init_player: player_y: %d / player_x: %d\n", player->player_img->instances[0].y, player->player_img->instances[0].x);
 	printf("en ft_init_player: player.pos.y: %f / player.pos.x: %f\n", player->pos->y, player->pos->x);
-	game->player->center = malloc(sizeof(t_coord));
-	*player->center = ft_get_center(game);
+	// game->player->center = malloc(sizeof(t_coord));
+	// *player->center = ft_get_center(game);
 	player->color = RED;
 	player->mov_speed = 1.5; //pixeles 
 	//la velocidad de giro son cuantos grados va a girar y tenemos que hacer la conversion a radianes -> game->mlx->delta_time
-	player->rot_speed = 5.0; //multiplicar por * (M_PI / 180) -> pi/180 conversion a radianes -> game->mlx->delta_time
+	player->rot_speed = 2.0; //multiplicar por * (M_PI / 180) -> pi/180 conversion a radianes -> game->mlx->delta_time
 	player->angle = ft_get_player_angle(game->scene); //en grados
 	printf("en ft_init_player: angle: %f\n", player->angle);
 }
