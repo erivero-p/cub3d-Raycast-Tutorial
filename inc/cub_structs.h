@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/05 16:47:36 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:05:01 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct s_game
 	t_img		*imgs;
 	t_player	*player;
 	t_ray		*ray;
-	t_homer		homer;
+	t_homer		*homer;
 }	t_game;
 
 typedef enum e_errors

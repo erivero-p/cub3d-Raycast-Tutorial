@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:20:33 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/04 11:53:07 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:35:33 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,14 @@ void	ft_redisplay(t_game *game)
 		ft_error(IMAGE, NULL);
 	game->scene->canvas->instances[0].z = 0;
 }
+/* int	ft_load_png(mlx_texture_t *ptr, char *path)
+{
+	ptr = NULL;
+	ptr = mlx_load_png(path);
+	if (!ptr)
+		return (-1);
+	return (0);
+} */
 
 int	ft_load_images(t_scene *scene, t_img *imgs)
 {

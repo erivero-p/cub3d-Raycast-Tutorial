@@ -1,64 +1,59 @@
 #include "../../inc/cub3D.h"
 
-/* t_homer	ft_load_homer(t_game *info)
+
+/* mlx_texture_t *ft_homerizer(t_game *game, int frame)
 {
-	t_homer	homer;
+	static int	i = -2;
+	mlx_texture_t	*txt;
 
-	homer.h0 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homernt.png");
-/* 	homer.h7 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer7.png");
-	homer.h6 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer6.png");
-	homer.h5 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer5.png");
-	homer.h4 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer4.png");
-	homer.h3 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer3.png");
-	homer.h2 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer2.png");
-	homer.h1 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer1.png");
-	if (!homer.h0 || homer.h1)
-		return (ft_error(IMAGE, NULL), homer);
-	return (homer);
-} */
-
-mlx_texture_t *ft_homerizer(t_game *game, int col)
-{
-	static int	i = 0;
-
-	if (i == 1)
-	{
-		i = 0;
-		return (game->homer.h1);
-	}
-	else
-		return (game->homer.h0);
-	if (col == WIDTH - 1)
-		i++;
-}
-/* mlx_texture_t *ft_homerizer(t_game *game, int col)
-{
-	static int	i = -8;
-	t_homer homer = ft_load_homer();
-
-	if (i > 7)
-		i = -8;
-	if (i == -8 || i == 8)
-		return (homer.h0);
-	else if (i == -7 || i == 7)
-		return (homer.h7);
-	else if (i == -6 || i == 6)
-		return (homer.h6);
-	else if (i == -5 || i == 5)
-		return (homer.h5);
-	else if (i == -4 || i == 4)
-		return (homer.h4);
-	else if (i == -3 || i == 3)
-		return (homer.h3);
-	else if (i == -2 || i == 2)
-		return (homer.h2);
+	if (i == -6 || i == 6)
+		txt = game->homer->h6;
+	if (i == -5 || i == 5)
+		txt = game->homer->h5;
+	if (i == -4 || i == 4)
+		txt = game->homer->h4;
+	if (i == -3 || i == 3)
+		txt = game->homer->h0;
+	if (i == -2 || i == 2)
+		txt = game->homer->h1;
 	else if (i == -1 || i == 1)
-		return (homer.h1);
+		txt = game->homer->h2;
 	else if (i == 0)
-		return (homer.h1);
-	if (col == WIDTH - 1)
+		txt = game->homer->h3;
+	if (frame % 2 == 0)
 	{
-		printf("holi se supone que he actualizado i xd\n");
+		//printf("i: %d\n", i);
 		i++;
+		if (i == 3)
+			i = -3;
 	}
+	return (txt);
 } */
+mlx_texture_t *ft_homerizer(t_game *game, int frame)
+{
+	static int	i = -3;
+	mlx_texture_t	*txt;
+
+	if (i == -6 || i == 6)
+		txt = game->homer->h6;
+	if (i == -5 || i == 5)
+		txt = game->homer->h5;
+	if (i == -4 || i == 4)
+		txt = game->homer->h4;
+	if (i == -3 || i == 3)
+		txt = game->homer->h3;
+	else if (i == -2 || i == 2)
+		txt = game->homer->h2;
+	else if (i == -1 || i == 1)
+		txt = game->homer->h1;
+	else if (i == 0)
+		txt = game->homer->h0;
+	if (frame == 2 || frame == 5)
+	{
+		printf("i: %d\n", i);
+		i++;
+		if (i == 6)
+			i = -6;
+	}
+	return (txt);
+}

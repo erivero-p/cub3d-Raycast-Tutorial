@@ -57,22 +57,49 @@ void	ft_set_window(t_game *info)
 	}
 	mlx_set_window_limit(info->mlx, 500, 500, 2560, 1440); // ponemos limites de la ventana, en prueba ahora mismo??, 2560, 1440 ->valores de pantalla completa
 }
-t_homer	ft_load_homer(t_game *info)
-{
-	t_homer	homer;
 
-	homer.h0 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homernt.png");
-/* 	homer.h7 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer7.png");
-	homer.h6 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer6.png");
-	homer.h5 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer5.png");
-	homer.h4 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer4.png");
-	homer.h3 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer3.png");
-	homer.h2 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer2.png"); */
-	homer.h1 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/homer1.png");
-	if (!homer.h0 || homer.h1)
-		return (ft_error(IMAGE, NULL), homer);
-	return (homer);
+int	ft_load_png(mlx_texture_t *ptr, char *path)
+{
+	ptr = NULL;
+	ptr = mlx_load_png(path);
+	if (!ptr)
+		return (-1);
+	return (0);
 }
+
+/* int	ft_load_homer(t_homer *homer, t_game *info)
+{
+	if (ft_load_png(homer->h0, "/Users/erivero-/Desktop/coll-cub3d/homer/0") == -1
+	|| ft_load_png(homer->h1, "/Users/erivero-/Desktop/coll-cub3d/homer/1") == -1
+	|| ft_load_png(homer->h2, "/Users/erivero-/Desktop/coll-cub3d/homer/2") == -1
+	|| ft_load_png(homer->h3, "/Users/erivero-/Desktop/coll-cub3d/homer/3") == -1
+	|| ft_load_png(homer->h4, "/Users/erivero-/Desktop/coll-cub3d/homer/4") == -1
+	|| ft_load_png(homer->h5, "/Users/erivero-/Desktop/coll-cub3d/homer/5") == -1
+	|| ft_load_png(homer->h6, "/Users/erivero-/Desktop/coll-cub3d/homer/6") == -1)
+		return (-1);
+	return (0);
+} */
+
+void	ft_load_homer(t_homer *homer, t_game *info)
+{
+	//	homer = malloc(sizeof(t_homer *));
+//	homer->h6 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/6.png");
+	homer->h6 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/6.png");
+	if (!homer->h6)
+		printf("a ver\n");
+	if (homer->h6)
+		printf("he%d\n", homer->h6->height);
+	printf("todo bien\n");
+	homer->h5 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/5.png");
+	homer->h4 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/4.png");
+	homer->h3 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/3.png");
+	homer->h2 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/2.png");
+	homer->h1 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/1.png");
+	homer->h0 = mlx_load_png("/Users/erivero-/Desktop/coll-cub3d/homer/0.png");
+/* 	if (!homer->h0 || !homer->h1 || !homer->h2 || !homer->h3 
+	|| !homer->h0 ||  ) */
+}
+
 int	main(int ac, char **av)
 {
 	atexit(ft_leaks);
@@ -81,6 +108,7 @@ int	main(int ac, char **av)
 	t_scene		scene;
 	t_player	player;
 	t_img		imgs;
+	t_homer		homer;
 
 	fd = ft_arg_check(ac, av);
 	if (fd < 0)
@@ -90,7 +118,10 @@ int	main(int ac, char **av)
 		info.scene = &scene;
 		info.player = &player;
 		info.imgs = &imgs;
-		info.homer = ft_load_homer(&info);
+		ft_load_homer(&homer, &info);
+		info.homer = &homer;
+		if (!info.homer->h0->height)
+			printf("no hija no\n");
 		ft_print_scene(&scene, DEBUG_COLOR);
 		ft_set_window(&info);
 		ft_init_game(&info);

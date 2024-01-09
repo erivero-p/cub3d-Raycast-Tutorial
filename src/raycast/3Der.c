@@ -1,9 +1,13 @@
 #include "../../inc/cub3D.h"
 
-void ft_init_pixel(t_coll *coll, int wall, t_game *info, int col)
+void ft_init_pixel(t_coll *coll, int wall, t_game *info, int col, int frame)
 {
 	t_coord	pixel;
+/* 	static int	frame = 0;
 
+	if (col == 0)
+		frame++; */
+	coll->texture = NULL;
 	if (coll->txt == 1) // E
 		coll->texture = info->imgs->ea_text;
 	else if (coll->txt == -1) // W
@@ -13,7 +17,13 @@ void ft_init_pixel(t_coll *coll, int wall, t_game *info, int col)
 	else if (coll->txt == -2) // N
 		coll->texture =  info->imgs->no_text;
 	else
-		coll->texture = ft_homerizer(info, col);
+	{
+		coll->texture = ft_homerizer(info, frame);
+	//	coll->texture = info->imgs->no_text;
+		coll->txt = -2; //hardcodeado
+	}
+	if (!coll->texture)
+		exit(0);
 	coll->wall = wall;
 	coll->ratio = (float)coll->texture->height / coll->wall;
 	if (coll->txt == 1 || coll->txt == -1) // si miré un y_cross
@@ -44,7 +54,7 @@ void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 	}
 }
 
-void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
+void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll, int frame)
 {
 	int	j;
 	int	top; //el pixel de arriba del todo del muro
@@ -55,7 +65,7 @@ void	ft_draw_col(t_game	*info, float wall, int	col, t_coll *coll)
 		top = 0;
 	bot = top + wall;
 	j = 0;
-	ft_init_pixel(coll, wall, info, col);
+	ft_init_pixel(coll, wall, info, col, frame);
 	while (j < HEIGHT)
 	{
 		if (j < top)
@@ -93,6 +103,7 @@ double	ft_rayangle(int	i, double angle)
 
 void	ft_3Der(void *param)
 {
+	static int	frame = 0;
 	t_game	*info;
 	float	scale;
 	t_coll	coll;
@@ -107,12 +118,15 @@ void	ft_3Der(void *param)
 	ft_redisplay(info);
 	player_angle = ft_deg_to_rad(info->player->angle);
 	i = 0;
+	frame++;
+	if (frame > 5)
+		frame = 0;
 	while (i < WIDTH)
 	{
 		rayangle = ft_rayangle(i, player_angle);
 		coll = ft_ray_caster(info, rayangle, mod);
 		scale = WALL_H / coll.distance;
-		ft_draw_col(info, scale, i, &coll); // (?)
+		ft_draw_col(info, scale, i, &coll, frame); // (?)
 		i++;
 	}
 //	printf("delta_time: %f\n", info->mlx->delta_time);
