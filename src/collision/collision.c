@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:14:14 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 11:25:18 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:16:06 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ bool	ft_sidecoll(t_game *info, float angle, t_coord mod)
 {
 	t_coll	coll;
 		
-	mod.y -= 0.25;
-	while (mod.y <= 0.25)
-	{
-		coll = ft_ray_caster(info, angle, mod);
-		if (coll.raylen < 0.38)
-			return (true);
-		mod.y += 0.25;
-	}
+	mod.y -= 0.20;
+	coll = ft_ray_caster(info, angle, mod);
+	if (coll.raylen < 0.38)
+		return (true);
+	mod.y *= -1;
+	coll = ft_ray_caster(info, angle, mod);
+	if (coll.raylen < 0.38)
+		return (true);
 	return (false);
 }
 
