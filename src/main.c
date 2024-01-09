@@ -34,7 +34,7 @@ void	ft_init_game(t_game *info)
 	ft_init_map(info);
 	if (BONUS == 1)
 	{
-		ft_load_candle_text(info, info->imgs);
+		info->imgs->candle_img = NULL;
 	}
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	if (BONUS == 1)

@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 13:14:53 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:34:11 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ unsigned long	ft_get_pixel_color(mlx_texture_t *texture, int y, int x, int size)
 
 //candle.c
 void	ft_candle(t_game *game, t_img *img);
-int		ft_load_candle_text(t_game *game, t_img *img);
+mlx_texture_t		*ft_load_candle_text(int frame);
 int		ft_cand_text_to_img(t_game *game, t_img *img);
 void	ft_delete_candle_text(t_img *img);
 
