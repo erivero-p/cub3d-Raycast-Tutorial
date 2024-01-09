@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 16:54:50 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:04:20 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 		ft_error(IMAGE, NULL);
 	// if (mlx_image_to_window(game->mlx, player->player_img, (inital.x * scene->tile) + 30, (inital.y * scene->tile) + 30) < 0) //antigua ver
 	// 	ft_error(IMAGE, NULL);
-	if (mlx_image_to_window(game->mlx, player->player_img, (150 / 2) /* + 2.5 */, (150 / 2)/*  + 2.5 */) < 0) //version jugador estatico -> 150 tamaño sin dibujar en canvas; / 2 para mitad; - 2.5 el la mitad del tamaño de la imagen para ajustarlo al centro 
+	if (mlx_image_to_window(game->mlx, player->player_img, (150 / 2) + 2.5, (150 / 2) + 2.5) < 0) //version jugador estatico -> 150 tamaño sin dibujar en canvas; / 2 para mitad; - 2.5 el la mitad del tamaño de la imagen para ajustarlo al centro 
 		ft_error(IMAGE, NULL);
 	//printf("ft_render_player: player.size: %d\n", player->size); //comment
 	while (y < player->size)
