@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 19:14:29 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:05:54 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 	double	y_c;
 	double	x_c;
 
-	printf("------------------------\n");
 	rot = player->angle + ang; //en grados
 	if (!ft_collision(game, ang))
 	{

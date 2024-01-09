@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3Der.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:32:00 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/09 11:32:01 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:39:07 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void ft_init_pixel(t_coll *coll, int wall, t_game *info)
 		coll->pixel.y += (float)((wall - HEIGHT) / 2 * coll->ratio);
 }
 
-void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j, int tmp)
+void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 {
 	unsigned long	color;
 	float			y;
@@ -80,7 +80,7 @@ void	ft_draw_col(t_game	*info, float wall, int col, t_coll *coll)
 			mlx_put_pixel(info->scene->canvas, col, j, info->scene->floor);
 		j++;
 	}
-	ft_draw_wall(info, coll, col, top, j);
+	ft_draw_wall(info, coll, col, top);
 }
 
 double	ft_rayangle(int i, double angle)
@@ -131,4 +131,5 @@ void	ft_3Der(void *param)
 		ft_draw_col(info, scale, i, &coll); // (?)
 		i++;
 	}
+	ft_candle(info, info->imgs);
 }
