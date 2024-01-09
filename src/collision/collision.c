@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:14:14 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 18:59:29 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:25:18 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ bool	ft_collision(t_game *info, float angle)
 
 	mod.x = 0;
 	mod.y = 0;
-	if (BONUS == 1)
+/* 	if (BONUS == 1)
 	{
 		mod.x -= 0.25;
 		mod.y -= 0.25;
-	}
+	} */
 	rayangle = info->player->angle + angle;
 	if (rayangle > 360)
 		rayangle -= 360;

@@ -4,11 +4,11 @@ void	ft_init_ray(t_ray *ray, t_game *info, double angle, t_coord mod)
 {
 	ray->origin.x = info->player->pos->x + mod.x; // + 0.25;
 	ray->origin.y = info->player->pos->y + mod.y; // + 0.5;
-	if (BONUS == 1)
+/* 	if (BONUS == 1)
 	{
 		ray->origin.x += 0.25;
 		ray->origin.y += 0.25;
-	}
+	} */
 	ray->deltaang = ft_deg_to_rad(info->player->angle) - angle;
 	ray->angle =  angle;// * 180 / M_PI; por si lo quiero pasar a grados para dbug
 	ray->dir.x = cos(angle);

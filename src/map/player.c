@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 19:07:52 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:25:00 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ t_coord	ft_get_player_init_pos(t_game *game)
 	pos.x += 0.5;
 	pos.y += 0.5;
 	printf("bonus: %d\n", BONUS);
-	if (BONUS == 1)
+/* 	if (BONUS == 1)
 	{
 		pos.x -= 0.25;
 		pos.y -= 0.25;
 		//printf("bonus: %d\n", BONUS);
-	}
+	} */
 	return (pos);
 }
 
