@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/08 18:56:41 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:19:32 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_img
 	mlx_texture_t		*so_text;
 	mlx_texture_t		*we_text;
 	mlx_texture_t		*ea_text;
+	mlx_texture_t		*candle_text[6];
+	mlx_image_t			*candle_img[6];
 	int					size;
 	long unsigned int	color_pix;
 }	t_img;

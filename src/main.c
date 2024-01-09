@@ -32,7 +32,10 @@ void	ft_init_game(t_game *info)
 {
 	ft_init_player(info->player, info);
 	ft_init_map(info);
-	//ft_draw_pixel(info);
+	if (BONUS == 1)
+	{
+		ft_load_candle_text(info, info->imgs);
+	}
 	mlx_key_hook(info->mlx, &ft_controls, info);
 	if (BONUS == 1)
 		mlx_mouse_hook(info->mlx, &ft_mouse, info);

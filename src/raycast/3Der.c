@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3Der.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:32:00 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/09 11:32:01 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:38:29 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	ft_3Der(void *param)
 	mod.y = 0;
 	info = (t_game *)param;
 	ft_redisplay(info);
+	ft_candle(info, info->imgs);
 	player_angle = ft_deg_to_rad(info->player->angle);
 	i = 0;
 	while (i < WIDTH)

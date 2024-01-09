@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
+#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2024/01/05 12:39:26 by erivero-         ###   ########.fr        #
+#    Updated: 2024/01/09 12:59:22 by marirodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJ_DIR		=	objs/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
 PARSE		=	parse read_file read_scene char_check wall_check scene_check get_map colour_handle
 
-UTILS		=	clean_handling error_handling debug load_images
+UTILS		=	clean_handling error_handling debug load_images candle
 
 SETTING		=	window controls
 
