@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 17:04:20 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:46:29 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ a los que nos pasan por el mapa. puede que en un futuro, a la hora de hacer un
 resize de la ventana haya que cambiar el WEIGHT y HEIGTH y pasarlos por para-
 metro para que pueda redibujarse bien.*/
 
-void	ft_paint_background(t_game *game, int h, int w)
+/* void	ft_paint_background(t_game *game, int h, int w)
 {
 	int	y;
 	int	x;
@@ -43,7 +43,7 @@ void	ft_paint_background(t_game *game, int h, int w)
 		}
 		y++;
 	}
-}
+} */
 
 /*pintamos el minimapa en la ventana, establleiendo previamente las dimensiones
 del tile (celda) que va a ocupar en la ventana cada caracter representado.
@@ -54,7 +54,8 @@ ser de 15x15. es decir nuestro primer tile es el 0,0 y sus pixeles son 15x15.
 por tanto en la funcion ft_fill_tile le paso el valor en coordenadas del mapa
 en la que nos encontramos por las dimensiones totales de los tiles, para asi
 en un bucle ir pintando tile a tile el minimapa.*/
-//mlx_put_pixel(info->scene->mini, x * scene->tile, y * scene->tile, PINK); //esta linea sobra en verdad solo la tengo de referencia
+//mlx_put_pixel(info->scene->mini, x * scene->tile, y * scene->tile, PINK);
+//esta linea sobra en verdad solo la tengo de referencia
 
 void	ft_paint_minimap(t_game *info, t_scene *scene, int delete)
 {
@@ -66,12 +67,12 @@ void	ft_paint_minimap(t_game *info, t_scene *scene, int delete)
 
 	if (delete == 1)
 		mlx_delete_image(info->mlx, scene->mini);
-	info->scene->mini = mlx_new_image(info->mlx, info->scene->mini_x, info->scene->mini_y); //limites de la imagen
+	info->scene->mini = mlx_new_image(info->mlx, info->scene->mini_x, info->scene->mini_y);
 	if (!info->scene->mini)
 		ft_error(IMAGE, NULL);
-	center_x = 75 + info->player->size - (info->player->pos->x * scene->tile); //a la mitad del hueco (centro) del minimap le restamos las coordenadas 
+	center_x = 75 + info->player->size - (info->player->pos->x * scene->tile);
 	center_y = 75 + info->player->size - (info->player->pos->y * scene->tile);
-	if (mlx_image_to_window(info->mlx, info->scene->mini, center_x, center_y) < 0) // en que coordenadas carga la imagen
+	if (mlx_image_to_window(info->mlx, info->scene->mini, center_x, center_y) < 0)
 		ft_error(IMAGE, NULL);
 	y = 0;
 	while (scene->map[y])
@@ -86,7 +87,6 @@ void	ft_paint_minimap(t_game *info, t_scene *scene, int delete)
 		y++;
 	}
 	scene->mini->instances[0].z = 0;
-	//scene->mini->enabled = false;
 }
 
 int	ft_get_color(char **map, int y, int x)
@@ -95,7 +95,7 @@ int	ft_get_color(char **map, int y, int x)
 
 	if (map[y][x] == '1')
 		color = BLACK;
-	else if (ft_strchr("NSEW0", map[y][x])) 
+	else if (ft_strchr("NSEW0", map[y][x]))
 		color = WHITE;
 	else
 		color = TRANSP;

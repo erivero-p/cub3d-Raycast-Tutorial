@@ -3,33 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   3Der.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:32:00 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/09 16:39:07 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:31:05 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
+/*	ft_init_pixel decide qué textura cargar en función
+	de la orientación(1 E, -1 W, 2 S, -2 N)
+	y setea el primer pixel a tomar de esa textura:
+	En x, será donde colisiona el rayo, si es una colisión
+	transversal (x_cross), tomará el flotante en x
+	si es colisión longitudinal (y_cross), tomará el flotante en y
+	En ambos casos se multiplica por el ancho de la textura
+	En y, será 0 salvo que la pared exceda el alto de la ventana  */
 
-void ft_init_pixel(t_coll *coll, int wall, t_game *info)
+void	ft_init_pixel(t_coll *coll, int wall, t_game *info)
 {
 	t_coord	pixel;
 
-	if (coll->txt == 1) // E
+	if (coll->txt == 1)
 		coll->texture = info->imgs->ea_text;
-	else if (coll->txt == -1) // W
-		coll->texture =  info->imgs->we_text;
-	else if (coll->txt == 2) // S
-		coll->texture =  info->imgs->so_text;
-	else if (coll->txt == -2) // N
-		coll->texture =  info->imgs->no_text;
+	else if (coll->txt == -1)
+		coll->texture = info->imgs->we_text;
+	else if (coll->txt == 2)
+		coll->texture = info->imgs->so_text;
+	else if (coll->txt == -2)
+		coll->texture = info->imgs->no_text;
 	coll->wall = wall;
 	coll->ratio = (float)coll->texture->height / coll->wall;
-	if (coll->txt == 1 || coll->txt == -1) // si miré un y_cross
-		coll->pixel.x = fmod(coll->collision.y, 1.0) * coll->texture->width; // * coll->ratio;
-	else if (coll->txt == 2 || coll->txt == -2) // si miré un x_cross
-		coll->pixel.x = fmod(coll->collision.x, 1.0) * coll->texture->width; // * coll->ratio;
+	if (coll->txt == 1 || coll->txt == -1)
+		coll->pixel.x = fmod(coll->collision.y, 1.0) * coll->texture->width;
+	else if (coll->txt == 2 || coll->txt == -2)
+		coll->pixel.x = fmod(coll->collision.x, 1.0) * coll->texture->width;
 	coll->pixel.y = 0;
 	if (wall > HEIGHT)
 		coll->pixel.y += (float)((wall - HEIGHT) / 2 * coll->ratio);
@@ -45,7 +53,8 @@ void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 	x = (int)coll->pixel.x;
 	while ((int)y < coll->texture->height && j < HEIGHT / 2 + coll->wall / 2)
 	{
-		color = ft_get_pixel_color(coll->texture, (int)y, x, coll->texture->width);
+		color = \
+		ft_get_pixel_color(coll->texture, (int)y, x, coll->texture->width);
 		if (j < 0 || j > HEIGHT)
 			break ;
 		if (!(col < 150 && j < 150) && BONUS == 1)
@@ -60,19 +69,18 @@ void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 void	ft_draw_col(t_game	*info, float wall, int col, t_coll *coll)
 {
 	int	j;
-	int	top; //el pixel de arriba del todo del muro
+	int	top;
 	int	bot;
 
 	top = HEIGHT / 2 - wall / 2;
 	if (top < 0)
 		top = 0;
 	bot = top + wall;
-	//printf("top: %d / bot: %d\n", top, bot);
 	j = 0;
 	ft_init_pixel(coll, wall, info);
 	while (j < HEIGHT)
 	{
-		if ((j <= 150 && col <= 150) && BONUS == 1) // -> miniventana
+		if ((j <= 150 && col <= 150) && BONUS == 1)
 			j = 150;
 		if (j < top)
 			mlx_put_pixel(info->scene->canvas, col, j, info->scene->ceiling);
@@ -89,8 +97,8 @@ double	ft_rayangle(int i, double angle)
 	int		cosine;
 	double	rayangle;
 
-	sine = (WIDTH / 2) / tan(ft_deg_to_rad(FOV / 2)); //esta es la distancia del personaje al plano de proyección
-	if (i < WIDTH / 2) //si el rayo está a la izda del vector direccional del personaje
+	sine = (WIDTH / 2) / tan(ft_deg_to_rad(FOV / 2));
+	if (i < WIDTH / 2)
 	{
 		cosine = WIDTH / 2 - i;
 		rayangle = angle - atan2(cosine, sine);
@@ -107,15 +115,13 @@ double	ft_rayangle(int i, double angle)
 	return (rayangle * 180.0 / M_PI);
 }
 
-void	ft_3Der(void *param)
+void	ft_loop_handler(void *param)
 {
 	t_game	*info;
-	float	scale;
 	t_coll	coll;
 	int		i;
 	double	player_angle;
-	double	rayangle;
-	t_coord	mod; //me cabe esto por norminette?
+	t_coord	mod;
 
 	mod.x = 0;
 	mod.y = 0;
@@ -125,11 +131,10 @@ void	ft_3Der(void *param)
 	i = 0;
 	while (i < WIDTH)
 	{
-		rayangle = ft_rayangle(i, player_angle);
-		coll = ft_ray_caster(info, rayangle, mod);
-		scale = WALL_H / coll.distance;
-		ft_draw_col(info, scale, i, &coll); // (?)
+		coll = ft_ray_caster(info, ft_rayangle(i, player_angle), mod);
+		ft_draw_col(info, WALL_H / coll.distance, i, &coll);
 		i++;
 	}
-	ft_candle(info, info->imgs);
+	if (BONUS == 1)
+		ft_candle(info, info->imgs);
 }

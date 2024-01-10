@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_scene.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 11:18:10 by erivero-          #+#    #+#             */
+/*   Updated: 2024/01/10 11:27:51 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
 char	*ft_cpy_info(char *line, char *path)
 {
-	while (*line > 0 && *line < 33) //salto los espacios antes del nombre
+	while (*line > 0 && *line < 33)
 		line++;
 	if (path != NULL)
 		free(path);
-	while (*line && *line > 32) //salto hasta enontrar un espacio
-		line++;
-	while (*line > 0 && *line < 33) //salto los espacios tras el nombre
+	while (*line && *line > 32)
 		line++;
 	return (ft_strtrim(line, "\n 	"));
 }
+/* 	while (*line > 0 && *line < 33)
+		line++; */
 
 int	ft_save_info(t_scene *scene, char *line)
 {
@@ -35,7 +47,8 @@ int	ft_save_info(t_scene *scene, char *line)
 		return (free(tmp), 1);
 	count++;
 	if (count > 6)
-		return (free(tmp), ft_error(FORMAT, "Each parameter can't appear more than once"));
+		return (free(tmp),
+			ft_error(FORMAT, "Each parameter can't appear more than once"));
 	return (free(tmp), 0);
 }
 
@@ -70,7 +83,7 @@ int	ft_get_map(char **file, t_scene *scene, int j)
 	while (file[j + len])
 		len++;
 	scene->len_y = len;
-	scene->len_x = ft_get_max_len(file, j); // -1 porque cuenta el maxlen con el \n
+	scene->len_x = ft_get_max_len(file, j);
 	scene->map = ft_get_spaced_map(file, j, len, scene->len_x);
 	return (0);
 }
@@ -89,15 +102,14 @@ int	ft_parse_file(t_scene *scene)
 		while (scene->file[j][0] == 10)
 			j++;
 		ret = ft_save_info(scene, scene->file[j]);
-		if (ret == 1) //si no es ninguno de los parámetros salgo y guardo el mapa fuera del loop
+		if (ret == 1)
 			break ;
-		if (ret == -1) //parámetro repe o get_map fallando
+		if (ret == -1)
 		{
-			exit(0);
+			exit(0); //este exit puede estar enmascarando leaks. Pdte quitar y comprobar en 42
 			return (-1);
 		}
 	}
 	ret = ft_get_map(scene->file, scene, j);
-	ft_print_scene(scene, DEBUG2);
 	return (ret);
 }

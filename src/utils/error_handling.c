@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 10:46:52 by erivero-          #+#    #+#             */
+/*   Updated: 2024/01/10 10:46:53 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
 static void	ft_print_fileformat(char *str)
@@ -49,7 +61,7 @@ void	ft_mlx_errors(int err, char *str)
 
 int	ft_error(int err, char *str)
 {
-	if (err == 42) // para mensaje personalizado
+	if (err == 42)
 		printf("%sError\n%s%s\n", WRONG, str, END);
 	ft_parse_errors(err, str);
 	ft_mlx_errors(err, str);

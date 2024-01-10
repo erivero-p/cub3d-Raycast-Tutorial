@@ -48,7 +48,7 @@ double	ft_rayangle(int	i, double angle)
 	return (rayangle * 180.0 / M_PI);
 }
 
-void	ft_3Der(double angle)
+void	ft_loop_handler(double angle)
 {
 /* 	t_game	*info;
 	double	a; //Yolanthe dice que el aumento del ángulo no es uniforme así que tengo que arreglar esto
@@ -66,13 +66,13 @@ void	ft_3Der(double angle)
 		scale = WALL_H / coll.distance;
 		ft_draw_col(info, scale, i, coll.txt); // (?) */
 		i++;
-//		printf("\033[38mft_3Der angle is: %f\n%s", angle, END);
+//		printf("\033[38mft_loop_handler angle is: %f\n%s", angle, END);
 	}
 }
 
 int main() {
 
-    ft_3Der(270);
+    ft_loop_handler(270);
 
     return 0;
 }

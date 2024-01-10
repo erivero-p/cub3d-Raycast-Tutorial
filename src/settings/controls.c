@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 12:05:54 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:56:37 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,28 @@ void	ft_ws(t_player *player, double dir, t_game *game, float angle)
 
 	if (!ft_collision(game, angle))
 	{
-		// player->player_img->instances[0].y += \
-		// 0.5 + (dir * sin(ft_deg_to_rad(player->angle)) * player->mov_speed);;
-		// player->player_img->instances[0].x += \
-		// 0.5 + (dir * cos(ft_deg_to_rad(player->angle)) * player->mov_speed);
-		// player->pos->x = (player->player_img->instances[0].x - 30) / game->scene->tile;
-		// player->pos->y = (player->player_img->instances[0].y - 30) / game->scene->tile;
-		player->pos->y += (dir * sin(ft_deg_to_rad(player->angle)) * player->mov_speed) / game->scene->tile;
-		player->pos->x += (dir * cos(ft_deg_to_rad(player->angle)) * player->mov_speed) / game->scene->tile;
+		player->pos->y += (dir * sin(ft_deg_to_rad(player->angle)) \
+		* player->mov_speed) / game->scene->tile;
+		player->pos->x += (dir * cos(ft_deg_to_rad(player->angle)) \
+		* player->mov_speed) / game->scene->tile;
 		ft_paint_minimap(game, game->scene, 1);
 	}
 }
 
+//rot: aux para no cambiar el angulo real del player. Está en grados
 void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 {
-	int	rot; //aux para no cambiar el angulo real del player
+	int		rot; 
 	double	y_c;
 	double	x_c;
 
-	rot = player->angle + ang; //en grados
+	rot = player->angle + ang;
 	if (!ft_collision(game, ang))
 	{
-		// player->player_img->instances[0].x += \
-		// cos(ft_deg_to_rad(rot)) * player->mov_speed;//ft_deg_to_rad(player->angle)
-		// player->player_img->instances[0].y += \
-		// sin(ft_deg_to_rad(rot)) * player->mov_speed;
-		// player->pos->x = (player->player_img->instances[0].x - 30) / game->scene->tile;
-		// player->pos->y = (player->player_img->instances[0].y - 30) / game->scene->tile;
-		player->pos->y += (sin(ft_deg_to_rad(rot)) * player->mov_speed) / game->scene->tile;
-		player->pos->x += (cos(ft_deg_to_rad(rot)) * player->mov_speed) / game->scene->tile;
+		player->pos->y += (sin(ft_deg_to_rad(rot)) \
+		* player->mov_speed) / game->scene->tile;
+		player->pos->x += (cos(ft_deg_to_rad(rot)) \
+		* player->mov_speed) / game->scene->tile;
 		ft_paint_minimap(game, game->scene, 1);
 	}
 }
@@ -55,14 +48,12 @@ void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 void	ft_rotate(t_player *player, double sign, t_game *game)
 {
 	float	ang;
-	// printf("%sANTESen ft_rotate: player->angle: %d%s\n", GOOD, player->angle, END);
+
 	player->angle += sign * player->rot_speed;
-	// printf("%sDESPUESen ft_rotate: player->angle: %d%s\n", WRONG, player->angle, END);
 	if (player->angle < 0)
 		player->angle += 360;
 	if (player->angle >= 360)
 		player->angle = player->angle % 360;
-	printf("%sDESPUESen ft_rotate: player->angle: %d%s\n", WRONG, player->angle, END);
 }
 
 void	ft_controls(mlx_key_data_t keydata, void *param)

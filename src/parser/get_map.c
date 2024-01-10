@@ -1,19 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_map.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 11:15:26 by erivero-          #+#    #+#             */
+/*   Updated: 2024/01/10 11:16:05 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
 char	*ft_space_fill(char *str, int max)
 {
-	int len;
+	int		len;
 	char	*spaced;
 
 	spaced = ft_strtrim(str, "\n");
 	len = ft_strlen(spaced);
-//	ft_printf("len: %i, max: %i\n", len, max);
 	while (len++ < max)
 		spaced = ft_strjoin_sl(spaced, " ");
 	return (spaced);
 }
 
-char **ft_get_spaced_map(char **arr, int start, int len, int max)
+char	**ft_get_spaced_map(char **arr, int start, int len, int max)
 {
 	char	**cpy;
 	int		i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/29 10:57:17 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:16:47 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ void	ft_init_scene(t_scene *scene)
 	scene->c_color = NULL;
 	scene->file = NULL;
 	scene->map = NULL;
-	scene->aux_map = NULL;
 	scene->len_x = -1;
 	scene->len_y = -1;
-/* 	scene->limit = -1;
-	scene->w = -1;
-	scene->h = -1; */
 }
 
 int	ft_parse(t_scene *scene, int fd, char *file, t_img *img)
@@ -40,15 +36,13 @@ int	ft_parse(t_scene *scene, int fd, char *file, t_img *img)
 		return (-1);
 	ft_read_file(scene, fd, len, file);
 	if (ft_parse_file(scene) == -1)
-		return (ft_free_double_pointer(scene->file), -1); //tb podemos liberar **file al final junto con lo demás y ea
+		return (ft_free_double_pointer(scene->file), -1);
 	if (ft_scene_check(scene) == -1)
 		return (ft_free_double_pointer(scene->file), -1);
 	if (ft_load_images(scene, img) == -1)
 		return (ft_free_double_pointer(scene->file), -1);
 	return (ft_free_double_pointer(scene->file), 0);
 }
-//	ft_print_matrix(scene->file, 1);
-//	ft_print_matrix(scene->map, 2);
 
 int	ft_arg_check(int ac, char **av)
 {

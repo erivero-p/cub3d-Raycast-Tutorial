@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_file.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 11:17:06 by erivero-          #+#    #+#             */
+/*   Updated: 2024/01/10 11:17:35 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
 int	ft_len_file(int fd)
@@ -30,14 +42,13 @@ void	ft_read_file(t_scene *scene, int fd, int len, char *file)
 	line = get_next_line(fd);
 	while (line)
 	{
-//		scene->file[i] = ft_strtrim(line, "\n");
-//		ft_printf("ft_read_file saved: \'%s\'\n", scene->file[i]);
 		scene->file[i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
 	close(fd);
-//	ft_print_matrix(scene->file, DEBUG_COLOR);
 	free(line);
 }
+
+//	ft_print_matrix(scene->file, DEBUG_COLOR);

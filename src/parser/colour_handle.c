@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colour_handle.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 11:13:55 by erivero-          #+#    #+#             */
+/*   Updated: 2024/01/10 11:15:07 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
 static int	ft_char_counter(char *str, char c)
@@ -25,7 +37,7 @@ static int	ph_atoi(char *str)
 	num = 0;
 	if (str[i] == '+')
 		i++;
-	else if (str[i] == '-') //si es negativo
+	else if (str[i] == '-')
 		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -41,12 +53,12 @@ static int	ph_atoi(char *str)
 	el alfa en este caso es fijo 0xFF
  */
 
-int ft_rgb_to_hex(int r, int g, int b)
+int	ft_rgb_to_hex(int r, int g, int b)
 {
 	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }
 
-int	ft_get_colour(char  **rgb)
+int	ft_get_colour(char **rgb)
 {
 	int	r;
 	int	g;
@@ -55,7 +67,6 @@ int	ft_get_colour(char  **rgb)
 	r = ph_atoi(rgb[0]);
 	g = ph_atoi(rgb[1]);
 	b = ph_atoi(rgb[2]);
-
 	if (r < 0 || r > 255 || g < 0 || g > 255
 		|| b < 0 || b > 255)
 		return (-1);
@@ -71,7 +82,6 @@ int	ft_color_check(char *color)
 
 	ret = 0;
 	i = -1;
-
 	if (ft_char_counter(color, ',') > 2)
 		return (-1);
 	rgb = ft_old_split(color, ',');

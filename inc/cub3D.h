@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 16:34:11 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:30:43 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_coll	ft_ray_caster(t_game *info, float angle, t_coord mod);
 
 void	ft_ray_tester(t_game *info, double a1, double a2, double a3, double a4);
 
-void	ft_3Der(void *param);
+void	ft_loop_handler(void *param);
 
 
 /*							UTILS							*/
