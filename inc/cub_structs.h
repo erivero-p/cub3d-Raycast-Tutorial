@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 10:44:36 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:31:31 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_img
 	long unsigned int	color_pix;
 }	t_img;
 
+//f_color y c_color son los char * al color en rgb
+//floor y ceiling son en hexadecimal
 typedef struct s_scene
 {
 	char		**file;
@@ -43,14 +45,14 @@ typedef struct s_scene
 	char		*ea_path;
 	char		*f_color;
 	char		*c_color;
-	int			floor; //color en hexadecimal
-	int			ceiling; //color en hexadecimal
+	int			floor;
+	int			ceiling;
 	int			counter;
 	int			len_x;
 	int			len_y;
 	mlx_image_t	*canvas;
 	mlx_image_t	*mini;
-	float		tile; //dimension de la celda
+	float		tile;
 	float		mini_x;
 	float		mini_y;
 }	t_scene;
@@ -59,9 +61,9 @@ typedef struct s_player
 {
 	t_coord		*pos;
 	t_coord		*center;
-	mlx_image_t	*player_img; //->para igualar a s_game->mlx 
-	mlx_image_t	*line_img; //->para igualar a s_game->mlx 
-	mlx_t		*mlx; //->para igualar a s_game->mlx
+	mlx_image_t	*player_img;
+	mlx_image_t	*line_img;
+	mlx_t		*mlx;
 	int			color;
 	double		mov_speed;
 	double		rot_speed;
@@ -69,38 +71,42 @@ typedef struct s_player
 	int			size;
 }	t_player;
 
-typedef	struct s_ray
+/*	angle: ángulo del rayo en grados
+	deltaang: playerangle - rayangle (radianes) 
+	dir: vector direccional del rayo
+	x/y_cross: tamaño del paso a aumentar en busca de colisión
+	sgn: signo según la dirección
+	coll: punto de colisión real
+	*/
+typedef struct s_ray
 {
-//	bool	coll; //colisión
-	double	angle; // en grados, rayangle
-	double	deltaang; // en radianes, playerangle - rayangle
+	double	angle;
+	double	deltaang;
 	t_coord	origin;
-	t_coord	dir; //dirección del rayo
-	t_coord	x_cross; //tamaño de cada paso a aumentar en busca de una colisión
-	t_coord	y_cross; //tamaño de cada paso a aumentar en busca de una colisión
-	t_coord	sgn; //para el signo según la dirección
-	t_coord	coll; //punto de colisión real
-	//int		txt; //textura: 1 E -1 W 2 S -2 N
+	t_coord	dir;
+	t_coord	x_cross;
+	t_coord	y_cross;
+	t_coord	sgn;
+	t_coord	coll;
 	double	len;
 }	t_ray;
 
-typedef	struct	s_coll
+/*	txt: textura 1 E -1 W 2 S -2 N
+	pixel: pixel donde empezar a pintar columna
+	wall: tamaño de la pared
+	ratio: relación textura / pared
+ */
+typedef struct s_coll
 {
-	t_coord	collision; //punto de colisión real
-	double	raylen;
-	double	distance;
-	int		txt; //texture: 1 E -1 W 2 S -2 N
+	t_coord			collision;
+	double			raylen;
+	double			distance;
+	int				txt;
 	mlx_texture_t	*texture;
-	t_coord	pixel; //el pixel en el que empiezo a cargar la textura
-	int		wall;
-	float	ratio;
+	t_coord			pixel;
+	int				wall;
+	float			ratio;
 }	t_coll;
-
-/* typedef	struct	s_draw
-{
-	t_coord	pixel; //pixel inicial
-	float	ratio; //relación de aspecto textura:muro
-} */
 
 typedef struct s_game
 {
@@ -111,20 +117,34 @@ typedef struct s_game
 	t_ray		*ray;
 }	t_game;
 
-typedef enum e_errors
-{
-	ARG = 1,
-	EXT_CUB, //extensión .cub
-	FD, // al abrir archivo
-	FORMAT, //formato del archivo
+/* errores:
+	ARG = error de argumentos
+	EXT_CUB: extensión .cub
+	FD:  al abrir archivo
+	FORMAT: formato del archivo
 	WALL,
 	CHAR,
 	EMPTY,
-	PLAYER, //más de uno
-	EXT_PNG, //extensión .png
-	COLOR, //formato rgb
-	WINDOW, //fallo al abrir la ventana
-	IMAGE, //fallo al abrir la ventana
+	PLAYER: 0 o más de 1 personaje
+	EXT_PNG: extensión .png
+	COLOR: formato rgb
+	WINDOW: fallo al abrir la ventana
+	IMAGE: fallo al cargar imagen */
+
+typedef enum e_errors
+{
+	ARG = 1,
+	EXT_CUB,
+	FD,
+	FORMAT,
+	WALL,
+	CHAR,
+	EMPTY,
+	PLAYER,
+	EXT_PNG,
+	COLOR,
+	WINDOW,
+	IMAGE,
 }		t_errors;
 
 # define DEBUG_COLOR "\033[0;96m"
@@ -147,7 +167,10 @@ typedef enum e_errors
 # define GREEN 0x007F007F
 # define TRANSP 0xFF000000
 
-//si BONUS no está definido porque no se ha usado la regla 'make bonus' al compilar se define como 0. En caso contrario, entonces la definición en el Makefile tiene prioridad y BONUS se define como 1.
+//si BONUS no está definido porque no se ha usado
+// la regla 'make bonus' al compilar se define como 0. 
+//En caso contrario, entonces la definición en el Makefile tiene prioridad 
+// y BONUS se define como 1.
 # ifndef BONUS
 #  define BONUS 0
 # endif

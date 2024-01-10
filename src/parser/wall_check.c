@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:31:35 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/10 11:33:53 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:17:19 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,9 @@ int	ft_wall_check(char **map, t_scene *scene)
 		{
 			while (map[y][x] > 0 && map[y][x] <= 32)
 				x++;
-			if (map[y][x] != 0 && ft_is_wall(map, x, y, scene)
-				&& map[y][x] != '1')
-			{
-				ft_printf("%sFAILED AT: map[%i][%i] %c\n%s", \
-				GOOD, y, x, map[y][x], END);
+			if (map[y][x] != 0 && ft_is_wall(map, x, y, scene) \
+			&& map[y][x] != '1')
 				return (-1);
-			}
 			x++;
 		}
 		y++;

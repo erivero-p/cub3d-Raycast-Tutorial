@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:39:06 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:56:37 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:20:13 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void	ft_ws(t_player *player, double dir, t_game *game, float angle)
 		* player->mov_speed) / game->scene->tile;
 		player->pos->x += (dir * cos(ft_deg_to_rad(player->angle)) \
 		* player->mov_speed) / game->scene->tile;
-		ft_paint_minimap(game, game->scene, 1);
+		ft_set_minimap(game, game->scene, 1);
 	}
 }
 
 //rot: aux para no cambiar el angulo real del player. Está en grados
 void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 {
-	int		rot; 
+	int		rot;
 	double	y_c;
 	double	x_c;
 
@@ -41,7 +41,7 @@ void	ft_ad(t_player *player, double dir, double ang, t_game *game)
 		* player->mov_speed) / game->scene->tile;
 		player->pos->x += (cos(ft_deg_to_rad(rot)) \
 		* player->mov_speed) / game->scene->tile;
-		ft_paint_minimap(game, game->scene, 1);
+		ft_set_minimap(game, game->scene, 1);
 	}
 }
 

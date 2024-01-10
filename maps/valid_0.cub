@@ -1,7 +1,7 @@
 EA ./texturas/amapolas.png
-SO ./texturas/margaritas.png
-WE ./texturas/pensamientos.png
-NO ./texturas/rosas.png
+SO ./texturas/noche/margaritas.png
+WE ./texturas/noche/pensamientos.png
+NO ./texturas/noche/rosas.png
 
 F 20,100,40
 C 20,20,100	

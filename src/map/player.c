@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:50:20 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:15:22 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ void	ft_init_player(t_player *player, t_game *game)
 	player->rot_speed = 2.0;
 	player->angle = ft_get_player_angle(game->scene);
 }
-/* 	printf("en ft_init_player: player_y: %d / player_x: %d\n",
-player->player_img->instances[0].y, player->player_img->instances[0].x);
-printf("en ft_init_player: player.pos.y: %f / player.pos.x: %f\n", player->pos->y, player->pos->x); 
-printf("en ft_init_player: angle: %d\n", player->angle);*/
-//con mov_speed 1.0 y rot_speed 3.0 se rompe 
 
 t_coord	ft_get_player_init_pos(t_game *game)
 {
