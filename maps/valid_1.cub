@@ -4,7 +4,8 @@ WE ./texturas/pensamientos.png
 NO ./texturas/rosas.png
 
 F 40,120,60
-C 40,60,120	
+C 80,120,237
+
 
 11111111111
 10000000001

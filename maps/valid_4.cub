@@ -3,8 +3,9 @@ SO ./texturas/margaritas.png
 WE ./texturas/pensamientos.png
 NO ./texturas/rosas.png
 
-F 20,100,40
-C 20,20,100
+F 40,120,60
+C 80,120,237
+
 
         1111111111111111111111111
         1000000000110000000000001
