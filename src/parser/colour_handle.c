@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:13:55 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/11 11:37:32 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:25:56 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,13 @@ int	ft_color_check(char *color)
 	char	**rgb;
 
 	ret = 0;
-	i = -1;
+	i = 0;
+	while (color[i])
+	{
+		if (!((color[i] >= '0' && color[i] <= '9') || color[i] == ','))
+			return (-1);
+		i++;
+	}
 	if (ft_char_counter(color, ',') > 2)
 		return (-1);
 	rgb = ft_old_split(color, ',');
