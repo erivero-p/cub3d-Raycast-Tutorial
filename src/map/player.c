@@ -6,21 +6,11 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 17:06:48 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:11:31 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
-
-t_coord	ft_get_center(t_game *game)
-{
-	t_coord	center;
-
-	center.x = game->player->player_img->instances[0].x + game->scene->tile / 2;
-	center.y = game->player->player_img->instances[0].y + game->scene->tile / 2;
-	printf("ft_get_corner: centro: y: %f / x: %f\n", center.y, center.x);
-	return (center);
-}
 
 double	ft_get_player_angle(t_scene *scene)
 {
@@ -45,7 +35,7 @@ double	ft_get_player_angle(t_scene *scene)
 		}
 		y++;
 	}
-	return (-1); //esto es pa que se calle el compilador porque realmente nunca llegaría aqui
+	return (-1);
 }
 
 void	ft_init_player(t_player *player, t_game *game)
@@ -55,18 +45,11 @@ void	ft_init_player(t_player *player, t_game *game)
 	ft_render_player(game, game->scene, game->player);
 	game->player->pos = malloc(sizeof(t_coord));
 	*player->pos = ft_get_player_init_pos(game);
-	printf("en ft_init_player: player_y: %d / player_x: %d\n", player->player_img->instances[0].y, player->player_img->instances[0].x);
-	printf("en ft_init_player: player.pos.y: %f / player.pos.x: %f\n", player->pos->y, player->pos->x);
-	// game->player->center = malloc(sizeof(t_coord));
-	// *player->center = ft_get_center(game);
 	player->color = RED;
-	player->mov_speed = 0.5; //pixeles 
-	//la velocidad de giro son cuantos grados va a girar y tenemos que hacer la conversion a radianes -> game->mlx->delta_time
-	player->rot_speed = 2.0; //multiplicar por * (M_PI / 180) -> pi/180 conversion a radianes -> game->mlx->delta_time
-	player->angle = ft_get_player_angle(game->scene); //en grados
-	printf("en ft_init_player: angle: %d\n", player->angle);
+	player->mov_speed = 0.5;
+	player->rot_speed = 2.0;
+	player->angle = ft_get_player_angle(game->scene);
 }
-//con mov_speed 1.0 y rot_speed 3.0 se rompe 
 
 t_coord	ft_get_player_init_pos(t_game *game)
 {
@@ -91,13 +74,6 @@ t_coord	ft_get_player_init_pos(t_game *game)
 	}
 	pos.x += 0.5;
 	pos.y += 0.5;
-	printf("bonus: %d\n", BONUS);
-/* 	if (BONUS == 1)
-	{
-		pos.x -= 0.25;
-		pos.y -= 0.25;
-		//printf("bonus: %d\n", BONUS);
-	} */
 	return (pos);
 }
 
