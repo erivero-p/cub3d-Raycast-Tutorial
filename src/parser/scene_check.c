@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scene_check.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 11:28:46 by erivero-          #+#    #+#             */
+/*   Updated: 2024/01/10 11:30:32 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
 int	ft_check_ext(char *str, char *ext)
@@ -34,7 +46,7 @@ int	ft_scene_check(t_scene *scene)
 {
 	if (ft_texture_check(scene) == -1)
 		return (ft_error(EXT_PNG, NULL));
-	scene->floor = ft_color_check(scene->f_color); //no sé si guardar estos enteros en otra estructura
+	scene->floor = ft_color_check(scene->f_color);
 	scene->ceiling = ft_color_check(scene->c_color);
 	if (scene->floor == -1 || scene->ceiling == -1)
 		return (ft_error(COLOR, NULL));

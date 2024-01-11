@@ -1,10 +1,11 @@
-NO /Users/marirodr/cursus/cub3d/textures/redbrick.png
-SO /Users/marirodr/cursus/cub3d/textures/bluestone.png
-WE /Users/marirodr/cursus/cub3d/textures/greystone.png
-EA /Users/marirodr/cursus/cub3d/textures/purplestone.png
+EA ./texturas/amapolas.png
+SO ./texturas/margaritas.png
+WE ./texturas/pensamientos.png
+NO ./texturas/rosas.png
 
-F 113,66,52
-C 100,149,237	
+F 40,120,60
+C 80,120,237
+
 
         1111111111111111111111111
         1000000000110000000000001

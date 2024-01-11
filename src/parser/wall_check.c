@@ -1,23 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wall_check.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 11:31:35 by erivero-          #+#    #+#             */
+/*   Updated: 2024/01/10 16:17:19 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
-int ft_is_wall(char **map, int x, int y, t_scene *scene)
+int	ft_is_wall(char **map, int x, int y, t_scene *scene)
 {
-//	ft_printf("ft_is_wall is checking: map[%i][%i]: %c\n", y, x, map[y][x]);
-	if (y == 0 && map[y][x] > 32) //si estoy arriba y hay algo
+	if (y == 0 && map[y][x] > 32)
 		return (1);
-	if (y == scene->len_y - 1 && map[y][x] > 32) //si estoy abajo y hay algo
+	if (y == scene->len_y - 1 && map[y][x] > 32)
 		return (1);
-	if (x == 0 && map[y][x] > 32) // si estoy a la izquierda y hay algo
+	if (x == 0 && map[y][x] > 32)
 		return (1);
-	if (x == scene->len_x - 1 && map[y][x] > 32) // si estoy a la derecha y hay algo
+	if (x == scene->len_x - 1 && map[y][x] > 32)
 		return (1);
-	if (y > 0 && map[y - 1][x] <= 32) //si arriba hay un espacio
+	if (y > 0 && map[y - 1][x] <= 32)
 		return (1);
-	if (y < scene->len_y - 1 && map[y + 1][x] <= 32) //si abajo hay un espacio
+	if (y < scene->len_y - 1 && map[y + 1][x] <= 32)
 		return (1);
-	if (x > 0 && map[y][x - 1] <= 32) //si a la izquierda hay un espacio
+	if (x > 0 && map[y][x - 1] <= 32)
 		return (1);
-	if (x < scene->len_x - 1 && map[y][x + 1] <= 32) //si a la derecha hay un espacio
+	if (x < scene->len_x - 1 && map[y][x + 1] <= 32)
 		return (1);
 	return (0);
 }
@@ -35,13 +46,9 @@ int	ft_wall_check(char **map, t_scene *scene)
 		{
 			while (map[y][x] > 0 && map[y][x] <= 32)
 				x++;
-			if (map[y][x] != 0 && ft_is_wall(map, x, y, scene)
-				&& map[y][x] != '1')
-			{
-				ft_printf("%sFAILED AT: map[%i][%i] %c\n%s", \
-				GOOD, y, x, map[y][x], END);
+			if (map[y][x] != 0 && ft_is_wall(map, x, y, scene) \
+			&& map[y][x] != '1')
 				return (-1);
-			}
 			x++;
 		}
 		y++;
@@ -49,27 +56,20 @@ int	ft_wall_check(char **map, t_scene *scene)
 	return (1);
 }
 
-/* int main(void)
-{
-	char *map[] = {
-		"1111111",
-		"1000011",
-		"10111",
-		"1011111",
-		"1011101",
-		"1011101",
-		"1111111",
-		"\n",
-		"\n",
-		"\n",
-		"111",
-		"101",
-		"111"
-	};
-
-	if (wall_checker(map))
-		printf("to chachi\n");
-	else
-		printf("maal\n");
-	return 0;
-} */
+/*	Condiciones de ft_is_wall:
+	if (y == 0 && map[y][x] > 32)
+	si estoy arriba y hay algo
+	if (y == scene->len_y - 1 && map[y][x] > 32)
+	si estoy abajo y hay algo
+	if (x == 0 && map[y][x] > 32)
+	si estoy a la izquierda y hay algo
+	if (x == scene->len_x - 1 && map[y][x] > 32)
+	si estoy a la derecha y hay algo
+	if (y > 0 && map[y - 1][x] <= 32)
+	si arriba hay un espacio
+	if (y < scene->len_y - 1 && map[y + 1][x] <= 32)
+	si abajo hay un espacio
+	if (x > 0 && map[y][x - 1] <= 32)
+	si a la izquierda hay un espacio
+	if (x < scene->len_x - 1 && map[y][x + 1] <= 32)
+	si a la derecha hay un espacio */

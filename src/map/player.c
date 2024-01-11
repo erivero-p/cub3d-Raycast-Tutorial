@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:52:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 17:11:31 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:22:20 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ double	ft_get_player_angle(t_scene *scene)
 		y++;
 	}
 	return (-1);
+	return (-1);
 }
 
 void	ft_init_player(t_player *player, t_game *game)
@@ -46,6 +47,9 @@ void	ft_init_player(t_player *player, t_game *game)
 	game->player->pos = malloc(sizeof(t_coord));
 	*player->pos = ft_get_player_init_pos(game);
 	player->color = RED;
+	player->mov_speed = 0.5;
+	player->rot_speed = 2.0;
+	player->angle = ft_get_player_angle(game->scene);
 	player->mov_speed = 0.5;
 	player->rot_speed = 2.0;
 	player->angle = ft_get_player_angle(game->scene);
@@ -85,7 +89,7 @@ double	ft_deg_to_rad(double deg)
 	return (rad);
 }
 
-void	ft_free_player(t_game *game)
+/* void	ft_free_player(t_game *game)
 {
 	free(game->player->pos);
-}
+} */

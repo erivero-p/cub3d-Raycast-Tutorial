@@ -1,10 +1,11 @@
-NO /Users/marirodr/cursus/cub3d/textures/Brick_02-256x256.png
-SO /Users/marirodr/cursus/cub3d/textures/Metal_15-256x256.png
-WE /Users/marirodr/cursus/cub3d/textures/Tile_08-256x256.png
-EA /Users/marirodr/cursus/cub3d/textures/Wood_07-256x256.png
+EA ./texturas/amapolas.png
+SO ./texturas/margaritas.png
+WE ./texturas/pensamientos.png
+NO ./texturas/rosas.png
 
-F 113,66,52
-C 100,149,237	
+F 40,120,60
+C 80,120,237
+
 
 11111111111
 10000000001

@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:14:14 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/09 13:16:06 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:00:08 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	ft_sidecoll(t_game *info, float angle, t_coord mod)
 {
 	t_coll	coll;
-		
+
 	mod.y -= 0.20;
 	coll = ft_ray_caster(info, angle, mod);
 	if (coll.raylen < 0.38)
@@ -30,7 +30,7 @@ bool	ft_sidecoll(t_game *info, float angle, t_coord mod)
 bool	ft_frontcoll(t_game *info, float angle, t_coord mod)
 {
 	t_coll	coll;
-		
+
 	mod.x -= 0.25;
 	while (mod.x <= 0.25)
 	{
@@ -51,11 +51,6 @@ bool	ft_collision(t_game *info, float angle)
 
 	mod.x = 0;
 	mod.y = 0;
-/* 	if (BONUS == 1)
-	{
-		mod.x -= 0.25;
-		mod.y -= 0.25;
-	} */
 	rayangle = info->player->angle + angle;
 	if (rayangle > 360)
 		rayangle -= 360;

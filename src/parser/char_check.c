@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   char_check.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 11:12:19 by erivero-          #+#    #+#             */
+/*   Updated: 2024/01/10 11:13:37 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
 int	ft_char_check(char c)
@@ -30,13 +42,13 @@ int	ft_char_mapcheck(char **map)
 		while (map[j][++i])
 		{
 			ret = ft_char_check(map[j][i]);
-			if (!ret ) //si hay un caracter inválido
+			if (!ret)
 				return (ft_error(CHAR, NULL));
 			if (ret == 42)
 				count++;
 		}
 	}
-	if (count != 1) //si hay más de un personaje o ninguno
+	if (count != 1)
 		return (ft_error(PLAYER, NULL));
-	return (0); //0 si todo fufa
+	return (0);
 }
