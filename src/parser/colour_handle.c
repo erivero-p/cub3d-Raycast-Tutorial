@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colour_handle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:13:55 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/10 11:15:07 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:37:32 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static int	ph_atoi(char *str)
 	return (num);
 }
 /* 
-	concatena los valores rgba desplazándolos a la izquierda y combinándolos con or
-	el alfa en este caso es fijo 0xFF
+	concatena los valores rgba desplazándolos a la izquierda y combinándolos
+	con or el alfa en este caso es fijo 0xFF
  */
 
 int	ft_rgb_to_hex(int r, int g, int b)

@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:40:55 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/28 17:12:46 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:49 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	initial_pos(char const *s1, char const *set)
 
 static int	final_pos(char const *s1, char const *set)
 {
-	int	len;
+	int		len;
 	size_t	j;
 
 	len = 0;

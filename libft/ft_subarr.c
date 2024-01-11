@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_subarr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 09:31:28 by erivero-          #+#    #+#             */
-/*   Updated: 2023/12/01 13:32:47 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:05 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char **ft_subarr(char **arr, int start, int len)
+char	**ft_subarr(char **arr, int start, int len)
 {
 	char	**cpy;
 	int		i;

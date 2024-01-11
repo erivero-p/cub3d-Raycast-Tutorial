@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
+#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2024/01/10 16:21:04 by erivero-         ###   ########.fr        #
+#    Updated: 2024/01/11 13:14:56 by marirodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,23 +27,15 @@ OBJ_DIR		=	objs/
 #PARSE es la variable para los archivos sin extension de la carpeta de parseo
 PARSE		=	parse read_file read_scene char_check wall_check scene_check get_map colour_handle
 
-UTILS		=	clean_handling error_handling load_images candle
+UTILS		=	clean_handling error_handling load_images candle collision window controls
 
-SETTING		=	window controls
-
-MAP			=	map paint player
-
-RAYCAST		= 	raycast 3Der
-
-COLLISION	=	collision
+RENDER		=	map paint player raycast 3Der
 
 SRC			=	main.c \
 				$(addsuffix .c, $(addprefix parser/, $(PARSE))) \
 				$(addsuffix .c, $(addprefix utils/, $(UTILS))) \
-				$(addsuffix .c, $(addprefix settings/, $(SETTING))) \
-				$(addsuffix .c, $(addprefix map/, $(MAP))) \
-				$(addsuffix .c, $(addprefix raycast/, $(RAYCAST))) \
-				$(addsuffix .c, $(addprefix collision/, $(COLLISION))) \
+				$(addsuffix .c, $(addprefix render/, $(RENDER))) \
+
 #con la linea de arriba le añadimos primero la extension .c a los archivos, le añadimos la ruta de la carpeta donde se encuentra y llamamos a ssu variable correspondiente
 
 
@@ -76,7 +68,7 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 #cada vez que queramos añadir una carpeta, utilizamos una linea similar a la de abajo para dentro de la carpeta /objs ir añadiendolos todos
-	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils $(OBJ_DIR)/settings $(OBJ_DIR)/map $(OBJ_DIR)/raycast $(OBJ_DIR)/collision
+	@mkdir -p $(OBJ_DIR)/parser $(OBJ_DIR)/utils $(OBJ_DIR)/render
 	@$(CC) $(FLAGS) -DBONUS=$(BONUS) -c $< -o $@
 # no se si en la linea de arriba tenemos que llamar a $(MLX_FLAGS)
 
@@ -98,4 +90,6 @@ bonus:
 	@make re BONUS=1
 	@echo "$(GREEN)$(NAME) with bonus compiled ✅$(END)"
 
-.PHONY: all, clean, fclean, re
+norminette:
+	@norminette src/ libft/ inc/
+.PHONY: all, clean, fclean, re, bonus, norminette

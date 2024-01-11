@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 16:14:26 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:32:07 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,3 @@ void	ft_init_map(t_game *info)
 	if (BONUS == 1)
 		ft_set_minimap(info, info->scene, 0);
 }
-
-/* 	printf("%sft_init_map: tile: %f\n", GOOD, info->scene->tile);
-	printf("ft_init_map: len_y: %i\n", info->scene->len_y);
-	printf("ft_init_map: len_x: %i%s\n", info->scene->len_x, END); */
-	//ft_paint_background(info, HEIGHT, WIDTH);

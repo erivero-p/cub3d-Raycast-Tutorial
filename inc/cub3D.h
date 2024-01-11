@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 16:44:00 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:23:46 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,38 +52,8 @@ int				ft_char_mapcheck(char **map);
 //ft_wall_checker.c
 int				ft_wall_check(char **map, t_scene *scene);
 
-/*							RAYCAST							*/
-t_coll			ft_ray_caster(t_game *info, float angle, t_coord mod);
-void			ft_loop_handler(void *param);
-
 /*							UTILS							*/
-//error_handling.c							
-int				ft_error(int err, char *str);
 
-//clean_handling.c
-void			ft_clean_map(t_game	*info);
-
-/* //debug.c
-void	ft_print_scene(t_scene *scene, char *colour);
-void	ft_print_matrix(char **matrix, char *colour);
-void	ft_print_ray(t_ray *ray, char *col);
-void	ft_xy_printer(char **map, int y, int x, char *colour);
-void	ft_raydebug(t_ray *ray, char *col);
-void	ft_printcoll(t_coll *coll, char c, char *colour); */
-
-//load_images
-int				ft_load_images(t_scene *scene, t_img *imgs);
-//void		ft_delete_text(t_game *game);
-void			ft_redisplay(t_game *game);
-void			ft_draw_pixel(t_game *game);
-unsigned long	ft_get_pixel_color(mlx_texture_t *texture,
-					int y, int x, int size);
-
-//candle.c
-void			ft_candle(t_game *game, t_img *img);
-mlx_texture_t	*ft_load_candle_text(int frame);
-
-/*							SETTINGS							*/
 //window.c
 int				ft_check_monitor(mlx_t *mlx);
 void			ft_mouse(mouse_key_t k, action_t act,
@@ -95,7 +65,24 @@ void			ft_ws(t_player *player, double dir, t_game *game, float angle);
 void			ft_ad(t_player *player, double dir, double ang, t_game *game);
 void			ft_rotate(t_player *player, double sign, t_game *game);
 
-/*							MAP							*/
+//error_handling.c							
+int				ft_error(int err, char *str);
+
+//clean_handling.c
+void			ft_clean_map(t_game	*info);
+
+//load_images
+int				ft_load_images(t_scene *scene, t_img *imgs);
+void			ft_redisplay(t_game *game);
+void			ft_draw_pixel(t_game *game);
+unsigned long	ft_get_pixel_color(mlx_texture_t *texture,
+					int y, int x, int size);
+
+//candle.c
+void			ft_candle(t_game *game, t_img *img);
+mlx_texture_t	*ft_load_candle_text(int frame);
+
+/*							RENDER							*/
 //map.c
 void			ft_init_map(t_game *info);
 int				ft_get_map_x(t_game *info);
@@ -106,19 +93,17 @@ void			ft_fill_tile(t_game *game, int y, int x, int color);
 void			ft_render_player(t_game *game, t_scene *scn, t_player *plyer);
 
 //player.c
-t_coord			ft_get_center(t_game *game);
 void			ft_init_player(t_player *player, t_game *game);
 t_coord			ft_get_player_init_pos(t_game *game);
 double			ft_deg_to_rad(double deg);
-//void			ft_free_player(t_game *game);
 
-/*							MAP							*/
+//raycast.c
+t_coll			ft_ray_caster(t_game *info, float angle, t_coord mod);
+
+//3Der.c
+void			ft_loop_handler(void *param);
+
 //collision.c
 bool			ft_collision(t_game *info, float angle);
-/* int		ft_frontal_collision(t_game *game, int y, int x);
-int		ft_back_collision(t_game *game, int y, int x);
-int		ft_left_collision(t_game *game, int y, int x);
-int		ft_right_collision(t_game *game, int y, int x); */
-/* bool	ft_sidecoll(t_game *info, float angle);
-bool	ft_frontcoll(t_game *info, float angle); */
+
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:47:06 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/10 10:47:07 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:16:59 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void	ft_clean_map(t_game	*info)
 		if (info->scene->c_color)
 			free(info->scene->c_color);
 	}
+	exit(0);
 }

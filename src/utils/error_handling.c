@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:46:52 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/10 10:46:53 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:06:31 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_print_fileformat(char *str)
 	printf("Please input a file as described below:\n");
 	printf("Floor, ceiling, north, south, east, and west "
 		"textures should appear at the beginning of the file, "
-		"separated by one or more newlines, and in any desiWRONG order.\n");
+		"separated by one or more newlines, and in any desired order.\n");
 	printf("The map should be the last element in the file.\n");
 }
 

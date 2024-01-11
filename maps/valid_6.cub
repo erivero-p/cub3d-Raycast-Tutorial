@@ -1,15 +1,15 @@
-NO /Users/marirodr/cursus/cub3d/textures/Brick_02-256x256.png
+NO ./textures/bluestone.png
 
 
 
 
-SO /Users/marirodr/cursus/cub3d/textures/Metal_15-256x256.png    
-WE /Users/marirodr/cursus/cub3d/textures/Tile_08-256x256.png
+SO ./textures/redbrick.png    
+WE ./textures/purplestone.png
 
 
 
 
-EA /Users/marirodr/cursus/cub3d/textures/Wood_07-256x256.png
+EA ./textures/greystone.png
 
 F 200,0,0
 C 225,30,0

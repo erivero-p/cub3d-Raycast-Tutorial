@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:33:34 by marirodr          #+#    #+#             */
-/*   Updated: 2023/12/01 13:33:13 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:53:40 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ int					ft_isalpha_plus(int i);
 //arrays
 int					ft_arrlen(char **arr);
 void				ft_free_double_pointer(char **ptr);
-char 				**ft_subarr(char **arr, int start, int len);
-
+char				**ft_subarr(char **arr, int start, int len);
 
 //lists
 typedef struct s_list
@@ -111,7 +110,7 @@ void				ft_list_remove_if(t_list **begin, void *d_r, int (*cmp)());
 //arrays
 void				ft_free_double_pointer(char **ptr);
 int					ft_arrlen(char **arr);
-char 				**ft_subarr(char **arr, int start, int len);
+char				**ft_subarr(char **arr, int start, int len);
 
 //bits
 void				print_bits(unsigned char octet);

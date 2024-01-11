@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:20:33 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:11:21 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:31:04 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,3 @@ int	ft_load_images(t_scene *scene, t_img *imgs)
 	}
 	return (0);
 }
-
-/* void	ft_delete_text(t_game *game)
-{
-	if (game->imgs->no_text)
-		mlx_delete_texture(game->imgs->no_text);
-	if (game->imgs->so_text)
-		mlx_delete_texture(game->imgs->so_text);
-	if (game->imgs->we_text)
-		mlx_delete_texture(game->imgs->we_text);
-	if (game->imgs->ea_text)
-		mlx_delete_texture(game->imgs->ea_text);
-} */

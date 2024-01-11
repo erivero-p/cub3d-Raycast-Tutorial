@@ -1,7 +1,7 @@
-NO /Users/erivero-/Desktop/coll-cub3d/textures2/txt_n.png
-SO /Users/erivero-/Desktop/coll-cub3d/textures2/txt_s.png
-WE /Users/erivero-/Desktop/coll-cub3d/textures2/txt_w.png
-EA /Users/erivero-/Desktop/coll-cub3d/textures2/txt_e.png
+NO ./textures2/txt_n.png
+SO ./textures2/txt_s.png
+WE ./textures2/txt_w.png
+EA ./textures2/txt_e.png
 F 113,66,52
 C 100,149,237
 

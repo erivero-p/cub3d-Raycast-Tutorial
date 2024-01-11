@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 16:22:15 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:19:25 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
-void	ft_free_all(t_game *info)
-{
-	ft_clean_map(info);
 	//ft_free_player(info);
 	//ft_delete_text(info);
 	//free las matrices y los paths de t_map
 	//mlx_close_window(info->mlx); ??
-	exit(0);
-}
 
 void	ft_leaks(void)
 {
@@ -76,7 +71,5 @@ int	main(int ac, char **av)
 			mlx_terminate(info.mlx);
 		}
 	}
-	ft_free_all(&info);
+	ft_clean_map(&info);
 }
-
-//ft_print_scene(&scene, DEBUG_COLOR);
