@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:38:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:57:55 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:48:51 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,3 @@ void	ft_mouse(mouse_key_t k, action_t act, modifier_key_t mod, void *param)
 			ft_rotate(game->player, 1.0, game);
 	}
 }
-
-	//mlx_set_mouse_pos(game->mlx, WIDTH / 2, HEIGHT / 2);

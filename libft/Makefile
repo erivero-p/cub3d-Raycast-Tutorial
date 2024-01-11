@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
+#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 13:21:44 by marirodr          #+#    #+#              #
-#    Updated: 2023/11/30 11:43:24 by erivero-         ###   ########.fr        #
+#    Updated: 2024/01/11 11:35:59 by marirodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC			= 	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isdigit.c \
 				ft_putnbr.c sort_int_tab.c ft_atol.c ft_abs.c ft_put_lower_hex.c \
 				ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
 				ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c \
-				ft_lstmap_bonus.c ft_list_foreach.c ft_list_remove_if.c \
+				ft_lstmap_bonus.c ft_list_foreach.c \
 				ft_printf.c ft_printf_tools.c ft_printf_tools2.c \
 				get_next_line_bonus.c get_next_line_utils_bonus.c \
 				ft_strjoin_sl.c ft_free_double_pointer.c ft_mini_split.c ft_is_equal.c \

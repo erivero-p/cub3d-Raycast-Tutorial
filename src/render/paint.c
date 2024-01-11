@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 16:13:52 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:34:42 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,6 @@ void	ft_set_minimap(t_game *info, t_scene *scene, int delete)
 	ft_paint_minimap(info, scene->map);
 	scene->mini->instances[0].z = 0;
 }
-//printf("ft_fill_tile: len_y: %i / len_x: %i\n", 
-//game->scene->len_y, game->scene->len_x);
-//printf("ft_fill_tile: y: %i / x: %i / scene->tile: %f\n",
-// y, x, game->scene->tile);
-// printf("game->scene->tile * game->scene->len_x: %f\n", 
-//game->scene->tile * game->scene->len_x);
-// printf("game->scene->mini_x: %f / game->scene->mini_y: 
-//%f\n", game->scene->mini_x, game->scene->mini_y);
-//	if (mlx_image_to_window(game->mlx, 
-//player->player_img, (150 / 2) + 2.5, (150 / 2) + 2.5) < 0) 
 //version jugador estatico -> 150 tamaño sin dibujar en canvas; 
 // 2 para mitad; - 2.5  mitad del tamaño de la imagen para ajustarlo al centro
 
@@ -120,7 +110,8 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 	y = -1;
 	player->player_img = mlx_new_image(game->mlx, player->size, player->size);
 	if (!player->player_img || mlx_image_to_window
-		(game->mlx, player->player_img, (150 / 2) + 2.5, (150 / 2) + 2.5) < 0)
+		(game->mlx, player->player_img, (150 / 2) + (player->size / 2), \
+		(150 / 2) + (player->size / 2)) < 0)
 		ft_error(IMAGE, NULL);
 	while (++y < player->size)
 	{

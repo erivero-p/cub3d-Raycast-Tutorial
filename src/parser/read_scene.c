@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:18:10 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/10 11:27:51 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:42:40 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,7 @@ int	ft_parse_file(t_scene *scene)
 		if (ret == 1)
 			break ;
 		if (ret == -1)
-		{
-			exit(0); //este exit puede estar enmascarando leaks. Pdte quitar y comprobar en 42
 			return (-1);
-		}
 	}
 	ret = ft_get_map(scene->file, scene, j);
 	return (ret);

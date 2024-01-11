@@ -1,14 +1,14 @@
 F 100,149,237
-NO /Users/erivero-/Desktop/cub3d/textures/colorcheck.png
-SO /Users/erivero-/Desktop/cub3d/textures/bluestone.png
+NO ./textures/colorcheck.png
+SO ./textures/bluestone.png
 
 
 
 
 
 C 225,30,0
-WE /Users/erivero-/Desktop/cub3d/textures/greystone.png
-EA /Users/erivero-/Desktop/cub3d/textures/purplestone.png
+WE ./textures/greystone.png
+EA ./textures/purplestone.png
 
 11111111111
 11111011111
