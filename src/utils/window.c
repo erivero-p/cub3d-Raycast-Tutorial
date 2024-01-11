@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:38:03 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/11 15:48:51 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:45:59 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_mouse(mouse_key_t k, action_t act, modifier_key_t mod, void *param)
 	mlx_get_mouse_pos(game->mlx, &x, &y);
 	if (x <= WIDTH / 2)
 	{
-		if (mlx_is_mouse_down(game->mlx, MLX_MOUSE_BUTTON_LEFT))
-			ft_rotate(game->player, -1.0, game);
+        if (mlx_is_mouse_down(game->mlx, MLX_MOUSE_BUTTON_LEFT))
+        	ft_rotate(game->player, -1.0, game);
 	}
 	else
 	{

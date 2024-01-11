@@ -6,21 +6,16 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/11 13:19:25 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:46:29 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
-	//ft_free_player(info);
-	//ft_delete_text(info);
-	//free las matrices y los paths de t_map
-	//mlx_close_window(info->mlx); ??
-
-void	ft_leaks(void)
+/* void	ft_leaks(void)
 {
 	system("leaks -q cub3D");
-}
+} */
 
 void	ft_init_game(t_game *info)
 {
@@ -48,9 +43,9 @@ int	ft_set_window(t_game *info)
 	return (0);
 }
 
+	//atexit(ft_leaks);
 int	main(int ac, char **av)
 {
-	atexit(ft_leaks);
 	int			fd;
 	t_game		info;
 	t_scene		scene;
