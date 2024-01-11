@@ -1,10 +1,10 @@
 EA ./texturas/amapolas.png
-SO ./texturas/noche/margaritas.png
-WE ./texturas/noche/pensamientos.png
-NO ./texturas/noche/rosas.png
+SO ./texturas/margaritas.png
+WE ./texturas/pensamientos.png
+NO ./texturas/rosas.png
 
-F 20,100,40
-C 20,20,100	
+F 40,120,60
+C 100,149,237
 
 1111111111111111111111111111111111111
 1S01000000011000000000110000000001111

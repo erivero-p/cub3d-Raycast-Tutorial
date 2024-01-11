@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 16:31:31 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:13:02 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_scene
 	int			len_x;
 	int			len_y;
 	mlx_image_t	*canvas;
+	mlx_image_t	*night;
 	mlx_image_t	*mini;
 	float		tile;
 	float		mini_x;

@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:36:34 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:16:47 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:13:40 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_init_scene(t_scene *scene)
 	scene->c_color = NULL;
 	scene->file = NULL;
 	scene->map = NULL;
+	scene->night = NULL;
 	scene->len_x = -1;
 	scene->len_y = -1;
 }
