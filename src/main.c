@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:14:59 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/12 10:59:21 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:59:34 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ void	ft_init_game(t_game *info)
 	ft_init_player(info->player, info);
 	ft_init_map(info);
 	mlx_key_hook(info->mlx, &ft_controls, info);
-	if (BONUS == 1)
-	{
-		info->imgs->candle_img = NULL;
-		mlx_mouse_hook(info->mlx, &ft_mouse, info);
-	}
 	mlx_loop_hook(info->mlx, &ft_loop_handler, info);
 	mlx_loop(info->mlx);
 }

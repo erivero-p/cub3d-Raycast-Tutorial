@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:07 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/11 11:34:42 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:00:47 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,4 @@ void	ft_render_player(t_game *game, t_scene *scene, t_player *player)
 			mlx_put_pixel(player->player_img, x, y, RED);
 	}
 	player->player_img->instances[0].enabled = false;
-	if (BONUS == 1)
-	{
-		player->player_img->instances[0].enabled = true;
-		player->player_img->instances[0].z = 2;
-	}
 }

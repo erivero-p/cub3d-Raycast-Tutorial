@@ -6,7 +6,7 @@
 /*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:58:48 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/11 11:32:07 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:00:37 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,4 @@ void	ft_init_map(t_game *info)
 		ft_error(IMAGE, NULL);
 	if (mlx_image_to_window(info->mlx, info->scene->canvas, 0, 0) < 0)
 		ft_error(IMAGE, NULL);
-	if (BONUS == 1)
-		ft_set_minimap(info, info->scene, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3Der.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:32:00 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/12 12:05:44 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:00:25 by marirodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ void	ft_draw_wall(t_game *info, t_coll *coll, int col, int j)
 		ft_get_pixel_color(coll->texture, (int)y, x, coll->texture->width);
 		if (j < 0 || j > HEIGHT)
 			break ;
-		if (!(col < 150 && j < 150) && BONUS == 1)
-			mlx_put_pixel(info->scene->canvas, col, j, color);
-		else if (BONUS == 0)
-			mlx_put_pixel(info->scene->canvas, col, j, color);
+		mlx_put_pixel(info->scene->canvas, col, j, color);
 		j++;
 		y += coll->ratio;
 	}
@@ -80,8 +77,6 @@ void	ft_draw_col(t_game	*info, float wall, int col, t_coll *coll)
 	ft_init_pixel(coll, wall, info);
 	while (j < HEIGHT)
 	{
-		if ((j <= 150 && col <= 150) && BONUS == 1)
-			j = 150;
 		if (j < top)
 			mlx_put_pixel(info->scene->canvas, col, j, info->scene->ceiling);
 		else if (j > bot)
@@ -134,10 +129,5 @@ void	ft_loop_handler(void *param)
 		coll = ft_ray_caster(info, ft_rayangle(i, player_angle), mod);
 		ft_draw_col(info, WALL_H / coll.distance, i, &coll);
 		i++;
-	}
-	if (BONUS == 1)
-	{
-		ft_night(info);
-		ft_candle(info, info->imgs);
 	}
 }
