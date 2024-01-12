@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:52:50 by marirodr          #+#    #+#             */
-/*   Updated: 2024/01/11 13:23:46 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:15:06 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ unsigned long	ft_get_pixel_color(mlx_texture_t *texture,
 //candle.c
 void			ft_candle(t_game *game, t_img *img);
 mlx_texture_t	*ft_load_candle_text(int frame);
+void			ft_night(t_game *game);
 
 /*							RENDER							*/
 //map.c
