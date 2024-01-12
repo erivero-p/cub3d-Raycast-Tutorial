@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:46:52 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/11 13:06:31 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:58:01 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	ft_parse_errors(int err, char *str)
 	if (err == ARG)
 		printf("%sError\nWrong input%s\n", WRONG, END);
 	if (err == EXT_CUB)
-		printf("%sError\nThe map file doesn't have"
+		printf("%sError\nThe map file doesn't have "
 			"a valid extension. It must be .cub%s\n", WRONG, END);
 	if (err == EXT_PNG)
-		printf("%sError\nThe texture file doesn't have"
+		printf("%sError\nThe texture file doesn't have "
 			"a valid extension. It must be .png%s\n", WRONG, END);
 	if (err == FD)
 		printf("%sError\nProblem while opening file%s\n", WRONG, END);
