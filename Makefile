@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 13:20:42 by marirodr          #+#    #+#              #
-#    Updated: 2024/01/12 13:58:54 by marirodr         ###   ########.fr        #
+#    Updated: 2024/01/12 14:24:27 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,9 @@ MLX42		=	MLX42/libmlx42.a
 SRC_DIR		=	src/
 OBJ_DIR		=	objs/
 
-SRC_DIR_BNS	=	src_bonus/
-OBJ_DIR_BNS	=	objs_bonus/
+SRC_DIR_BNS	=	bonus/src_bonus/
+OBJ_DIR_BNS	=	bonus/objs_bonus/
 
-#direccion de carpetas dentro de src/
-#PARSE es la variable para los archivos sin extension de la carpeta de parseo
 PARSE		=	parse read_file read_scene char_check wall_check scene_check get_map colour_handle
 
 UTILS		=	clean_handling error_handling load_images candle collision window controls
@@ -37,9 +35,9 @@ UTILS		=	clean_handling error_handling load_images candle collision window contr
 RENDER		=	map paint player raycast 3Der
 
 
-PARSE_BNS	=	parse read_file read_scene char_check wall_check scene_check get_map colour_handle_bonus
+PARSE_BNS	=	parse_bonus read_file_bonus read_scene_bonus char_check_bonus wall_check_bonus scene_check_bonus get_map_bonus colour_handle_bonus
 
-UTILS_BNS	=	clean_handling error_handling load_images candle collision window controls
+UTILS_BNS	=	clean_handling_bonus error_handling_bonus load_images_bonus candle_bonus collision_bonus window_bonus controls_bonus
 
 RENDER_BNS	=	map_bonus paint_bonus player_bonus raycast_bonus 3Der_bonus
 
@@ -48,10 +46,10 @@ SRC			=	main.c \
 				$(addsuffix .c, $(addprefix utils/, $(UTILS))) \
 				$(addsuffix .c, $(addprefix render/, $(RENDER))) \
 
-SRC_BNS		=	main.c \
-				$(addsuffix .c, $(addprefix parser_bonus/, $(PARSE))) \
-				$(addsuffix .c, $(addprefix utils_bonus/, $(UTILS))) \
-				$(addsuffix .c, $(addprefix render_bonus/, $(RENDER))) \
+SRC_BNS		=	cub3d_bonus.c \
+				$(addsuffix .c, $(addprefix parser_bonus/, $(PARSE_BNS))) \
+				$(addsuffix .c, $(addprefix utils_bonus/, $(UTILS_BNS))) \
+				$(addsuffix .c, $(addprefix render_bonus/, $(RENDER_BNS))) \
 
 
 OBJ			=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
@@ -98,6 +96,11 @@ bonus: $(OBJ_BNS)
 	@$(CC) $(CFLAGS) $(OBJ_BNS) $(MLX42) $(LIBFT) $(MLX_FLAGS) -o $(NAME_BONUS)
 	@echo "$(GREEN)$(NAME_BONUS) compiled ✅$(END)"
 
+$(OBJ_DIR_BNS)%.o: $(SRC_DIR_BNS)%.c
+	@mkdir -p $(dir $@)
+	@mkdir -p $(OBJ_DIR_BNS)/parser_bonus $(OBJ_DIR_BNS)/utils_bonus $(OBJ_DIR_BNS)/render_bonus
+	@$(CC) $(FLAGS) -c $< -o $@
+	
 clean_bonus:
 	@$(RM) -rf $(OBJ_DIR_BNS)
 	@echo "$(RED)Compiled objects from bonus have been removed$(END)"
@@ -111,5 +114,5 @@ fclean_bonus: clean_bonus
 re_bonus: fclean_bonus bonus
 
 norminette:
-	@norminette src/ libft/ inc/
+	@norminette src/ libft/ inc/ bonus/
 .PHONY: all, clean, fclean, re, bonus, norminette

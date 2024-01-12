@@ -1,0 +1,22 @@
+F 100,149,237
+NO ./textures/colorcheck.png
+SO ./textures/bluestone.png
+
+
+
+
+
+C 225,30,0
+WE ./textures/greystone.png
+EA ./textures/purplestone.png
+
+11111111111
+11111011111
+10000000001
+10000000001
+10000000001
+10000N00001
+10000000001
+10000000001
+11110000001
+11111111111
