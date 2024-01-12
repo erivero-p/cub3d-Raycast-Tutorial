@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colour_handle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marirodr <marirodr@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:13:55 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/11 16:25:56 by marirodr         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:08:45 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static int	ph_atoi(char *str)
 		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (!ft_isdigit(str[i]))
-			return (-1);
 		num = num * 10 + str[i] - 48;
 		i++;
 	}
+	if (str[i] != 0)
+		return (-1);
 	return (num);
 }
 /* 
@@ -82,12 +82,7 @@ int	ft_color_check(char *color)
 
 	ret = 0;
 	i = 0;
-	while (color[i])
-	{
-		if (!((color[i] >= '0' && color[i] <= '9') || color[i] == ','))
-			return (-1);
-		i++;
-	}
+
 	if (ft_char_counter(color, ',') > 2)
 		return (-1);
 	rgb = ft_old_split(color, ',');

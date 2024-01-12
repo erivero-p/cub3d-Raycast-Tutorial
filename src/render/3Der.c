@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:32:00 by erivero-          #+#    #+#             */
-/*   Updated: 2024/01/11 10:04:35 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:05:44 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ double	ft_rayangle(int i, double angle)
 		rayangle -= (M_PI * 2);
 	return (rayangle * 180.0 / M_PI);
 }
-void	ft_night(t_game *game);
 
 void	ft_loop_handler(void *param)
 {
