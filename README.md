@@ -146,6 +146,7 @@ Conociendo ésto, sólo tendremos que revisar el vector de dirección para decid
 <p align="center">
     <img src="https://github.com/erivero-p/cub3d/blob/main/readme%20images/orientacin.png" width="450" height="450" alt="Nombre alternativo">
 </p>
+
 ## Cálculo de la distancia y escalado
 
 Una vez hemos encontrado la colisión, ya sabremos en cuánto tenemos que aumentar x e y en la dirección del rayo para alcanzar un muro. Es decir, ya tendremos el tamaño de los catetos. La longitud del rayo será, por tanto, la hipotenusa.
