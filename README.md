@@ -1,4 +1,5 @@
 # cub3d
+> This repository contains a "Cub3D" project that is part of the École 42 curriculum.
 ## PROJECT TREE
 
 ```
@@ -38,8 +39,38 @@
 │       └── window.c
 └── Makefile
 ```
-# ⚡RAYCAST TUTORIAL⚡
 
+The goal of ``cub3d`` is to make *something* using raycasting (like [Wolfenstein 3D](https://fr.wikipedia.org/wiki/Wolfenstein_3D)).
+This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use of basic algorithms, information research etc.
+As a graphic design project, cub3D will enable you to improve your skills in these areas: windows, colors, events, fill shapes, etc.
+To conclude cub3D is a remarkable playground to explore the playful practical applications of mathematics without having to understand the specifics.
+With the help of the numerous documents available on the internet, you will use mathematics as a tool to create elegant and efficient algorithms.
+
+<div align="center">
+  <img src="https://github.com/MofMiq/cub3d/blob/main/readme%20images/mandatory.gif" width="600"/>
+</div>
+
+## Rules
+The constraints are as follows: \
+• We must use the miniLibX or MLX42. Either the version that is available on the operating system, or from its sources. \
+• The management of the window must remain smooth: changing to another window, minimizing, etc.\
+• Display different wall textures (the choice is yours) that vary depending on which side the wall is facing (North, South, East, West). \
+• The program must be able to set the floor and ceiling colors to two different ones. \
+• The program must take as a first argument a scene description file with the .cub extension. \
+• The map must be composed of only 6 possible characters: 0 for an empty space, 1 for a wall, and N,S,E or W for the player’s start position and spawning orientation. We must check for any possible parsing error.
+
+## Bonus
+• Wall collisions ✅ \
+• A minimap system ✅ \
+• Animated sprite ✅ \
+• Rotate the point of view with the mouse ✅ \
+• Doors which can open and close ❌
+
+<div align="center">
+  <img src="https://github.com/MofMiq/cub3d/blob/main/readme%20images/bonus.gif" width="600"/>
+</div>
+
+# ⚡RAYCAST TUTORIAL⚡
 ### Variables necesarias antes de lanzar el rayo
 
 - Coordenadas de la posición del jugador (serán el origen del rayo)
