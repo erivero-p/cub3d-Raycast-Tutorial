@@ -66,10 +66,6 @@ The constraints are as follows: \
 • Rotate the point of view with the mouse ✅ \
 • Doors which can open and close ❌
 
-<div align="center">
-  <img src="https://github.com/MofMiq/cub3d/blob/main/readme%20images/bonus.gif" width="600"/>
-</div>
-
 # ⚡RAYCAST TUTORIAL⚡
 ### Variables necesarias antes de lanzar el rayo
 
